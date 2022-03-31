@@ -8,6 +8,9 @@
     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>   <!-- 인코딩 -->
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+	
+	<% request.setCharacterEncoding("utf-8");%>
+
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Obrien - Organic Food HTML5 Template</title>
     <meta name="robots" content="noindex, follow" />
@@ -52,20 +55,47 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	
-	/*
+	
 	$("form").on("submit", function(event) {
 		var user_id = $("#user_id").val();
+		var user_name = $("#user_name").val();
 		var user_pw = $("#user_pw").val();
-		if (userid.length == 0) {
-			alert("아이디 입력해주세요")
+		var user_pw2 = $("#user_pw2").val();
+		var email = $("#email").val();
+		var phone = $("#phone").val();
+		
+		if (user_id.length < 3) {
+			alert("아이디를 입력해주세요")
 			$("#user_id").focus();
 			event.preventDefault();
-		} else if (passwd.length == 0) {
-			alert("비밀번호 입력해주세요")
+		} else if (user_name.length < 1) {
+			alert("이름을 입력해주세요")
+			$("#user_name").focus();
+			event.preventDefault();
+		} else if (user_pw.length < 8) {
+			alert("비밀번호는 8자리 이상 입력해주세요")
 			$("#user_pw").focus();
 			event.preventDefault();
+		} else if (user_pw2.length < 8) {
+			alert("비밀번호 확인을 입력해주세요")
+			$("#user_pw2").focus();
+			event.preventDefault();
+		} else if (user_pw2 !== user_pw) {
+			alert("비밀번호가 동일하지않습니다")
+			$("#user_pw2").focus();
+			event.preventDefault();
+		} else if (email.length < 1) {
+			alert("이메일을 입력해주세요")
+			$("#email").focus();
+			event.preventDefault();
+		} else if (phone.length < 10) {
+			alert("전화번호를 제대로 입력해주세요")
+			$("#phone").focus();
+			event.preventDefault();
 		}
-	});*/
+	});
+	
+
 	
 	//아이디 중복검사
  	$("#user_id").on("keyup", function() {   
@@ -698,10 +728,10 @@ $(document).ready(function() {
                                 <div class="single-input-item mb-3">
                                     <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
                                         <div class="remember-meta mb-3">
-                                            <div class="custom-control custom-checkbox">
+                                            <!-- <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="rememberMe">
                                                 <label class="custom-control-label" for="rememberMe">Subscribe Our Newsletter</label>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>

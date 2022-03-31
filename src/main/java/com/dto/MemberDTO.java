@@ -15,6 +15,7 @@ public class MemberDTO {
 	
 	private String user_id;
 	private String user_pw;
+	private String user_pw2;
 	private String user_name;
 	private String email;
 	private int post;

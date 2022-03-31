@@ -30,6 +30,7 @@
 	<property name="typeAliases"><!-- alias는 dto에서 설정 -->
 		<list>
 			<value>com.dto.MemberDTO</value>
+			<value>com.dto.ProductDTO</value>
 		</list>
 	</property>
 	</bean>

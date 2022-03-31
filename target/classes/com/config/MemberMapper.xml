@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="MemberMapper">
 
 	<insert id="memberAdd" parameterType="MemberDTO"> <!-- 회원가입 -->
-		insert into t_member (user_id, user_pw, user_name, email, phone)
-		values( #{user_id}, #{user_pw}, #{user_name}, #{email}, #{phone})
+		insert into t_member (user_id, user_pw, user_pw2, user_name, email, phone)
+		values( #{user_id}, #{user_pw},#{user_pw2}, #{user_name}, #{email}, #{phone})
 	</insert>
 
 
