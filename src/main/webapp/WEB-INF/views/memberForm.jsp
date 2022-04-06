@@ -63,35 +63,50 @@ $(document).ready(function() {
 		var user_pw2 = $("#user_pw2").val();
 		var email = $("#email").val();
 		var phone = $("#phone").val();
+		var result = $("#result").text();
+		
+		console.log("result =" + result);
 		
 		if (user_id.length < 3) {
 			alert("아이디를 입력해주세요")
 			$("#user_id").focus();
 			event.preventDefault();
+		
 		} else if (user_name.length < 1) {
 			alert("이름을 입력해주세요")
 			$("#user_name").focus();
 			event.preventDefault();
+		
 		} else if (user_pw.length < 8) {
 			alert("비밀번호는 8자리 이상 입력해주세요")
 			$("#user_pw").focus();
 			event.preventDefault();
+		
 		} else if (user_pw2.length < 8) {
 			alert("비밀번호 확인을 입력해주세요")
 			$("#user_pw2").focus();
 			event.preventDefault();
+		
 		} else if (user_pw2 !== user_pw) {
 			alert("비밀번호가 동일하지않습니다")
 			$("#user_pw2").focus();
 			event.preventDefault();
+		
 		} else if (email.length < 1) {
 			alert("이메일을 입력해주세요")
 			$("#email").focus();
 			event.preventDefault();
-		} else if (phone.length < 10) {
+		
+		} else if (phone.length < 8) {
 			alert("전화번호를 제대로 입력해주세요")
 			$("#phone").focus();
 			event.preventDefault();
+		} else {
+			if (result == "사용불가") {
+				alert("사용가능한 아이디를 넣어주세요")
+				$("#user_id").focus();
+				event.preventDefault();
+			}
 		}
 	});
 	
@@ -109,7 +124,7 @@ $(document).ready(function() {
 			success : function(data, status, xhr) {
 				console.log("success");
 				$("#result").text(data);
-				
+				console.log("data =" + data);
 			},
 			error : function(xhr, status, error) {
 				

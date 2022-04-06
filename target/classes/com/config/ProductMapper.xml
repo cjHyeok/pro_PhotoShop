@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ProductMapper">
+
+
+	<select id="productList" parameterType="String" resultType="ProductDTO">
+	    select p.product_id, p.product_name, p.product_price, p.product_explanation, c.product_category_id , c.category_name, i.product_img
+		from t_product p join t_product_cate c
+								on p.product_category_id = c.product_category_id
+                                join t_product_img i
+								on p.product_id = i.product_id
+        where c.category_name = #{category_name} and i.product_img_type = '1'
+	</select>
+	
+	<select id="productListAll" parameterType="int" resultType="ProductDTO">
+	    select p.product_id, p.product_name, p.product_price, p.product_explanation, c.product_category_id , c.category_name, i.product_img
+		from t_product p join t_product_cate c
+								on p.product_category_id = c.product_category_id
+                                join t_product_img i
+								on p.product_id = i.product_id
+		where p.product_id > 0 and i.product_img_type = '1'
+		order by p.product_id desc
+	</select>
+	
+	<select id="productMainList" parameterType="int" resultType="ProductDTO">
+	    select p.product_id, p.product_name, p.product_price, p.product_explanation, c.product_category_id , c.category_name, i.product_img
+		from t_product p join t_product_cate c
+								on p.product_category_id = c.product_category_id
+                                join t_product_img i
+								on p.product_id = i.product_id
+								
+		where i.product_img_type = '1' and p.product_best = 'best'						
+		order by p.product_id desc
+
+	</select>
+	
+	
+</mapper>

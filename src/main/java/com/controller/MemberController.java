@@ -26,18 +26,10 @@ public class MemberController {
 		return "index";
 	}
 	
-	
-	
-	/*
-	 * @RequestMapping(value = "/idDuplicate", method = RequestMethod.GET)
-	 * 
-	 * @ResponseBody public String idDuplicate(@RequestParam("user_id") String
-	 * user_id) { System.out.println("user_id = "); return "main"; }
-	 */
 	 
 
 	
-	 @RequestMapping(value = "/idDuplicate", method = RequestMethod.GET ,produces = "text/plain;charset=UTF-8")
+	 @RequestMapping(value = "/idDuplicate", method = RequestMethod.GET ,produces = "text/plain;charset=UTF-8")//아이디 중복검사
 	 @ResponseBody
 	  public String idDuplicate(@RequestParam("user_id") String user_id) {
 		  System.out.println("user_id = " + user_id); 
