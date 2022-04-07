@@ -36,5 +36,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	</select>
 	
+	<select id="productDetails" parameterType="hashmap" resultType="ProductDTO">
+		select p.product_id, p.product_name, p.product_price, p.product_explanation, p.product_quantity, i.product_img, i.product_img_type
+		from t_product p join t_product_img i
+                               	on p.product_id = i.product_id
+		where p.product_id = #{product_id}
+	</select>
+	
 	
 </mapper>

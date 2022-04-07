@@ -27,4 +27,6 @@ public class ProductDTO {
 	private String product_img;
 	private String product_img_type;
 	private String product_best;
+	private String product_like;
+	private String product_soldout;
 }

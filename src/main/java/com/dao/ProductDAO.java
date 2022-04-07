@@ -1,6 +1,7 @@
 package com.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,11 @@ public class ProductDAO {
 	List<ProductDTO> plist = template.selectList("ProductMapper.productMainList", 0);
 	return plist;
 }
+
+	public ProductDTO productDetails(Map<String, String> map) {
+		ProductDTO pdto = template.selectOne("ProductMapper.productDetails",map);
+		return pdto;
+	}
 
 	
 }

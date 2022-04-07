@@ -72,9 +72,9 @@
                                                 </a>
                                                 <ul class="dropdown-submenu dropdown-hover">
                                                     <li><a href="index.html">Home Page - 1</a></li>
-                                                    <li><a href="index-2.html">Home Page - 2</a></li>
-                                                    <li><a href="index-3.html">Home Page - 3</a></li>
-                                                    <li><a href="index-4.html">Home Page - 4</a></li>
+                                                    <li><a href="index.html">Home Page - 2</a></li>
+                                                    <li><a href="index.html">Home Page - 3</a></li>
+                                                    <li><a href="index.html">Home Page - 4</a></li>
                                                 </ul>
                                             </li>
                                             <li>
@@ -275,7 +275,7 @@
                                                 <ul class="dropdown-submenu dropdown-hover">
                                                     <li><a href="index.html">Home Page - 1</a></li>
                                                     <li><a href="index-2.html">Home Page - 2</a></li>
-                                                    <li><a href="index-3.html">Home Page - 3</a></li>
+                                                    <li><a href="index.html">Home Page - 3</a></li>
                                                     <li><a href="index-4.html">Home Page - 4</a></li>
                                                 </ul>
                                             </li>
@@ -468,7 +468,7 @@
                                         <ul class="dropdown">
                                             <li><a href="index.html">Home Page 1</a></li>
                                             <li><a href="index-2.html">Home Page 2</a></li>
-                                            <li><a href="index-3.html">Home Page 3</a></li>
+                                            <li><a href="index.html">Home Page 3</a></li>
                                             <li><a href="index-4.html">Home Page 4</a></li>
                                         </ul>
                                     </li>
@@ -631,7 +631,7 @@
 	<div class="col-lg-3 col-md-6 col-sm-6 col-custom product-area">
                                 <div class="single-product position-relative">
                                     <div class="product-image">
-                                        <a class="d-block" href="product-details.html">
+                                        <a class="d-block" href="productDetails?product_id=${dto.product_id}">
                                             <img src="assets/images/${dto.product_img}.jpg" alt="" class="product-image-1 w-100">
                                             <%-- <img src="assets/images/${dto.product_img}_on.jpg" alt="" class="product-image-2 position-absolute w-100"> --%>
                                         </a>

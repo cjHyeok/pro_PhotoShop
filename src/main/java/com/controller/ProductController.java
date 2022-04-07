@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -49,4 +50,21 @@ public class ProductController {
 
 	}
 
+	
+	
+
+	@RequestMapping("/productDetails") // 상품 상세페이지
+	@ModelAttribute("productDetails")
+	public ProductDTO productDetails(@RequestParam Map<String, String> map) {
+		System.out.println("map 1=="+ map);
+		
+		
+		ProductDTO pdto = pservice.productDetails(map);
+		
+		System.out.println("pD =" + pdto);
+		
+		
+		
+		return pdto;
+	}
 }
