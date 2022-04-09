@@ -22,6 +22,21 @@
 <mvc:view-controller path="/productDetails" view-name="productDetails"/>
 
 
+<mvc:view-controller path="/cartList" view-name="cartList"/>
+
+
+
+
+
+
+
+
+
+<mvc:view-controller path="/aboutUs" view-name="aboutUs"/>
+<mvc:view-controller path="/contactUs" view-name="contactUs"/>
+
+
+
 
 
 

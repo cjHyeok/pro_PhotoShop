@@ -25,6 +25,8 @@ public class LoginController {
 		System.out.println("map = " + map);
 		MemberDTO mdto = mservice.login(map);
 		System.out.println("dto = " + mdto);
+		
+		
 		if (mdto != null) {
 			session.setAttribute("login", mdto);
 			return "index";

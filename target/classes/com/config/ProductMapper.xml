@@ -15,7 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="productListAll" parameterType="int" resultType="ProductDTO">
-	    select p.product_id, p.product_name, p.product_price, p.product_explanation, c.product_category_id , c.category_name, i.product_img
+	    select p.product_id, p.product_name, p.product_price, p.product_description_summary, c.product_category_id , c.category_name, i.product_img
 		from t_product p join t_product_cate c
 								on p.product_category_id = c.product_category_id
                                 join t_product_img i
@@ -25,7 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="productMainList" parameterType="int" resultType="ProductDTO">
-	    select p.product_id, p.product_name, p.product_price, p.product_explanation, c.product_category_id , c.category_name, i.product_img
+	    select p.product_id, p.product_name, p.product_price, p.product_description_summary, c.product_category_id , c.category_name, i.product_img
 		from t_product p join t_product_cate c
 								on p.product_category_id = c.product_category_id
                                 join t_product_img i
@@ -37,7 +37,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="productDetails" parameterType="hashmap" resultType="ProductDTO">
-		select p.product_id, p.product_name, p.product_price, p.product_explanation, p.product_quantity, i.product_img, i.product_img_type
+		select p.product_id, p.product_name, p.product_price, p.product_description_summary, p.product_quantity, i.product_img, i.product_img_type, 
+				i.product_sub_img_1, i.product_sub_img_2, i.product_sub_img_3, i.product_sub_img_4
 		from t_product p join t_product_img i
                                	on p.product_id = i.product_id
 		where p.product_id = #{product_id}

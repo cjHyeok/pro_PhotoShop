@@ -17,7 +17,7 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter{
 		HttpSession session = request.getSession();
 		if(session.getAttribute("login") == null) {
 			
-			/*String uri = request.getRequestURI();
+			String uri = request.getRequestURI();
 			StringBuffer url = request.getRequestURL();
 			String contextPath = request.getContextPath();
 			String remoteAddr = request.getRemoteAddr();
@@ -26,7 +26,7 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter{
 			System.out.println("contextPath==========" + contextPath);
 			System.out.println("remoteAddr==========" + remoteAddr);
 
-			session.setAttribute("clickLink", uri);*/
+			session.setAttribute("clickLink", uri);
 			
 			response.sendRedirect("../loginForm");
 			

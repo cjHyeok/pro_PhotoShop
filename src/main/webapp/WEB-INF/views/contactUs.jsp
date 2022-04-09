@@ -1,16 +1,10 @@
 <!doctype html>
-
 <html class="no-js" lang="en">
 
-
-
 <head>
-    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>   <!-- 인코딩 -->
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-	
-	<% request.setCharacterEncoding("utf-8");%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Obrien - Organic Food HTML5 Template</title>
     <meta name="robots" content="noindex, follow" />
@@ -46,106 +40,7 @@
     <!-- Main Style CSS (Please use minify version for better website load performance) -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- <link rel="stylesheet" href="assets/css/style.min.css"> -->
-    
-    
-
-
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-	
-	
-	$("form").on("submit", function(event) {
-		var user_id = $("#user_id").val();
-		var user_name = $("#user_name").val();
-		var user_pw = $("#user_pw").val();
-		var user_pw2 = $("#user_pw2").val();
-		var email = $("#email").val();
-		var phone = $("#phone").val();
-		var result = $("#result").text();
-		
-		console.log("result =" + result);
-		
-		if (user_id.length < 3) {
-			alert("아이디를 입력해주세요")
-			$("#user_id").focus();
-			event.preventDefault();
-		
-		} else if (user_name.length < 1) {
-			alert("이름을 입력해주세요")
-			$("#user_name").focus();
-			event.preventDefault();
-		
-		} else if (user_pw.length < 8) {
-			alert("비밀번호는 8자리 이상 입력해주세요")
-			$("#user_pw").focus();
-			event.preventDefault();
-		
-		} else if (user_pw2.length < 8) {
-			alert("비밀번호 확인을 입력해주세요")
-			$("#user_pw2").focus();
-			event.preventDefault();
-		
-		} else if (user_pw2 !== user_pw) {
-			alert("비밀번호가 동일하지않습니다")
-			$("#user_pw2").focus();
-			event.preventDefault();
-		
-		} else if (email.length < 1) {
-			alert("이메일을 입력해주세요")
-			$("#email").focus();
-			event.preventDefault();
-		
-		} else if (phone.length < 8) {
-			alert("전화번호를 제대로 입력해주세요")
-			$("#phone").focus();
-			event.preventDefault();
-		} else {
-			if (result == "사용불가") {
-				alert("사용가능한 아이디를 넣어주세요")
-				$("#user_id").focus();
-				event.preventDefault();
-			}
-		}
-	});
-	
-
-	
-	//아이디 중복검사
- 	$("#user_id").on("keyup", function() {   
-		$.ajax({
-			url : 'idDuplicate',
-			type : 'get',
-			data : {
-				user_id : $("#user_id").val(),
-			},
-			dataType : "text",
-			success : function(data, status, xhr) {
-				console.log("success");
-				$("#result").text(data);
-				console.log("data =" + data);
-			},
-			error : function(xhr, status, error) {
-				
-			}
-		});
-	}); 
-	
-	//비밀번호 일치 검사
-	$("#user_pw2").on("keyup", function() {
-		var user_pw = $("#user_pw").val();
-		var mesg = "일치하지 않음";
-		if (user_pw == $(this).val()) {
-			mesg = "비밀번호 일치";
-		}
-		$("#result2").text(mesg);
-	});
-
-	
-});
-</script>
-
 
 <body>
 
@@ -177,6 +72,7 @@ $(document).ready(function() {
                                                     <li><a href="index-2.html">Home Page - 2</a></li>
                                                     <li><a href="index-3.html">Home Page - 3</a></li>
                                                     <li><a href="index-4.html">Home Page - 4</a></li>
+                                                    
                                                 </ul>
                                             </li>
                                             <li>
@@ -188,8 +84,8 @@ $(document).ready(function() {
                                                     <div class="menu-colum">
                                                         <ul>
                                                             <li><span class="mega-menu-text">Shop</span></li>
-                                                          
-                                                           <li><a href="productList">상품리스트</a></li>
+                                                         
+                                                            <li><a href="productList">상품리스트</a></li>
                                                         </ul>
                                                     </div>
                                                     <div class="menu-colum">
@@ -237,9 +133,9 @@ $(document).ready(function() {
                                                 </a>
                                                 <ul class="dropdown-submenu dropdown-hover">
                                                     <li><a href="frequently-questions.html">FAQ</a></li>
-                                                    <li><a href="myAccount">My Account</a></li>
-                                                    <li><a href="login.html">Login</a></li>
-                                                    <li><a class="active" href="register.html">Register</a></li>
+                                                    <li><a href="my-account.html">My Account</a></li>
+                                                    <li><a href="loginForm">Login</a></li>
+                                                    <li><a href="memberForm">Register</a></li>
                                                 </ul>
                                             </li>
                                             <li>
@@ -248,7 +144,7 @@ $(document).ready(function() {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="contactUs">
+                                                <a class="active" href="contactUs">
                                                     <span class="menu-text">Contact</span>
                                                 </a>
                                             </li>
@@ -259,19 +155,22 @@ $(document).ready(function() {
                                     <div class="header-right-area main-nav">
                                         <ul class="nav">
                                             <li class="login-register-wrap d-none d-xl-flex">
-                                                <c:choose>
-                                                <c:when test="${!empty login }"> &nbsp;&nbsp; <!-- 확인용 -->
-                                                <div style="  font-size: 15px; line-height: 1.6; font-weight: 600; color: #303030;"> ${login.user_name } 님 </div>
-												<span><a href="/loginCheck/logout">logout</a></span>
-												<span><a href="memberForm">Register</a></span>
-												</c:when>
-												<c:otherwise>
-												<span><a href="loginForm">login</a></span>
+                                                <span><a href="loginForm">Login</a></span>
                                                 <span><a href="memberForm">Register</a></span>
-                                                </c:otherwise>
-												</c:choose>
-											</li>
-											&nbsp;&nbsp;
+                                            </li>
+                                            <li class="sidemenu-wrap d-none d-lg-flex">
+                                                <a href="#">USD <i class="fa fa-caret-down"></i> </a>
+                                                <ul class="dropdown-sidemenu dropdown-hover-2 dropdown-language">
+                                                    <li><a href="#">USD - US Dollar</a></li>
+                                                    <li><a href="#">EUR - Euro</a></li>
+                                                    <li><a href="#">GBP - British Pound</a></li>
+                                                    <li><a href="#">INR - Indian Rupee</a></li>
+                                                    <li><a href="#">BDT - Bangladesh Taka</a></li>
+                                                    <li><a href="#">JPY - Japan Yen</a></li>
+                                                    <li><a href="#">CAD - Canada Dollar</a></li>
+                                                    <li><a href="#">AUD - Australian Dollar</a></li>
+                                                </ul>
+                                            </li>
                                             <li class="minicart-wrap">
                                                 <a href="#" class="minicart-btn toolbar-btn">
                                                     <i class="ion-bag"></i>
@@ -385,7 +284,7 @@ $(document).ready(function() {
                                                         <ul>
                                                             <li><span class="mega-menu-text">Shop</span></li>
                                                             
-                                                           <li><a href="productList">상품리스트</a></li>
+                                                            <li><a href="productList">상품리스트</a></li>
                                                         </ul>
                                                     </div>
                                                     <div class="menu-colum">
@@ -433,9 +332,9 @@ $(document).ready(function() {
                                                 </a>
                                                 <ul class="dropdown-submenu dropdown-hover">
                                                     <li><a href="frequently-questions.html">FAQ</a></li>
-                                                    <li><a href="myAccount">My Account</a></li>
-                                                    <li><a href="login.html">Login</a></li>
-                                                    <li><a class="active" href="register.html">Register</a></li>
+                                                    <li><a href="my-account.html">My Account</a></li>
+                                                    <li><a href="loginForm">Login</a></li>
+                                                    <li><a href="memberForm">Register</a></li>
                                                 </ul>
                                             </li>
                                             <li>
@@ -444,7 +343,7 @@ $(document).ready(function() {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="contactUs">
+                                                <a class="active" href="contactUs">
                                                     <span class="menu-text">Contact</span>
                                                 </a>
                                             </li>
@@ -455,19 +354,22 @@ $(document).ready(function() {
                                     <div class="header-right-area main-nav">
                                         <ul class="nav">
                                             <li class="login-register-wrap d-none d-xl-flex">
-                                                <c:choose>
-                                                <c:when test="${!empty login }"> &nbsp;&nbsp; <!-- 확인용 -->
-                                                <div style="  font-size: 15px; line-height: 1.6; font-weight: 600; color: #303030;"> ${login.user_name } 님 </div>
-												<span><a href="/loginCheck/logout">logout</a></span>
-												<span><a href="memberForm">Register</a></span>
-												</c:when>
-												<c:otherwise>
-												<span><a href="loginForm">login</a></span>
+                                                <span><a href="loginForm">Login</a></span>
                                                 <span><a href="memberForm">Register</a></span>
-                                                </c:otherwise>
-												</c:choose>
-											</li>
-											&nbsp;&nbsp;
+                                            </li>
+                                            <li class="sidemenu-wrap d-none d-lg-flex">
+                                                <a href="#">USD <i class="fa fa-caret-down"></i> </a>
+                                                <ul class="dropdown-sidemenu dropdown-hover-2 dropdown-language">
+                                                    <li><a href="#">USD - US Dollar</a></li>
+                                                    <li><a href="#">EUR - Euro</a></li>
+                                                    <li><a href="#">GBP - British Pound</a></li>
+                                                    <li><a href="#">INR - Indian Rupee</a></li>
+                                                    <li><a href="#">BDT - Bangladesh Taka</a></li>
+                                                    <li><a href="#">JPY - Japan Yen</a></li>
+                                                    <li><a href="#">CAD - Canada Dollar</a></li>
+                                                    <li><a href="#">AUD - Australian Dollar</a></li>
+                                                </ul>
+                                            </li>
                                             <li class="minicart-wrap">
                                                 <a href="#" class="minicart-btn toolbar-btn">
                                                     <i class="ion-bag"></i>
@@ -575,7 +477,7 @@ $(document).ready(function() {
                                             <li class="mega-title has-children"><a href="#">Shop Layouts</a>
                                                 <ul class="dropdown">
                                                     
-                                                 <li><a href="productList">상품리스트</a></li>
+                                                    <li><a href="productList">상품리스트</a></li>
                                                 </ul>
                                             </li>
                                             <li class="mega-title has-children"><a href="#">Product Details</a>
@@ -613,8 +515,8 @@ $(document).ready(function() {
                                     <li class="menu-item-has-children "><a href="#">Pages</a>
                                         <ul class="dropdown">
                                             <li><a href="frequently-questions.html">FAQ</a></li>
-                                            <li><a href="myAccount">My Account</a></li>
-                                            <li><a href="login-register.html">login &amp; register</a></li>
+                                            <li><a href="my-account.html">My Account</a></li>
+                                            <li><a href="login-memberForm">login &amp; register</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="aboutUs">About Us</a></li>
@@ -630,20 +532,8 @@ $(document).ready(function() {
                                 <ul class="mobile-menu">
                                     <li class="menu-item-has-children"><a href="#">My Account</a>
                                         <ul class="dropdown">
-											<li class="login-register-wrap d-none d-xl-flex">
-                                                <c:choose>
-                                                <c:when test="${!empty login }"> &nbsp;&nbsp; <!-- 확인용 -->
-                                                <div style="  font-size: 15px; line-height: 1.6; font-weight: 600; color: #303030;"> ${login.user_name } 님 </div>
-												<span><a href="/loginCheck/logout">logout</a></span>
-												<span><a href="memberForm">Register</a></span>
-												</c:when>
-												<c:otherwise>
-												<span><a href="loginForm">login</a></span>
-                                                <span><a href="memberForm">Register</a></span>
-                                                </c:otherwise>
-												</c:choose>
-											</li>
-											&nbsp;&nbsp;
+                                            <li><a href="loginForm">Login</a></li>
+                                            <li><a href="memberForm">Register</a></li>
                                         </ul>
                                     </li>
 
@@ -685,10 +575,10 @@ $(document).ready(function() {
                 <div class="row">
                     <div class="col-12 text-center">
                         <div class="breadcrumb-content position-relative section-content">
-                            <h3 class="title-3">Login-Register</h3>
+                            <h3 class="title-3">contact Us</h3>
                             <ul>
                                 <li><a href="/">Home</a></li>
-                                <li>Login-Register</li>
+                                <li>Contact Us</li>
                             </ul>
                         </div>
                     </div>
@@ -696,61 +586,89 @@ $(document).ready(function() {
             </div>
         </div>
         <!-- Breadcrumb Area End Here -->
-        <!-- Login Area Start Here -->
-        <div class="login-register-area mt-no-text mb-no-text">
+        <!-- Contact Us Area Start Here -->
+        <div class="contact-us-area">
             <div class="container container-default-2 custom-area">
                 <div class="row">
-                    <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-custom">
-                        <div class="login-register-wrapper">
-                            <div class="section-content text-center mb-5">
-                                <h2 class="title-4 mb-2">Create Account</h2>
-                                <p class="desc-content">Please Register using account detail bellow.</p>
+                    <div class="col-lg-4 col-md-6 col-custom">
+                        <div class="contact-info-item">
+                            <div class="con-info-icon">
+                                <i class="ion-ios-location-outline"></i>
                             </div>
-                            <form action="/memberAdd" method="post">
-                                <div class="single-input-item mb-3">
-                                    <input id="user_id" name="user_id" type="text" placeholder="아이디를 입력해주세요"> <span id="result"></span>
-                                </div>
-
-
-                                <div class="single-input-item mb-3">
-                                    <input id="user_name" name="user_name" type="text" placeholder="이름을 입력해주세요"> 
-                                </div>
-                                <div class="single-input-item mb-3">
-                                    <input id="user_pw" name="user_pw" type="password" placeholder="비밀번호를 입력해주세요">
-                                </div>
-                                <div class="single-input-item mb-3">
-                                    <input id="user_pw2" name="user_pw2" type="password" placeholder="다시 한번 비밀번호를 입력해주세요"> <span id="result2"></span>
-                                </div>
-                                
-                                <div class="single-input-item mb-3">
-                                    <input id="email" name="email" type="email" placeholder="이메일을 입력해주세요">
-                                
-                                </div>                              
-                                
-                                <div class="single-input-item mb-3">
-                                    <input id="phone" name="phone" type="text" placeholder="전화번호를 입력해주세요">
-                                </div>
-                                
-                                <div class="single-input-item mb-3">
-                                    <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
-                                        <div class="remember-meta mb-3">
-                                            <!-- <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="rememberMe">
-                                                <label class="custom-control-label" for="rememberMe">Subscribe Our Newsletter</label>
-                                            </div> -->
+                            <div class="con-info-txt">
+                                <h4>Our Location</h4>
+                                <p>(800) 123 456 789 / (800) 123 456 789 info@example.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-custom">
+                        <div class="contact-info-item">
+                            <div class="con-info-icon">
+                                <i class="ion-iphone"></i>
+                            </div>
+                            <div class="con-info-txt">
+                                <h4>Contact us Anytime</h4>
+                                <p>Mobile: 012 345 678<br>Fax: 123 456 789</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-custom text-align-center">
+                        <div class="contact-info-item">
+                            <div class="con-info-icon">
+                                <i class="ion-ios-email-outline"></i>
+                            </div>
+                            <div class="con-info-txt">
+                                <h4>Support Overall</h4>
+                                <p>Support24/7@example.com <br> info@example.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-custom">
+                        <form method="post" action="assets/php/mail.php" id="contact-form" accept-charset="UTF-8" class="contact-form">
+                            <div class="comment-box mt-5">
+                                <h5 class="text-uppercase">Get in Touch</h5>
+                                <div class="row mt-3">
+                                    <div class="col-md-6 col-custom">
+                                        <div class="input-item mb-4">
+                                            <input class="border rounded-0 w-100 input-area name" type="text" name="con_name" id="con_name" placeholder="Name">
                                         </div>
                                     </div>
+                                    <div class="col-md-6 col-custom">
+                                        <div class="input-item mb-4">
+                                            <input class="border rounded-0 w-100 input-area email" type="email" name="con_email" id="con_email" placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-custom">
+                                        <div class="input-item mb-4">
+                                            <input class="border rounded-0 w-100 input-area email" type="text" name="con_content" id="con_content" placeholder="Subject">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-custom">
+                                        <div class="input-item mb-4">
+                                            <textarea cols="30" rows="5" class="border rounded-0 w-100 custom-textarea input-area" name="con_message" id="con_message" placeholder="Message"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-custom mt-40">
+                                        <button type="submit" id="submit" name="submit" class="btn obrien-button primary-btn rounded-0 mb-0">Send A Message</button>
+                                    </div>
+                                    <p class="col-12 col-custom form-message mb-0"></p>
                                 </div>
-                                <div class="single-input-item mb-3">
-                                    <button class="btn obrien-button-2 primary-color">Register</button>
-                                </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Login Area End Here -->
+        <!-- Contact Us Area End Here -->
+        <!-- Google Maps -->
+        <div class="google-map-area">
+            <div id="contacts" class="map-area">
+                <div id="googleMap"></div>
+            </div>
+        </div>
+        <!-- Google Maps End -->
         <!-- Support Area Start Here -->
         <div class="support-area">
             <div class="container container-default custom-area">
@@ -876,8 +794,88 @@ $(document).ready(function() {
         <!-- Footer Area End Here -->
     </div>
 
+    <!-- Modal Area Start Here -->
+    <div class="modal fade obrien-modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <button type="button" class="close close-button" data-bs-dismiss="modal" aria-label="Close">
+                    <span class="close-icon" aria-hidden="true">x</span>
+                </button>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 text-center">
+                                <div class="product-image">
+                                    <img src="assets/images/product/1.jpg" alt="Product Image">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="modal-product">
+                                    <div class="product-content">
+                                        <div class="product-title">
+                                            <h4 class="title">Product dummy name</h4>
+                                        </div>
+                                        <div class="price-box">
+                                            <span class="regular-price ">$80.00</span>
+                                            <span class="old-price"><del>$90.00</del></span>
+                                        </div>
+                                        <div class="product-rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <span>1 Review</span>
+                                        </div>
+                                        <p class="desc-content">we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame bel...</p>
+                                        <form class="d-flex flex-column w-100" action="#">
+                                            <div class="form-group">
+                                                <select class="form-control nice-select w-100">
+                                                    <option>S</option>
+                                                    <option>M</option>
+                                                    <option>L</option>
+                                                    <option>XL</option>
+                                                    <option>XXL</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                        <div class="quantity-with_btn">
+                                            <div class="quantity">
+                                                <div class="cart-plus-minus">
+                                                    <input class="cart-plus-minus-box" value="0" type="text">
+                                                    <div class="dec qtybutton">-</div>
+                                                    <div class="inc qtybutton">+</div>
+                                                </div>
+                                            </div>
+                                            <div class="add-to_cart">
+                                                <a class="btn obrien-button primary-btn" href="cartList">Add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Area End Here -->
+
+    <!-- Scroll to Top Start -->
+    <a class="scroll-to-top" href="#">
+        <i class="ion-chevron-up"></i>
+    </a>
+    <!-- Scroll to Top End -->
+
     <!-- JS
 ============================================ -->
+
+    <!-- Map js -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClpvcUyl31wMd7DJZQnnzI006S99u9nnM"></script>
+    <script src="https://www.google.com/jsapi"></script>
+    <script src="assets/js/plugins/map.js"></script>
+
 
     <!-- jQuery JS -->
     <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>

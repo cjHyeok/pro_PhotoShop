@@ -1,16 +1,10 @@
 <!doctype html>
-
 <html class="no-js" lang="en">
 
-
-
 <head>
-    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>   <!-- 인코딩 -->
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-	
-	<% request.setCharacterEncoding("utf-8");%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+    <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Obrien - Organic Food HTML5 Template</title>
     <meta name="robots" content="noindex, follow" />
@@ -46,110 +40,11 @@
     <!-- Main Style CSS (Please use minify version for better website load performance) -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- <link rel="stylesheet" href="assets/css/style.min.css"> -->
-    
-    
-
-
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-	
-	
-	$("form").on("submit", function(event) {
-		var user_id = $("#user_id").val();
-		var user_name = $("#user_name").val();
-		var user_pw = $("#user_pw").val();
-		var user_pw2 = $("#user_pw2").val();
-		var email = $("#email").val();
-		var phone = $("#phone").val();
-		var result = $("#result").text();
-		
-		console.log("result =" + result);
-		
-		if (user_id.length < 3) {
-			alert("아이디를 입력해주세요")
-			$("#user_id").focus();
-			event.preventDefault();
-		
-		} else if (user_name.length < 1) {
-			alert("이름을 입력해주세요")
-			$("#user_name").focus();
-			event.preventDefault();
-		
-		} else if (user_pw.length < 8) {
-			alert("비밀번호는 8자리 이상 입력해주세요")
-			$("#user_pw").focus();
-			event.preventDefault();
-		
-		} else if (user_pw2.length < 8) {
-			alert("비밀번호 확인을 입력해주세요")
-			$("#user_pw2").focus();
-			event.preventDefault();
-		
-		} else if (user_pw2 !== user_pw) {
-			alert("비밀번호가 동일하지않습니다")
-			$("#user_pw2").focus();
-			event.preventDefault();
-		
-		} else if (email.length < 1) {
-			alert("이메일을 입력해주세요")
-			$("#email").focus();
-			event.preventDefault();
-		
-		} else if (phone.length < 8) {
-			alert("전화번호를 제대로 입력해주세요")
-			$("#phone").focus();
-			event.preventDefault();
-		} else {
-			if (result == "사용불가") {
-				alert("사용가능한 아이디를 넣어주세요")
-				$("#user_id").focus();
-				event.preventDefault();
-			}
-		}
-	});
-	
-
-	
-	//아이디 중복검사
- 	$("#user_id").on("keyup", function() {   
-		$.ajax({
-			url : 'idDuplicate',
-			type : 'get',
-			data : {
-				user_id : $("#user_id").val(),
-			},
-			dataType : "text",
-			success : function(data, status, xhr) {
-				console.log("success");
-				$("#result").text(data);
-				console.log("data =" + data);
-			},
-			error : function(xhr, status, error) {
-				
-			}
-		});
-	}); 
-	
-	//비밀번호 일치 검사
-	$("#user_pw2").on("keyup", function() {
-		var user_pw = $("#user_pw").val();
-		var mesg = "일치하지 않음";
-		if (user_pw == $(this).val()) {
-			mesg = "비밀번호 일치";
-		}
-		$("#result2").text(mesg);
-	});
-
-	
-});
-</script>
-
 
 <body>
 
-    <div class="contact-wrapper">
+    <div class="about-wrapper">
         <header class="main-header-area">
             <!-- Main Header Area Start -->
             <div class="main-header">
@@ -159,7 +54,7 @@ $(document).ready(function() {
                             <div class="row align-items-center">
                                 <div class="col-lg-2 col-xl-2 col-sm-6 col-6 col-custom">
                                     <div class="header-logo d-flex align-items-center">
-                                        <a href="/">
+                                        <a href="index.html">
                                             <img class="img-full" src="assets/images/logo/logo.png" alt="Header Logo">
                                         </a>
                                     </div>
@@ -168,12 +63,12 @@ $(document).ready(function() {
                                     <nav class="main-nav d-flex justify-content-center">
                                         <ul class="nav">
                                             <li>
-                                                <a href="/">
+                                                <a href="index.html">
                                                     <span class="menu-text"> Home</span>
                                                     <i class="fa fa-angle-down"></i>
                                                 </a>
                                                 <ul class="dropdown-submenu dropdown-hover">
-                                                    <li><a href="/">Home Page - 1</a></li>
+                                                    <li><a href="index.html">Home Page - 1</a></li>
                                                     <li><a href="index-2.html">Home Page - 2</a></li>
                                                     <li><a href="index-3.html">Home Page - 3</a></li>
                                                     <li><a href="index-4.html">Home Page - 4</a></li>
@@ -188,8 +83,8 @@ $(document).ready(function() {
                                                     <div class="menu-colum">
                                                         <ul>
                                                             <li><span class="mega-menu-text">Shop</span></li>
-                                                          
-                                                           <li><a href="productList">상품리스트</a></li>
+                                                        
+                                                            <li><a href="productList">상품리스트</a></li>
                                                         </ul>
                                                     </div>
                                                     <div class="menu-colum">
@@ -237,13 +132,13 @@ $(document).ready(function() {
                                                 </a>
                                                 <ul class="dropdown-submenu dropdown-hover">
                                                     <li><a href="frequently-questions.html">FAQ</a></li>
-                                                    <li><a href="myAccount">My Account</a></li>
+                                                    <li><a href="my-account.html">My Account</a></li>
                                                     <li><a href="login.html">Login</a></li>
-                                                    <li><a class="active" href="register.html">Register</a></li>
+                                                    <li><a href="register.html">Register</a></li>
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="aboutUs">
+                                                <a class="active" href="aboutUs">
                                                     <span class="menu-text"> About</span>
                                                 </a>
                                             </li>
@@ -259,19 +154,22 @@ $(document).ready(function() {
                                     <div class="header-right-area main-nav">
                                         <ul class="nav">
                                             <li class="login-register-wrap d-none d-xl-flex">
-                                                <c:choose>
-                                                <c:when test="${!empty login }"> &nbsp;&nbsp; <!-- 확인용 -->
-                                                <div style="  font-size: 15px; line-height: 1.6; font-weight: 600; color: #303030;"> ${login.user_name } 님 </div>
-												<span><a href="/loginCheck/logout">logout</a></span>
-												<span><a href="memberForm">Register</a></span>
-												</c:when>
-												<c:otherwise>
-												<span><a href="loginForm">login</a></span>
-                                                <span><a href="memberForm">Register</a></span>
-                                                </c:otherwise>
-												</c:choose>
-											</li>
-											&nbsp;&nbsp;
+                                                <span><a href="login.html">Login</a></span>
+                                                <span><a href="register.html">Register</a></span>
+                                            </li>
+                                            <li class="sidemenu-wrap d-none d-lg-flex">
+                                                <a href="#">USD <i class="fa fa-caret-down"></i> </a>
+                                                <ul class="dropdown-sidemenu dropdown-hover-2 dropdown-language">
+                                                    <li><a href="#">USD - US Dollar</a></li>
+                                                    <li><a href="#">EUR - Euro</a></li>
+                                                    <li><a href="#">GBP - British Pound</a></li>
+                                                    <li><a href="#">INR - Indian Rupee</a></li>
+                                                    <li><a href="#">BDT - Bangladesh Taka</a></li>
+                                                    <li><a href="#">JPY - Japan Yen</a></li>
+                                                    <li><a href="#">CAD - Canada Dollar</a></li>
+                                                    <li><a href="#">AUD - Australian Dollar</a></li>
+                                                </ul>
+                                            </li>
                                             <li class="minicart-wrap">
                                                 <a href="#" class="minicart-btn toolbar-btn">
                                                     <i class="ion-bag"></i>
@@ -355,7 +253,7 @@ $(document).ready(function() {
                             <div class="row align-items-center">
                                 <div class="col-lg-2 col-xl-2 col-sm-6 col-6 col-custom">
                                     <div class="header-logo">
-                                        <a href="/">
+                                        <a href="index.html">
                                             <img class="img-full" src="assets/images/logo/logo.png" alt="Header Logo">
                                         </a>
                                     </div>
@@ -364,12 +262,12 @@ $(document).ready(function() {
                                     <nav class="main-nav d-flex justify-content-center">
                                         <ul class="nav">
                                             <li>
-                                                <a href="/">
+                                                <a href="index.html">
                                                     <span class="menu-text"> Home</span>
                                                     <i class="fa fa-angle-down"></i>
                                                 </a>
                                                 <ul class="dropdown-submenu dropdown-hover">
-                                                    <li><a href="/">Home Page - 1</a></li>
+                                                    <li><a href="index.html">Home Page - 1</a></li>
                                                     <li><a href="index-2.html">Home Page - 2</a></li>
                                                     <li><a href="index-3.html">Home Page - 3</a></li>
                                                     <li><a href="index-4.html">Home Page - 4</a></li>
@@ -385,7 +283,7 @@ $(document).ready(function() {
                                                         <ul>
                                                             <li><span class="mega-menu-text">Shop</span></li>
                                                             
-                                                           <li><a href="productList">상품리스트</a></li>
+                                                            <li><a href="productList">상품리스트</a></li>
                                                         </ul>
                                                     </div>
                                                     <div class="menu-colum">
@@ -433,13 +331,13 @@ $(document).ready(function() {
                                                 </a>
                                                 <ul class="dropdown-submenu dropdown-hover">
                                                     <li><a href="frequently-questions.html">FAQ</a></li>
-                                                    <li><a href="myAccount">My Account</a></li>
+                                                    <li><a href="my-account.html">My Account</a></li>
                                                     <li><a href="login.html">Login</a></li>
-                                                    <li><a class="active" href="register.html">Register</a></li>
+                                                    <li><a href="register.html">Register</a></li>
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="aboutUs">
+                                                <a class="active" href="aboutUs">
                                                     <span class="menu-text"> About</span>
                                                 </a>
                                             </li>
@@ -455,19 +353,22 @@ $(document).ready(function() {
                                     <div class="header-right-area main-nav">
                                         <ul class="nav">
                                             <li class="login-register-wrap d-none d-xl-flex">
-                                                <c:choose>
-                                                <c:when test="${!empty login }"> &nbsp;&nbsp; <!-- 확인용 -->
-                                                <div style="  font-size: 15px; line-height: 1.6; font-weight: 600; color: #303030;"> ${login.user_name } 님 </div>
-												<span><a href="/loginCheck/logout">logout</a></span>
-												<span><a href="memberForm">Register</a></span>
-												</c:when>
-												<c:otherwise>
-												<span><a href="loginForm">login</a></span>
-                                                <span><a href="memberForm">Register</a></span>
-                                                </c:otherwise>
-												</c:choose>
-											</li>
-											&nbsp;&nbsp;
+                                                <span><a href="login.html">Login</a></span>
+                                                <span><a href="register.html">Register</a></span>
+                                            </li>
+                                            <li class="sidemenu-wrap d-none d-lg-flex">
+                                                <a href="#">USD <i class="fa fa-caret-down"></i> </a>
+                                                <ul class="dropdown-sidemenu dropdown-hover-2 dropdown-language">
+                                                    <li><a href="#">USD - US Dollar</a></li>
+                                                    <li><a href="#">EUR - Euro</a></li>
+                                                    <li><a href="#">GBP - British Pound</a></li>
+                                                    <li><a href="#">INR - Indian Rupee</a></li>
+                                                    <li><a href="#">BDT - Bangladesh Taka</a></li>
+                                                    <li><a href="#">JPY - Japan Yen</a></li>
+                                                    <li><a href="#">CAD - Canada Dollar</a></li>
+                                                    <li><a href="#">AUD - Australian Dollar</a></li>
+                                                </ul>
+                                            </li>
                                             <li class="minicart-wrap">
                                                 <a href="#" class="minicart-btn toolbar-btn">
                                                     <i class="ion-bag"></i>
@@ -564,7 +465,7 @@ $(document).ready(function() {
                                 <ul class="mobile-menu">
                                     <li class="menu-item-has-children"><a href="#">Home</a>
                                         <ul class="dropdown">
-                                            <li><a href="/">Home Page 1</a></li>
+                                            <li><a href="index.html">Home Page 1</a></li>
                                             <li><a href="index-2.html">Home Page 2</a></li>
                                             <li><a href="index-3.html">Home Page 3</a></li>
                                             <li><a href="index-4.html">Home Page 4</a></li>
@@ -574,8 +475,8 @@ $(document).ready(function() {
                                         <ul class="megamenu dropdown">
                                             <li class="mega-title has-children"><a href="#">Shop Layouts</a>
                                                 <ul class="dropdown">
-                                                    
-                                                 <li><a href="productList">상품리스트</a></li>
+                                                   
+                                                    <li><a href="productList">상품리스트</a></li>
                                                 </ul>
                                             </li>
                                             <li class="mega-title has-children"><a href="#">Product Details</a>
@@ -613,7 +514,7 @@ $(document).ready(function() {
                                     <li class="menu-item-has-children "><a href="#">Pages</a>
                                         <ul class="dropdown">
                                             <li><a href="frequently-questions.html">FAQ</a></li>
-                                            <li><a href="myAccount">My Account</a></li>
+                                            <li><a href="my-account.html">My Account</a></li>
                                             <li><a href="login-register.html">login &amp; register</a></li>
                                         </ul>
                                     </li>
@@ -630,23 +531,22 @@ $(document).ready(function() {
                                 <ul class="mobile-menu">
                                     <li class="menu-item-has-children"><a href="#">My Account</a>
                                         <ul class="dropdown">
-											<li class="login-register-wrap d-none d-xl-flex">
-                                                <c:choose>
-                                                <c:when test="${!empty login }"> &nbsp;&nbsp; <!-- 확인용 -->
-                                                <div style="  font-size: 15px; line-height: 1.6; font-weight: 600; color: #303030;"> ${login.user_name } 님 </div>
-												<span><a href="/loginCheck/logout">logout</a></span>
-												<span><a href="memberForm">Register</a></span>
-												</c:when>
-												<c:otherwise>
-												<span><a href="loginForm">login</a></span>
-                                                <span><a href="memberForm">Register</a></span>
-                                                </c:otherwise>
-												</c:choose>
-											</li>
-											&nbsp;&nbsp;
+                                            <li><a href="login.html">Login</a></li>
+                                            <li><a href="Register.html">Register</a></li>
                                         </ul>
                                     </li>
-
+                                    <li class="menu-item-has-children"><a href="#">Currency:USD</a>
+                                        <ul class="dropdown">
+                                            <li><a href="#">USD - US Dollar</a></li>
+                                            <li><a href="#">EUR - Euro</a></li>
+                                            <li><a href="#">GBP - British Pound</a></li>
+                                            <li><a href="#">INR - Indian Rupee</a></li>
+                                            <li><a href="#">BDT - Bangladesh Taka</a></li>
+                                            <li><a href="#">JPY - Japan Yen</a></li>
+                                            <li><a href="#">CAD - Canada Dollar</a></li>
+                                            <li><a href="#">AUD - Australian Dollar</a></li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </nav>
                             <!-- mobile menu navigation end -->
@@ -680,15 +580,15 @@ $(document).ready(function() {
             <!-- off-canvas menu end -->
         </header>
         <!-- Breadcrumb Area Start Here -->
-        <div class="breadcrumbs-area position-relative">
+        <div class="breadcrumbs-area position-relative mb-text-p">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
                         <div class="breadcrumb-content position-relative section-content">
-                            <h3 class="title-3">Login-Register</h3>
+                            <h3 class="title-3">About Us</h3>
                             <ul>
-                                <li><a href="/">Home</a></li>
-                                <li>Login-Register</li>
+                                <li><a href="index.html">Home</a></li>
+                                <li>About Us</li>
                             </ul>
                         </div>
                     </div>
@@ -696,61 +596,125 @@ $(document).ready(function() {
             </div>
         </div>
         <!-- Breadcrumb Area End Here -->
-        <!-- Login Area Start Here -->
-        <div class="login-register-area mt-no-text mb-no-text">
-            <div class="container container-default-2 custom-area">
+        <!-- About Us Area Start Here -->
+        <!-- Feature Area Start Here -->
+        <div class="feature-area mb-no-text">
+            <div class="container container-default custom-area">
                 <div class="row">
-                    <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-custom">
-                        <div class="login-register-wrapper">
-                            <div class="section-content text-center mb-5">
-                                <h2 class="title-4 mb-2">Create Account</h2>
-                                <p class="desc-content">Please Register using account detail bellow.</p>
+                    <div class="col-xl-6 col-lg-5 col-md-12 col-custom">
+                        <div class="feature-content-wrapper">
+                            <h2 class="title">Important to eat fruit</h2>
+                            <p class="desc-content">Eating fruit provides health benefits — people who eat more fruits and vegetables as part of an overall healthy diet are likely to have a reduced risk of some chronic diseases. Fruits provide nutrients vital for health and maintenance of your body.</p>
+                            <p class="desc-content"> Fruits are sources of many essential nutrients that are underconsumed, including potassium, dietary fiber, vitamin C, and folate (folic acid).</p>
+                            <p class="desc-content"> Most fruits are naturally low in fat, sodium, and calories. None have cholesterol.</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-7 col-md-12 col-custom">
+                        <div class="feature-image position-relative">
+                            <img src="assets/images/feature/feature-2.jpg" alt="Obrien Feature">
+                            <div class="popup-video position-absolute">
+                                <a class="popup-vimeo" href="https://www.youtube.com/watch?v=_9VUPq3SxOc">
+                                    <i class="ion-play"></i>
+                                </a>
                             </div>
-                            <form action="/memberAdd" method="post">
-                                <div class="single-input-item mb-3">
-                                    <input id="user_id" name="user_id" type="text" placeholder="아이디를 입력해주세요"> <span id="result"></span>
-                                </div>
-
-
-                                <div class="single-input-item mb-3">
-                                    <input id="user_name" name="user_name" type="text" placeholder="이름을 입력해주세요"> 
-                                </div>
-                                <div class="single-input-item mb-3">
-                                    <input id="user_pw" name="user_pw" type="password" placeholder="비밀번호를 입력해주세요">
-                                </div>
-                                <div class="single-input-item mb-3">
-                                    <input id="user_pw2" name="user_pw2" type="password" placeholder="다시 한번 비밀번호를 입력해주세요"> <span id="result2"></span>
-                                </div>
-                                
-                                <div class="single-input-item mb-3">
-                                    <input id="email" name="email" type="email" placeholder="이메일을 입력해주세요">
-                                
-                                </div>                              
-                                
-                                <div class="single-input-item mb-3">
-                                    <input id="phone" name="phone" type="text" placeholder="전화번호를 입력해주세요">
-                                </div>
-                                
-                                <div class="single-input-item mb-3">
-                                    <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
-                                        <div class="remember-meta mb-3">
-                                            <!-- <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="rememberMe">
-                                                <label class="custom-control-label" for="rememberMe">Subscribe Our Newsletter</label>
-                                            </div> -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="single-input-item mb-3">
-                                    <button class="btn obrien-button-2 primary-color">Register</button>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Login Area End Here -->
+        <!-- Feature Area End Here -->
+        <!-- Newslatter Area Start Here -->
+        <div class="newsletter-area mt-no-text mb-text-p">
+            <div class="container container-default h-100 custom-area">
+                <div class="row h-100">
+                    <div class="col-lg-8 col-xl-5 offset-xl-6 offset-lg-3 col-custom">
+                        <div class="newsletter-content text-center d-flex flex-column align-items-center justify-content-center h-100">
+                            <div class="section-content">
+                                <h4 class="title-4 text-uppercase">Special <span>Offer</span> for subscription</h4>
+                                <h2 class="title-3 text-uppercase">Get instant discount for membership</h2>
+                                <p class="desc-content">Subscribe our newsletter and all latest news of our <br>latest product, promotion and offers</p>
+                            </div>
+                            <div class="newsletter-form-wrap ml-auto mr-auto">
+                                <form id="mc-form" class="mc-form d-flex position-relative">
+                                    <input type="email" id="mc-email" class="form-control email-box" placeholder="email@example.com" name="EMAIL">
+                                    <button id="mc-submit" class="btn primary-btn obrien-button newsletter-btn position-absolute" type="submit">Subscribe</button>
+                                </form>
+                                <!-- mailchimp-alerts Start -->
+                                <div class="mailchimp-alerts text-centre">
+                                    <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
+                                    <div class="mailchimp-success text-success"></div><!-- mailchimp-success end -->
+                                    <div class="mailchimp-error text-danger"></div><!-- mailchimp-error end -->
+                                </div>
+                                <!-- mailchimp-alerts end -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Newslatter Area End Here -->
+        <!-- Brand Logo Area Start Here -->
+        <div class="brand-logo-area mt-text mb-no-text">
+            <div class="container custom-area">
+                <div class="row">
+                    <div class="col-lg-12 col-custom">
+                        <div class="obrien-slider" data-slick-options='{
+                        "slidesToShow": 5,
+                        "slidesToScroll": 1,
+                        "infinite": true,
+                        "arrows": false,
+                        "dots": false
+                        }' data-slick-responsive='[
+                        {"breakpoint": 1200, "settings": {
+                        "slidesToShow": 4
+                        }},
+                        {"breakpoint": 992, "settings": {
+                        "slidesToShow": 3
+                        }},
+                        {"breakpoint": 576, "settings": {
+                        "slidesToShow": 3
+                        }},
+                        {"breakpoint": 481, "settings": {
+                        "slidesToShow": 2
+                        }}
+                        ]'>
+                            <div class="brand-logo-item">
+                                <a href="#">
+                                    <img src="assets/images/brand-logo/brand-1.png" alt="Brand Logo">
+                                </a>
+                            </div>
+                            <div class="brand-logo-item">
+                                <a href="#">
+                                    <img src="assets/images/brand-logo/brand-2.png" alt="Brand Logo">
+                                </a>
+                            </div>
+                            <div class="brand-logo-item">
+                                <a href="#">
+                                    <img src="assets/images/brand-logo/brand-3.png" alt="Brand Logo">
+                                </a>
+                            </div>
+                            <div class="brand-logo-item">
+                                <a href="#">
+                                    <img src="assets/images/brand-logo/brand-4.png" alt="Brand Logo">
+                                </a>
+                            </div>
+                            <div class="brand-logo-item">
+                                <a href="#">
+                                    <img src="assets/images/brand-logo/brand-5.png" alt="Brand Logo">
+                                </a>
+                            </div>
+                            <div class="brand-logo-item">
+                                <a href="#">
+                                    <img src="assets/images/brand-logo/brand-3.png" alt="Brand Logo">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Brand Logo Area End Here -->
+        <!-- About Us Area End Here -->
         <!-- Support Area Start Here -->
         <div class="support-area">
             <div class="container container-default custom-area">
@@ -778,7 +742,7 @@ $(document).ready(function() {
                         <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-custom">
                             <div class="single-footer-widget m-0">
                                 <div class="footer-logo">
-                                    <a href="/">
+                                    <a href="index.html">
                                         <img src="assets/images/logo/footer.png" alt="Logo Image">
                                     </a>
                                 </div>
@@ -875,6 +839,80 @@ $(document).ready(function() {
         </footer>
         <!-- Footer Area End Here -->
     </div>
+
+    <!-- Modal Area Start Here -->
+    <div class="modal fade obrien-modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <button type="button" class="close close-button" data-bs-dismiss="modal" aria-label="Close">
+                    <span class="close-icon" aria-hidden="true">x</span>
+                </button>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 text-center">
+                                <div class="product-image">
+                                    <img src="assets/images/product/1.jpg" alt="Product Image">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="modal-product">
+                                    <div class="product-content">
+                                        <div class="product-title">
+                                            <h4 class="title">Product dummy name</h4>
+                                        </div>
+                                        <div class="price-box">
+                                            <span class="regular-price ">$80.00</span>
+                                            <span class="old-price"><del>$90.00</del></span>
+                                        </div>
+                                        <div class="product-rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <span>1 Review</span>
+                                        </div>
+                                        <p class="desc-content">we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame bel...</p>
+                                        <form class="d-flex flex-column w-100" action="#">
+                                            <div class="form-group">
+                                                <select class="form-control nice-select w-100">
+                                                    <option>S</option>
+                                                    <option>M</option>
+                                                    <option>L</option>
+                                                    <option>XL</option>
+                                                    <option>XXL</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                        <div class="quantity-with_btn">
+                                            <div class="quantity">
+                                                <div class="cart-plus-minus">
+                                                    <input class="cart-plus-minus-box" value="0" type="text">
+                                                    <div class="dec qtybutton">-</div>
+                                                    <div class="inc qtybutton">+</div>
+                                                </div>
+                                            </div>
+                                            <div class="add-to_cart">
+                                                <a class="btn obrien-button primary-btn" href="cartList">Add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Area End Here -->
+
+    <!-- Scroll to Top Start -->
+    <a class="scroll-to-top" href="#">
+        <i class="ion-chevron-up"></i>
+    </a>
+    <!-- Scroll to Top End -->
 
     <!-- JS
 ============================================ -->

@@ -2,6 +2,8 @@
 <html class="no-js" lang="en">
 
 <head>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Obrien - Organic Food HTML5 Template</title>
@@ -81,11 +83,8 @@
                                                     <div class="menu-colum">
                                                         <ul>
                                                             <li><span class="mega-menu-text">Shop</span></li>
-                                                            <li><a href="shop.html">Shop Left Sidebar</a></li>
-                                                            <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                                            <li><a href="shop-list-left.html">Shop List Left Sidebar</a></li>
-                                                            <li><a href="shop-list-right.html">Shop List Right Sidebar</a></li>
-                                                            <li><a href="shop-fullwidth.html">Shop Full Width</a></li>
+                                                            
+                                                           <li><a href="productList">상품리스트</a></li>
                                                         </ul>
                                                     </div>
                                                     <div class="menu-colum">
@@ -103,7 +102,7 @@
                                                             <li><span class="mega-menu-text">Others</span></li>
                                                             <li><a href="error-404.html">Error 404</a></li>
                                                             <li><a href="compare.html">Compare Page</a></li>
-                                                            <li><a href="cart.html">Cart Page</a></li>
+                                                            <li><a href="cartList">Cart Page</a></li>
                                                             <li><a href="checkout.html">Checkout Page</a></li>
                                                             <li><a href="wishlist.html">Wishlist Page</a></li>
                                                         </ul>
@@ -179,13 +178,13 @@
                                                 <div class="cart-item-wrapper dropdown-sidemenu dropdown-hover-2">
                                                     <div class="single-cart-item">
                                                         <div class="cart-img">
-                                                            <a href="cart.html"><img src="assets/images/cart/1.jpg" alt=""></a>
+                                                            <a href="cartList"><img src="assets/images/cart/1.jpg" alt=""></a>
                                                         </div>
                                                         <div class="cart-text">
-                                                            <h5 class="title"><a href="cart.html">11. Product with video - navy</a></h5>
+                                                            <h5 class="title"><a href="cartList">11. Product with video - navy</a></h5>
                                                             <div class="cart-text-btn">
                                                                 <div class="cart-qty">
-                                                                    <span>1�</span>
+                                                                    <span>1×</span>
                                                                     <span class="cart-price">$98.00</span>
                                                                 </div>
                                                                 <button type="button"><i class="ion-trash-b"></i></button>
@@ -194,13 +193,13 @@
                                                     </div>
                                                     <div class="single-cart-item">
                                                         <div class="cart-img">
-                                                            <a href="cart.html"><img src="assets/images/cart/2.jpg" alt=""></a>
+                                                            <a href="cartList"><img src="assets/images/cart/2.jpg" alt=""></a>
                                                         </div>
                                                         <div class="cart-text">
-                                                            <h5 class="title"><a href="cart.html" title="10. This is the large title for testing large title and there is an image for testing - white">10. This is the large title for testing...</a></h5>
+                                                            <h5 class="title"><a href="cartList" title="10. This is the large title for testing large title and there is an image for testing - white">10. This is the large title for testing...</a></h5>
                                                             <div class="cart-text-btn">
                                                                 <div class="cart-qty">
-                                                                    <span>1�</span>
+                                                                    <span>1×</span>
                                                                     <span class="cart-price">$98.00</span>
                                                                 </div>
                                                                 <button type="button"><i class="ion-trash-b"></i></button>
@@ -209,13 +208,13 @@
                                                     </div>
                                                     <div class="single-cart-item">
                                                         <div class="cart-img">
-                                                            <a href="cart.html"><img src="assets/images/cart/3.jpg" alt=""></a>
+                                                            <a href="cartList"><img src="assets/images/cart/3.jpg" alt=""></a>
                                                         </div>
                                                         <div class="cart-text">
-                                                            <h5 class="title"><a href="cart.html">1. New and sale badge product - s / red</a></h5>
+                                                            <h5 class="title"><a href="cartList">1. New and sale badge product - s / red</a></h5>
                                                             <div class="cart-text-btn">
                                                                 <div class="cart-qty">
-                                                                    <span>1�</span>
+                                                                    <span>1×</span>
                                                                     <span class="cart-price">$98.00</span>
                                                                 </div>
                                                                 <button type="button"><i class="ion-trash-b"></i></button>
@@ -227,7 +226,7 @@
                                                         <h5>$166.00</h5>
                                                     </div>
                                                     <div class="cart-links d-flex justify-content-center">
-                                                        <a class="obrien-button white-btn" href="cart.html">View cart</a>
+                                                        <a class="obrien-button white-btn" href="cartList">View cart</a>
                                                         <a class="obrien-button white-btn" href="checkout.html">Checkout</a>
                                                     </div>
                                                 </div>
@@ -283,11 +282,8 @@
                                                     <div class="menu-colum">
                                                         <ul>
                                                             <li><span class="mega-menu-text">Shop</span></li>
-                                                            <li><a href="shop.html">Shop Left Sidebar</a></li>
-                                                            <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                                            <li><a href="shop-list-left.html">Shop List Left Sidebar</a></li>
-                                                            <li><a href="shop-list-right.html">Shop List Right Sidebar</a></li>
-                                                            <li><a href="shop-fullwidth.html">Shop Full Width</a></li>
+                                                            
+                                                            <li><a href="productList">상품리스트</a></li>
                                                         </ul>
                                                     </div>
                                                     <div class="menu-colum">
@@ -305,7 +301,7 @@
                                                             <li><span class="mega-menu-text">Others</span></li>
                                                             <li><a href="error-404.html">Error 404</a></li>
                                                             <li><a href="compare.html">Compare Page</a></li>
-                                                            <li><a href="cart.html">Cart Page</a></li>
+                                                            <li><a href="cartList">Cart Page</a></li>
                                                             <li><a href="checkout.html">Checkout Page</a></li>
                                                             <li><a href="wishlist.html">Wishlist Page</a></li>
                                                         </ul>
@@ -369,13 +365,13 @@
                                                 <div class="cart-item-wrapper dropdown-sidemenu dropdown-hover-2">
                                                     <div class="single-cart-item">
                                                         <div class="cart-img">
-                                                            <a href="cart.html"><img src="assets/images/cart/1.jpg" alt=""></a>
+                                                            <a href="cartList"><img src="assets/images/cart/1.jpg" alt=""></a>
                                                         </div>
                                                         <div class="cart-text">
-                                                            <h5 class="title"><a href="cart.html">11. Product with video - navy</a></h5>
+                                                            <h5 class="title"><a href="cartList">11. Product with video - navy</a></h5>
                                                             <div class="cart-text-btn">
                                                                 <div class="cart-qty">
-                                                                    <span>1�</span>
+                                                                    <span>1×</span>
                                                                     <span class="cart-price">$98.00</span>
                                                                 </div>
                                                                 <button type="button"><i class="ion-trash-b"></i></button>
@@ -384,13 +380,13 @@
                                                     </div>
                                                     <div class="single-cart-item">
                                                         <div class="cart-img">
-                                                            <a href="cart.html"><img src="assets/images/cart/2.jpg" alt=""></a>
+                                                            <a href="cartList"><img src="assets/images/cart/2.jpg" alt=""></a>
                                                         </div>
                                                         <div class="cart-text">
-                                                            <h5 class="title"><a href="cart.html" title="10. This is the large title for testing large title and there is an image for testing - white">10. This is the large title for testing...</a></h5>
+                                                            <h5 class="title"><a href="cartList" title="10. This is the large title for testing large title and there is an image for testing - white">10. This is the large title for testing...</a></h5>
                                                             <div class="cart-text-btn">
                                                                 <div class="cart-qty">
-                                                                    <span>1�</span>
+                                                                    <span>1×</span>
                                                                     <span class="cart-price">$98.00</span>
                                                                 </div>
                                                                 <button type="button"><i class="ion-trash-b"></i></button>
@@ -399,13 +395,13 @@
                                                     </div>
                                                     <div class="single-cart-item">
                                                         <div class="cart-img">
-                                                            <a href="cart.html"><img src="assets/images/cart/3.jpg" alt=""></a>
+                                                            <a href="cartList"><img src="assets/images/cart/3.jpg" alt=""></a>
                                                         </div>
                                                         <div class="cart-text">
-                                                            <h5 class="title"><a href="cart.html">1. New and sale badge product - s / red</a></h5>
+                                                            <h5 class="title"><a href="cartList">1. New and sale badge product - s / red</a></h5>
                                                             <div class="cart-text-btn">
                                                                 <div class="cart-qty">
-                                                                    <span>1�</span>
+                                                                    <span>1×</span>
                                                                     <span class="cart-price">$98.00</span>
                                                                 </div>
                                                                 <button type="button"><i class="ion-trash-b"></i></button>
@@ -417,7 +413,7 @@
                                                         <h5>$166.00</h5>
                                                     </div>
                                                     <div class="cart-links d-flex justify-content-center">
-                                                        <a class="obrien-button white-btn" href="cart.html">View cart</a>
+                                                        <a class="obrien-button white-btn" href="cartList">View cart</a>
                                                         <a class="obrien-button white-btn" href="checkout.html">Checkout</a>
                                                     </div>
                                                 </div>
@@ -467,11 +463,8 @@
                                         <ul class="megamenu dropdown">
                                             <li class="mega-title has-children"><a href="#">Shop Layouts</a>
                                                 <ul class="dropdown">
-                                                    <li><a href="shop.html">Shop Left Sidebar</a></li>
-                                                    <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                                    <li><a href="shop-list-left.html">Shop List Left Sidebar</a></li>
-                                                    <li><a href="shop-list-right.html">Shop List Right Sidebar</a></li>
-                                                    <li><a href="shop-fullwidth.html">Shop Full Width</a></li>
+                                                   
+                                                    <li><a href="productList">상품리스트</a></li>
                                                 </ul>
                                             </li>
                                             <li class="mega-title has-children"><a href="#">Product Details</a>
@@ -487,7 +480,7 @@
                                                 <ul class="dropdown">
                                                     <li><a href="error404.html">Error 404</a></li>
                                                     <li><a href="compare.html">Compare Page</a></li>
-                                                    <li><a href="cart.html">Cart Page</a></li>
+                                                    <li><a href="cartList">Cart Page</a></li>
                                                     <li><a href="checkout.html">Checkout Page</a></li>
                                                     <li><a href="wishlist.html">Wish List Page</a></li>
                                                 </ul>
@@ -645,21 +638,21 @@
                                                                 <td>Aug 22, 2018</td>
                                                                 <td>Pending</td>
                                                                 <td>$3000</td>
-                                                                <td><a href="cart.html" class="btn obrien-button-2 primary-color rounded-0">View</a></td>
+                                                                <td><a href="cartList" class="btn obrien-button-2 primary-color rounded-0">View</a></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>2</td>
                                                                 <td>July 22, 2018</td>
                                                                 <td>Approved</td>
                                                                 <td>$200</td>
-                                                                <td><a href="cart.html" class="btn obrien-button-2 primary-color rounded-0">View</a></td>
+                                                                <td><a href="cartList" class="btn obrien-button-2 primary-color rounded-0">View</a></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>3</td>
                                                                 <td>June 12, 2019</td>
                                                                 <td>On Hold</td>
                                                                 <td>$990</td>
-                                                                <td><a href="cart.html" class="btn obrien-button-2 primary-color rounded-0">View</a></td>
+                                                                <td><a href="cartList" class="btn obrien-button-2 primary-color rounded-0">View</a></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -873,7 +866,7 @@
                                     <li><a href="about-us.html">About</a></li>
                                     <li><a href="blog.html">Blog</a></li>
                                     <li><a href="shop.html">Shop</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
+                                    <li><a href="cartList">Cart</a></li>
                                     <li><a href="contact-us.html">Contact</a></li>
                                 </ul>
                             </div>
@@ -906,7 +899,7 @@
                     <div class="row">
                         <div class="col-12 text-center col-custom">
                             <div class="copyright-content">
-                                <p>Copyright � 2020 <a href="https://hasthemes.com/" title="https://hasthemes.com/">HasThemes</a> | Built with&nbsp;<strong>Obrien</strong>&nbsp;by <a href="https://hasthemes.com/" title="https://hasthemes.com/">HasThemes</a>.</p>
+                                <p>Copyright © 2020 <a href="https://hasthemes.com/" title="https://hasthemes.com/">HasThemes</a> | Built with&nbsp;<strong>Obrien</strong>&nbsp;by <a href="https://hasthemes.com/" title="https://hasthemes.com/">HasThemes</a>.</p>
                             </div>
                         </div>
                     </div>

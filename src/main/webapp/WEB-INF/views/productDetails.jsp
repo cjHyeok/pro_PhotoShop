@@ -45,6 +45,31 @@
 <!-- Main Style CSS (Please use minify version for better website load performance) -->
 <link rel="stylesheet" href="assets/css/style.css">
 <!-- <link rel="stylesheet" href="assets/css/style.min.css"> -->
+
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+
+		$("#cart").on("click", function() {
+			$("form").attr("action", "loginCheck/cartAdd")
+		})
+
+		$("#up").on("click", function() {
+			var count = $("#quantity").val();
+			$("#quantity").val(parseInt(count) + 1);
+		});
+
+		$("#down").on("click", function() {
+			var count = $("#quantity").val();
+			if (count != 1) {
+				$("#quantity").val(parseInt(count) - 1);
+			}
+		});
+	});
+</script>
+
 </head>
 
 <body>
@@ -59,7 +84,7 @@
 							<div class="row align-items-center">
 								<div class="col-lg-2 col-xl-2 col-sm-6 col-6 col-custom">
 									<div class="header-logo d-flex align-items-center">
-										<a href="index.html"> <img class="img-full"
+										<a href="/"> <img class="img-full"
 											src="assets/images/logo/logo.png" alt="Header Logo">
 										</a>
 									</div>
@@ -68,11 +93,11 @@
 									class="col-lg-8 col-xl-7 position-static d-none d-lg-block col-custom">
 									<nav class="main-nav d-flex justify-content-center">
 										<ul class="nav">
-											<li><a href="index.html"> <span class="menu-text">
+											<li><a href="/"> <span class="menu-text">
 														Home</span> <i class="fa fa-angle-down"></i>
 											</a>
 												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="index.html">Home Page - 1</a></li>
+													<li><a href="/">Home Page - 1</a></li>
 													<li><a href="index-2.html">Home Page - 2</a></li>
 													<li><a href="index-3.html">Home Page - 3</a></li>
 													<li><a href="index-4.html">Home Page - 4</a></li>
@@ -115,7 +140,7 @@
 															<li><span class="mega-menu-text">Others</span></li>
 															<li><a href="error-404.html">Error 404</a></li>
 															<li><a href="compare.html">Compare Page</a></li>
-															<li><a href="cart.html">Cart Page</a></li>
+															<li><a href="cartList">Cart Page</a></li>
 															<li><a href="checkout.html">Checkout Page</a></li>
 															<li><a href="wishlist.html">Wishlist Page</a></li>
 														</ul>
@@ -146,14 +171,13 @@
 												<ul class="dropdown-submenu dropdown-hover">
 													<li><a href="frequently-questions.html">FAQ</a></li>
 													<li><a href="my-account.html">My Account</a></li>
-													<li><a href="login.html">Login</a></li>
-													<li><a href="register.html">Register</a></li>
+													<li><a href="loginForm">Login</a></li>
+													<li><a href="memberForm">Register</a></li>
 												</ul></li>
-											<li><a href="about-us.html"> <span class="menu-text">
+											<li><a href="aboutUs"> <span class="menu-text">
 														About</span>
 											</a></li>
-											<li><a href="contact-us.html"> <span
-													class="menu-text">Contact</span>
+											<li><a href="contactUs"> <span class="menu-text">Contact</span>
 											</a></li>
 										</ul>
 									</nav>
@@ -162,22 +186,9 @@
 									<div class="header-right-area main-nav">
 										<ul class="nav">
 											<li class="login-register-wrap d-none d-xl-flex"><span><a
-													href="login.html">Login</a></span> <span><a
-													href="register.html">Register</a></span></li>
-											<li class="sidemenu-wrap d-none d-lg-flex"><a href="#">USD
-													<i class="fa fa-caret-down"></i>
-											</a>
-												<ul
-													class="dropdown-sidemenu dropdown-hover-2 dropdown-language">
-													<li><a href="#">USD - US Dollar</a></li>
-													<li><a href="#">EUR - Euro</a></li>
-													<li><a href="#">GBP - British Pound</a></li>
-													<li><a href="#">INR - Indian Rupee</a></li>
-													<li><a href="#">BDT - Bangladesh Taka</a></li>
-													<li><a href="#">JPY - Japan Yen</a></li>
-													<li><a href="#">CAD - Canada Dollar</a></li>
-													<li><a href="#">AUD - Australian Dollar</a></li>
-												</ul></li>
+													href="loginForm">Login</a></span> <span><a
+													href="memberForm">Register</a></span></li>
+
 											<li class="minicart-wrap"><a href="#"
 												class="minicart-btn toolbar-btn"> <i class="ion-bag"></i>
 													<span class="cart-item_count">3</span>
@@ -186,12 +197,12 @@
 													class="cart-item-wrapper dropdown-sidemenu dropdown-hover-2">
 													<div class="single-cart-item">
 														<div class="cart-img">
-															<a href="cart.html"><img
+															<a href="cartList"><img
 																src="assets/images/cart/1.jpg" alt=""></a>
 														</div>
 														<div class="cart-text">
 															<h5 class="title">
-																<a href="cart.html">11. Product with video - navy</a>
+																<a href="cartList">11. Product with video - navy</a>
 															</h5>
 															<div class="cart-text-btn">
 																<div class="cart-qty">
@@ -205,12 +216,12 @@
 													</div>
 													<div class="single-cart-item">
 														<div class="cart-img">
-															<a href="cart.html"><img
+															<a href="cartList"><img
 																src="assets/images/cart/2.jpg" alt=""></a>
 														</div>
 														<div class="cart-text">
 															<h5 class="title">
-																<a href="cart.html"
+																<a href="cartList"
 																	title="10. This is the large title for testing large title and there is an image for testing - white">10.
 																	This is the large title for testing...</a>
 															</h5>
@@ -226,13 +237,13 @@
 													</div>
 													<div class="single-cart-item">
 														<div class="cart-img">
-															<a href="cart.html"><img
+															<a href="cartList"><img
 																src="assets/images/cart/3.jpg" alt=""></a>
 														</div>
 														<div class="cart-text">
 															<h5 class="title">
-																<a href="cart.html">1. New and sale badge product -
-																	s / red</a>
+																<a href="cartList">1. New and sale badge product - s
+																	/ red</a>
 															</h5>
 															<div class="cart-text-btn">
 																<div class="cart-qty">
@@ -250,7 +261,7 @@
 														<h5>$166.00</h5>
 													</div>
 													<div class="cart-links d-flex justify-content-center">
-														<a class="obrien-button white-btn" href="cart.html">View
+														<a class="obrien-button white-btn" href="cartList">View
 															cart</a> <a class="obrien-button white-btn"
 															href="checkout.html">Checkout</a>
 													</div>
@@ -275,7 +286,7 @@
 							<div class="row align-items-center">
 								<div class="col-lg-2 col-xl-2 col-sm-6 col-6 col-custom">
 									<div class="header-logo">
-										<a href="index.html"> <img class="img-full"
+										<a href="/"> <img class="img-full"
 											src="assets/images/logo/logo.png" alt="Header Logo">
 										</a>
 									</div>
@@ -284,11 +295,11 @@
 									class="col-lg-8 col-xl-7 position-static d-none d-lg-block col-custom">
 									<nav class="main-nav d-flex justify-content-center">
 										<ul class="nav">
-											<li><a href="index.html"> <span class="menu-text">
+											<li><a href="/"> <span class="menu-text">
 														Home</span> <i class="fa fa-angle-down"></i>
 											</a>
 												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="index.html">Home Page - 1</a></li>
+													<li><a href="/">Home Page - 1</a></li>
 													<li><a href="index-2.html">Home Page - 2</a></li>
 													<li><a href="index-3.html">Home Page - 3</a></li>
 													<li><a href="index-4.html">Home Page - 4</a></li>
@@ -331,7 +342,7 @@
 															<li><span class="mega-menu-text">Others</span></li>
 															<li><a href="error-404.html">Error 404</a></li>
 															<li><a href="compare.html">Compare Page</a></li>
-															<li><a href="cart.html">Cart Page</a></li>
+															<li><a href="cartList">Cart Page</a></li>
 															<li><a href="checkout.html">Checkout Page</a></li>
 															<li><a href="wishlist.html">Wishlist Page</a></li>
 														</ul>
@@ -362,14 +373,13 @@
 												<ul class="dropdown-submenu dropdown-hover">
 													<li><a href="frequently-questions.html">FAQ</a></li>
 													<li><a href="my-account.html">My Account</a></li>
-													<li><a href="login.html">Login</a></li>
-													<li><a href="register.html">Register</a></li>
+													<li><a href="loginForm">Login</a></li>
+													<li><a href="memberForm">Register</a></li>
 												</ul></li>
-											<li><a href="about-us.html"> <span class="menu-text">
+											<li><a href="aboutUs"> <span class="menu-text">
 														About</span>
 											</a></li>
-											<li><a href="contact-us.html"> <span
-													class="menu-text">Contact</span>
+											<li><a href="contactUs"> <span class="menu-text">Contact</span>
 											</a></li>
 										</ul>
 									</nav>
@@ -378,22 +388,9 @@
 									<div class="header-right-area main-nav">
 										<ul class="nav">
 											<li class="login-register-wrap d-none d-xl-flex"><span><a
-													href="login.html">Login</a></span> <span><a
-													href="register.html">Register</a></span></li>
-											<li class="sidemenu-wrap d-none d-lg-flex"><a href="#">USD
-													<i class="fa fa-caret-down"></i>
-											</a>
-												<ul
-													class="dropdown-sidemenu dropdown-hover-2 dropdown-language">
-													<li><a href="#">USD - US Dollar</a></li>
-													<li><a href="#">EUR - Euro</a></li>
-													<li><a href="#">GBP - British Pound</a></li>
-													<li><a href="#">INR - Indian Rupee</a></li>
-													<li><a href="#">BDT - Bangladesh Taka</a></li>
-													<li><a href="#">JPY - Japan Yen</a></li>
-													<li><a href="#">CAD - Canada Dollar</a></li>
-													<li><a href="#">AUD - Australian Dollar</a></li>
-												</ul></li>
+													href="loginForm">Login</a></span> <span><a
+													href="memberForm">Register</a></span></li>
+
 											<li class="minicart-wrap"><a href="#"
 												class="minicart-btn toolbar-btn"> <i class="ion-bag"></i>
 													<span class="cart-item_count">3</span>
@@ -402,12 +399,12 @@
 													class="cart-item-wrapper dropdown-sidemenu dropdown-hover-2">
 													<div class="single-cart-item">
 														<div class="cart-img">
-															<a href="cart.html"><img
+															<a href="cartList"><img
 																src="assets/images/cart/1.jpg" alt=""></a>
 														</div>
 														<div class="cart-text">
 															<h5 class="title">
-																<a href="cart.html">11. Product with video - navy</a>
+																<a href="cartList">11. Product with video - navy</a>
 															</h5>
 															<div class="cart-text-btn">
 																<div class="cart-qty">
@@ -421,12 +418,12 @@
 													</div>
 													<div class="single-cart-item">
 														<div class="cart-img">
-															<a href="cart.html"><img
+															<a href="cartList"><img
 																src="assets/images/cart/2.jpg" alt=""></a>
 														</div>
 														<div class="cart-text">
 															<h5 class="title">
-																<a href="cart.html"
+																<a href="cartList"
 																	title="10. This is the large title for testing large title and there is an image for testing - white">10.
 																	This is the large title for testing...</a>
 															</h5>
@@ -442,13 +439,13 @@
 													</div>
 													<div class="single-cart-item">
 														<div class="cart-img">
-															<a href="cart.html"><img
+															<a href="cartList"><img
 																src="assets/images/cart/3.jpg" alt=""></a>
 														</div>
 														<div class="cart-text">
 															<h5 class="title">
-																<a href="cart.html">1. New and sale badge product -
-																	s / red</a>
+																<a href="cartList">1. New and sale badge product - s
+																	/ red</a>
 															</h5>
 															<div class="cart-text-btn">
 																<div class="cart-qty">
@@ -466,7 +463,7 @@
 														<h5>$166.00</h5>
 													</div>
 													<div class="cart-links d-flex justify-content-center">
-														<a class="obrien-button white-btn" href="cart.html">View
+														<a class="obrien-button white-btn" href="cartList">View
 															cart</a> <a class="obrien-button white-btn"
 															href="checkout.html">Checkout</a>
 													</div>
@@ -507,7 +504,7 @@
 								<ul class="mobile-menu">
 									<li class="menu-item-has-children"><a href="#">Home</a>
 										<ul class="dropdown">
-											<li><a href="index.html">Home Page 1</a></li>
+											<li><a href="/">Home Page 1</a></li>
 											<li><a href="index-2.html">Home Page 2</a></li>
 											<li><a href="index-3.html">Home Page 3</a></li>
 											<li><a href="index-4.html">Home Page 4</a></li>
@@ -517,14 +514,8 @@
 											<li class="mega-title has-children"><a href="#">Shop
 													Layouts</a>
 												<ul class="dropdown">
-													<li><a href="shop.html">Shop Left Sidebar</a></li>
-													<li><a href="shop-right-sidebar.html">Shop Right
-															Sidebar</a></li>
-													<li><a href="shop-list-left.html">Shop List Left
-															Sidebar</a></li>
-													<li><a href="shop-list-right.html">Shop List Right
-															Sidebar</a></li>
-													<li><a href="shop-fullwidth.html">Shop Full Width</a></li>
+
+													<li><a href="productList">상품리스트</a></li>
 												</ul></li>
 											<li class="mega-title has-children"><a href="#">Product
 													Details</a>
@@ -544,7 +535,7 @@
 												<ul class="dropdown">
 													<li><a href="error404.html">Error 404</a></li>
 													<li><a href="compare.html">Compare Page</a></li>
-													<li><a href="cart.html">Cart Page</a></li>
+													<li><a href="cartList">Cart Page</a></li>
 													<li><a href="checkout.html">Checkout Page</a></li>
 													<li><a href="wishlist.html">Wish List Page</a></li>
 												</ul></li>
@@ -570,11 +561,10 @@
 										<ul class="dropdown">
 											<li><a href="frequently-questions.html">FAQ</a></li>
 											<li><a href="my-account.html">My Account</a></li>
-											<li><a href="login-register.html">login &amp;
-													register</a></li>
+											<li><a href="login-memberForm">login &amp; register</a></li>
 										</ul></li>
-									<li><a href="about-us.html">About Us</a></li>
-									<li><a href="contact-us.html">Contact</a></li>
+									<li><a href="aboutUs">About Us</a></li>
+									<li><a href="contactUs">Contact</a></li>
 								</ul>
 							</nav>
 							<!-- mobile menu navigation end -->
@@ -587,20 +577,10 @@
 									<li class="menu-item-has-children"><a href="#">My
 											Account</a>
 										<ul class="dropdown">
-											<li><a href="login.html">Login</a></li>
-											<li><a href="Register.html">Register</a></li>
+											<li><a href="loginForm">Login</a></li>
+											<li><a href="memberForm">Register</a></li>
 										</ul></li>
-									<li class="menu-item-has-children"><a href="#">Currency:USD</a>
-										<ul class="dropdown">
-											<li><a href="#">USD - US Dollar</a></li>
-											<li><a href="#">EUR - Euro</a></li>
-											<li><a href="#">GBP - British Pound</a></li>
-											<li><a href="#">INR - Indian Rupee</a></li>
-											<li><a href="#">BDT - Bangladesh Taka</a></li>
-											<li><a href="#">JPY - Japan Yen</a></li>
-											<li><a href="#">CAD - Canada Dollar</a></li>
-											<li><a href="#">AUD - Australian Dollar</a></li>
-										</ul></li>
+
 								</ul>
 							</nav>
 							<!-- mobile menu navigation end -->
@@ -637,7 +617,7 @@
 						<div class="breadcrumb-content position-relative section-content">
 							<h3 class="title-3">Product Details</h3>
 							<ul>
-								<li><a href="index.html">Home</a></li>
+								<li><a href="/">Home</a></li>
 								<li>Product Details</li>
 							</ul>
 						</div>
@@ -678,17 +658,17 @@
                         "swipe": false,
                         "asNavFor": ".pd-slider-nav"
                         }'>
-								
-									<div class="single-image border">
-										<!-- <a href="assets/images/product/large-size/1.jpg"> -->
-										<!-- <img src="assets/images/product/large-size/1.jpg" alt="Product"> -->
-										
-										<a href="assets/images/${productDetails.product_img}.jpg">${productDetails.product_img}${productDetails.product_name}
+
+								<div class="single-image border">
+									<!-- <a href="assets/images/product/large-size/1.jpg"> -->
+									<!-- <img src="assets/images/product/large-size/1.jpg" alt="Product"> -->
+
+									<a href="assets/images/${productDetails.product_img}.jpg">
 										<img src="assets/images/${productDetails.product_img}.jpg"
-											alt="Product">
-										</a>
-									</div>
-							
+										alt="Product">
+									</a>
+								</div>
+
 								<div class="single-image border">
 									<a href="assets/images/product/large-size/2.jpg"> <img
 										src="assets/images/product/large-size/2.jpg" alt="Product">
@@ -735,69 +715,85 @@
                             {"breakpoint":992, "settings": {"slidesToShow": 4}},
                             {"breakpoint":575, "settings": {"slidesToShow": 3}}
                         ]'>
+
+								<c:set var="sub_img_1"
+									value="${productDetails.product_sub_img_1}" scope="session" />
+								<c:set var="sub_img_2"
+									value="${productDetails.product_sub_img_2}" scope="session" />
+								<c:set var="sub_img_3"
+									value="${productDetails.product_sub_img_3}" scope="session" />
+								<c:set var="sub_img_4"
+									value="${productDetails.product_sub_img_4}" scope="session" />
+
 								<div class="single-thumb border">
-									<img src="assets/images/product/small-size/1.jpg"
-										alt="Product Thumnail">
+									<c:if test="${not empty sub_img_1}">
+										<img
+											src="assets/images/${productDetails.product_sub_img_1}.png"
+											alt="Product Thumnail">
+									</c:if>
 								</div>
+								
 								<div class="single-thumb border">
-									<img src="assets/images/product/small-size/2.jpg"
-										alt="Product Thumnail">
+									<c:if test="${not empty sub_img_2}">
+										<img
+											src="assets/images/${productDetails.product_sub_img_2}.png"
+											alt="Product Thumnail">
+									</c:if>
 								</div>
+								
 								<div class="single-thumb border">
-									<img src="assets/images/product/small-size/3.jpg"
-										alt="Product Thumnail">
+									<c:if test="${not empty sub_img_3}">
+										<img
+											src="assets/images/${productDetails.product_sub_img_3}.png"
+											alt="Product Thumnail">
+									</c:if>
 								</div>
+								
 								<div class="single-thumb border">
-									<img src="assets/images/product/small-size/4.jpg"
-										alt="Product Thumnail">
+									<c:if test="${not empty sub_img_4}">
+										<img
+											src="assets/images/${productDetails.product_sub_img_4}.png"
+											alt="Product Thumnail">
+									</c:if>
 								</div>
-								<div class="single-thumb border">
-									<img src="assets/images/product/small-size/5.jpg"
-										alt="Product Thumnail">
-								</div>
-								<div class="single-thumb border">
-									<img src="assets/images/product/small-size/6.jpg"
-										alt="Product Thumnail">
-								</div>
-								<div class="single-thumb border">
-									<img src="assets/images/product/small-size/7.jpg"
-										alt="Product Thumnail">
-								</div>
+								
+								
+
+
 							</div>
 						</div>
 					</div>
 					<div class="col-lg-7 col-custom">
 						<div class="product-summery position-relative">
 							<div class="product-head mb-3">
-								<h2 class="product-title">Sample product Countdown${productDetails.product_name}</h2>
+								<h2 class="product-title">${productDetails.product_name}</h2>
+								이미지 1 ${productDetails.product_sub_img_1}<br> 이미지
+								2${productDetails.product_sub_img_2}<br> 이미지
+								3${productDetails.product_sub_img_3}<br>
 							</div>
 							<div class="price-box mb-2">
-								<span class="regular-price">$80.00</span> <span
-									class="old-price"><del>$90.00</del></span>
+								<span class="regular-price"></span>
+								<fmt:formatNumber value="${productDetails.product_price}"
+									type="currency" currencySymbol="￦" />
+								<!-- <span class="old-price"><del>$90.00</del></span> -->
 							</div>
 							<div class="product-rating mb-3">
 								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
 									class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
 									class="fa fa-star-o"></i>
 							</div>
-							<div class="sku mb-3">
-								<span>SKU: 12345</span>
-							</div>
-							<p class="desc-content mb-5">I must explain to you how all
-								this mistaken idea of denouncing pleasure and praising pain was
-								born and I will give you a complete account of the system, and
-								expound the actual teachings of the great explorer of the truth,
-								the master-builder of human happiness.</p>
+
+							<p class="desc-content mb-5">${productDetails.product_description_summary}</p>
 							<div class="quantity-with_btn mb-4">
 								<div class="quantity">
 									<div class="cart-plus-minus">
 										<input class="cart-plus-minus-box" value="0" type="text">
-										<div class="dec qtybutton">-</div>
-										<div class="inc qtybutton">+</div>
+										<div id="dec qtybutton">-</div>
+										<div id="inc qtybutton">+</div>
 									</div>
 								</div>
 								<div class="add-to_cart">
-									<a class="btn obrien-button primary-btn" href="cart.html">Add
+									<a class="btn obrien-button primary-btn" href="cartList">Add
 										to cart</a> <a
 										class="btn obrien-button-2 treansparent-color pt-0 pb-0"
 										href="wishlist.html">Add to wishlist</a>
@@ -1064,486 +1060,7 @@
 
 
 
-		<!-- Product Area Start Here -->
-		<div class="product-area mb-text">
-			<div class="container container-default custom-area">
-				<div class="row">
-					<div class="col-lg-5 m-auto text-center col-custom">
-						<div class="section-content">
-							<h2 class="title-1 text-uppercase">Related Product</h2>
-							<div class="desc-content">
-								<p>You can check the related product for your shopping
-									collection.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-12 product-wrapper col-custom">
-						<div class="product-slider"
-							data-slick-options='{
-                        "slidesToShow": 4,
-                        "slidesToScroll": 1,
-                        "infinite": true,
-                        "arrows": false,
-                        "dots": false
-                        }'
-							data-slick-responsive='[
-                        {"breakpoint": 1200, "settings": {
-                        "slidesToShow": 3
-                        }},
-                        {"breakpoint": 992, "settings": {
-                        "slidesToShow": 2
-                        }},
-                        {"breakpoint": 576, "settings": {
-                        "slidesToShow": 1
-                        }}
-                        ]'>
-							<div class="single-item">
-								<div class="single-product position-relative">
-									<div class="product-image">
-										<a class="d-block" href="product-details.html"> <img
-											src="assets/images/product/1.jpg" alt=""
-											class="product-image-1 w-100"> <img
-											src="assets/images/product/2.jpg" alt=""
-											class="product-image-2 position-absolute w-100">
-										</a>
-									</div>
-									<div class="product-content">
-										<div class="product-rating">
-											<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-												class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-												class="fa fa-star-o"></i>
-										</div>
-										<div class="product-title">
-											<h4 class="title-2">
-												<a href="product-details.html">Product dummy name</a>
-											</h4>
-										</div>
-										<div class="price-box">
-											<span class="regular-price ">$80.00</span> <span
-												class="old-price"><del>$90.00</del></span>
-										</div>
-									</div>
-									<div class="add-action d-flex position-absolute">
-										<a href="cart.html" title="Add To cart"> <i
-											class="ion-bag"></i>
-										</a> <a href="compare.html" title="Compare"> <i
-											class="ion-ios-loop-strong"></i>
-										</a> <a href="wishlist.html" title="Add To Wishlist"> <i
-											class="ion-ios-heart-outline"></i>
-										</a> <a href="#exampleModalCenter" data-bs-toggle="modal"
-											title="Quick View"> <i class="ion-eye"></i>
-										</a>
-									</div>
-								</div>
-							</div>
-							<div class="single-item">
-								<div class="single-product position-relative">
-									<div class="product-image">
-										<a class="d-block" href="product-details.html"> <img
-											src="assets/images/product/3.jpg" alt=""
-											class="product-image-1 w-100"> <img
-											src="assets/images/product/4.jpg" alt=""
-											class="product-image-2 position-absolute w-100">
-										</a>
-									</div>
-									<div class="product-content">
-										<div class="product-rating">
-											<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-												class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-												class="fa fa-star-o"></i>
-										</div>
-										<div class="product-title">
-											<h4 class="title-2">
-												<a href="product-details.html">Product dummy title</a>
-											</h4>
-										</div>
-										<div class="price-box">
-											<span class="regular-price ">$80.00</span> <span
-												class="old-price"><del>$90.00</del></span>
-										</div>
-									</div>
-									<div class="add-action d-flex position-absolute">
-										<a href="cart.html" title="Add To cart"> <i
-											class="ion-bag"></i>
-										</a> <a href="compare.html" title="Compare"> <i
-											class="ion-ios-loop-strong"></i>
-										</a> <a href="wishlist.html" title="Add To Wishlist"> <i
-											class="ion-ios-heart-outline"></i>
-										</a> <a href="#exampleModalCenter" data-bs-toggle="modal"
-											title="Quick View"> <i class="ion-eye"></i>
-										</a>
-									</div>
-								</div>
-							</div>
-							<div class="single-item">
-								<div class="single-product position-relative">
-									<div class="product-image">
-										<a class="d-block" href="product-details.html"> <img
-											src="assets/images/product/5.jpg" alt=""
-											class="product-image-1 w-100"> <img
-											src="assets/images/product/6.jpg" alt=""
-											class="product-image-2 position-absolute w-100">
-										</a>
-									</div>
-									<div class="label-product">
-										<span
-											class="label-sale position-absolute text-uppercase text-white text-center d-block">Soldout</span>
-									</div>
-									<div class="product-content">
-										<div class="product-rating">
-											<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-												class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-												class="fa fa-star-o"></i>
-										</div>
-										<div class="product-title">
-											<h4 class="title-2">
-												<a href="product-details.html">Product dummy title</a>
-											</h4>
-										</div>
-										<div class="price-box">
-											<span class="regular-price ">$80.00</span> <span
-												class="old-price"><del>$90.00</del></span>
-										</div>
-									</div>
-									<div class="add-action d-flex position-absolute">
-										<a href="cart.html" title="Add To cart"> <i
-											class="ion-bag"></i>
-										</a> <a href="compare.html" title="Compare"> <i
-											class="ion-ios-loop-strong"></i>
-										</a> <a href="wishlist.html" title="Add To Wishlist"> <i
-											class="ion-ios-heart-outline"></i>
-										</a> <a href="#exampleModalCenter" data-bs-toggle="modal"
-											title="Quick View"> <i class="ion-eye"></i>
-										</a>
-									</div>
-								</div>
-							</div>
-							<div class="single-item">
-								<div class="single-product position-relative">
-									<div class="product-image">
-										<a class="d-block" href="product-details.html"> <img
-											src="assets/images/product/7.jpg" alt=""
-											class="product-image-1 w-100"> <img
-											src="assets/images/product/8.jpg" alt=""
-											class="product-image-2 position-absolute w-100">
-										</a>
-									</div>
-									<div class="product-content">
-										<div class="product-rating">
-											<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-												class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-												class="fa fa-star-o"></i>
-										</div>
-										<div class="product-title">
-											<h4 class="title-2">
-												<a href="product-details.html">Product dummy name</a>
-											</h4>
-										</div>
-										<div class="price-box">
-											<span class="regular-price ">$80.00</span> <span
-												class="old-price"><del>$90.00</del></span>
-										</div>
-									</div>
-									<div class="add-action d-flex position-absolute">
-										<a href="cart.html" title="Add To cart"> <i
-											class="ion-bag"></i>
-										</a> <a href="compare.html" title="Compare"> <i
-											class="ion-ios-loop-strong"></i>
-										</a> <a href="wishlist.html" title="Add To Wishlist"> <i
-											class="ion-ios-heart-outline"></i>
-										</a> <a href="#exampleModalCenter" data-bs-toggle="modal"
-											title="Quick View"> <i class="ion-eye"></i>
-										</a>
-									</div>
-								</div>
-							</div>
-							<div class="single-item">
-								<div class="single-product position-relative">
-									<div class="product-image">
-										<a class="d-block" href="product-details.html"> <img
-											src="assets/images/product/9.jpg" alt=""
-											class="product-image-1"> <img
-											src="assets/images/product/10.jpg" alt=""
-											class="product-image-2 position-absolute top-0 left-0">
-										</a>
-									</div>
-									<div class="product-content">
-										<div class="product-rating">
-											<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-												class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-												class="fa fa-star-o"></i>
-										</div>
-										<div class="product-title">
-											<h4 class="title-2">
-												<a href="product-details.html">Product dummy title</a>
-											</h4>
-										</div>
-										<div class="price-box">
-											<span class="regular-price ">$80.00</span> <span
-												class="old-price"><del>$90.00</del></span>
-										</div>
-									</div>
-									<div class="add-action d-flex position-absolute">
-										<a href="cart.html" title="Add To cart"> <i
-											class="ion-bag"></i>
-										</a> <a href="compare.html" title="Compare"> <i
-											class="ion-ios-loop-strong"></i>
-										</a> <a href="wishlist.html" title="Add To Wishlist"> <i
-											class="ion-ios-heart-outline"></i>
-										</a> <a href="#exampleModalCenter" data-bs-toggle="modal"
-											title="Quick View"> <i class="ion-eye"></i>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Product Area End Here -->
-		<!-- Product Area Start Here -->
-		<div class="product-area mb-no-text">
-			<div class="container container-default custom-area">
-				<div class="row">
-					<div class="col-lg-5 m-auto text-center col-custom">
-						<div class="section-content">
-							<h2 class="title-1 text-uppercase">You May Also Like</h2>
-							<div class="desc-content">
-								<p>Most of the customers choose our products. You may also
-									like our product.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-12 product-wrapper col-custom">
-						<div class="product-slider"
-							data-slick-options='{
-                        "slidesToShow": 4,
-                        "slidesToScroll": 1,
-                        "infinite": true,
-                        "arrows": false,
-                        "dots": false
-                        }'
-							data-slick-responsive='[
-                        {"breakpoint": 1200, "settings": {
-                        "slidesToShow": 3
-                        }},
-                        {"breakpoint": 992, "settings": {
-                        "slidesToShow": 2
-                        }},
-                        {"breakpoint": 576, "settings": {
-                        "slidesToShow": 1
-                        }}
-                        ]'>
-							<div class="single-item">
-								<div class="single-product position-relative">
-									<div class="product-image">
-										<a class="d-block" href="product-details.html"> <img
-											src="assets/images/product/1.jpg" alt=""
-											class="product-image-1 w-100"> <img
-											src="assets/images/product/2.jpg" alt=""
-											class="product-image-2 position-absolute w-100">
-										</a>
-									</div>
-									<div class="product-content">
-										<div class="product-rating">
-											<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-												class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-												class="fa fa-star-o"></i>
-										</div>
-										<div class="product-title">
-											<h4 class="title-2">
-												<a href="product-details.html">Product dummy name</a>
-											</h4>
-										</div>
-										<div class="price-box">
-											<span class="regular-price ">$80.00</span> <span
-												class="old-price"><del>$90.00</del></span>
-										</div>
-									</div>
-									<div class="add-action d-flex position-absolute">
-										<a href="cart.html" title="Add To cart"> <i
-											class="ion-bag"></i>
-										</a> <a href="compare.html" title="Compare"> <i
-											class="ion-ios-loop-strong"></i>
-										</a> <a href="wishlist.html" title="Add To Wishlist"> <i
-											class="ion-ios-heart-outline"></i>
-										</a> <a href="#exampleModalCenter" data-bs-toggle="modal"
-											title="Quick View"> <i class="ion-eye"></i>
-										</a>
-									</div>
-								</div>
-							</div>
-							<div class="single-item">
-								<div class="single-product position-relative">
-									<div class="product-image">
-										<a class="d-block" href="product-details.html"> <img
-											src="assets/images/product/3.jpg" alt=""
-											class="product-image-1 w-100"> <img
-											src="assets/images/product/4.jpg" alt=""
-											class="product-image-2 position-absolute w-100">
-										</a>
-									</div>
-									<div class="product-content">
-										<div class="product-rating">
-											<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-												class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-												class="fa fa-star-o"></i>
-										</div>
-										<div class="product-title">
-											<h4 class="title-2">
-												<a href="product-details.html">Product dummy title</a>
-											</h4>
-										</div>
-										<div class="price-box">
-											<span class="regular-price ">$80.00</span> <span
-												class="old-price"><del>$90.00</del></span>
-										</div>
-									</div>
-									<div class="add-action d-flex position-absolute">
-										<a href="cart.html" title="Add To cart"> <i
-											class="ion-bag"></i>
-										</a> <a href="compare.html" title="Compare"> <i
-											class="ion-ios-loop-strong"></i>
-										</a> <a href="wishlist.html" title="Add To Wishlist"> <i
-											class="ion-ios-heart-outline"></i>
-										</a> <a href="#exampleModalCenter" data-bs-toggle="modal"
-											title="Quick View"> <i class="ion-eye"></i>
-										</a>
-									</div>
-								</div>
-							</div>
-							<div class="single-item">
-								<div class="single-product position-relative">
-									<div class="product-image">
-										<a class="d-block" href="product-details.html"> <img
-											src="assets/images/product/5.jpg" alt=""
-											class="product-image-1 w-100"> <img
-											src="assets/images/product/6.jpg" alt=""
-											class="product-image-2 position-absolute w-100">
-										</a>
-									</div>
-									<div class="label-product">
-										<span
-											class="label-sale position-absolute text-uppercase text-white text-center d-block">Soldout</span>
-									</div>
-									<div class="product-content">
-										<div class="product-rating">
-											<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-												class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-												class="fa fa-star-o"></i>
-										</div>
-										<div class="product-title">
-											<h4 class="title-2">
-												<a href="product-details.html">Product dummy title</a>
-											</h4>
-										</div>
-										<div class="price-box">
-											<span class="regular-price ">$80.00</span> <span
-												class="old-price"><del>$90.00</del></span>
-										</div>
-									</div>
-									<div class="add-action d-flex position-absolute">
-										<a href="cart.html" title="Add To cart"> <i
-											class="ion-bag"></i>
-										</a> <a href="compare.html" title="Compare"> <i
-											class="ion-ios-loop-strong"></i>
-										</a> <a href="wishlist.html" title="Add To Wishlist"> <i
-											class="ion-ios-heart-outline"></i>
-										</a> <a href="#exampleModalCenter" data-bs-toggle="modal"
-											title="Quick View"> <i class="ion-eye"></i>
-										</a>
-									</div>
-								</div>
-							</div>
-							<div class="single-item">
-								<div class="single-product position-relative">
-									<div class="product-image">
-										<a class="d-block" href="product-details.html"> <img
-											src="assets/images/product/7.jpg" alt=""
-											class="product-image-1 w-100"> <img
-											src="assets/images/product/8.jpg" alt=""
-											class="product-image-2 position-absolute w-100">
-										</a>
-									</div>
-									<div class="product-content">
-										<div class="product-rating">
-											<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-												class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-												class="fa fa-star-o"></i>
-										</div>
-										<div class="product-title">
-											<h4 class="title-2">
-												<a href="product-details.html">Product dummy name</a>
-											</h4>
-										</div>
-										<div class="price-box">
-											<span class="regular-price ">$80.00</span> <span
-												class="old-price"><del>$90.00</del></span>
-										</div>
-									</div>
-									<div class="add-action d-flex position-absolute">
-										<a href="cart.html" title="Add To cart"> <i
-											class="ion-bag"></i>
-										</a> <a href="compare.html" title="Compare"> <i
-											class="ion-ios-loop-strong"></i>
-										</a> <a href="wishlist.html" title="Add To Wishlist"> <i
-											class="ion-ios-heart-outline"></i>
-										</a> <a href="#exampleModalCenter" data-bs-toggle="modal"
-											title="Quick View"> <i class="ion-eye"></i>
-										</a>
-									</div>
-								</div>
-							</div>
-							<div class="single-item">
-								<div class="single-product position-relative">
-									<div class="product-image">
-										<a class="d-block" href="product-details.html"> <img
-											src="assets/images/product/9.jpg" alt=""
-											class="product-image-1"> <img
-											src="assets/images/product/10.jpg" alt=""
-											class="product-image-2 position-absolute top-0 left-0">
-										</a>
-									</div>
-									<div class="product-content">
-										<div class="product-rating">
-											<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-												class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-												class="fa fa-star-o"></i>
-										</div>
-										<div class="product-title">
-											<h4 class="title-2">
-												<a href="product-details.html">Product dummy title</a>
-											</h4>
-										</div>
-										<div class="price-box">
-											<span class="regular-price ">$80.00</span> <span
-												class="old-price"><del>$90.00</del></span>
-										</div>
-									</div>
-									<div class="add-action d-flex position-absolute">
-										<a href="cart.html" title="Add To cart"> <i
-											class="ion-bag"></i>
-										</a> <a href="compare.html" title="Compare"> <i
-											class="ion-ios-loop-strong"></i>
-										</a> <a href="wishlist.html" title="Add To Wishlist"> <i
-											class="ion-ios-heart-outline"></i>
-										</a> <a href="#exampleModalCenter" data-bs-toggle="modal"
-											title="Quick View"> <i class="ion-eye"></i>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Product Area End Here -->
+
 		<!-- Support Area Start Here -->
 		<div class="support-area">
 			<div class="container container-default custom-area">
@@ -1556,7 +1073,7 @@
 									01234-567-890</p>
 							</div>
 							<div class="support-button d-flex align-items-center">
-								<a class="obrien-button primary-btn" href="contact-us.html">Contact
+								<a class="obrien-button primary-btn" href="contactUs">Contact
 									now</a>
 							</div>
 						</div>
@@ -1573,8 +1090,8 @@
 						<div class="col-12 col-sm-12 col-md-12 col-lg-3 col-custom">
 							<div class="single-footer-widget m-0">
 								<div class="footer-logo">
-									<a href="index.html"> <img
-										src="assets/images/logo/footer.png" alt="Logo Image">
+									<a href="/"> <img src="assets/images/logo/footer.png"
+										alt="Logo Image">
 									</a>
 								</div>
 								<p class="desc-content">Obrien is the best parts shop of
@@ -1605,11 +1122,11 @@
 							<div class="single-footer-widget">
 								<h2 class="widget-title">Information</h2>
 								<ul class="widget-list">
-									<li><a href="about-us.html">Our Company</a></li>
-									<li><a href="contact-us.html">Contact Us</a></li>
-									<li><a href="about-us.html">Our Services</a></li>
-									<li><a href="about-us.html">Why We?</a></li>
-									<li><a href="about-us.html">Careers</a></li>
+									<li><a href="aboutUs">Our Company</a></li>
+									<li><a href="contactUs">Contact Us</a></li>
+									<li><a href="aboutUs">Our Services</a></li>
+									<li><a href="aboutUs">Why We?</a></li>
+									<li><a href="aboutUs">Careers</a></li>
 								</ul>
 							</div>
 						</div>
@@ -1617,11 +1134,11 @@
 							<div class="single-footer-widget">
 								<h2 class="widget-title">Quicklink</h2>
 								<ul class="widget-list">
-									<li><a href="about-us.html">About</a></li>
+									<li><a href="aboutUs">About</a></li>
 									<li><a href="blog.html">Blog</a></li>
 									<li><a href="shop.html">Shop</a></li>
-									<li><a href="cart.html">Cart</a></li>
-									<li><a href="contact-us.html">Contact</a></li>
+									<li><a href="cartList">Cart</a></li>
+									<li><a href="contactUs">Contact</a></li>
 								</ul>
 							</div>
 						</div>
@@ -1629,11 +1146,11 @@
 							<div class="single-footer-widget">
 								<h2 class="widget-title">Support</h2>
 								<ul class="widget-list">
-									<li><a href="contact-us.html">Online Support</a></li>
-									<li><a href="contact-us.html">Shipping Policy</a></li>
-									<li><a href="contact-us.html">Return Policy</a></li>
-									<li><a href="contact-us.html">Privacy Policy</a></li>
-									<li><a href="contact-us.html">Terms of Service</a></li>
+									<li><a href="contactUs">Online Support</a></li>
+									<li><a href="contactUs">Shipping Policy</a></li>
+									<li><a href="contactUs">Return Policy</a></li>
+									<li><a href="contactUs">Privacy Policy</a></li>
+									<li><a href="contactUs">Terms of Service</a></li>
 								</ul>
 							</div>
 						</div>
@@ -1729,7 +1246,7 @@
 												</div>
 											</div>
 											<div class="add-to_cart">
-												<a class="btn obrien-button primary-btn" href="cart.html">Add
+												<a class="btn obrien-button primary-btn" href="cartList">Add
 													to cart</a>
 											</div>
 										</div>

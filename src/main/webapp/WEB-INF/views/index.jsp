@@ -72,7 +72,7 @@
 							<div class="row align-items-center">
 								<div class="col-lg-2 col-xl-2 col-sm-6 col-6 col-custom">
 									<div class="header-logo d-flex align-items-center">
-										<a href="index.html"> <img class="img-full"
+										<a href="/"> <img class="img-full"
 											src="assets/images/logo/logo.png" alt="Header Logo">
 										</a>
 									</div>
@@ -81,16 +81,9 @@
 									class="col-lg-8 col-xl-7 position-static d-none d-lg-block col-custom">
 									<nav class="main-nav d-flex justify-content-center">
 										<ul class="nav">
-											<li><a class="active" href="index.html"> <span
-													class="menu-text"> Home</span> <i class="fa fa-angle-down"></i>
-											</a>
-												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="index.html">Home Page - 1</a></li>
-													<li><a href="index-2.html">Home Page - 2</a></li>
-													<li><a class="active" href="index-3.html">Home
-															Page - 3</a></li>
-													<li><a href="index-4.html">Home Page - 4</a></li>
-												</ul></li>
+												<li><a href="/"> <span
+													class="menu-text">Home</span>
+											</a></li>
 											<li><a href="shop.html"> <span class="menu-text">Shop</span>
 													<i class="fa fa-angle-down"></i>
 											</a>
@@ -98,20 +91,14 @@
 													<div class="menu-colum">
 														<ul>
 															<li><span class="mega-menu-text">Shop</span></li>
-															<li><a href="shop.html">Shop Left Sidebar</a></li>
-															<li><a href="shop-right-sidebar.html">Shop Right
-																	Sidebar</a></li>
-															<li><a href="shop-list-left.html">Shop List Left
-																	Sidebar</a></li>
-															<li><a href="shop-list-right.html">Shop List
-																	Right Sidebar</a></li>
-															<li><a href="productList">Shop Full Width</a></li>
+															
+															<li><a href="productList">상품리스트</a></li>
 														</ul>
 													</div>
 													<div class="menu-colum">
 														<ul>
 															<li><span class="mega-menu-text">Product</span></li>
-															<li><a href="product-details.html">Single
+															<li><a href="productDetails?product_id=${dto.product_id}"">Single
 																	Product</a></li>
 															<li><a href="variable-product-details.html">Variable
 																	Product</a></li>
@@ -128,7 +115,7 @@
 															<li><span class="mega-menu-text">Others</span></li>
 															<li><a href="error-404.html">Error 404</a></li>
 															<li><a href="compare.html">Compare Page</a></li>
-															<li><a href="cart.html">Cart Page</a></li>
+															<li><a href="cartList">Cart Page</a></li>
 															<li><a href="checkout.html">Checkout Page</a></li>
 															<li><a href="wishlist.html">Wishlist Page</a></li>
 														</ul>
@@ -162,10 +149,10 @@
 													<li><a href="loginForm">Login</a></li>
 													<li><a href="memberForm">Register</a></li>
 												</ul></li>
-											<li><a href="about-us.html"> <span class="menu-text">
+											<li><a href="aboutUs"> <span class="menu-text">
 														About</span>
 											</a></li>
-											<li><a href="contact-us.html"> <span
+											<li><a href="contactUs"> <span
 													class="menu-text">Contact</span>
 											</a></li>
 										</ul>
@@ -187,19 +174,7 @@
 														<span><a href="memberForm">Register</a></span>
 													</c:otherwise>
 												</c:choose></li>
-											<!--            1                                 <li class="sidemenu-wrap d-none d-lg-flex">
-                                                <a href="#">USD <i class="fa fa-caret-down"></i> </a>
-                                                <ul class="dropdown-sidemenu dropdown-hover-2 dropdown-language">
-                                                    <li><a href="#">USD - US Dollar</a></li>
-                                                    <li><a href="#">EUR - Euro</a></li>
-                                                    <li><a href="#">GBP - British Pound</a></li>
-                                                    <li><a href="#">INR - Indian Rupee</a></li>
-                                                    <li><a href="#">BDT - Bangladesh Taka</a></li>
-                                                    <li><a href="#">JPY - Japan Yen</a></li>
-                                                    <li><a href="#">CAD - Canada Dollar</a></li>
-                                                    <li><a href="#">AUD - Australian Dollar</a></li>
-                                                </ul>
-                                            </li> -->
+
 											&nbsp;&nbsp;
 											<li class="minicart-wrap"><a href="#"
 												class="minicart-btn toolbar-btn"> <i class="ion-bag"></i>
@@ -209,12 +184,12 @@
 													class="cart-item-wrapper dropdown-sidemenu dropdown-hover-2">
 													<div class="single-cart-item">
 														<div class="cart-img">
-															<a href="cart.html"><img
+															<a href="cartList"><img
 																src="assets/images/cart/1.jpg" alt=""></a>
 														</div>
 														<div class="cart-text">
 															<h5 class="title">
-																<a href="cart.html">11. Product with video - navy</a>
+																<a href="cartList">11. Product with video - navy</a>
 															</h5>
 															<div class="cart-text-btn">
 																<div class="cart-qty">
@@ -228,12 +203,12 @@
 													</div>
 													<div class="single-cart-item">
 														<div class="cart-img">
-															<a href="cart.html"><img
+															<a href="cartList"><img
 																src="assets/images/cart/2.jpg" alt=""></a>
 														</div>
 														<div class="cart-text">
 															<h5 class="title">
-																<a href="cart.html"
+																<a href="cartList"
 																	title="10. This is the large title for testing large title and there is an image for testing - white">10.
 																	This is the large title for testing...</a>
 															</h5>
@@ -249,12 +224,12 @@
 													</div>
 													<div class="single-cart-item">
 														<div class="cart-img">
-															<a href="cart.html"><img
+															<a href="cartList"><img
 																src="assets/images/cart/3.jpg" alt=""></a>
 														</div>
 														<div class="cart-text">
 															<h5 class="title">
-																<a href="cart.html">1. New and sale badge product -
+																<a href="cartList">1. New and sale badge product -
 																	s / red</a>
 															</h5>
 															<div class="cart-text-btn">
@@ -273,7 +248,7 @@
 														<h5>$166.00</h5>
 													</div>
 													<div class="cart-links d-flex justify-content-center">
-														<a class="obrien-button white-btn" href="cart.html">View
+														<a class="obrien-button white-btn" href="cartList">View
 															cart</a> <a class="obrien-button white-btn"
 															href="checkout.html">Checkout</a>
 													</div>
@@ -298,7 +273,7 @@
 							<div class="row align-items-center">
 								<div class="col-lg-2 col-xl-2 col-sm-6 col-6 col-custom">
 									<div class="header-logo">
-										<a href="index.html"> <img class="img-full"
+										<a href="/"> <img class="img-full"
 											src="assets/images/logo/logo.png" alt="Header Logo">
 										</a>
 									</div>
@@ -307,16 +282,9 @@
 									class="col-lg-8 col-xl-7 position-static d-none d-lg-block col-custom">
 									<nav class="main-nav d-flex justify-content-center">
 										<ul class="nav">
-											<li><a class="active" href="index.html"> <span
-													class="menu-text"> Home</span> <i class="fa fa-angle-down"></i>
-											</a>
-												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="index.html">Home Page - 1</a></li>
-													<li><a href="index-2.html">Home Page - 2</a></li>
-													<li><a class="active" href="index-3.html">Home
-															Page - 3</a></li>
-													<li><a href="index-4.html">Home Page - 4</a></li>
-												</ul></li>
+											<li><a href="/"> <span
+													class="menu-text">Home</span>
+											</a></li>
 											<li><a href="shop.html"> <span class="menu-text">Shop</span>
 													<i class="fa fa-angle-down"></i>
 											</a>
@@ -324,20 +292,14 @@
 													<div class="menu-colum">
 														<ul>
 															<li><span class="mega-menu-text">Shop</span></li>
-															<li><a href="shop.html">Shop Left Sidebar</a></li>
-															<li><a href="shop-right-sidebar.html">Shop Right
-																	Sidebar</a></li>
-															<li><a href="shop-list-left.html">Shop List Left
-																	Sidebar</a></li>
-															<li><a href="shop-list-right.html">Shop List
-																	Right Sidebar</a></li>
-															<li><a href="productList">Shop Full Width</a></li>
+															
+															<li><a href="productList">상품리스트</a></li>
 														</ul>
 													</div>
 													<div class="menu-colum">
 														<ul>
 															<li><span class="mega-menu-text">Product</span></li>
-															<li><a href="product-details.html">Single
+															<li><a href="productDetails?product_id=${dto.product_id}"">Single
 																	Product</a></li>
 															<li><a href="variable-product-details.html">Variable
 																	Product</a></li>
@@ -354,7 +316,7 @@
 															<li><span class="mega-menu-text">Others</span></li>
 															<li><a href="error-404.html">Error 404</a></li>
 															<li><a href="compare.html">Compare Page</a></li>
-															<li><a href="cart.html">Cart Page</a></li>
+															<li><a href="cartList">Cart Page</a></li>
 															<li><a href="checkout.html">Checkout Page</a></li>
 															<li><a href="wishlist.html">Wishlist Page</a></li>
 														</ul>
@@ -388,10 +350,10 @@
 													<li><a href="loginForm">Login</a></li>
 													<li><a href="memberForm">Register</a></li>
 												</ul></li>
-											<li><a href="about-us.html"> <span class="menu-text">
+											<li><a href="aboutUs"> <span class="menu-text">
 														About</span>
 											</a></li>
-											<li><a href="contact-us.html"> <span
+											<li><a href="contactUs"> <span
 													class="menu-text">Contact</span>
 											</a></li>
 										</ul>
@@ -431,12 +393,12 @@
 													class="cart-item-wrapper dropdown-sidemenu dropdown-hover-2">
 													<div class="single-cart-item">
 														<div class="cart-img">
-															<a href="cart.html"><img
+															<a href="cartList"><img
 																src="assets/images/cart/1.jpg" alt=""></a>
 														</div>
 														<div class="cart-text">
 															<h5 class="title">
-																<a href="cart.html">11. Product with video - navy</a>
+																<a href="cartList">11. Product with video - navy</a>
 															</h5>
 															<div class="cart-text-btn">
 																<div class="cart-qty">
@@ -450,12 +412,12 @@
 													</div>
 													<div class="single-cart-item">
 														<div class="cart-img">
-															<a href="cart.html"><img
+															<a href="cartList"><img
 																src="assets/images/cart/2.jpg" alt=""></a>
 														</div>
 														<div class="cart-text">
 															<h5 class="title">
-																<a href="cart.html"
+																<a href="cartList"
 																	title="10. This is the large title for testing large title and there is an image for testing - white">10.
 																	This is the large title for testing...</a>
 															</h5>
@@ -471,12 +433,12 @@
 													</div>
 													<div class="single-cart-item">
 														<div class="cart-img">
-															<a href="cart.html"><img
+															<a href="cartList"><img
 																src="assets/images/cart/3.jpg" alt=""></a>
 														</div>
 														<div class="cart-text">
 															<h5 class="title">
-																<a href="cart.html">1. New and sale badge product -
+																<a href="cartList">1. New and sale badge product -
 																	s / red</a>
 															</h5>
 															<div class="cart-text-btn">
@@ -495,7 +457,7 @@
 														<h5>$166.00</h5>
 													</div>
 													<div class="cart-links d-flex justify-content-center">
-														<a class="obrien-button white-btn" href="cart.html">View
+														<a class="obrien-button white-btn" href="cartList">View
 															cart</a> <a class="obrien-button white-btn"
 															href="checkout.html">Checkout</a>
 													</div>
@@ -536,31 +498,21 @@
 							<!-- mobile menu navigation start -->
 							<nav>
 								<ul class="mobile-menu">
-									<li class="menu-item-has-children"><a href="#">Home</a>
-										<ul class="dropdown">
-											<li><a href="index.html">Home Page 1</a></li>
-											<li><a href="index-2.html">Home Page 2</a></li>
-											<li><a href="index-3.html">Home Page 3</a></li>
-											<li><a href="index-4.html">Home Page 4</a></li>
-										</ul></li>
+									<li><a href="/"> <span
+													class="menu-text">Home</span>
+											</a></li>
 									<li class="menu-item-has-children"><a href="#">Shop</a>
 										<ul class="megamenu dropdown">
 											<li class="mega-title has-children"><a href="#">Shop
 													Layouts</a>
 												<ul class="dropdown">
-													<li><a href="shop.html">Shop Left Sidebar</a></li>
-													<li><a href="shop-right-sidebar.html">Shop Right
-															Sidebar</a></li>
-													<li><a href="shop-list-left.html">Shop List Left
-															Sidebar</a></li>
-													<li><a href="shop-list-right.html">Shop List Right
-															Sidebar</a></li>
-													<li><a href="productList">Shop Full Width</a></li>
+													
+													<li><a href="productList">상품리스트</a></li>
 												</ul></li>
 											<li class="mega-title has-children"><a href="#">Product
 													Details</a>
 												<ul class="dropdown">
-													<li><a href="product-details.html">Single Product
+													<li><a href="productDetails?product_id=${dto.product_id}"">Single Product
 															Details</a></li>
 													<li><a href="variable-product-details.html">Variable
 															Product Details</a></li>
@@ -575,7 +527,7 @@
 												<ul class="dropdown">
 													<li><a href="error404.html">Error 404</a></li>
 													<li><a href="compare.html">Compare Page</a></li>
-													<li><a href="cart.html">Cart Page</a></li>
+													<li><a href="cartList">Cart Page</a></li>
 													<li><a href="checkout.html">Checkout Page</a></li>
 													<li><a href="wishlist.html">Wish List Page</a></li>
 												</ul></li>
@@ -601,10 +553,10 @@
 										<ul class="dropdown">
 											<li><a href="frequently-questions.html">FAQ</a></li>
 											<li><a href="myAccount">My Account</a></li>
-											<li><a href="login-memberForm">login &amp; register</a></li>
+											<li><a href="loginForm">login &amp; register</a></li>
 										</ul></li>
-									<li><a href="about-us.html">About Us</a></li>
-									<li><a href="contact-us.html">Contact</a></li>
+									<li><a href="aboutUs">About Us</a></li>
+									<li><a href="contactUs">Contact</a></li>
 								</ul>
 							</nav>
 							<!-- mobile menu navigation end -->
@@ -628,18 +580,7 @@
 												</c:otherwise>
 											</c:choose>
 										</ul></li>
-									<!-- 3<li class="menu-item-has-children"><a href="#">Currency:USD</a>
-                                        <ul class="dropdown">
-                                            <li><a href="#">USD - US Dollar</a></li>
-                                            <li><a href="#">EUR - Euro</a></li>
-                                            <li><a href="#">GBP - British Pound</a></li>
-                                            <li><a href="#">INR - Indian Rupee</a></li>
-                                            <li><a href="#">BDT - Bangladesh Taka</a></li>
-                                            <li><a href="#">JPY - Japan Yen</a></li>
-                                            <li><a href="#">CAD - Canada Dollar</a></li>
-                                            <li><a href="#">AUD - Australian Dollar</a></li>
-                                        </ul>
-                                    </li> -->
+
 								</ul>
 							</nav>
 							<!-- mobile menu navigation end -->
@@ -750,7 +691,7 @@
 	<div class="col-lg-3 col-md-6 col-sm-6 col-custom product-area">
                                 <div class="single-product position-relative">
                                     <div class="product-image">
-                                        <a class="d-block" href="product-details.html">
+                                        <a class="d-block" href="productDetails?product_id=${dto.product_id}"">
                                             <img src="assets/images/${dto.product_img}.jpg" alt="" class="product-image-1 w-100">
                                             <%-- <img src="assets/images/${dto.product_img}_on.jpg" alt="" class="product-image-2 position-absolute w-100"> --%>
                                         </a>
@@ -764,7 +705,7 @@
                                             <i class="fa fa-star-o"></i>
                                         </div>
                                         <div class="product-title">
-                                            <h4 class="title-2"> <a href="product-details.html">${dto.product_name}</a></h4>
+                                            <h4 class="title-2"> <a href="productDetails?product_id=${dto.product_id}"">${dto.product_name}</a></h4>
                                         </div>
                                         <div class="price-box">
                                             
@@ -773,7 +714,7 @@
                                         </div>
                                     </div>
                                     <div class="add-action d-flex position-absolute">
-                                        <a href="cart.html" title="Add To cart">
+                                        <a href="cartList" title="Add To cart">
                                             <i class="ion-bag"></i>
                                         </a>
                                         <a href="compare.html" title="Compare">
@@ -795,14 +736,14 @@
                                             <i class="fa fa-star-o"></i>
                                         </div>
                                         <div class="product-title">
-                                            <h4 class="title-2"> <a href="product-details.html">This is the large</a></h4>
+                                            <h4 class="title-2"> <a href="productDetails?product_id=${dto.product_id}"">${dto.product_name}</a></h4>
                                         </div>
                                         <div class="price-box">
-                                            <span class="regular-price ">$30.00</span>
+                                            <span class="regular-price "><fmt:formatNumber value="${dto.product_price}" type="currency" currencySymbol="￦" /></span>
                                             <span class="old-price"><del>$50.00</del></span>
                                         </div>
                                         <div class="add-action-listview d-flex">
-                                            <a href="cart.html" title="Add To cart">
+                                            <a href="cartList" title="Add To cart">
                                                 <i class="ion-bag"></i>
                                             </a>
                                             <a href="compare.html" title="Compare">
@@ -816,7 +757,7 @@
                                             </a>
                                         </div>
                                         <p class="desc-content">
-                                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,
+                                            ${dto.product_description_summary}
                                         </p>
                                     </div>
                                 </div>
@@ -864,30 +805,7 @@
 
 
 		<!-- Product Area End Here -->
-		<!-- Banner Area Start Here -->
-		<div class="banner-area">
-			<div class="container container-default custom-area">
-				<div class="row">
-					<div class="col-md-6 col-sm-12 col-custom">
-						<div class="banner-image hover-style">
-							<a class="d-block" href="shop.html"> <img class="w-100"
-								src="assets/images/banner/small-banner/3-1.png"
-								alt="Banner Image">
-							</a>
-						</div>
-					</div>
-					<div class="col-md-6 col-sm-12 col-custom">
-						<div class="banner-image hover-style mb-0">
-							<a class="d-block" href="shop.html"> <img class="w-100"
-								src="assets/images/banner/small-banner/3-2.png"
-								alt="Banner Image">
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Banner Area End Here -->
+		
 		<!-- Product Area Start Here -->
 		<div class="product-area mt-text mb-text-p">
 			<div class="container container-default custom-area">
@@ -927,7 +845,7 @@
 							<div class="single-item">
 								<div class="single-product position-relative">
 									<div class="product-image">
-										<a class="d-block" href="product-details.html"> <img
+										<a class="d-block" href="productDetails?product_id=${dto.product_id}""> <img
 											src="assets/images/product/1.jpg" alt=""
 											class="product-image-1 w-100"> <img
 											src="assets/images/product/2.jpg" alt=""
@@ -942,7 +860,7 @@
 										</div>
 										<div class="product-title">
 											<h4 class="title-2">
-												<a href="product-details.html">Product dummy name</a>
+												<a href="productDetails?product_id=${dto.product_id}"">Product dummy name</a>
 											</h4>
 										</div>
 										<div class="price-box">
@@ -951,7 +869,7 @@
 										</div>
 									</div>
 									<div class="add-action d-flex position-absolute">
-										<a href="cart.html" title="Add To cart"> <i
+										<a href="cartList" title="Add To cart"> <i
 											class="ion-bag"></i>
 										</a> <a href="compare.html" title="Compare"> <i
 											class="ion-ios-loop-strong"></i>
@@ -966,7 +884,7 @@
 							<div class="single-item">
 								<div class="single-product position-relative">
 									<div class="product-image">
-										<a class="d-block" href="product-details.html"> <img
+										<a class="d-block" href="productDetails?product_id=${dto.product_id}""> <img
 											src="assets/images/product/3.jpg" alt=""
 											class="product-image-1 w-100"> <img
 											src="assets/images/product/4.jpg" alt=""
@@ -981,7 +899,7 @@
 										</div>
 										<div class="product-title">
 											<h4 class="title-2">
-												<a href="product-details.html">Product dummy title</a>
+												<a href="productDetails?product_id=${dto.product_id}"">Product dummy title</a>
 											</h4>
 										</div>
 										<div class="price-box">
@@ -990,7 +908,7 @@
 										</div>
 									</div>
 									<div class="add-action d-flex position-absolute">
-										<a href="cart.html" title="Add To cart"> <i
+										<a href="cartList" title="Add To cart"> <i
 											class="ion-bag"></i>
 										</a> <a href="compare.html" title="Compare"> <i
 											class="ion-ios-loop-strong"></i>
@@ -1005,7 +923,7 @@
 							<div class="single-item">
 								<div class="single-product position-relative">
 									<div class="product-image">
-										<a class="d-block" href="product-details.html"> <img
+										<a class="d-block" href="productDetails?product_id=${dto.product_id}""> <img
 											src="assets/images/product/5.jpg" alt=""
 											class="product-image-1 w-100"> <img
 											src="assets/images/product/6.jpg" alt=""
@@ -1024,7 +942,7 @@
 										</div>
 										<div class="product-title">
 											<h4 class="title-2">
-												<a href="product-details.html">Product dummy title</a>
+												<a href="productDetails?product_id=${dto.product_id}"">Product dummy title</a>
 											</h4>
 										</div>
 										<div class="price-box">
@@ -1033,7 +951,7 @@
 										</div>
 									</div>
 									<div class="add-action d-flex position-absolute">
-										<a href="cart.html" title="Add To cart"> <i
+										<a href="cartList" title="Add To cart"> <i
 											class="ion-bag"></i>
 										</a> <a href="compare.html" title="Compare"> <i
 											class="ion-ios-loop-strong"></i>
@@ -1048,7 +966,7 @@
 							<div class="single-item">
 								<div class="single-product position-relative">
 									<div class="product-image">
-										<a class="d-block" href="product-details.html"> <img
+										<a class="d-block" href="productDetails?product_id=${dto.product_id}""> <img
 											src="assets/images/product/7.jpg" alt=""
 											class="product-image-1 w-100"> <img
 											src="assets/images/product/8.jpg" alt=""
@@ -1063,7 +981,7 @@
 										</div>
 										<div class="product-title">
 											<h4 class="title-2">
-												<a href="product-details.html">Product dummy name</a>
+												<a href="productDetails?product_id=${dto.product_id}"">Product dummy name</a>
 											</h4>
 										</div>
 										<div class="price-box">
@@ -1072,7 +990,7 @@
 										</div>
 									</div>
 									<div class="add-action d-flex position-absolute">
-										<a href="cart.html" title="Add To cart"> <i
+										<a href="cartList" title="Add To cart"> <i
 											class="ion-bag"></i>
 										</a> <a href="compare.html" title="Compare"> <i
 											class="ion-ios-loop-strong"></i>
@@ -1087,7 +1005,7 @@
 							<div class="single-item">
 								<div class="single-product position-relative">
 									<div class="product-image">
-										<a class="d-block" href="product-details.html"> <img
+										<a class="d-block" href="productDetails?product_id=${dto.product_id}""> <img
 											src="assets/images/product/9.jpg" alt=""
 											class="product-image-1"> <img
 											src="assets/images/product/10.jpg" alt=""
@@ -1102,7 +1020,7 @@
 										</div>
 										<div class="product-title">
 											<h4 class="title-2">
-												<a href="product-details.html">Product dummy title</a>
+												<a href="productDetails?product_id=${dto.product_id}"">Product dummy title</a>
 											</h4>
 										</div>
 										<div class="price-box">
@@ -1111,7 +1029,7 @@
 										</div>
 									</div>
 									<div class="add-action d-flex position-absolute">
-										<a href="cart.html" title="Add To cart"> <i
+										<a href="cartList" title="Add To cart"> <i
 											class="ion-bag"></i>
 										</a> <a href="compare.html" title="Compare"> <i
 											class="ion-ios-loop-strong"></i>
@@ -1300,7 +1218,7 @@
 									01234-567-890</p>
 							</div>
 							<div class="support-button d-flex align-items-center">
-								<a class="obrien-button primary-btn" href="contact-us.html">Contact
+								<a class="obrien-button primary-btn" href="contactUs">Contact
 									now</a>
 							</div>
 						</div>
@@ -1317,7 +1235,7 @@
 						<div class="col-12 col-sm-12 col-md-12 col-lg-3 col-custom">
 							<div class="single-footer-widget m-0">
 								<div class="footer-logo">
-									<a href="index.html"> <img
+									<a href="/"> <img
 										src="assets/images/logo/footer.png" alt="Logo Image">
 									</a>
 								</div>
@@ -1349,11 +1267,11 @@
 							<div class="single-footer-widget">
 								<h2 class="widget-title">Information</h2>
 								<ul class="widget-list">
-									<li><a href="about-us.html">Our Company</a></li>
-									<li><a href="contact-us.html">Contact Us</a></li>
-									<li><a href="about-us.html">Our Services</a></li>
-									<li><a href="about-us.html">Why We?</a></li>
-									<li><a href="about-us.html">Careers</a></li>
+									<li><a href="aboutUs">Our Company</a></li>
+									<li><a href="contactUs">Contact Us</a></li>
+									<li><a href="aboutUs">Our Services</a></li>
+									<li><a href="aboutUs">Why We?</a></li>
+									<li><a href="aboutUs">Careers</a></li>
 								</ul>
 							</div>
 						</div>
@@ -1361,11 +1279,11 @@
 							<div class="single-footer-widget">
 								<h2 class="widget-title">Quicklink</h2>
 								<ul class="widget-list">
-									<li><a href="about-us.html">About</a></li>
+									<li><a href="aboutUs">About</a></li>
 									<li><a href="blog.html">Blog</a></li>
 									<li><a href="shop.html">Shop</a></li>
-									<li><a href="cart.html">Cart</a></li>
-									<li><a href="contact-us.html">Contact</a></li>
+									<li><a href="cartList">Cart</a></li>
+									<li><a href="contactUs">Contact</a></li>
 								</ul>
 							</div>
 						</div>
@@ -1373,11 +1291,11 @@
 							<div class="single-footer-widget">
 								<h2 class="widget-title">Support</h2>
 								<ul class="widget-list">
-									<li><a href="contact-us.html">Online Support</a></li>
-									<li><a href="contact-us.html">Shipping Policy</a></li>
-									<li><a href="contact-us.html">Return Policy</a></li>
-									<li><a href="contact-us.html">Privacy Policy</a></li>
-									<li><a href="contact-us.html">Terms of Service</a></li>
+									<li><a href="contactUs">Online Support</a></li>
+									<li><a href="contactUs">Shipping Policy</a></li>
+									<li><a href="contactUs">Return Policy</a></li>
+									<li><a href="contactUs">Privacy Policy</a></li>
+									<li><a href="contactUs">Terms of Service</a></li>
 								</ul>
 							</div>
 						</div>
@@ -1473,7 +1391,7 @@
 												</div>
 											</div>
 											<div class="add-to_cart">
-												<a class="btn obrien-button primary-btn" href="cart.html">Add
+												<a class="btn obrien-button primary-btn" href="cartList">Add
 													to cart</a>
 											</div>
 										</div>

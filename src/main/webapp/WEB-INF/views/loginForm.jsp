@@ -91,11 +91,8 @@
                                                     <div class="menu-colum">
                                                         <ul>
                                                             <li><span class="mega-menu-text">Shop</span></li>
-                                                            <li><a href="shop.html">Shop Left Sidebar</a></li>
-                                                            <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                                            <li><a href="shop-list-left.html">Shop List Left Sidebar</a></li>
-                                                            <li><a href="shop-list-right.html">Shop List Right Sidebar</a></li>
-                                                            <li><a href="shop-fullwidth.html">Shop Full Width</a></li>
+                                                            
+                                                            <li><a href="productList">상품리스트</a></li>
                                                         </ul>
                                                     </div>
                                                     <div class="menu-colum">
@@ -113,7 +110,7 @@
                                                             <li><span class="mega-menu-text">Others</span></li>
                                                             <li><a href="error-404.html">Error 404</a></li>
                                                             <li><a href="compare.html">Compare Page</a></li>
-                                                            <li><a href="cart.html">Cart Page</a></li>
+                                                            <li><a href="cartList">Cart Page</a></li>
                                                             <li><a href="checkout.html">Checkout Page</a></li>
                                                             <li><a href="wishlist.html">Wishlist Page</a></li>
                                                         </ul>
@@ -149,12 +146,12 @@
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="about-us.html">
+                                                <a href="aboutUs">
                                                     <span class="menu-text"> About</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="contact-us.html">
+                                                <a href="contactUs">
                                                     <span class="menu-text">Contact</span>
                                                 </a>
                                             </li>
@@ -186,10 +183,10 @@
                                                 <div class="cart-item-wrapper dropdown-sidemenu dropdown-hover-2">
                                                     <div class="single-cart-item">
                                                         <div class="cart-img">
-                                                            <a href="cart.html"><img src="assets/images/cart/1.jpg" alt=""></a>
+                                                            <a href="cartList"><img src="assets/images/cart/1.jpg" alt=""></a>
                                                         </div>
                                                         <div class="cart-text">
-                                                            <h5 class="title"><a href="cart.html">11. Product with video - navy</a></h5>
+                                                            <h5 class="title"><a href="cartList">11. Product with video - navy</a></h5>
                                                             <div class="cart-text-btn">
                                                                 <div class="cart-qty">
                                                                     <span>1×</span>
@@ -201,10 +198,10 @@
                                                     </div>
                                                     <div class="single-cart-item">
                                                         <div class="cart-img">
-                                                            <a href="cart.html"><img src="assets/images/cart/2.jpg" alt=""></a>
+                                                            <a href="cartList"><img src="assets/images/cart/2.jpg" alt=""></a>
                                                         </div>
                                                         <div class="cart-text">
-                                                            <h5 class="title"><a href="cart.html" title="10. This is the large title for testing large title and there is an image for testing - white">10. This is the large title for testing...</a></h5>
+                                                            <h5 class="title"><a href="cartList" title="10. This is the large title for testing large title and there is an image for testing - white">10. This is the large title for testing...</a></h5>
                                                             <div class="cart-text-btn">
                                                                 <div class="cart-qty">
                                                                     <span>1×</span>
@@ -216,10 +213,10 @@
                                                     </div>
                                                     <div class="single-cart-item">
                                                         <div class="cart-img">
-                                                            <a href="cart.html"><img src="assets/images/cart/3.jpg" alt=""></a>
+                                                            <a href="cartList"><img src="assets/images/cart/3.jpg" alt=""></a>
                                                         </div>
                                                         <div class="cart-text">
-                                                            <h5 class="title"><a href="cart.html">1. New and sale badge product - s / red</a></h5>
+                                                            <h5 class="title"><a href="cartList">1. New and sale badge product - s / red</a></h5>
                                                             <div class="cart-text-btn">
                                                                 <div class="cart-qty">
                                                                     <span>1×</span>
@@ -234,7 +231,7 @@
                                                         <h5>$166.00</h5>
                                                     </div>
                                                     <div class="cart-links d-flex justify-content-center">
-                                                        <a class="obrien-button white-btn" href="cart.html">View cart</a>
+                                                        <a class="obrien-button white-btn" href="cartList">View cart</a>
                                                         <a class="obrien-button white-btn" href="checkout.html">Checkout</a>
                                                     </div>
                                                 </div>
@@ -290,11 +287,7 @@
                                                     <div class="menu-colum">
                                                         <ul>
                                                             <li><span class="mega-menu-text">Shop</span></li>
-                                                            <li><a href="shop.html">Shop Left Sidebar</a></li>
-                                                            <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                                            <li><a href="shop-list-left.html">Shop List Left Sidebar</a></li>
-                                                            <li><a href="shop-list-right.html">Shop List Right Sidebar</a></li>
-                                                            <li><a href="shop-fullwidth.html">Shop Full Width</a></li>
+                                                   			<li><a href="productList">상품리스트</a></li>
                                                         </ul>
                                                     </div>
                                                     <div class="menu-colum">
@@ -312,7 +305,7 @@
                                                             <li><span class="mega-menu-text">Others</span></li>
                                                             <li><a href="error-404.html">Error 404</a></li>
                                                             <li><a href="compare.html">Compare Page</a></li>
-                                                            <li><a href="cart.html">Cart Page</a></li>
+                                                            <li><a href="cartList">Cart Page</a></li>
                                                             <li><a href="checkout.html">Checkout Page</a></li>
                                                             <li><a href="wishlist.html">Wishlist Page</a></li>
                                                         </ul>
@@ -348,12 +341,12 @@
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="about-us.html">
+                                                <a href="aboutUs">
                                                     <span class="menu-text"> About</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="contact-us.html">
+                                                <a href="contactUs">
                                                     <span class="menu-text">Contact</span>
                                                 </a>
                                             </li>
@@ -385,10 +378,10 @@
                                                 <div class="cart-item-wrapper dropdown-sidemenu dropdown-hover-2">
                                                     <div class="single-cart-item">
                                                         <div class="cart-img">
-                                                            <a href="cart.html"><img src="assets/images/cart/1.jpg" alt=""></a>
+                                                            <a href="cartList"><img src="assets/images/cart/1.jpg" alt=""></a>
                                                         </div>
                                                         <div class="cart-text">
-                                                            <h5 class="title"><a href="cart.html">11. Product with video - navy</a></h5>
+                                                            <h5 class="title"><a href="cartList">11. Product with video - navy</a></h5>
                                                             <div class="cart-text-btn">
                                                                 <div class="cart-qty">
                                                                     <span>1×</span>
@@ -400,10 +393,10 @@
                                                     </div>
                                                     <div class="single-cart-item">
                                                         <div class="cart-img">
-                                                            <a href="cart.html"><img src="assets/images/cart/2.jpg" alt=""></a>
+                                                            <a href="cartList"><img src="assets/images/cart/2.jpg" alt=""></a>
                                                         </div>
                                                         <div class="cart-text">
-                                                            <h5 class="title"><a href="cart.html" title="10. This is the large title for testing large title and there is an image for testing - white">10. This is the large title for testing...</a></h5>
+                                                            <h5 class="title"><a href="cartList" title="10. This is the large title for testing large title and there is an image for testing - white">10. This is the large title for testing...</a></h5>
                                                             <div class="cart-text-btn">
                                                                 <div class="cart-qty">
                                                                     <span>1×</span>
@@ -415,10 +408,10 @@
                                                     </div>
                                                     <div class="single-cart-item">
                                                         <div class="cart-img">
-                                                            <a href="cart.html"><img src="assets/images/cart/3.jpg" alt=""></a>
+                                                            <a href="cartList"><img src="assets/images/cart/3.jpg" alt=""></a>
                                                         </div>
                                                         <div class="cart-text">
-                                                            <h5 class="title"><a href="cart.html">1. New and sale badge product - s / red</a></h5>
+                                                            <h5 class="title"><a href="cartList">1. New and sale badge product - s / red</a></h5>
                                                             <div class="cart-text-btn">
                                                                 <div class="cart-qty">
                                                                     <span>1×</span>
@@ -433,7 +426,7 @@
                                                         <h5>$166.00</h5>
                                                     </div>
                                                     <div class="cart-links d-flex justify-content-center">
-                                                        <a class="obrien-button white-btn" href="cart.html">View cart</a>
+                                                        <a class="obrien-button white-btn" href="cartList">View cart</a>
                                                         <a class="obrien-button white-btn" href="checkout.html">Checkout</a>
                                                     </div>
                                                 </div>
@@ -483,11 +476,8 @@
                                         <ul class="megamenu dropdown">
                                             <li class="mega-title has-children"><a href="#">Shop Layouts</a>
                                                 <ul class="dropdown">
-                                                    <li><a href="shop.html">Shop Left Sidebar</a></li>
-                                                    <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                                    <li><a href="shop-list-left.html">Shop List Left Sidebar</a></li>
-                                                    <li><a href="shop-list-right.html">Shop List Right Sidebar</a></li>
-                                                    <li><a href="shop-fullwidth.html">Shop Full Width</a></li>
+                                                    
+                                                    <li><a href="productList">상품리스트</a></li>
                                                 </ul>
                                             </li>
                                             <li class="mega-title has-children"><a href="#">Product Details</a>
@@ -503,7 +493,7 @@
                                                 <ul class="dropdown">
                                                     <li><a href="error404.html">Error 404</a></li>
                                                     <li><a href="compare.html">Compare Page</a></li>
-                                                    <li><a href="cart.html">Cart Page</a></li>
+                                                    <li><a href="cartList">Cart Page</a></li>
                                                     <li><a href="checkout.html">Checkout Page</a></li>
                                                     <li><a href="wishlist.html">Wish List Page</a></li>
                                                 </ul>
@@ -529,8 +519,8 @@
                                             <li><a href="login-register.html">login &amp; register</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="about-us.html">About Us</a></li>
-                                    <li><a href="contact-us.html">Contact</a></li>
+                                    <li><a href="aboutUs">About Us</a></li>
+                                    <li><a href="contactUs">Contact</a></li>
                                 </ul>
                             </nav>
                             <!-- mobile menu navigation end -->
@@ -661,7 +651,7 @@
                                 <p class="desc-content">Call our support 24/7 at 01234-567-890</p>
                             </div>
                             <div class="support-button d-flex align-items-center">
-                                <a class="obrien-button primary-btn" href="contact-us.html">Contact now</a>
+                                <a class="obrien-button primary-btn" href="contactUs">Contact now</a>
                             </div>
                         </div>
                     </div>
@@ -717,11 +707,11 @@
                             <div class="single-footer-widget">
                                 <h2 class="widget-title">Information</h2>
                                 <ul class="widget-list">
-                                    <li><a href="about-us.html">Our Company</a></li>
-                                    <li><a href="contact-us.html">Contact Us</a></li>
-                                    <li><a href="about-us.html">Our Services</a></li>
-                                    <li><a href="about-us.html">Why We?</a></li>
-                                    <li><a href="about-us.html">Careers</a></li>
+                                    <li><a href="aboutUs">Our Company</a></li>
+                                    <li><a href="contactUs">Contact Us</a></li>
+                                    <li><a href="aboutUs">Our Services</a></li>
+                                    <li><a href="aboutUs">Why We?</a></li>
+                                    <li><a href="aboutUs">Careers</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -729,11 +719,11 @@
                             <div class="single-footer-widget">
                                 <h2 class="widget-title">Quicklink</h2>
                                 <ul class="widget-list">
-                                    <li><a href="about-us.html">About</a></li>
+                                    <li><a href="aboutUs">About</a></li>
                                     <li><a href="blog.html">Blog</a></li>
                                     <li><a href="shop.html">Shop</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
-                                    <li><a href="contact-us.html">Contact</a></li>
+                                    <li><a href="cartList">Cart</a></li>
+                                    <li><a href="contactUs">Contact</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -741,11 +731,11 @@
                             <div class="single-footer-widget">
                                 <h2 class="widget-title">Support</h2>
                                 <ul class="widget-list">
-                                    <li><a href="contact-us.html">Online Support</a></li>
-                                    <li><a href="contact-us.html">Shipping Policy</a></li>
-                                    <li><a href="contact-us.html">Return Policy</a></li>
-                                    <li><a href="contact-us.html">Privacy Policy</a></li>
-                                    <li><a href="contact-us.html">Terms of Service</a></li>
+                                    <li><a href="contactUs">Online Support</a></li>
+                                    <li><a href="contactUs">Shipping Policy</a></li>
+                                    <li><a href="contactUs">Return Policy</a></li>
+                                    <li><a href="contactUs">Privacy Policy</a></li>
+                                    <li><a href="contactUs">Terms of Service</a></li>
                                 </ul>
                             </div>
                         </div>
