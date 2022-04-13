@@ -81,73 +81,50 @@
 									class="col-lg-8 col-xl-7 position-static d-none d-lg-block col-custom">
 									<nav class="main-nav d-flex justify-content-center">
 										<ul class="nav">
-												<li><a href="/"> <span
-													class="menu-text">Home</span>
+												<li><a href="/"> <span class="menu-text">
+														Home</span>
 											</a></li>
-											<li><a href="shop.html"> <span class="menu-text">Shop</span>
-													<i class="fa fa-angle-down"></i>
+											<li><a class="active" href="shop.html"> <span
+													class="menu-text">아트스타일</span> <i class="fa fa-angle-down"></i>
 											</a>
 												<div class="mega-menu dropdown-hover">
 													<div class="menu-colum">
 														<ul>
-															<li><span class="mega-menu-text">Shop</span></li>
-															
+															<li><span class="mega-menu-text">계절</span></li>
+															<li><a href="/productList?category_name=봄">봄</a></li>
+															<li><a href="/productList?category_name=여름">여름</a></li>
+															<li><a href="/productList?category_name=가을">가을</a></li>
+															<li><a href="/productList?category_name=겨울">겨울</a></li>
+
 															<li><a href="productList">상품리스트</a></li>
 														</ul>
 													</div>
-													<div class="menu-colum">
-														<ul>
-															<li><span class="mega-menu-text">Product</span></li>
-															<li><a href="productDetails?product_id=${dto.product_id}"">Single
-																	Product</a></li>
-															<li><a href="variable-product-details.html">Variable
-																	Product</a></li>
-															<li><a href="external-product-details.html">External
-																	Product</a></li>
-															<li><a href="gallery-product-details.html">Gallery
-																	Product</a></li>
-															<li><a href="countdown-product-details.html">Countdown
-																	Product</a></li>
-														</ul>
-													</div>
-													<div class="menu-colum">
-														<ul>
-															<li><span class="mega-menu-text">Others</span></li>
-															<li><a href="error-404.html">Error 404</a></li>
-															<li><a href="compare.html">Compare Page</a></li>
-															<li><a href="cartList">Cart Page</a></li>
-															<li><a href="checkout.html">Checkout Page</a></li>
-															<li><a href="wishlist.html">Wishlist Page</a></li>
-														</ul>
-													</div>
+
 												</div></li>
+												
+												
 											<li><a href="blog-details-fullwidth.html"> <span
-													class="menu-text"> Blog</span> <i class="fa fa-angle-down"></i>
+													class="menu-text"> 추천 상품</span> <i class="fa fa-angle-down"></i>
 											</a>
 												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="blog.html">Blog Left Sidebar</a></li>
-													<li><a href="blog-list-right-sidebar.html">Blog
-															List Right Sidebar</a></li>
-													<li><a href="blog-list-fullwidth.html">Blog List
-															Fullwidth</a></li>
-													<li><a href="blog-grid.html">Blog Grid Page</a></li>
-													<li><a href="blog-grid-right-sidebar.html">Blog
-															Grid Right Sidebar</a></li>
-													<li><a href="blog-grid-fullwidth.html">Blog Grid
-															Fullwidth</a></li>
-													<li><a href="blog-details-sidebar.html">Blog
-															Details Sidebar</a></li>
-													<li><a href="blog-details-fullwidth.html">Blog
-															Details Fullwidth</a></li>
+													<li><a href="blog.html">인기 상품</a></li>
 												</ul></li>
-											<li><a href="#"> <span class="menu-text">
-														Pages</span> <i class="fa fa-angle-down"></i>
+											<li><a href="blog-details-fullwidth.html"> <span
+													class="menu-text">상품 목록</span> <i class="fa fa-angle-down"></i>
+											</a>
+												<ul class="dropdown-submenu dropdown-hover">
+													<li><a href="blog.html">일러스트</a></li>
+													<li><a href="blog.html">풍경화</a></li>
+													<li><a href="blog.html">캘리그라피</a></li>
+												</ul></li>
+											<li><a href="#"> <span class="menu-text">Page</span>
+													<i class="fa fa-angle-down"></i>
 											</a>
 												<ul class="dropdown-submenu dropdown-hover">
 													<li><a href="frequently-questions.html">FAQ</a></li>
 													<li><a href="myAccount">My Account</a></li>
-													<li><a href="loginForm">Login</a></li>
-													<li><a href="memberForm">Register</a></li>
+													<li><a href="loginForm">로그인</a></li>
+													<li><a href="memberForm">회원가입</a></li>
 												</ul></li>
 											<li><a href="aboutUs"> <span class="menu-text">
 														About</span>
@@ -498,64 +475,54 @@
 							<!-- mobile menu navigation start -->
 							<nav>
 								<ul class="mobile-menu">
-									<li><a href="/"> <span
-													class="menu-text">Home</span>
+									<li><a href="/"> <span class="menu-text">
+														Home</span>
 											</a></li>
-									<li class="menu-item-has-children"><a href="#">Shop</a>
-										<ul class="megamenu dropdown">
-											<li class="mega-title has-children"><a href="#">Shop
-													Layouts</a>
-												<ul class="dropdown">
-													
-													<li><a href="productList">상품리스트</a></li>
+											<li><a class="active" href="shop.html"> <span
+													class="menu-text">아트스타일</span> <i class="fa fa-angle-down"></i>
+											</a>
+												<div class="mega-menu dropdown-hover">
+													<div class="menu-colum">
+														<ul>
+															<li><span class="mega-menu-text">계절</span></li>
+															<li><a href="/productList?category_name=봄">봄</a></li>
+															<li><a href="/productList?category_name=여름">여름</a></li>
+															<li><a href="/productList?category_name=가을">가을</a></li>
+															<li><a href="/productList?category_name=겨울">겨울</a></li>
+
+															<li><a href="productList">상품리스트</a></li>
+														</ul>
+													</div>
+
+												</div></li>
+												
+												
+											<li><a href="blog-details-fullwidth.html"> <span
+													class="menu-text"> 추천 상품</span> <i class="fa fa-angle-down"></i>
+											</a>
+												<ul class="dropdown-submenu dropdown-hover">
+													<li><a href="blog.html">인기 상품</a></li>
 												</ul></li>
-											<li class="mega-title has-children"><a href="#">Product
-													Details</a>
-												<ul class="dropdown">
-													<li><a href="productDetails?product_id=${dto.product_id}"">Single Product
-															Details</a></li>
-													<li><a href="variable-product-details.html">Variable
-															Product Details</a></li>
-													<li><a href="external-product-details.html">External
-															Product Details</a></li>
-													<li><a href="gallery-product-details.html">Gallery
-															Product Details</a></li>
-													<li><a href="countdown-product-details.html">Countdown
-															Product Details</a></li>
+											<li><a href="blog-details-fullwidth.html"> <span
+													class="menu-text">상품 목록</span> <i class="fa fa-angle-down"></i>
+											</a>
+												<ul class="dropdown-submenu dropdown-hover">
+													<li><a href="blog.html">일러스트</a></li>
+													<li><a href="blog.html">풍경화</a></li>
+													<li><a href="blog.html">캘리그라피</a></li>
 												</ul></li>
-											<li class="mega-title has-children"><a href="#">Others</a>
-												<ul class="dropdown">
-													<li><a href="error404.html">Error 404</a></li>
-													<li><a href="compare.html">Compare Page</a></li>
-													<li><a href="cartList">Cart Page</a></li>
-													<li><a href="checkout.html">Checkout Page</a></li>
-													<li><a href="wishlist.html">Wish List Page</a></li>
+											<li><a href="#"> <span class="menu-text">Page</span>
+													<i class="fa fa-angle-down"></i>
+											</a>
+												<ul class="dropdown-submenu dropdown-hover">
+													<li><a href="frequently-questions.html">FAQ</a></li>
+													<li><a href="myAccount">My Account</a></li>
+													<li><a href="loginForm">로그인</a></li>
+													<li><a href="memberForm">회원가입</a></li>
 												</ul></li>
-										</ul></li>
-									<li class="menu-item-has-children "><a href="#">Blog</a>
-										<ul class="dropdown">
-											<li><a href="blog.html">Blog Left Sidebar</a></li>
-											<li><a href="blog-list-right-sidebar.html">Blog List
-													Right Sidebar</a></li>
-											<li><a href="blog-list-fullwidth.html">Blog List
-													Fullwidth</a></li>
-											<li><a href="blog-grid.html">Blog Grid Page</a></li>
-											<li><a href="blog-grid-right-sidebar.html">Blog Grid
-													Right Sidebar</a></li>
-											<li><a href="blog-grid-fullwidth.html">Blog Grid
-													Fullwidth</a></li>
-											<li><a href="blog-details-sidebar.html">Blog Details
-													Sidebar Page</a></li>
-											<li><a href="blog-details-fullwidth.html">Blog
-													Details Fullwidth Page</a></li>
-										</ul></li>
-									<li class="menu-item-has-children "><a href="#">Pages</a>
-										<ul class="dropdown">
-											<li><a href="frequently-questions.html">FAQ</a></li>
-											<li><a href="myAccount">My Account</a></li>
-											<li><a href="loginForm">login &amp; register</a></li>
-										</ul></li>
-									<li><a href="aboutUs">About Us</a></li>
+											<li><a href="aboutUs"> <span class="menu-text">
+														About</span>
+											</a></li>
 									<li><a href="contactUs">Contact</a></li>
 								</ul>
 							</nav>
@@ -692,7 +659,7 @@
                                 <div class="single-product position-relative">
                                     <div class="product-image">
                                         <a class="d-block" href="productDetails?product_id=${dto.product_id}"">
-                                            <img src="assets/images/${dto.product_img}.jpg" alt="" class="product-image-1 w-100">
+                                            <img src="assets/images/${dto.product_img}.png" alt="" class="product-image-1 w-100">
                                             <%-- <img src="assets/images/${dto.product_img}_on.jpg" alt="" class="product-image-2 position-absolute w-100"> --%>
                                         </a>
                                     </div>
@@ -846,7 +813,7 @@
 								<div class="single-product position-relative">
 									<div class="product-image">
 										<a class="d-block" href="productDetails?product_id=${dto.product_id}""> <img
-											src="assets/images/product/1.jpg" alt=""
+											src="assets/images/product/1.png" alt=""
 											class="product-image-1 w-100"> <img
 											src="assets/images/product/2.jpg" alt=""
 											class="product-image-2 position-absolute w-100">
@@ -1348,7 +1315,7 @@
 						<div class="row">
 							<div class="col-lg-6 col-md-6 text-center">
 								<div class="product-image">
-									<img src="assets/images/product/1.jpg" alt="Product Image">
+									<img src="assets/images/product/1.png" alt="Product Image">
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6">

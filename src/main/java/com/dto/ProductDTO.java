@@ -34,4 +34,8 @@ public class ProductDTO {
 	private String product_sub_img_3;
 	private String product_sub_img_4;
 	private String product_description;
+	
+	//카트 쪽 
+	private int cart_id;
+	private int cart_quantity;
 }

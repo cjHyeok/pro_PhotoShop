@@ -22,6 +22,7 @@ public class ProductController {
 	@RequestMapping("/productList") // 상품리스트 값 없을 때 나오게 하는거
 	public ModelAndView productList(@RequestParam(value = "category_name", required = false) String category_name) {
 		List<ProductDTO> plist = null;
+		System.out.println("category_name =" + category_name);
 		if (category_name == null) {
 			plist = pservice.productListAll();
 		} else {
@@ -50,21 +51,20 @@ public class ProductController {
 
 	}
 
-	
-	
-
 	@RequestMapping("/productDetails") // 상품 상세페이지
 	@ModelAttribute("productDetails")
 	public ProductDTO productDetails(@RequestParam Map<String, String> map) {
-		System.out.println("map 1=="+ map);
-		
-		
+		System.out.println("map 1==" + map);
+
 		ProductDTO pdto = pservice.productDetails(map);
-		
+
 		System.out.println("pD =" + pdto);
-		
-		
-		
+
 		return pdto;
 	}
+
+	
+	
+	
+
 }

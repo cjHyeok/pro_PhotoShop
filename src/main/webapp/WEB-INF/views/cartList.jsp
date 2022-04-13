@@ -2,6 +2,11 @@
 <html class="no-js" lang="en">
 
 <head>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Obrien - Organic Food HTML5 Template</title>
@@ -40,6 +45,32 @@
     <!-- <link rel="stylesheet" href="assets/css/style.min.css"> -->
 </head>
 
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+		$(".pro-remove").on("click", function() {
+			console.log("삭제버튼 클릭 ");
+			var product_id = $(this).attr("data-num");
+			var xxx = $(this);
+			$.ajax({
+				url : "loginCheck/cartDelete",
+				type : "get",
+				dataType : "text",
+				data : {
+					product_id : product_id
+				},
+				success : function(data, status, xhr) {
+					console.log("success");
+					//dom삭제 
+					/*xxx.parents().filter("tr").remove();
+					totalXXX(); //총합 다시 구하기 */
+				},
+				error : function(xhr, status, error) {
+					console.log(error);
+				}
+			});//end ajax
+		});//end event
+</script>
 <body>
 
     <div class="contact-wrapper">
@@ -52,7 +83,7 @@
                             <div class="row align-items-center">
                                 <div class="col-lg-2 col-xl-2 col-sm-6 col-6 col-custom">
                                     <div class="header-logo d-flex align-items-center">
-                                        <a href="index.html">
+                                        <a href="/">
                                             <img class="img-full" src="assets/images/logo/logo.png" alt="Header Logo">
                                         </a>
                                     </div>
@@ -60,89 +91,54 @@
                                 <div class="col-lg-8 col-xl-7 position-static d-none d-lg-block col-custom">
                                     <nav class="main-nav d-flex justify-content-center">
                                         <ul class="nav">
-                                            <li>
-                                                <a href="index.html">
-                                                    <span class="menu-text"> Home</span>
-                                                    <i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-submenu dropdown-hover">
-                                                    <li><a href="index.html">Home Page - 1</a></li>
-                                                    <li><a href="index-2.html">Home Page - 2</a></li>
-                                                    <li><a href="index-3.html">Home Page - 3</a></li>
-                                                    <li><a href="index-4.html">Home Page - 4</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="active" href="shop.html">
-                                                    <span class="menu-text">Shop</span>
-                                                    <i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <div class="mega-menu dropdown-hover">
-                                                    <div class="menu-colum">
-                                                        <ul>
-                                                            <li><span class="mega-menu-text">Shop</span></li>
-                                                            <li><a href="shop.html">Shop Left Sidebar</a></li>
-                                                            <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                                            <li><a href="shop-list-left.html">Shop List Left Sidebar</a></li>
-                                                            <li><a href="shop-list-right.html">Shop List Right Sidebar</a></li>
-                                                            <li><a href="shop-fullwidth.html">Shop Full Width</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="menu-colum">
-                                                        <ul>
-                                                            <li><span class="mega-menu-text">Product</span></li>
-                                                            <li><a href="product-details.html">Single Product</a></li>
-                                                            <li><a href="variable-product-details.html">Variable Product</a></li>
-                                                            <li><a href="external-product-details.html">External Product</a></li>
-                                                            <li><a href="gallery-product-details.html">Gallery Product</a></li>
-                                                            <li><a href="countdown-product-details.html">Countdown Product</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="menu-colum">
-                                                        <ul>
-                                                            <li><span class="mega-menu-text">Others</span></li>
-                                                            <li><a href="error-404.html">Error 404</a></li>
-                                                            <li><a href="compare.html">Compare Page</a></li>
-                                                            <li><a class="active" href="cartList">Cart Page</a></li>
-                                                            <li><a href="checkout.html">Checkout Page</a></li>
-                                                            <li><a href="wishlist.html">Wishlist Page</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <a href="blog-details-fullwidth.html">
-                                                    <span class="menu-text"> Blog</span>
-                                                    <i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-submenu dropdown-hover">
-                                                    <li><a href="blog.html">Blog Left Sidebar</a></li>
-                                                    <li><a href="blog-list-right-sidebar.html">Blog List Right Sidebar</a></li>
-                                                    <li><a href="blog-list-fullwidth.html">Blog List Fullwidth</a></li>
-                                                    <li><a href="blog-grid.html">Blog Grid Page</a></li>
-                                                    <li><a href="blog-grid-right-sidebar.html">Blog Grid Right Sidebar</a></li>
-                                                    <li><a href="blog-grid-fullwidth.html">Blog Grid Fullwidth</a></li>
-                                                    <li><a href="blog-details-sidebar.html">Blog Details Sidebar</a></li>
-                                                    <li><a href="blog-details-fullwidth.html">Blog Details Fullwidth</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <span class="menu-text"> Pages</span>
-                                                    <i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-submenu dropdown-hover">
-                                                    <li><a href="frequently-questions.html">FAQ</a></li>
-                                                    <li><a href="my-account.html">My Account</a></li>
-                                                    <li><a href="login.html">Login</a></li>
-                                                    <li><a href="register.html">Register</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="about-us.html">
-                                                    <span class="menu-text"> About</span>
-                                                </a>
-                                            </li>
+                                            <li><a href="/"> <span class="menu-text">
+														Home</span>
+											</a></li>
+											<li><a class="active" href="shop.html"> <span
+													class="menu-text">아트스타일</span> <i class="fa fa-angle-down"></i>
+											</a>
+												<div class="mega-menu dropdown-hover">
+													<div class="menu-colum">
+														<ul>
+															<li><span class="mega-menu-text">계절</span></li>
+															<li><a href="/productList?category_name=봄">봄</a></li>
+															<li><a href="/productList?category_name=여름">여름</a></li>
+															<li><a href="/productList?category_name=가을">가을</a></li>
+															<li><a href="/productList?category_name=겨울">겨울</a></li>
+
+															<li><a href="productList">상품리스트</a></li>
+														</ul>
+													</div>
+
+												</div></li>
+												
+												
+											<li><a href="blog-details-fullwidth.html"> <span
+													class="menu-text"> 추천 상품</span> <i class="fa fa-angle-down"></i>
+											</a>
+												<ul class="dropdown-submenu dropdown-hover">
+													<li><a href="blog.html">인기 상품</a></li>
+												</ul></li>
+											<li><a href="blog-details-fullwidth.html"> <span
+													class="menu-text">상품 목록</span> <i class="fa fa-angle-down"></i>
+											</a>
+												<ul class="dropdown-submenu dropdown-hover">
+													<li><a href="blog.html">일러스트</a></li>
+													<li><a href="blog.html">풍경화</a></li>
+													<li><a href="blog.html">캘리그라피</a></li>
+												</ul></li>
+											<li><a href="#"> <span class="menu-text">Page</span>
+													<i class="fa fa-angle-down"></i>
+											</a>
+												<ul class="dropdown-submenu dropdown-hover">
+													<li><a href="frequently-questions.html">FAQ</a></li>
+													<li><a href="myAccount">My Account</a></li>
+													<li><a href="loginForm">로그인</a></li>
+													<li><a href="memberForm">회원가입</a></li>
+												</ul></li>
+											<li><a href="aboutUs"> <span class="menu-text">
+														About</span>
+											</a></li>
                                             <li>
                                                 <a href="contact-us.html">
                                                     <span class="menu-text">Contact</span>
@@ -155,22 +151,10 @@
                                     <div class="header-right-area main-nav">
                                         <ul class="nav">
                                             <li class="login-register-wrap d-none d-xl-flex">
-                                                <span><a href="login.html">Login</a></span>
-                                                <span><a href="register.html">Register</a></span>
+                                                <span><a href="loginForm">Login</a></span>
+                                                <span><a href="memberForm">Register</a></span>
                                             </li>
-                                            <li class="sidemenu-wrap d-none d-lg-flex">
-                                                <a href="#">USD <i class="fa fa-caret-down"></i> </a>
-                                                <ul class="dropdown-sidemenu dropdown-hover-2 dropdown-language">
-                                                    <li><a href="#">USD - US Dollar</a></li>
-                                                    <li><a href="#">EUR - Euro</a></li>
-                                                    <li><a href="#">GBP - British Pound</a></li>
-                                                    <li><a href="#">INR - Indian Rupee</a></li>
-                                                    <li><a href="#">BDT - Bangladesh Taka</a></li>
-                                                    <li><a href="#">JPY - Japan Yen</a></li>
-                                                    <li><a href="#">CAD - Canada Dollar</a></li>
-                                                    <li><a href="#">AUD - Australian Dollar</a></li>
-                                                </ul>
-                                            </li>
+                                         
                                             <li class="minicart-wrap">
                                                 <a href="#" class="minicart-btn toolbar-btn">
                                                     <i class="ion-bag"></i>
@@ -179,16 +163,16 @@
                                                 <div class="cart-item-wrapper dropdown-sidemenu dropdown-hover-2">
                                                     <div class="single-cart-item">
                                                         <div class="cart-img">
-                                                            <a href="cartList"><img src="assets/images/cart/1.jpg" alt=""></a>
+                                                            <a href="cartList"><img src="assets/images/cart/1.png" alt=""></a>
                                                         </div>
                                                         <div class="cart-text">
                                                             <h5 class="title"><a href="cartList">11. Product with video - navy</a></h5>
                                                             <div class="cart-text-btn">
                                                                 <div class="cart-qty">
-                                                                    <span>1�</span>
+                                                                    <span>1×</span>
                                                                     <span class="cart-price">$98.00</span>
                                                                 </div>
-                                                                <button type="button"><i class="ion-trash-b"></i></button>
+                                                                <button type="button" ><i class="ion-trash-b"></i></button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -200,7 +184,7 @@
                                                             <h5 class="title"><a href="cartList" title="10. This is the large title for testing large title and there is an image for testing - white">10. This is the large title for testing...</a></h5>
                                                             <div class="cart-text-btn">
                                                                 <div class="cart-qty">
-                                                                    <span>1�</span>
+                                                                    <span>1×</span>
                                                                     <span class="cart-price">$98.00</span>
                                                                 </div>
                                                                 <button type="button"><i class="ion-trash-b"></i></button>
@@ -215,7 +199,7 @@
                                                             <h5 class="title"><a href="cartList">1. New and sale badge product - s / red</a></h5>
                                                             <div class="cart-text-btn">
                                                                 <div class="cart-qty">
-                                                                    <span>1�</span>
+                                                                    <span>1×</span>
                                                                     <span class="cart-price">$98.00</span>
                                                                 </div>
                                                                 <button type="button"><i class="ion-trash-b"></i></button>
@@ -254,7 +238,7 @@
                             <div class="row align-items-center">
                                 <div class="col-lg-2 col-xl-2 col-sm-6 col-6 col-custom">
                                     <div class="header-logo">
-                                        <a href="index.html">
+                                        <a href="/">
                                             <img class="img-full" src="assets/images/logo/logo.png" alt="Header Logo">
                                         </a>
                                     </div>
@@ -263,88 +247,54 @@
                                     <nav class="main-nav d-flex justify-content-center">
                                         <ul class="nav">
                                             <li>
-                                                <a href="index.html">
-                                                    <span class="menu-text"> Home</span>
-                                                    <i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-submenu dropdown-hover">
-                                                    <li><a href="index.html">Home Page - 1</a></li>
-                                                    <li><a href="index-2.html">Home Page - 2</a></li>
-                                                    <li><a href="index-3.html">Home Page - 3</a></li>
-                                                    <li><a href="index-4.html">Home Page - 4</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="active" href="shop.html">
-                                                    <span class="menu-text">Shop</span>
-                                                    <i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <div class="mega-menu dropdown-hover">
-                                                    <div class="menu-colum">
-                                                        <ul>
-                                                            <li><span class="mega-menu-text">Shop</span></li>
-                                                            <li><a href="shop.html">Shop Left Sidebar</a></li>
-                                                            <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                                            <li><a href="shop-list-left.html">Shop List Left Sidebar</a></li>
-                                                            <li><a href="shop-list-right.html">Shop List Right Sidebar</a></li>
-                                                            <li><a href="shop-fullwidth.html">Shop Full Width</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="menu-colum">
-                                                        <ul>
-                                                            <li><span class="mega-menu-text">Product</span></li>
-                                                            <li><a href="product-details.html">Single Product</a></li>
-                                                            <li><a href="variable-product-details.html">Variable Product</a></li>
-                                                            <li><a href="external-product-details.html">External Product</a></li>
-                                                            <li><a href="gallery-product-details.html">Gallery Product</a></li>
-                                                            <li><a href="countdown-product-details.html">Countdown Product</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="menu-colum">
-                                                        <ul>
-                                                            <li><span class="mega-menu-text">Others</span></li>
-                                                            <li><a href="error-404.html">Error 404</a></li>
-                                                            <li><a href="compare.html">Compare Page</a></li>
-                                                            <li><a class="active" href="cartList">Cart Page</a></li>
-                                                            <li><a href="checkout.html">Checkout Page</a></li>
-                                                            <li><a href="wishlist.html">Wishlist Page</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <a href="blog-details-fullwidth.html">
-                                                    <span class="menu-text"> Blog</span>
-                                                    <i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-submenu dropdown-hover">
-                                                    <li><a href="blog.html">Blog Left Sidebar</a></li>
-                                                    <li><a href="blog-list-right-sidebar.html">Blog List Right Sidebar</a></li>
-                                                    <li><a href="blog-list-fullwidth.html">Blog List Fullwidth</a></li>
-                                                    <li><a href="blog-grid.html">Blog Grid Page</a></li>
-                                                    <li><a href="blog-grid-right-sidebar.html">Blog Grid Right Sidebar</a></li>
-                                                    <li><a href="blog-grid-fullwidth.html">Blog Grid Fullwidth</a></li>
-                                                    <li><a href="blog-details-sidebar.html">Blog Details Sidebar</a></li>
-                                                    <li><a href="blog-details-fullwidth.html">Blog Details Fullwidth</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <span class="menu-text"> Pages</span>
-                                                    <i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-submenu dropdown-hover">
-                                                    <li><a href="frequently-questions.html">FAQ</a></li>
-                                                    <li><a href="my-account.html">My Account</a></li>
-                                                    <li><a href="login.html">Login</a></li>
-                                                    <li><a href="register.html">Register</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="about-us.html">
-                                                    <span class="menu-text"> About</span>
-                                                </a>
-                                            </li>
+                                                <li><a href="/"> <span class="menu-text">
+														Home</span>
+											</a></li>
+											<li><a class="active" href="shop.html"> <span
+													class="menu-text">아트스타일</span> <i class="fa fa-angle-down"></i>
+											</a>
+												<div class="mega-menu dropdown-hover">
+													<div class="menu-colum">
+														<ul>
+															<li><span class="mega-menu-text">계절</span></li>
+															<li><a href="/productList?category_name=봄">봄</a></li>
+															<li><a href="/productList?category_name=여름">여름</a></li>
+															<li><a href="/productList?category_name=가을">가을</a></li>
+															<li><a href="/productList?category_name=겨울">겨울</a></li>
+
+															<li><a href="productList">상품리스트</a></li>
+														</ul>
+													</div>
+
+												</div></li>
+												
+												
+											<li><a href="blog-details-fullwidth.html"> <span
+													class="menu-text"> 추천 상품</span> <i class="fa fa-angle-down"></i>
+											</a>
+												<ul class="dropdown-submenu dropdown-hover">
+													<li><a href="blog.html">인기 상품</a></li>
+												</ul></li>
+											<li><a href="blog-details-fullwidth.html"> <span
+													class="menu-text">상품 목록</span> <i class="fa fa-angle-down"></i>
+											</a>
+												<ul class="dropdown-submenu dropdown-hover">
+													<li><a href="blog.html">일러스트</a></li>
+													<li><a href="blog.html">풍경화</a></li>
+													<li><a href="blog.html">캘리그라피</a></li>
+												</ul></li>
+											<li><a href="#"> <span class="menu-text">Page</span>
+													<i class="fa fa-angle-down"></i>
+											</a>
+												<ul class="dropdown-submenu dropdown-hover">
+													<li><a href="frequently-questions.html">FAQ</a></li>
+													<li><a href="myAccount">My Account</a></li>
+													<li><a href="loginForm">로그인</a></li>
+													<li><a href="memberForm">회원가입</a></li>
+												</ul></li>
+											<li><a href="aboutUs"> <span class="menu-text">
+														About</span>
+											</a></li>
                                             <li>
                                                 <a href="contact-us.html">
                                                     <span class="menu-text">Contact</span>
@@ -357,22 +307,10 @@
                                     <div class="header-right-area main-nav">
                                         <ul class="nav">
                                             <li class="login-register-wrap d-none d-xl-flex">
-                                                <span><a href="login.html">Login</a></span>
-                                                <span><a href="register.html">Register</a></span>
+                                                <span><a href="loginForm">Login</a></span>
+                                                <span><a href="memberForm">Register</a></span>
                                             </li>
-                                            <li class="sidemenu-wrap d-none d-lg-flex">
-                                                <a href="#">USD <i class="fa fa-caret-down"></i> </a>
-                                                <ul class="dropdown-sidemenu dropdown-hover-2 dropdown-language">
-                                                    <li><a href="#">USD - US Dollar</a></li>
-                                                    <li><a href="#">EUR - Euro</a></li>
-                                                    <li><a href="#">GBP - British Pound</a></li>
-                                                    <li><a href="#">INR - Indian Rupee</a></li>
-                                                    <li><a href="#">BDT - Bangladesh Taka</a></li>
-                                                    <li><a href="#">JPY - Japan Yen</a></li>
-                                                    <li><a href="#">CAD - Canada Dollar</a></li>
-                                                    <li><a href="#">AUD - Australian Dollar</a></li>
-                                                </ul>
-                                            </li>
+                                            
                                             <li class="minicart-wrap">
                                                 <a href="#" class="minicart-btn toolbar-btn">
                                                     <i class="ion-bag"></i>
@@ -381,13 +319,13 @@
                                                 <div class="cart-item-wrapper dropdown-sidemenu dropdown-hover-2">
                                                     <div class="single-cart-item">
                                                         <div class="cart-img">
-                                                            <a href="cartList"><img src="assets/images/cart/1.jpg" alt=""></a>
+                                                            <a href="cartList"><img src="assets/images/cart/1.png" alt=""></a>
                                                         </div>
                                                         <div class="cart-text">
                                                             <h5 class="title"><a href="cartList">11. Product with video - navy</a></h5>
                                                             <div class="cart-text-btn">
                                                                 <div class="cart-qty">
-                                                                    <span>1�</span>
+                                                                    <span>1×</span>
                                                                     <span class="cart-price">$98.00</span>
                                                                 </div>
                                                                 <button type="button"><i class="ion-trash-b"></i></button>
@@ -402,7 +340,7 @@
                                                             <h5 class="title"><a href="cartList" title="10. This is the large title for testing large title and there is an image for testing - white">10. This is the large title for testing...</a></h5>
                                                             <div class="cart-text-btn">
                                                                 <div class="cart-qty">
-                                                                    <span>1�</span>
+                                                                    <span>1×</span>
                                                                     <span class="cart-price">$98.00</span>
                                                                 </div>
                                                                 <button type="button"><i class="ion-trash-b"></i></button>
@@ -417,7 +355,7 @@
                                                             <h5 class="title"><a href="cartList">1. New and sale badge product - s / red</a></h5>
                                                             <div class="cart-text-btn">
                                                                 <div class="cart-qty">
-                                                                    <span>1�</span>
+                                                                    <span>1×</span>
                                                                     <span class="cart-price">$98.00</span>
                                                                 </div>
                                                                 <button type="button"><i class="ion-trash-b"></i></button>
@@ -467,65 +405,52 @@
                             <!-- mobile menu navigation start -->
                             <nav>
                                 <ul class="mobile-menu">
-                                    <li class="menu-item-has-children"><a href="#">Home</a>
-                                        <ul class="dropdown">
-                                            <li><a href="index.html">Home Page 1</a></li>
-                                            <li><a href="index-2.html">Home Page 2</a></li>
-                                            <li><a href="index-3.html">Home Page 3</a></li>
-                                            <li><a href="index-4.html">Home Page 4</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children"><a href="#">Shop</a>
-                                        <ul class="megamenu dropdown">
-                                            <li class="mega-title has-children"><a href="#">Shop Layouts</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="shop.html">Shop Left Sidebar</a></li>
-                                                    <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                                    <li><a href="shop-list-left.html">Shop List Left Sidebar</a></li>
-                                                    <li><a href="shop-list-right.html">Shop List Right Sidebar</a></li>
-                                                    <li><a href="shop-fullwidth.html">Shop Full Width</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="mega-title has-children"><a href="#">Product Details</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="product-details.html">Single Product Details</a></li>
-                                                    <li><a href="variable-product-details.html">Variable Product Details</a></li>
-                                                    <li><a href="external-product-details.html">External Product Details</a></li>
-                                                    <li><a href="gallery-product-details.html">Gallery Product Details</a></li>
-                                                    <li><a href="countdown-product-details.html">Countdown Product Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="mega-title has-children"><a href="#">Others</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="error404.html">Error 404</a></li>
-                                                    <li><a href="compare.html">Compare Page</a></li>
-                                                    <li><a href="cartList">Cart Page</a></li>
-                                                    <li><a href="checkout.html">Checkout Page</a></li>
-                                                    <li><a href="wishlist.html">Wish List Page</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children "><a href="#">Blog</a>
-                                        <ul class="dropdown">
-                                            <li><a href="blog.html">Blog Left Sidebar</a></li>
-                                            <li><a href="blog-list-right-sidebar.html">Blog List Right Sidebar</a></li>
-                                            <li><a href="blog-list-fullwidth.html">Blog List Fullwidth</a></li>
-                                            <li><a href="blog-grid.html">Blog Grid Page</a></li>
-                                            <li><a href="blog-grid-right-sidebar.html">Blog Grid Right Sidebar</a></li>
-                                            <li><a href="blog-grid-fullwidth.html">Blog Grid Fullwidth</a></li>
-                                            <li><a href="blog-details-sidebar.html">Blog Details Sidebar Page</a></li>
-                                            <li><a href="blog-details-fullwidth.html">Blog Details Fullwidth Page</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children "><a href="#">Pages</a>
-                                        <ul class="dropdown">
-                                            <li><a href="frequently-questions.html">FAQ</a></li>
-                                            <li><a href="my-account.html">My Account</a></li>
-                                            <li><a href="login-register.html">login &amp; register</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="about-us.html">About Us</a></li>
+                                    <li><a href="/"> <span class="menu-text">
+														Home</span>
+											</a></li>
+											<li><a class="active" href="shop.html"> <span
+													class="menu-text">아트스타일</span> <i class="fa fa-angle-down"></i>
+											</a>
+												<div class="mega-menu dropdown-hover">
+													<div class="menu-colum">
+														<ul>
+															<li><span class="mega-menu-text">계절</span></li>
+															<li><a href="/productList?category_name=봄">봄</a></li>
+															<li><a href="/productList?category_name=여름">여름</a></li>
+															<li><a href="/productList?category_name=가을">가을</a></li>
+															<li><a href="/productList?category_name=겨울">겨울</a></li>
+
+															<li><a href="productList">상품리스트</a></li>
+														</ul>
+													</div>
+
+												</div></li>
+											<li><a href="blog-details-fullwidth.html"> <span
+													class="menu-text"> 추천 상품</span> <i class="fa fa-angle-down"></i>
+											</a>
+												<ul class="dropdown-submenu dropdown-hover">
+													<li><a href="blog.html">인기 상품</a></li>
+												</ul></li>
+											<li><a href="blog-details-fullwidth.html"> <span
+													class="menu-text">상품 목록</span> <i class="fa fa-angle-down"></i>
+											</a>
+												<ul class="dropdown-submenu dropdown-hover">
+													<li><a href="blog.html">일러스트</a></li>
+													<li><a href="blog.html">풍경화</a></li>
+													<li><a href="blog.html">캘리그라피</a></li>
+												</ul></li>
+											<li><a href="#"> <span class="menu-text">Page</span>
+													<i class="fa fa-angle-down"></i>
+											</a>
+												<ul class="dropdown-submenu dropdown-hover">
+													<li><a href="frequently-questions.html">FAQ</a></li>
+													<li><a href="myAccount">My Account</a></li>
+													<li><a href="loginForm">로그인</a></li>
+													<li><a href="memberForm">회원가입</a></li>
+												</ul></li>
+											<li><a href="aboutUs"> <span class="menu-text">
+														About</span>
+											</a></li>
                                     <li><a href="contact-us.html">Contact</a></li>
                                 </ul>
                             </nav>
@@ -538,22 +463,11 @@
                                 <ul class="mobile-menu">
                                     <li class="menu-item-has-children"><a href="#">My Account</a>
                                         <ul class="dropdown">
-                                            <li><a href="login.html">Login</a></li>
-                                            <li><a href="Register.html">Register</a></li>
+                                            <li><a href="loginForm">Login</a></li>
+                                            <li><a href="memberForm">Register</a></li>
                                         </ul>
                                     </li>
-                                    <li class="menu-item-has-children"><a href="#">Currency:USD</a>
-                                        <ul class="dropdown">
-                                            <li><a href="#">USD - US Dollar</a></li>
-                                            <li><a href="#">EUR - Euro</a></li>
-                                            <li><a href="#">GBP - British Pound</a></li>
-                                            <li><a href="#">INR - Indian Rupee</a></li>
-                                            <li><a href="#">BDT - Bangladesh Taka</a></li>
-                                            <li><a href="#">JPY - Japan Yen</a></li>
-                                            <li><a href="#">CAD - Canada Dollar</a></li>
-                                            <li><a href="#">AUD - Australian Dollar</a></li>
-                                        </ul>
-                                    </li>
+                                    
                                 </ul>
                             </nav>
                             <!-- mobile menu navigation end -->
@@ -594,7 +508,7 @@
                         <div class="breadcrumb-content position-relative section-content">
                             <h3 class="title-3">Shopping Cart</h3>
                             <ul>
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="/">Home</a></li>
                                 <li>Cart</li>
                             </ul>
                         </div>
@@ -613,23 +527,24 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th class="pro-thumbnail">Image</th>
-                                        <th class="pro-title">Product</th>
-                                        <th class="pro-price">Price</th>
-                                        <th class="pro-quantity">Quantity</th>
-                                        <th class="pro-subtotal">Total</th>
-                                        <th class="pro-remove">Remove</th>
+                                        <th class="pro-thumbnail">상품 사진</th>
+                                        <th class="pro-title">상품 이름</th>
+                                        <th class="pro-price">가격</th>
+                                        <th class="pro-quantity">수량</th>
+                                        <th class="pro-subtotal">총합</th>
+                                        <th class="pro-remove">삭제</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <c:forEach var="cart" items="${cartList}" varStatus="status">
                                     <tr>
-                                        <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="assets/images/product/small-size/1.jpg" alt="Product" /></a></td>
-                                        <td class="pro-title"><a href="#">Product dummy title <br> s / green</a></td>
-                                        <td class="pro-price"><span>$295.00</span></td>
+                                        <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="assets/images/${cart.product_img}.png" alt="Product" /></a></td>
+                                        <td class="pro-title"><a href="#">${cart.product_name}</td>
+                                        <td class="pro-price"><span>${cart. product_price}</span></td>
                                         <td class="pro-quantity">
                                             <div class="quantity">
                                                 <div class="cart-plus-minus">
-                                                    <input class="cart-plus-minus-box" value="0" type="text">
+                                                    <input class="cart-plus-minus-box" name=cart_quantity value="${cart.cart_quantity}" type="text">
                                                     <div class="dec qtybutton">-</div>
                                                     <div class="inc qtybutton">+</div>
                                                     <div class="dec qtybutton"><i class="fa fa-minus"></i></div>
@@ -638,62 +553,10 @@
                                             </div>
                                         </td>
                                         <td class="pro-subtotal"><span>$295.00</span></td>
-                                        <td class="pro-remove"><a href="#"><i class="ion-trash-b"></i></a></td>
+                                        <td class="pro-remove" data-num="${cart.product_id}"><a href="#"><i class="ion-trash-b"></i></a></td>
                                     </tr>
-                                    <tr>
-                                        <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="assets/images/product/small-size/2.jpg" alt="Product" /></a></td>
-                                        <td class="pro-title"><a href="#">Product title here <br> red</a></td>
-                                        <td class="pro-price"><span>$275.00</span></td>
-                                        <td class="pro-quantity">
-                                            <div class="quantity">
-                                                <div class="cart-plus-minus">
-                                                    <input class="cart-plus-minus-box" value="0" type="text">
-                                                    <div class="dec qtybutton">-</div>
-                                                    <div class="inc qtybutton">+</div>
-                                                    <div class="dec qtybutton"><i class="fa fa-minus"></i></div>
-                                                    <div class="inc qtybutton"><i class="fa fa-plus"></i></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="pro-subtotal"><span>$550.00</span></td>
-                                        <td class="pro-remove"><a href="#"><i class="ion-trash-b"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="assets/images/product/small-size/3.jpg" alt="Product" /></a></td>
-                                        <td class="pro-title"><a href="#">Product dummy title <br> s</a></td>
-                                        <td class="pro-price"><span>$295.00</span></td>
-                                        <td class="pro-quantity">
-                                            <div class="quantity">
-                                                <div class="cart-plus-minus">
-                                                    <input class="cart-plus-minus-box" value="0" type="text">
-                                                    <div class="dec qtybutton">-</div>
-                                                    <div class="inc qtybutton">+</div>
-                                                    <div class="dec qtybutton"><i class="fa fa-minus"></i></div>
-                                                    <div class="inc qtybutton"><i class="fa fa-plus"></i></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="pro-subtotal"><span>$295.00</span></td>
-                                        <td class="pro-remove"><a href="#"><i class="ion-trash-b"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="assets/images/product/small-size/4.jpg" alt="Product" /></a></td>
-                                        <td class="pro-title"><a href="#">Dummy Title</a></td>
-                                        <td class="pro-price"><span>$110.00</span></td>
-                                        <td class="pro-quantity">
-                                            <div class="quantity">
-                                                <div class="cart-plus-minus">
-                                                    <input class="cart-plus-minus-box" value="2" type="text">
-                                                    <div class="dec qtybutton">-</div>
-                                                    <div class="inc qtybutton">+</div>
-                                                    <div class="dec qtybutton"><i class="fa fa-minus"></i></div>
-                                                    <div class="inc qtybutton"><i class="fa fa-plus"></i></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="pro-subtotal"><span>$110.00</span></td>
-                                        <td class="pro-remove"><a href="#"><i class="ion-trash-b"></i></a></td>
-                                    </tr>
+                                    
+                                    </c:forEach>
                                 </tbody>
                             </table>
                         </div>
@@ -768,7 +631,7 @@
                         <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-custom">
                             <div class="single-footer-widget m-0">
                                 <div class="footer-logo">
-                                    <a href="index.html">
+                                    <a href="/">
                                         <img src="assets/images/logo/footer.png" alt="Logo Image">
                                     </a>
                                 </div>
@@ -856,7 +719,7 @@
                     <div class="row">
                         <div class="col-12 text-center col-custom">
                             <div class="copyright-content">
-                                <p>Copyright � 2020 <a href="https://hasthemes.com/" title="https://hasthemes.com/">HasThemes</a> | Built with&nbsp;<strong>Obrien</strong>&nbsp;by <a href="https://hasthemes.com/" title="https://hasthemes.com/">HasThemes</a>.</p>
+                                <p>Copyright © 2020 <a href="https://hasthemes.com/" title="https://hasthemes.com/">HasThemes</a> | Built with&nbsp;<strong>Obrien</strong>&nbsp;by <a href="https://hasthemes.com/" title="https://hasthemes.com/">HasThemes</a>.</p>
                             </div>
                         </div>
                     </div>

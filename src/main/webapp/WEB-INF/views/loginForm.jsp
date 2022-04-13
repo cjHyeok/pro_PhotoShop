@@ -611,10 +611,10 @@
                             </div>
                             <form action="login" method="post">
                                 <div class="single-input-item mb-3">
-                                    <input name="email" type="email" placeholder="이메일을 입력해주세요">
+                                    <input name="email" type="email" placeholder="이메일을 입력해주세요" value="qqq@naver.com">
                                 </div>
                                 <div class="single-input-item mb-3">
-                                    <input name="user_pw" type="password" placeholder="비밀번호를 입력해주세요">
+                                    <input name="user_pw" type="password" placeholder="비밀번호를 입력해주세요" value="12341234">
                                 </div>
                                 <div class="single-input-item mb-3">
                                     <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
