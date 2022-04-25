@@ -1,6 +1,8 @@
 package com.dao;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +28,13 @@ public class CartDAO {
 		return clist;
 	}
 
-	public void cartDelete(int product_id) {
-		int n = template.delete("CartMapper.cartDelete", product_id);
+	public void cartDelete(ArrayList<String> list) {
+		int n = template.delete("CartMapper.cartDelete", list);
+		
+	}
+
+	public void cartUpdate(Map<String, String> map) {
+		int n = template.update("CartMapper.cartUpdate", map);
 		
 	}
 

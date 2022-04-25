@@ -26,6 +26,7 @@
 
 
 <mvc:view-controller path="/cartList" view-name="cartList"/>
+<mvc:view-controller path="/wishList" view-name="wishList"/>
 
 
 

@@ -591,7 +591,7 @@
 
 												<span class="regular-price "><fmt:formatNumber
 														value="${dto.product_price}" type="currency"
-														currencySymbol="￦" /></span>
+														currencySymbol="￦ " /></span>
 
 												<!-- <span class="old-price"><del>$50.00</del></span> -->
 											</div>

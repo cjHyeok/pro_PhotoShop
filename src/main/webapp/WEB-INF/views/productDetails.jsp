@@ -64,6 +64,12 @@
 			$("form").attr("action", "loginCheck/cartAdd")
 			
 		})
+		
+		$("#wish").on("click", function() {
+			
+			$("form").attr("action", "loginCheck/wishAdd")
+			
+		})
 
 		$("#up").on("click", function() {
 			var count = $("#cart_quantity").val();
@@ -81,12 +87,6 @@
 	});
 </script>
 
-<c:if test="${!empty mesg }">
-	<script>
-		session.removeAttribute("mesg");
-		alert("${mesg}상품을 장바구니에 담았습니다.");
-	</script>
-</c:if>
 
 
 
@@ -734,7 +734,7 @@
 							<div class="price-box mb-2">
 								<span class="regular-price"></span>
 								<fmt:formatNumber value="${productDetails.product_price}"
-									type="currency" currencySymbol="￦" />
+									type="currency" currencySymbol="￦ " />
 								<!-- <span class="old-price"><del>$90.00</del></span> -->
 							</div>
 							<div class="product-rating mb-3">
@@ -748,7 +748,7 @@
 							<div class="quantity-with_btn mb-4">
 								<div class="quantity" name="div_quantity" id="div_quantity" onclick="click">
 									<div class="cart-plus-minus">
-										<input class="cart-plus-minus-box" name="cart_quantity" value="1" id="cart_quantity" onclick="click" type="text">
+										<input class="cart-plus-minus-box" name="cart_quantity" value="1" id="cart_quantity" type="text">
 										<div id="down">-</div>
 										<div id="up">+</div>
 									</div>
@@ -756,8 +756,10 @@
 								<div class="add-to_cart">
 									<button class="btn obrien-button primary-btn" id="cart" href="cartList">Add
 										to cart</button>
-										<a class="btn obrien-button-2 treansparent-color pt-0 pb-0"
-										href="wishlist.html">Add to wishlist</a>
+										
+										<button class="btn obrien-button primary-btn" id="wish" href="wishList">Add
+										to wishlist</button>
+										
 								</div>
 							</div>
 							<div class="buy-button mb-5">

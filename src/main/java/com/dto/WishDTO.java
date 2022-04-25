@@ -9,7 +9,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class CartDTO {
+public class WishDTO {
 
 	private int cart_id;
 	private String user_id;

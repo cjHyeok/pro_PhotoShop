@@ -17,12 +17,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				join t_product_img i
 					on p.product_id = i.product_id
 		where c.user_id = '${user_id}'
+		order by c.cart_id asc
 	</select>
 	
-	<delete id="cartDelete" parameterType="int">
+	<delete id="cartDelete" parameterType="arraylist">
 		delete
 		from t_cart
-		where product_id = #{product_id}
+		where cart_id IN
+
+		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
 	</delete>
 	
+	<update id="cartUpdate" parameterType="hashmap">
+		update t_cart
+		set cart_quantity = #{cart_quantity}
+		where cart_id = #{cart_id}
+	</update>
 </mapper>

@@ -1,6 +1,8 @@
 package com.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,8 +24,12 @@ public class CartService {
 		List<CartDTO> clist = cdao.cartList(dto);
 		return clist;
 	}
-	public void cartDelete(int product_id) {
-		cdao.cartDelete(product_id);
+	public void cartDelete(ArrayList<String> list) {
+		cdao.cartDelete(list);
+		
+	}
+	public void cartUpdate(Map<String, String> map) {
+		cdao.cartUpdate(map);
 		
 	}
 
