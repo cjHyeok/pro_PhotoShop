@@ -29,6 +29,11 @@ public class MemberDAO {
 		return mdto;
 	}
 
+	public MemberDTO myAccount(String user_id) {
+		MemberDTO dto = template.selectOne("MemberMapper.myAccount", user_id);
+		return dto;
+	}
+
 
 
 }

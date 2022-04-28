@@ -32,5 +32,11 @@ public class CartService {
 		cdao.cartUpdate(map);
 		
 	}
+	
+	public void wishCartadd(String product_id, String user_id) {
+		System.out.println("wishCartadd 서비스");
+		cdao.wishCartadd(product_id, user_id);
+			
+	}
 
 }

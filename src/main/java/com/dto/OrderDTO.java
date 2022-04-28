@@ -22,4 +22,6 @@ public class OrderDTO {
 	private int order_detail_id;
 	private int product_id;
 	private int order_quantity;
+	private int order_price;
+
 }

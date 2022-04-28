@@ -49,33 +49,36 @@
 
 
 
+
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$(".pro-remove").on("click", function() {
-			console.log("삭제버튼 클릭 ");
-			var cart_id = $(this).attr("data-num");
+			console.log("삭제버튼 클릭");
+			var wish_id = $(this).attr("data-num");
 			var xxx = $(this);
 			$.ajax({
-				url : "loginCheck/cartDelete",
+				url : "loginCheck/wishDelete",
 				type : "get",
 				dataType : "text",
 				data : {
-					cart_id : cart_id
+					wish_id : wish_id
 				},
 				success : function(data, status, xhr) {
 					console.log("success");
-					location.reload();//성공하면 자동 새로고침으로 지워주기
+
 					//dom삭제 
 					xxx.parents().filter("tr").remove();
-					//totalXXX(); //총합 다시 구하기 
+
 				},
 				error : function(xhr, status, error) {
 					console.log(error);
 				}
 			});
 		});//end event
+
 
 	});
 </script>
@@ -84,6 +87,14 @@
 
 <body>
 
+	<c:if test="${!empty mesg }">
+		<script>
+			//session.removeAttribute("mesg");
+			alert("${mesg} 상품을 위시리스트에 담았습니다.");
+		</script>
+	</c:if>
+
+	
 	<div class="contact-wrapper">
 		<header class="main-header-area">
 			<!-- Main Header Area Start -->
@@ -94,7 +105,7 @@
 							<div class="row align-items-center">
 								<div class="col-lg-2 col-xl-2 col-sm-6 col-6 col-custom">
 									<div class="header-logo d-flex align-items-center">
-										<a href="index.html"> <img class="img-full"
+										<a href="/"> <img class="img-full"
 											src="assets/images/logo/logo.png" alt="Header Logo">
 										</a>
 									</div>
@@ -103,11 +114,11 @@
 									class="col-lg-8 col-xl-7 position-static d-none d-lg-block col-custom">
 									<nav class="main-nav d-flex justify-content-center">
 										<ul class="nav">
-											<li><a href="index.html"> <span class="menu-text">
+											<li><a href="/"> <span class="menu-text">
 														Home</span> <i class="fa fa-angle-down"></i>
 											</a>
 												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="index.html">Home Page - 1</a></li>
+													<li><a href="/">Home Page - 1</a></li>
 													<li><a href="index-2.html">Home Page - 2</a></li>
 													<li><a href="index-3.html">Home Page - 3</a></li>
 													<li><a href="index-4.html">Home Page - 4</a></li>
@@ -182,8 +193,8 @@
 												<ul class="dropdown-submenu dropdown-hover">
 													<li><a href="frequently-questions.html">FAQ</a></li>
 													<li><a href="my-account.html">My Account</a></li>
-													<li><a href="login.html">Login</a></li>
-													<li><a href="register.html">Register</a></li>
+													<li><a href="loginForm">Login</a></li>
+													<li><a href="memberForm">Register</a></li>
 												</ul></li>
 											<li><a href="about-us.html"> <span class="menu-text">
 														About</span>
@@ -198,22 +209,9 @@
 									<div class="header-right-area main-nav">
 										<ul class="nav">
 											<li class="login-register-wrap d-none d-xl-flex"><span><a
-													href="login.html">Login</a></span> <span><a
-													href="register.html">Register</a></span></li>
-											<li class="sidemenu-wrap d-none d-lg-flex"><a href="#">USD
-													<i class="fa fa-caret-down"></i>
-											</a>
-												<ul
-													class="dropdown-sidemenu dropdown-hover-2 dropdown-language">
-													<li><a href="#">USD - US Dollar</a></li>
-													<li><a href="#">EUR - Euro</a></li>
-													<li><a href="#">GBP - British Pound</a></li>
-													<li><a href="#">INR - Indian Rupee</a></li>
-													<li><a href="#">BDT - Bangladesh Taka</a></li>
-													<li><a href="#">JPY - Japan Yen</a></li>
-													<li><a href="#">CAD - Canada Dollar</a></li>
-													<li><a href="#">AUD - Australian Dollar</a></li>
-												</ul></li>
+													href="loginForm">Login</a></span> <span><a
+													href="memberForm">Register</a></span></li>
+											
 											<li class="minicart-wrap"><a href="#"
 												class="minicart-btn toolbar-btn"> <i class="ion-bag"></i>
 													<span class="cart-item_count">3</span>
@@ -311,7 +309,7 @@
 							<div class="row align-items-center">
 								<div class="col-lg-2 col-xl-2 col-sm-6 col-6 col-custom">
 									<div class="header-logo">
-										<a href="index.html"> <img class="img-full"
+										<a href="/"> <img class="img-full"
 											src="assets/images/logo/logo.png" alt="Header Logo">
 										</a>
 									</div>
@@ -320,11 +318,11 @@
 									class="col-lg-8 col-xl-7 position-static d-none d-lg-block col-custom">
 									<nav class="main-nav d-flex justify-content-center">
 										<ul class="nav">
-											<li><a href="index.html"> <span class="menu-text">
+											<li><a href="/"> <span class="menu-text">
 														Home</span> <i class="fa fa-angle-down"></i>
 											</a>
 												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="index.html">Home Page - 1</a></li>
+													<li><a href="/">Home Page - 1</a></li>
 													<li><a href="index-2.html">Home Page - 2</a></li>
 													<li><a href="index-3.html">Home Page - 3</a></li>
 													<li><a href="index-4.html">Home Page - 4</a></li>
@@ -399,8 +397,8 @@
 												<ul class="dropdown-submenu dropdown-hover">
 													<li><a href="frequently-questions.html">FAQ</a></li>
 													<li><a href="my-account.html">My Account</a></li>
-													<li><a href="login.html">Login</a></li>
-													<li><a href="register.html">Register</a></li>
+													<li><a href="loginForm">Login</a></li>
+													<li><a href="memberForm">Register</a></li>
 												</ul></li>
 											<li><a href="about-us.html"> <span class="menu-text">
 														About</span>
@@ -415,22 +413,9 @@
 									<div class="header-right-area main-nav">
 										<ul class="nav">
 											<li class="login-register-wrap d-none d-xl-flex"><span><a
-													href="login.html">Login</a></span> <span><a
-													href="register.html">Register</a></span></li>
-											<li class="sidemenu-wrap d-none d-lg-flex"><a href="#">USD
-													<i class="fa fa-caret-down"></i>
-											</a>
-												<ul
-													class="dropdown-sidemenu dropdown-hover-2 dropdown-language">
-													<li><a href="#">USD - US Dollar</a></li>
-													<li><a href="#">EUR - Euro</a></li>
-													<li><a href="#">GBP - British Pound</a></li>
-													<li><a href="#">INR - Indian Rupee</a></li>
-													<li><a href="#">BDT - Bangladesh Taka</a></li>
-													<li><a href="#">JPY - Japan Yen</a></li>
-													<li><a href="#">CAD - Canada Dollar</a></li>
-													<li><a href="#">AUD - Australian Dollar</a></li>
-												</ul></li>
+													href="loginForm">Login</a></span> <span><a
+													href="memberForm">Register</a></span></li>
+
 											<li class="minicart-wrap"><a href="#"
 												class="minicart-btn toolbar-btn"> <i class="ion-bag"></i>
 													<span class="cart-item_count">3</span>
@@ -544,7 +529,7 @@
 								<ul class="mobile-menu">
 									<li class="menu-item-has-children"><a href="#">Home</a>
 										<ul class="dropdown">
-											<li><a href="index.html">Home Page 1</a></li>
+											<li><a href="/">Home Page 1</a></li>
 											<li><a href="index-2.html">Home Page 2</a></li>
 											<li><a href="index-3.html">Home Page 3</a></li>
 											<li><a href="index-4.html">Home Page 4</a></li>
@@ -607,7 +592,7 @@
 										<ul class="dropdown">
 											<li><a href="frequently-questions.html">FAQ</a></li>
 											<li><a href="my-account.html">My Account</a></li>
-											<li><a href="login-register.html">login &amp;
+											<li><a href="login-memberForm">login &amp;
 													register</a></li>
 										</ul></li>
 									<li><a href="about-us.html">About Us</a></li>
@@ -624,8 +609,8 @@
 									<li class="menu-item-has-children"><a href="#">My
 											Account</a>
 										<ul class="dropdown">
-											<li><a href="login.html">Login</a></li>
-											<li><a href="Register.html">Register</a></li>
+											<li><a href="loginForm">Login</a></li>
+											<li><a href="memberForm">Register</a></li>
 										</ul></li>
 
 								</ul>
@@ -664,7 +649,7 @@
 						<div class="breadcrumb-content position-relative section-content">
 							<h3 class="title-3">Wishlist</h3>
 							<ul>
-								<li><a href="index.html">Home</a></li>
+								<li><a href="/">Home</a></li>
 								<li>Wishlist</li>
 							</ul>
 						</div>
@@ -686,7 +671,6 @@
 										<th class="pro-thumbnail">Image</th>
 										<th class="pro-title">Product</th>
 										<th class="pro-price">Price</th>
-										<th class="pro-stock">Stock Status</th>
 										<th class="pro-cart">Add to Cart</th>
 										<th class="pro-remove">Remove</th>
 									</tr>
@@ -701,14 +685,12 @@
 											<td class="pro-price"><span><fmt:formatNumber
 														value="${wish.product_price}" /></span></td>
 
+											
+											 <td class="pro-cart"><a href ="/loginCheck/wishCartadd?product_id=${wish.product_id}">
+											 Add to Cart</a></td> 
+										
 
-											<td class="pro-stock"><span><strong>In
-														Stock</strong></span></td>
-											<td class="pro-cart"><a href="checkout.html"
-												class="btn obrien-button primary-btn text-uppercase">Add
-													to Cart</a></td>
-
-											<td class="pro-remove" data-num="${wish.cart_id}"><a
+											<td class="pro-remove" data-num="${wish.wish_id}"><a
 												href="#;"><i class="ion-trash-b"></i></a></td>
 										</tr>
 
@@ -720,6 +702,7 @@
 				</div>
 			</div>
 		</div>
+
 		<!-- Wishlist main wrapper end -->
 		<!-- Support Area Start Here -->
 		<div class="support-area">
@@ -750,7 +733,7 @@
 						<div class="col-12 col-sm-12 col-md-12 col-lg-3 col-custom">
 							<div class="single-footer-widget m-0">
 								<div class="footer-logo">
-									<a href="index.html"> <img
+									<a href="/"> <img
 										src="assets/images/logo/footer.png" alt="Logo Image">
 									</a>
 								</div>

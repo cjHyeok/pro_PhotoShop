@@ -29,4 +29,9 @@ public class MemberService {
 		return dto;
 	}
 
+	public MemberDTO myAccount(String user_id) {
+		MemberDTO dto = mdao.myAccount(user_id);
+		return dto;
+	}
+
 }

@@ -96,7 +96,7 @@
 															<li><a href="/productList?category_name=가을">가을</a></li>
 															<li><a href="/productList?category_name=겨울">겨울</a></li>
 
-															<li><a href="productList">상품리스트</a></li>
+															
 														</ul>
 													</div>
 
@@ -125,6 +125,9 @@
 													<li><a href="myAccount">My Account</a></li>
 													<li><a href="loginForm">로그인</a></li>
 													<li><a href="memberForm">회원가입</a></li>
+													<li><a href="productList">상품리스트</a></li>
+													<li><a href="cartList">카트리스트</a></li>
+													<li><a href="wishList">위시리스트</a></li>
 												</ul></li>
 											<li><a href="aboutUs"> <span class="menu-text">
 														About</span>
@@ -270,7 +273,7 @@
 														<ul>
 															<li><span class="mega-menu-text">Shop</span></li>
 															
-															<li><a href="productList">상품리스트</a></li>
+															
 														</ul>
 													</div>
 													<div class="menu-colum">
@@ -490,7 +493,7 @@
 															<li><a href="/productList?category_name=가을">가을</a></li>
 															<li><a href="/productList?category_name=겨울">겨울</a></li>
 
-															<li><a href="productList">상품리스트</a></li>
+															
 														</ul>
 													</div>
 
@@ -513,12 +516,16 @@
 												</ul></li>
 											<li><a href="#"> <span class="menu-text">Page</span>
 													<i class="fa fa-angle-down"></i>
+													
 											</a>
 												<ul class="dropdown-submenu dropdown-hover">
 													<li><a href="frequently-questions.html">FAQ</a></li>
 													<li><a href="myAccount">My Account</a></li>
 													<li><a href="loginForm">로그인</a></li>
 													<li><a href="memberForm">회원가입</a></li>
+													<li><a href="productList">상품리스트</a></li>
+													<li><a href="cartList">카트리스트</a></li>
+													<li><a href="wishList">위시리스트</a></li>
 												</ul></li>
 											<li><a href="aboutUs"> <span class="menu-text">
 														About</span>

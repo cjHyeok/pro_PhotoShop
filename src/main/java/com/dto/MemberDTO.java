@@ -25,5 +25,8 @@ public class MemberDTO {
 	private Date join_date;
 	private String role; 
 	
+	private int shipping;
+	private int order_id;
+	private int total_price;
 
 }

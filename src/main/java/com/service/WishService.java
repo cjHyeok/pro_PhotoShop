@@ -28,9 +28,11 @@ public class WishService {
 		return wlist;
 	}
 	public void wishDelete(ArrayList<String> list) {
+		
 		wdao.wishDelete(list);
 		
 	}
+	
 	
 	
 	

@@ -101,6 +101,7 @@
 	<input type="hidden" name="product_description_summary" value="${productDetails.product_description_summary}">
 	<input type="hidden" name="product_id" value="${productDetails.product_id}">
 	<input type="hidden" name="cart_id" value="${productDetails.cart_id}">
+	
 
 
 

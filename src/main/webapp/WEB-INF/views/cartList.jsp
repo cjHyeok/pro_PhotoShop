@@ -131,6 +131,20 @@
 					
 					$("#subTotal").text(totalSum);
 					
+					// 20,000 미만일 경우 배송료 2,000 
+					// 20,000 이상일경우 배송료 0 
+					if( totalSum < 20000)
+						$("#shipping").text("2000");
+					else
+						$("#shipping").text("0");
+					
+					
+					//session.setAttribute("shipping", $("#shipping").text());
+					//$.session.set("shipping", $("#shipping").text());
+					//var shipping =$.session.get("shipping");
+					//request.getSession().setAttribute("shipping", $("#shipping").text());
+					//console.log("shipping = " + shipping);
+					
 					totalSum += parseInt($("#shipping").text()); 
 					$("#totalSum").text(totalSum);
 				}
@@ -143,7 +157,10 @@
 				});
 				
 			
-			
+				$("#orderConfirm").on("click", function() {
+
+					location.href = "loginCheck/orderConfirm";
+				})
 			
 				
 				
@@ -728,9 +745,9 @@
 									</table>
 								</div>
 							</div>
-							<a href="checkout.html"
+							<button id="orderConfirm" 
 								class="btn obrien-button primary-btn d-block">Proceed To
-								Checkout</a>
+								Checkout</button>
 						</div>
 					</div>
 				</div>

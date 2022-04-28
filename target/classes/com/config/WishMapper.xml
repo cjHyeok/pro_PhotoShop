@@ -5,34 +5,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="WishMapper">
 
 	<insert id="wishAdd" parameterType="WishDTO">
-		insert into t_cart (cart_id, user_id, product_id, cart_quantity, cart_date)
-		values (cart_seq.nextval, #{user_id}, #{product_id}, #{cart_quantity}, sysdate)
+		insert into t_wish (wish_id, user_id, product_id, wish_date)
+		values (wish_seq.nextval, #{user_id}, #{product_id}, sysdate)
 	</insert>
 	
 	
 	<select id="wishList" parameterType="MemberDTO" resultType="WishDTO">
-		select p.product_name, p.product_price, p.product_quantity, p.product_id, i.product_img, c.user_id, c.cart_id, c.cart_quantity
-		from t_product p join t_cart c
-			on p.product_id = c.product_id
+		select p.product_name, p.product_price, p.product_quantity, p.product_id, i.product_img, w.user_id, w.wish_id
+		from t_product p join t_wish w
+			on p.product_id = w.product_id
 				join t_product_img i
 					on p.product_id = i.product_id
-		where c.user_id = '${user_id}'
-		order by c.cart_id asc
+		where w.user_id = '${user_id}'
+		order by w.wish_id asc
 	</select>
 	
 	<delete id="wishDelete" parameterType="arraylist">
 		delete
-		from t_cart
-		where cart_id IN
+		from t_wish
+		where wish_id IN
 
 		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
 			#{item}
 		</foreach>
 	</delete>
-	
-	<update id="wishUpdate" parameterType="hashmap">
-		update t_cart
-		set cart_quantity = #{cart_quantity}
-		where cart_id = #{cart_id}
-	</update>
+
 </mapper>
