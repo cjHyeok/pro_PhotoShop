@@ -54,4 +54,10 @@ public class OrderDAO {
 
 	}
 
+	
+	public List<OrderDTO> myAccount(MemberDTO dto) {
+		List<OrderDTO> olist = template.selectList("MemberMapper.myAccount", dto);
+		return olist;
+	}
+
 }

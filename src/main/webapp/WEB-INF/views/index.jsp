@@ -81,7 +81,7 @@
 									class="col-lg-8 col-xl-7 position-static d-none d-lg-block col-custom">
 									<nav class="main-nav d-flex justify-content-center">
 										<ul class="nav">
-												<li><a href="/"> <span class="menu-text">
+											<li><a href="/"> <span class="menu-text">
 														Home</span>
 											</a></li>
 											<li><a class="active" href="shop.html"> <span
@@ -96,13 +96,13 @@
 															<li><a href="/productList?category_name=가을">가을</a></li>
 															<li><a href="/productList?category_name=겨울">겨울</a></li>
 
-															
+
 														</ul>
 													</div>
 
 												</div></li>
-												
-												
+
+
 											<li><a href="blog-details-fullwidth.html"> <span
 													class="menu-text"> 추천 상품</span> <i class="fa fa-angle-down"></i>
 											</a>
@@ -122,7 +122,7 @@
 											</a>
 												<ul class="dropdown-submenu dropdown-hover">
 													<li><a href="frequently-questions.html">FAQ</a></li>
-													<li><a href="myAccount">My Account</a></li>
+													<li><a href="/myAccount">My Account</a></li>
 													<li><a href="loginForm">로그인</a></li>
 													<li><a href="memberForm">회원가입</a></li>
 													<li><a href="productList">상품리스트</a></li>
@@ -132,8 +132,7 @@
 											<li><a href="aboutUs"> <span class="menu-text">
 														About</span>
 											</a></li>
-											<li><a href="contactUs"> <span
-													class="menu-text">Contact</span>
+											<li><a href="contactUs"> <span class="menu-text">Contact</span>
 											</a></li>
 										</ul>
 									</nav>
@@ -153,9 +152,7 @@
 														<span><a href="loginForm">login</a></span>
 														<span><a href="memberForm">Register</a></span>
 													</c:otherwise>
-												</c:choose></li>
-
-											&nbsp;&nbsp;
+												</c:choose></li> &nbsp;&nbsp;
 											<li class="minicart-wrap"><a href="#"
 												class="minicart-btn toolbar-btn"> <i class="ion-bag"></i>
 													<span class="cart-item_count">3</span>
@@ -209,8 +206,8 @@
 														</div>
 														<div class="cart-text">
 															<h5 class="title">
-																<a href="cartList">1. New and sale badge product -
-																	s / red</a>
+																<a href="cartList">1. New and sale badge product - s
+																	/ red</a>
 															</h5>
 															<div class="cart-text-btn">
 																<div class="cart-qty">
@@ -262,8 +259,7 @@
 									class="col-lg-8 col-xl-7 position-static d-none d-lg-block col-custom">
 									<nav class="main-nav d-flex justify-content-center">
 										<ul class="nav">
-											<li><a href="/"> <span
-													class="menu-text">Home</span>
+											<li><a href="/"> <span class="menu-text">Home</span>
 											</a></li>
 											<li><a href="shop.html"> <span class="menu-text">Shop</span>
 													<i class="fa fa-angle-down"></i>
@@ -272,14 +268,15 @@
 													<div class="menu-colum">
 														<ul>
 															<li><span class="mega-menu-text">Shop</span></li>
-															
-															
+
+
 														</ul>
 													</div>
 													<div class="menu-colum">
 														<ul>
 															<li><span class="mega-menu-text">Product</span></li>
-															<li><a href="productDetails?product_id=${dto.product_id}"">Single
+															<li><a
+																href="productDetails?product_id=${dto.product_id}"">Single
 																	Product</a></li>
 															<li><a href="variable-product-details.html">Variable
 																	Product</a></li>
@@ -326,15 +323,14 @@
 											</a>
 												<ul class="dropdown-submenu dropdown-hover">
 													<li><a href="frequently-questions.html">FAQ</a></li>
-													<li><a href="myAccount">My Account</a></li>
+													<li><a href="/loginCheck//myAccount">My Account</a></li>
 													<li><a href="loginForm">Login</a></li>
 													<li><a href="memberForm">Register</a></li>
 												</ul></li>
 											<li><a href="aboutUs"> <span class="menu-text">
 														About</span>
 											</a></li>
-											<li><a href="contactUs"> <span
-													class="menu-text">Contact</span>
+											<li><a href="contactUs"> <span class="menu-text">Contact</span>
 											</a></li>
 										</ul>
 									</nav>
@@ -418,8 +414,8 @@
 														</div>
 														<div class="cart-text">
 															<h5 class="title">
-																<a href="cartList">1. New and sale badge product -
-																	s / red</a>
+																<a href="cartList">1. New and sale badge product - s
+																	/ red</a>
 															</h5>
 															<div class="cart-text-btn">
 																<div class="cart-qty">
@@ -478,58 +474,87 @@
 							<!-- mobile menu navigation start -->
 							<nav>
 								<ul class="mobile-menu">
-									<li><a href="/"> <span class="menu-text">
-														Home</span>
-											</a></li>
-											<li><a class="active" href="shop.html"> <span
-													class="menu-text">아트스타일</span> <i class="fa fa-angle-down"></i>
-											</a>
-												<div class="mega-menu dropdown-hover">
-													<div class="menu-colum">
-														<ul>
-															<li><span class="mega-menu-text">계절</span></li>
-															<li><a href="/productList?category_name=봄">봄</a></li>
-															<li><a href="/productList?category_name=여름">여름</a></li>
-															<li><a href="/productList?category_name=가을">가을</a></li>
-															<li><a href="/productList?category_name=겨울">겨울</a></li>
+									<li><a href="/"> <span class="menu-text"> Home</span>
+									</a></li>
+									<li><a class="active" href="shop.html"> <span
+											class="menu-text">아트스타일</span> <i class="fa fa-angle-down"></i>
+									</a>
+										<div class="mega-menu dropdown-hover">
+											<div class="menu-colum">
+												<ul>
+													<li><span class="mega-menu-text">계절</span></li>
+													<li><a href="/productList?category_name=봄">봄</a></li>
+													<li><a href="/productList?category_name=여름">여름</a></li>
+													<li><a href="/productList?category_name=가을">가을</a></li>
+													<li><a href="/productList?category_name=겨울">겨울</a></li>
 
-															
-														</ul>
-													</div>
 
-												</div></li>
-												
-												
-											<li><a href="blog-details-fullwidth.html"> <span
-													class="menu-text"> 추천 상품</span> <i class="fa fa-angle-down"></i>
-											</a>
-												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="blog.html">인기 상품</a></li>
-												</ul></li>
-											<li><a href="blog-details-fullwidth.html"> <span
-													class="menu-text">상품 목록</span> <i class="fa fa-angle-down"></i>
-											</a>
-												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="blog.html">일러스트</a></li>
-													<li><a href="blog.html">풍경화</a></li>
-													<li><a href="blog.html">캘리그라피</a></li>
-												</ul></li>
+												</ul>
+											</div>
+
+										</div></li>
+
+
+									<li><a href="blog-details-fullwidth.html"> <span
+											class="menu-text"> 추천 상품</span> <i class="fa fa-angle-down"></i>
+									</a>
+										<ul class="dropdown-submenu dropdown-hover">
+											<li><a href="blog.html">인기 상품</a></li>
+										</ul></li>
+									<li><a href="blog-details-fullwidth.html"> <span
+											class="menu-text">상품 목록</span> <i class="fa fa-angle-down"></i>
+									</a>
+										<ul class="dropdown-submenu dropdown-hover">
+											<li><a href="blog.html">일러스트</a></li>
+											<li><a href="blog.html">풍경화</a></li>
+											<li><a href="blog.html">캘리그라피</a></li>
+										</ul></li>
+
+
+
+
+									<c:choose>
+										<c:when test="${!empty login }">
 											<li><a href="#"> <span class="menu-text">Page</span>
-													<i class="fa fa-angle-down"></i>
-													
-											</a>
+													<i class="fa fa-angle-down"></i></a>
+
 												<ul class="dropdown-submenu dropdown-hover">
+
+
 													<li><a href="frequently-questions.html">FAQ</a></li>
-													<li><a href="myAccount">My Account</a></li>
-													<li><a href="loginForm">로그인</a></li>
+													<li><a href="loginForm">로그</a></li>
 													<li><a href="memberForm">회원가입</a></li>
 													<li><a href="productList">상품리스트</a></li>
 													<li><a href="cartList">카트리스트</a></li>
 													<li><a href="wishList">위시리스트</a></li>
-												</ul></li>
-											<li><a href="aboutUs"> <span class="menu-text">
-														About</span>
-											</a></li>
+												</ul>
+												</li>
+
+										</c:when>
+										<c:otherwise>
+											<li><a href="#"> <span class="menu-text">Page</span>
+													<i class="fa fa-angle-down"></i></a>
+
+												<ul class="dropdown-submenu dropdown-hover">
+													<li><a href="frequently-questions.html">FAQ</a></li>
+													<li><a href="/myAccount">My Account</a></li>
+													<li><a href="loginForm">로</a></li>
+													<li><a href="memberForm">회원가입</a></li>
+													<li><a href="productList">상품리스트</a></li>
+													<li><a href="cartList">카트리스트</a></li>
+													<li><a href="wishList">위시리스트</a></li>
+												</ul>
+												</li>
+
+										</c:otherwise>
+
+									</c:choose>
+
+
+
+									<li><a href="aboutUs"> <span class="menu-text">
+												About</span>
+									</a></li>
 									<li><a href="contactUs">Contact</a></li>
 								</ul>
 							</nav>
@@ -657,95 +682,90 @@
 					</div>
 				</div>
 
-<!-- productlist-=------------------------------------ -->
+				<!-- productlist-=------------------------------------ -->
 
- <div class="row shop_wrapper grid_4">
-                    <c:forEach var = "dto" items="${productList}" varStatus="status">
+				<div class="row shop_wrapper grid_4">
+					<c:forEach var="dto" items="${productList}" varStatus="status">
 
-	<div class="col-lg-3 col-md-6 col-sm-6 col-custom product-area">
-                                <div class="single-product position-relative">
-                                    <div class="product-image">
-                                        <a class="d-block" href="productDetails?product_id=${dto.product_id}"">
-                                            <img src="assets/images/${dto.product_img}.png" alt="" class="product-image-1 w-100">
-                                            <%-- <img src="assets/images/${dto.product_img}_on.jpg" alt="" class="product-image-2 position-absolute w-100"> --%>
-                                        </a>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <div class="product-title">
-                                            <h4 class="title-2"> <a href="productDetails?product_id=${dto.product_id}"">${dto.product_name}</a></h4>
-                                        </div>
-                                        <div class="price-box">
-                                            
-                                            <span class="regular-price "><fmt:formatNumber value="${dto.product_price}" type="currency" currencySymbol="￦" /></span>
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="add-action d-flex position-absolute">
-                                        <a href="cartList" title="Add To cart">
-                                            <i class="ion-bag"></i>
-                                        </a>
-                                        <a href="compare.html" title="Compare">
-                                            <i class="ion-ios-loop-strong"></i>
-                                        </a>
-                                        <a href="wishlist.html" title="Add To Wishlist">
-                                            <i class="ion-ios-heart-outline"></i>
-                                        </a>
-                                        <a href="#exampleModalCenter" data-bs-toggle="modal" title="Quick View">
-                                            <i class="ion-eye"></i>
-                                        </a>
-                                    </div>
-                                    <div class="product-content-listview">
-                                        <div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <div class="product-title">
-                                            <h4 class="title-2"> <a href="productDetails?product_id=${dto.product_id}"">${dto.product_name}</a></h4>
-                                        </div>
-                                        <div class="price-box">
-                                            <span class="regular-price "><fmt:formatNumber value="${dto.product_price}" type="currency" currencySymbol="￦" /></span>
-                                            <span class="old-price"><del>$50.00</del></span>
-                                        </div>
-                                        <div class="add-action-listview d-flex">
-                                            <a href="cartList" title="Add To cart">
-                                                <i class="ion-bag"></i>
-                                            </a>
-                                            <a href="compare.html" title="Compare">
-                                                <i class="ion-ios-loop-strong"></i>
-                                            </a>
-                                            <a href="wishlist.html" title="Add To Wishlist">
-                                                <i class="ion-ios-heart-outline"></i>
-                                            </a>
-                                            <a href="#exampleModalCenter" data-bs-toggle="modal" title="Quick View">
-                                                <i class="ion-eye"></i>
-                                            </a>
-                                        </div>
-                                        <p class="desc-content">
-                                            ${dto.product_description_summary}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>			       
-				       <tr>
-				        <td height="10"></td>
-				       </tr>
-				       
-                       </c:forEach>
-                       
-                       </div>
+						<div class="col-lg-3 col-md-6 col-sm-6 col-custom product-area">
+							<div class="single-product position-relative">
+								<div class="product-image">
+									<a class="d-block"
+										href="productDetails?product_id=${dto.product_id}""> <img
+										src="assets/images/${dto.product_img}.png" alt=""
+										class="product-image-1 w-100"> <%-- <img src="assets/images/${dto.product_img}_on.jpg" alt="" class="product-image-2 position-absolute w-100"> --%>
+									</a>
+								</div>
+								<div class="product-content">
+									<div class="product-rating">
+										<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+											class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
+											class="fa fa-star-o"></i>
+									</div>
+									<div class="product-title">
+										<h4 class="title-2">
+											<a href="productDetails?product_id=${dto.product_id}"">${dto.product_name}</a>
+										</h4>
+									</div>
+									<div class="price-box">
+
+										<span class="regular-price "><fmt:formatNumber
+												value="${dto.product_price}" type="currency"
+												currencySymbol="￦" /></span>
+
+									</div>
+								</div>
+								<div class="add-action d-flex position-absolute">
+									<a href="cartList" title="Add To cart"> <i class="ion-bag"></i>
+									</a> <a href="compare.html" title="Compare"> <i
+										class="ion-ios-loop-strong"></i>
+									</a> <a href="wishlist.html" title="Add To Wishlist"> <i
+										class="ion-ios-heart-outline"></i>
+									</a> <a href="#exampleModalCenter" data-bs-toggle="modal"
+										title="Quick View"> <i class="ion-eye"></i>
+									</a>
+								</div>
+								<div class="product-content-listview">
+									<div class="product-rating">
+										<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+											class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
+											class="fa fa-star-o"></i>
+									</div>
+									<div class="product-title">
+										<h4 class="title-2">
+											<a href="productDetails?product_id=${dto.product_id}"">${dto.product_name}</a>
+										</h4>
+									</div>
+									<div class="price-box">
+										<span class="regular-price "><fmt:formatNumber
+												value="${dto.product_price}" type="currency"
+												currencySymbol="￦" /></span> <span class="old-price"><del>$50.00</del></span>
+									</div>
+									<div class="add-action-listview d-flex">
+										<a href="cartList" title="Add To cart"> <i class="ion-bag"></i>
+										</a> <a href="compare.html" title="Compare"> <i
+											class="ion-ios-loop-strong"></i>
+										</a> <a href="wishlist.html" title="Add To Wishlist"> <i
+											class="ion-ios-heart-outline"></i>
+										</a> <a href="#exampleModalCenter" data-bs-toggle="modal"
+											title="Quick View"> <i class="ion-eye"></i>
+										</a>
+									</div>
+									<p class="desc-content">${dto.product_description_summary}
+									</p>
+								</div>
+							</div>
+						</div>
+						<tr>
+							<td height="10"></td>
+						</tr>
+
+					</c:forEach>
+
+				</div>
 
 
-<!-- productlist-=------------------------------------ -->
+				<!-- productlist-=------------------------------------ -->
 			</div>
 
 		</div>
@@ -779,7 +799,7 @@
 
 
 		<!-- Product Area End Here -->
-		
+
 		<!-- Product Area Start Here -->
 		<div class="product-area mt-text mb-text-p">
 			<div class="container container-default custom-area">
@@ -816,10 +836,12 @@
                         "slidesToShow": 1
                         }}
                         ]'>
+
 							<div class="single-item">
 								<div class="single-product position-relative">
 									<div class="product-image">
-										<a class="d-block" href="productDetails?product_id=${dto.product_id}""> <img
+										<a class="d-block"
+											href="productDetails?product_id=${dto.product_id}"> <img
 											src="assets/images/product/1.png" alt=""
 											class="product-image-1 w-100"> <img
 											src="assets/images/product/2.jpg" alt=""
@@ -834,7 +856,8 @@
 										</div>
 										<div class="product-title">
 											<h4 class="title-2">
-												<a href="productDetails?product_id=${dto.product_id}"">Product dummy name</a>
+												<a href="productDetails?product_id=${dto.product_id}">Product
+													dummy name</a>
 											</h4>
 										</div>
 										<div class="price-box">
@@ -843,8 +866,7 @@
 										</div>
 									</div>
 									<div class="add-action d-flex position-absolute">
-										<a href="cartList" title="Add To cart"> <i
-											class="ion-bag"></i>
+										<a href="cartList" title="Add To cart"> <i class="ion-bag"></i>
 										</a> <a href="compare.html" title="Compare"> <i
 											class="ion-ios-loop-strong"></i>
 										</a> <a href="wishlist.html" title="Add To Wishlist"> <i
@@ -858,7 +880,8 @@
 							<div class="single-item">
 								<div class="single-product position-relative">
 									<div class="product-image">
-										<a class="d-block" href="productDetails?product_id=${dto.product_id}""> <img
+										<a class="d-block"
+											href="productDetails?product_id=${dto.product_id}"> <img
 											src="assets/images/product/3.jpg" alt=""
 											class="product-image-1 w-100"> <img
 											src="assets/images/product/4.jpg" alt=""
@@ -873,7 +896,8 @@
 										</div>
 										<div class="product-title">
 											<h4 class="title-2">
-												<a href="productDetails?product_id=${dto.product_id}"">Product dummy title</a>
+												<a href="productDetails?product_id=${dto.product_id}">Product
+													dummy title</a>
 											</h4>
 										</div>
 										<div class="price-box">
@@ -882,8 +906,7 @@
 										</div>
 									</div>
 									<div class="add-action d-flex position-absolute">
-										<a href="cartList" title="Add To cart"> <i
-											class="ion-bag"></i>
+										<a href="cartList" title="Add To cart"> <i class="ion-bag"></i>
 										</a> <a href="compare.html" title="Compare"> <i
 											class="ion-ios-loop-strong"></i>
 										</a> <a href="wishlist.html" title="Add To Wishlist"> <i
@@ -897,7 +920,8 @@
 							<div class="single-item">
 								<div class="single-product position-relative">
 									<div class="product-image">
-										<a class="d-block" href="productDetails?product_id=${dto.product_id}""> <img
+										<a class="d-block"
+											href="productDetails?product_id=${dto.product_id}"> <img
 											src="assets/images/product/5.jpg" alt=""
 											class="product-image-1 w-100"> <img
 											src="assets/images/product/6.jpg" alt=""
@@ -916,7 +940,8 @@
 										</div>
 										<div class="product-title">
 											<h4 class="title-2">
-												<a href="productDetails?product_id=${dto.product_id}"">Product dummy title</a>
+												<a href="productDetails?product_id=${dto.product_id}">Product
+													dummy title</a>
 											</h4>
 										</div>
 										<div class="price-box">
@@ -925,8 +950,7 @@
 										</div>
 									</div>
 									<div class="add-action d-flex position-absolute">
-										<a href="cartList" title="Add To cart"> <i
-											class="ion-bag"></i>
+										<a href="cartList" title="Add To cart"> <i class="ion-bag"></i>
 										</a> <a href="compare.html" title="Compare"> <i
 											class="ion-ios-loop-strong"></i>
 										</a> <a href="wishlist.html" title="Add To Wishlist"> <i
@@ -940,7 +964,8 @@
 							<div class="single-item">
 								<div class="single-product position-relative">
 									<div class="product-image">
-										<a class="d-block" href="productDetails?product_id=${dto.product_id}""> <img
+										<a class="d-block"
+											href="productDetails?product_id=${dto.product_id}"> <img
 											src="assets/images/product/7.jpg" alt=""
 											class="product-image-1 w-100"> <img
 											src="assets/images/product/8.jpg" alt=""
@@ -955,7 +980,8 @@
 										</div>
 										<div class="product-title">
 											<h4 class="title-2">
-												<a href="productDetails?product_id=${dto.product_id}"">Product dummy name</a>
+												<a href="productDetails?product_id=${dto.product_id}">Product
+													dummy name</a>
 											</h4>
 										</div>
 										<div class="price-box">
@@ -964,8 +990,7 @@
 										</div>
 									</div>
 									<div class="add-action d-flex position-absolute">
-										<a href="cartList" title="Add To cart"> <i
-											class="ion-bag"></i>
+										<a href="cartList" title="Add To cart"> <i class="ion-bag"></i>
 										</a> <a href="compare.html" title="Compare"> <i
 											class="ion-ios-loop-strong"></i>
 										</a> <a href="wishlist.html" title="Add To Wishlist"> <i
@@ -979,7 +1004,8 @@
 							<div class="single-item">
 								<div class="single-product position-relative">
 									<div class="product-image">
-										<a class="d-block" href="productDetails?product_id=${dto.product_id}""> <img
+										<a class="d-block"
+											href="productDetails?product_id=${dto.product_id}"> <img
 											src="assets/images/product/9.jpg" alt=""
 											class="product-image-1"> <img
 											src="assets/images/product/10.jpg" alt=""
@@ -994,7 +1020,8 @@
 										</div>
 										<div class="product-title">
 											<h4 class="title-2">
-												<a href="productDetails?product_id=${dto.product_id}"">Product dummy title</a>
+												<a href="productDetails?product_id=${dto.product_id}"">Product
+													dummy title</a>
 											</h4>
 										</div>
 										<div class="price-box">
@@ -1003,8 +1030,7 @@
 										</div>
 									</div>
 									<div class="add-action d-flex position-absolute">
-										<a href="cartList" title="Add To cart"> <i
-											class="ion-bag"></i>
+										<a href="cartList" title="Add To cart"> <i class="ion-bag"></i>
 										</a> <a href="compare.html" title="Compare"> <i
 											class="ion-ios-loop-strong"></i>
 										</a> <a href="wishlist.html" title="Add To Wishlist"> <i
@@ -1209,8 +1235,8 @@
 						<div class="col-12 col-sm-12 col-md-12 col-lg-3 col-custom">
 							<div class="single-footer-widget m-0">
 								<div class="footer-logo">
-									<a href="/"> <img
-										src="assets/images/logo/footer.png" alt="Logo Image">
+									<a href="/"> <img src="assets/images/logo/footer.png"
+										alt="Logo Image">
 									</a>
 								</div>
 								<p class="desc-content">Obrien is the best parts shop of

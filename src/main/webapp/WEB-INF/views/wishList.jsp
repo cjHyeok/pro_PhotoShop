@@ -115,92 +115,57 @@
 									<nav class="main-nav d-flex justify-content-center">
 										<ul class="nav">
 											<li><a href="/"> <span class="menu-text">
-														Home</span> <i class="fa fa-angle-down"></i>
-											</a>
-												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="/">Home Page - 1</a></li>
-													<li><a href="index-2.html">Home Page - 2</a></li>
-													<li><a href="index-3.html">Home Page - 3</a></li>
-													<li><a href="index-4.html">Home Page - 4</a></li>
-												</ul></li>
+														Home</span>
+											</a></li>
 											<li><a class="active" href="shop.html"> <span
-													class="menu-text">Shop</span> <i class="fa fa-angle-down"></i>
+													class="menu-text">아트스타일</span> <i class="fa fa-angle-down"></i>
 											</a>
 												<div class="mega-menu dropdown-hover">
 													<div class="menu-colum">
 														<ul>
-															<li><span class="mega-menu-text">Shop</span></li>
-															<li><a href="shop.html">Shop Left Sidebar</a></li>
-															<li><a href="shop-right-sidebar.html">Shop Right
-																	Sidebar</a></li>
-															<li><a href="shop-list-left.html">Shop List Left
-																	Sidebar</a></li>
-															<li><a href="shop-list-right.html">Shop List
-																	Right Sidebar</a></li>
-															<li><a href="shop-fullwidth.html">Shop Full
-																	Width</a></li>
+															<li><span class="mega-menu-text">계절</span></li>
+															<li><a href="/productList?category_name=봄">봄</a></li>
+															<li><a href="/productList?category_name=여름">여름</a></li>
+															<li><a href="/productList?category_name=가을">가을</a></li>
+															<li><a href="/productList?category_name=겨울">겨울</a></li>
+
+
 														</ul>
 													</div>
-													<div class="menu-colum">
-														<ul>
-															<li><span class="mega-menu-text">Product</span></li>
-															<li><a href="product-details.html">Single
-																	Product</a></li>
-															<li><a href="variable-product-details.html">Variable
-																	Product</a></li>
-															<li><a href="external-product-details.html">External
-																	Product</a></li>
-															<li><a href="gallery-product-details.html">Gallery
-																	Product</a></li>
-															<li><a href="countdown-product-details.html">Countdown
-																	Product</a></li>
-														</ul>
-													</div>
-													<div class="menu-colum">
-														<ul>
-															<li><span class="mega-menu-text">Others</span></li>
-															<li><a href="error-404.html">Error 404</a></li>
-															<li><a href="compare.html">Compare Page</a></li>
-															<li><a href="cart.html">Cart Page</a></li>
-															<li><a href="checkout.html">Checkout Page</a></li>
-															<li><a class="active" href="wishlist.html">Wishlist
-																	Page</a></li>
-														</ul>
-													</div>
+
 												</div></li>
+
+
 											<li><a href="blog-details-fullwidth.html"> <span
-													class="menu-text"> Blog</span> <i class="fa fa-angle-down"></i>
+													class="menu-text"> 추천 상품</span> <i class="fa fa-angle-down"></i>
 											</a>
 												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="blog.html">Blog Left Sidebar</a></li>
-													<li><a href="blog-list-right-sidebar.html">Blog
-															List Right Sidebar</a></li>
-													<li><a href="blog-list-fullwidth.html">Blog List
-															Fullwidth</a></li>
-													<li><a href="blog-grid.html">Blog Grid Page</a></li>
-													<li><a href="blog-grid-right-sidebar.html">Blog
-															Grid Right Sidebar</a></li>
-													<li><a href="blog-grid-fullwidth.html">Blog Grid
-															Fullwidth</a></li>
-													<li><a href="blog-details-sidebar.html">Blog
-															Details Sidebar</a></li>
-													<li><a href="blog-details-fullwidth.html">Blog
-															Details Fullwidth</a></li>
+													<li><a href="blog.html">인기 상품</a></li>
 												</ul></li>
-											<li><a href="#"> <span class="menu-text">
-														Pages</span> <i class="fa fa-angle-down"></i>
+											<li><a href="blog-details-fullwidth.html"> <span
+													class="menu-text">상품 목록</span> <i class="fa fa-angle-down"></i>
+											</a>
+												<ul class="dropdown-submenu dropdown-hover">
+													<li><a href="blog.html">일러스트</a></li>
+													<li><a href="blog.html">풍경화</a></li>
+													<li><a href="blog.html">캘리그라피</a></li>
+												</ul></li>
+											<li><a href="#"> <span class="menu-text">Page</span>
+													<i class="fa fa-angle-down"></i>
 											</a>
 												<ul class="dropdown-submenu dropdown-hover">
 													<li><a href="frequently-questions.html">FAQ</a></li>
-													<li><a href="my-account.html">My Account</a></li>
-													<li><a href="loginForm">Login</a></li>
-													<li><a href="memberForm">Register</a></li>
+													<li><a href="myAccount">My Account</a></li>
+													<li><a href="loginForm">로그인</a></li>
+													<li><a href="memberForm">회원가입</a></li>
+													<li><a href="productList">상품리스트</a></li>
+													<li><a href="cartList">카트리스트</a></li>
+													<li><a href="wishList">위시리스트</a></li>
 												</ul></li>
-											<li><a href="about-us.html"> <span class="menu-text">
+											<li><a href="aboutUs"> <span class="menu-text">
 														About</span>
 											</a></li>
-											<li><a href="contact-us.html"> <span
-													class="menu-text">Contact</span>
+											<li><a href="contactUs"> <span class="menu-text">Contact</span>
 											</a></li>
 										</ul>
 									</nav>
@@ -208,10 +173,19 @@
 								<div class="col-lg-2 col-xl-3 col-sm-6 col-6 col-custom">
 									<div class="header-right-area main-nav">
 										<ul class="nav">
-											<li class="login-register-wrap d-none d-xl-flex"><span><a
-													href="loginForm">Login</a></span> <span><a
-													href="memberForm">Register</a></span></li>
-											
+											<li class="login-register-wrap d-none d-xl-flex"><c:choose>
+													<c:when test="${!empty login }"> &nbsp;&nbsp; <!-- 확인용 -->
+														<div
+															style="font-size: 15px; line-height: 1.6; font-weight: 600; color: #303030;">
+															${login.user_name } 님</div>
+														<span><a href="/loginCheck/logout">logout</a></span>
+														<span><a href="memberForm">Register</a></span>
+													</c:when>
+													<c:otherwise>
+														<span><a href="loginForm">login</a></span>
+														<span><a href="memberForm">Register</a></span>
+													</c:otherwise>
+												</c:choose></li> &nbsp;&nbsp;
 											<li class="minicart-wrap"><a href="#"
 												class="minicart-btn toolbar-btn"> <i class="ion-bag"></i>
 													<span class="cart-item_count">3</span>
@@ -220,12 +194,12 @@
 													class="cart-item-wrapper dropdown-sidemenu dropdown-hover-2">
 													<div class="single-cart-item">
 														<div class="cart-img">
-															<a href="cart.html"><img
+															<a href="cartList"><img
 																src="assets/images/cart/1.jpg" alt=""></a>
 														</div>
 														<div class="cart-text">
 															<h5 class="title">
-																<a href="cart.html">11. Product with video - navy</a>
+																<a href="cartList">11. Product with video - navy</a>
 															</h5>
 															<div class="cart-text-btn">
 																<div class="cart-qty">
@@ -239,12 +213,12 @@
 													</div>
 													<div class="single-cart-item">
 														<div class="cart-img">
-															<a href="cart.html"><img
+															<a href="cartList"><img
 																src="assets/images/cart/2.jpg" alt=""></a>
 														</div>
 														<div class="cart-text">
 															<h5 class="title">
-																<a href="cart.html"
+																<a href="cartList"
 																	title="10. This is the large title for testing large title and there is an image for testing - white">10.
 																	This is the large title for testing...</a>
 															</h5>
@@ -260,13 +234,13 @@
 													</div>
 													<div class="single-cart-item">
 														<div class="cart-img">
-															<a href="cart.html"><img
+															<a href="cartList"><img
 																src="assets/images/cart/3.jpg" alt=""></a>
 														</div>
 														<div class="cart-text">
 															<h5 class="title">
-																<a href="cart.html">1. New and sale badge product -
-																	s / red</a>
+																<a href="cartList">1. New and sale badge product - s
+																	/ red</a>
 															</h5>
 															<div class="cart-text-btn">
 																<div class="cart-qty">
@@ -284,7 +258,7 @@
 														<h5>$166.00</h5>
 													</div>
 													<div class="cart-links d-flex justify-content-center">
-														<a class="obrien-button white-btn" href="cart.html">View
+														<a class="obrien-button white-btn" href="cartList">View
 															cart</a> <a class="obrien-button white-btn"
 															href="checkout.html">Checkout</a>
 													</div>

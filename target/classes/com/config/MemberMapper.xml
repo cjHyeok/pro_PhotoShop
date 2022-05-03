@@ -23,9 +23,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where user_id = #{user_id}
 	</select>
 	
-	<select id="myAccount" parameterType="string" resultType="MemberDTO">
+	<select id="Account" parameterType="string" resultType="MemberDTO">
 		select user_id, user_pw, user_name, post, email, address, phone
 		from t_member
 		where user_id = #{user_id}
+		
 	</select>
+	<select id="myAccount" parameterType="MemberDTO" resultType="OrderDTO">
+	SELECT  LAST.*
+	FROM    (SELECT ROWNUM RNUM,
+                TEMP.*   
+        FROM    (select  m.user_id, m.user_pw, m.user_name, m.post, m.email, m.address, m.phone, o.total_price, o.order_date, o.order_state
+                    from t_member m join t_order o 
+                    on m.user_id = o.user_id
+                    where m.user_id = '${user_id}'
+                    ORDER BY order_date desc
+                ) TEMP
+        )LAST
+	WHERE   RNUM BETWEEN 1 AND 3
+	</select> 
 </mapper>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.dao.OrderDAO;
 import com.dto.CartDTO;
 import com.dto.MemberDTO;
+import com.dto.OrderDTO;
 
 @Service
 public class OrderService {
@@ -23,5 +24,11 @@ public class OrderService {
 		odao.orderDone(clist, mDTO); 
 		odao.delCart(mDTO); 
 	}
+	
+	public List<OrderDTO> myAccount(MemberDTO dto) {
+		List<OrderDTO> olist = odao.myAccount(dto);
+		return olist;
+	}
+	
 
 }

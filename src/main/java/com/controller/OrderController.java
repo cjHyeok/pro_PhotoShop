@@ -29,7 +29,7 @@ public class OrderController {
 		MemberDTO mDTO = (MemberDTO) session.getAttribute("login");
 		String user_id = mDTO.getUser_id();
 		System.out.println("유저 아이디"+user_id);
-		mDTO = mservice.myAccount(user_id); // 사용자 정보 가져오기
+		mDTO = mservice.Account(user_id); // 사용자 정보 가져오기
 		
 		
 		List<CartDTO> clist = oservice.cartList(mDTO);
@@ -47,7 +47,7 @@ public class OrderController {
 	public String orderAllDone(HttpSession session, RedirectAttributes xxx) {
 		MemberDTO mDTO = (MemberDTO) session.getAttribute("login");
 		String user_id = mDTO.getUser_id();
-		mDTO = mservice.myAccount(user_id); // 사용자 정보 가져오기
+		mDTO = mservice.Account(user_id); // 사용자 정보 가져오기
 
 		System.out.println("mDTO=="+ mDTO);
 		List<CartDTO> clist = oservice.cartList(mDTO);

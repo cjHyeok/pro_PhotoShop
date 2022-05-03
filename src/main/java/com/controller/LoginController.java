@@ -24,7 +24,7 @@ public class LoginController {
 	public String login(@RequestParam Map<String, String> map, Model model, HttpSession session) {
 		System.out.println("map = " + map);
 		MemberDTO mdto = mservice.login(map);
-		System.out.println("dto = " + mdto);
+		System.out.println("로그인 dto = " + mdto);
 		
 		
 		if (mdto != null) {

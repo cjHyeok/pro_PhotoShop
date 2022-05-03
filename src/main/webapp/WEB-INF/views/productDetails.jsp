@@ -143,13 +143,13 @@
 															<li><a href="/productList?category_name=가을">가을</a></li>
 															<li><a href="/productList?category_name=겨울">겨울</a></li>
 
-															<li><a href="productList">상품리스트</a></li>
+
 														</ul>
 													</div>
 
 												</div></li>
-												
-												
+
+
 											<li><a href="blog-details-fullwidth.html"> <span
 													class="menu-text"> 추천 상품</span> <i class="fa fa-angle-down"></i>
 											</a>
@@ -172,6 +172,9 @@
 													<li><a href="myAccount">My Account</a></li>
 													<li><a href="loginForm">로그인</a></li>
 													<li><a href="memberForm">회원가입</a></li>
+													<li><a href="productList">상품리스트</a></li>
+													<li><a href="cartList">카트리스트</a></li>
+													<li><a href="wishList">위시리스트</a></li>
 												</ul></li>
 											<li><a href="aboutUs"> <span class="menu-text">
 														About</span>
@@ -184,10 +187,19 @@
 								<div class="col-lg-2 col-xl-3 col-sm-6 col-6 col-custom">
 									<div class="header-right-area main-nav">
 										<ul class="nav">
-											<li class="login-register-wrap d-none d-xl-flex"><span><a
-													href="loginForm">Login</a></span> <span><a
-													href="memberForm">Register</a></span></li>
-
+											<li class="login-register-wrap d-none d-xl-flex"><c:choose>
+													<c:when test="${!empty login }"> &nbsp;&nbsp; <!-- 확인용 -->
+														<div
+															style="font-size: 15px; line-height: 1.6; font-weight: 600; color: #303030;">
+															${login.user_name } 님</div>
+														<span><a href="/loginCheck/logout">logout</a></span>
+														<span><a href="memberForm">Register</a></span>
+													</c:when>
+													<c:otherwise>
+														<span><a href="loginForm">login</a></span>
+														<span><a href="memberForm">Register</a></span>
+													</c:otherwise>
+												</c:choose></li> &nbsp;&nbsp;
 											<li class="minicart-wrap"><a href="#"
 												class="minicart-btn toolbar-btn"> <i class="ion-bag"></i>
 													<span class="cart-item_count">3</span>
