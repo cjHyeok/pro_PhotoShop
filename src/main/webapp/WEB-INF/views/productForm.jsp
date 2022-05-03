@@ -12,8 +12,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
     // 상품 등록 유효성검사
-    $(document).ready(function(){
-    // 상품 등록 유효성검사
+    
     $("#addBtn").click(function(){
         var product_name = $("#product_name").val();
         var product_price = $("#product_price").val();
@@ -22,7 +21,7 @@ $(document).ready(function(){
 
         if(product_name == "") {
             alert("상품명을 입력해주세요");
-            productName.foucs();
+            product_name.foucs();
         } else if (product_price == "") {
             alert("상품 가격을 입력해주세요");
             productPrice.focus();
@@ -44,7 +43,7 @@ $(document).ready(function(){
 });
 </script>
 <h2>상품 등록</h2>
-<form id="form1" name="form1" enctype="multipart/form-data" method="post">
+<form id="productForm" name="productForm" enctype="multipart/form-data" method="post">
     <table border="1">
         <tr>
             <td>상품명</td>

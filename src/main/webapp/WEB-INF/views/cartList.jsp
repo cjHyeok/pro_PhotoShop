@@ -163,7 +163,11 @@
 				})
 			
 				
-				
+				$(document).ready(function(){
+				    $("#btnAdd").click(function(){
+				        location.href="write.do";
+				    });
+				});
 			
 			});
 </script>

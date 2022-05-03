@@ -121,6 +121,9 @@
 													<i class="fa fa-angle-down"></i>
 											</a>
 												<ul class="dropdown-submenu dropdown-hover">
+													<c:choose>
+													<c:when test="${!empty login }"> 
+													
 													<li><a href="frequently-questions.html">FAQ</a></li>
 													<li><a href="/myAccount">My Account</a></li>
 													<li><a href="loginForm">로그인</a></li>
@@ -128,6 +131,20 @@
 													<li><a href="productList">상품리스트</a></li>
 													<li><a href="cartList">카트리스트</a></li>
 													<li><a href="wishList">위시리스트</a></li>
+														
+													</c:when>
+													
+													
+													
+													<c:otherwise>
+														<li><a href="frequently-questions.html">FAQ</a></li>
+														<li><a href="loginForm">로그인</a></li>
+														<li><a href="memberForm">회원가입</a></li>
+														<li><a href="productList">상품리스트</a></li>
+														<li><a href="cartList">카트리스트</a></li>
+														<li><a href="wishList">위시리스트</a></li>
+													</c:otherwise>
+												</c:choose>
 												</ul></li>
 											<li><a href="aboutUs"> <span class="menu-text">
 														About</span>
@@ -513,42 +530,35 @@
 
 
 
-									<c:choose>
-										<c:when test="${!empty login }">
-											<li><a href="#"> <span class="menu-text">Page</span>
-													<i class="fa fa-angle-down"></i></a>
-
+									<li><a href="#"> <span class="menu-text">Page</span>
+													<i class="fa fa-angle-down"></i>
+											</a>
 												<ul class="dropdown-submenu dropdown-hover">
-
-
-													<li><a href="frequently-questions.html">FAQ</a></li>
-													<li><a href="loginForm">로그</a></li>
-													<li><a href="memberForm">회원가입</a></li>
-													<li><a href="productList">상품리스트</a></li>
-													<li><a href="cartList">카트리스트</a></li>
-													<li><a href="wishList">위시리스트</a></li>
-												</ul>
-												</li>
-
-										</c:when>
-										<c:otherwise>
-											<li><a href="#"> <span class="menu-text">Page</span>
-													<i class="fa fa-angle-down"></i></a>
-
-												<ul class="dropdown-submenu dropdown-hover">
+													<c:choose>
+													<c:when test="${!empty login }"> 
+													
 													<li><a href="frequently-questions.html">FAQ</a></li>
 													<li><a href="/myAccount">My Account</a></li>
-													<li><a href="loginForm">로</a></li>
+													<li><a href="loginForm">로그인</a></li>
 													<li><a href="memberForm">회원가입</a></li>
 													<li><a href="productList">상품리스트</a></li>
 													<li><a href="cartList">카트리스트</a></li>
 													<li><a href="wishList">위시리스트</a></li>
-												</ul>
-												</li>
-
-										</c:otherwise>
-
-									</c:choose>
+														
+													</c:when>
+													
+													
+													
+													<c:otherwise>
+														<li><a href="frequently-questions.html">FAQ</a></li>
+														<li><a href="loginForm">로그인</a></li>
+														<li><a href="memberForm">회원가입</a></li>
+														<li><a href="productList">상품리스트</a></li>
+														<li><a href="cartList">카트리스트</a></li>
+														<li><a href="wishList">위시리스트</a></li>
+													</c:otherwise>
+												</c:choose>
+												</ul></li>
 
 
 

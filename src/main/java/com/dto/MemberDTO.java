@@ -28,5 +28,5 @@ public class MemberDTO {
 	private int shipping;
 	private int order_id;
 	private int total_price;
-
+	
 }

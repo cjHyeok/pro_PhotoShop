@@ -11,7 +11,9 @@ import lombok.ToString;
 @ToString
 public class OrderDTO {
 
+	
 	private int order_id;
+	private int rnum;
 	private String user_id;
 	private Date order_date;
 	private String payment;
