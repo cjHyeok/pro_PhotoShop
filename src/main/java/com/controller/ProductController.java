@@ -5,11 +5,14 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.dto.MemberDTO;
 import com.dto.ProductDTO;
 import com.service.ProductService;
 
@@ -64,7 +67,14 @@ public class ProductController {
 	}
 
 	
+@RequestMapping(value = "/productAdd") //상품추가
 	
+	public String productAdd(ProductDTO p, Model model) {  
+		System.out.println("ProductDTO p =" + p);
+		pservice.productAdd(p);
+		model.addAttribute("success", "회원 가입 성공");
+		return "productForm";
+	}
 	
 
 }

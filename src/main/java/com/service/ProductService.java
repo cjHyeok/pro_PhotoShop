@@ -35,6 +35,11 @@ public class ProductService {
 		return pdto;
 	}
 
+	public void productAdd(ProductDTO p) {
+		pdao.productAdd(p);
+		
+	}
+
 
 
 

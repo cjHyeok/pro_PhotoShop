@@ -47,7 +47,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where p.product_id = #{product_id}
 	</select>
 	
-	
-	
 
+	<insert id="productAdd" parameterType="ProductDTO">
+                
+ 		INSERT ALL
+			INTO t_product (product_id, product_category_id, product_name, product_price, product_quantity, product_description_summary, 
+			product_description, product_sales_state)
+      	  values(#{product_id},#{product_category_id}, #{product_name}, #{product_price}, #{product_quantity}, #{product_description_summary},
+      	   #{product_description}, #{product_sales_state})
+		
+      	  INTO t_product_img (product_id, product_photo_id, product_img, product_sub_img_1, product_sub_img_2, product_sub_img_3, product_sub_img_4)
+      	  values(#{product_id}, PRODUCT_PHOTO_ID_SEQ.nextval, #{product_img}, #{product_sub_img_1}, #{product_sub_img_2},#{product_sub_img_3},#{product_sub_img_4})
+     	   SELECT *
+      	FROM DUAL
+        
+	</insert>
 </mapper>

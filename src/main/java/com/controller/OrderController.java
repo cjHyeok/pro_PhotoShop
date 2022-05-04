@@ -44,7 +44,7 @@ public class OrderController {
 	
 	
 	@RequestMapping("/loginCheck/orderDone") // 전체 주문확인
-	public String orderAllDone(HttpSession session, RedirectAttributes xxx) {
+	public String orderDone(HttpSession session, RedirectAttributes xxx) {
 		MemberDTO mDTO = (MemberDTO) session.getAttribute("login");
 		String user_id = mDTO.getUser_id();
 		mDTO = mservice.Account(user_id); // 사용자 정보 가져오기

@@ -36,6 +36,13 @@ public class ProductDAO {
 		return pdto;
 	}
 
+	public void productAdd(ProductDTO p) {
+		System.out.println("ProductDTO p  1 ===" + p);
+		int n = template.insert("ProductMapper.productAdd", p);
+		
+		System.out.println("ProductDTO p  2 ===" + p);
+	}
+
 
 
 	
