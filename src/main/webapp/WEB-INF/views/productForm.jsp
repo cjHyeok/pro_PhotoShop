@@ -57,8 +57,9 @@
 		
 		
 		$("form").on("submit", function(event) {
-			var product_id = $("#product_id").val();
-			var product_category_id = $("#product_category_id").val();
+
+			var product_id = $("#product_id").val(); 
+			var product_category_id = $("#product_category_id").val(); 
 			var product_name = $("#product_name").val();
 			var product_price = $("#product_price").val();
 			var product_quantity = $("#product_quantity").val();
@@ -69,15 +70,16 @@
 			var product_sub_img_1 = $("#product_sub_img_1").val();
 			var product_sub_img_2 = $("#product_sub_img_2").val();
 			var product_sub_img_3 = $("#product_sub_img_3").val();
-			var product_sub_img_4 = $("#product_sub_img_4").val();
+			var product_sub_img_4 = $("#product_sub_img_4").val(); 
 			
-			console.log("result =" + result);
-			
+			console.log("product_category_id =" + product_category_id);
+ 			
 			if (product_id.length < 8) {
 				alert("상품 번호를 8자리 이상 입력해주세요")
 				$("#product_id").focus();
 				event.preventDefault();
-			} else if (product_category_id.length < 1) {
+			} 
+			else if (product_category_id.length < 1) {
 				alert("카테고리 번호를 입력해주세요")
 				$("#product_category_id").focus();
 				event.preventDefault();
@@ -117,16 +119,9 @@
 				$("#product_img").focus();
 				event.preventDefault();
 			
-			} 
-			});
-		
-		
-		
-		
-		
-		});
-		
-
+			}  
+	});
+});
 </script>
 <body>
 <c:set var="xxx" value="${mDTO}" />
@@ -651,11 +646,11 @@
                                 </div>
                             
                                 <div class="single-input-item mb-3">
-                                <input id="product_category_id"  type="text" placeholder="상품 카테고리"><span>
-                                    <select id="product_cate_num" > <span id="result"></span>
-                                    	<option value="1">1</option>
-                                    	<option value="2">2</option>
-                                    	<option value="3">3</option>
+                                
+                                    <select id="product_category_id" name="product_category_id">
+            							<c:forEach var="category_list" items="${category_List}" varStatus="status">
+            								<option value="${category_list.product_category_id}">${category_list.category_name}</option>
+            							</c:forEach>
                                     </select>
                                 </div>
 

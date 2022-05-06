@@ -21,7 +21,7 @@
 <mvc:view-controller path="/productList" view-name="productList"/>
 <mvc:view-controller path="/productDetails" view-name="productDetails"/>
 
-<mvc:view-controller path="/cartList" view-name="cartList"/>
+<!-- <mvc:view-controller path="/cartList" view-name="cartList"/> -->
 <mvc:view-controller path="/wishList" view-name="wishList"/>
 
 <mvc:view-controller path="/orderConfirm" view-name="orderConfirm"/>
@@ -30,7 +30,7 @@
 <mvc:view-controller path="/aboutUs" view-name="aboutUs"/>
 <mvc:view-controller path="/contactUs" view-name="contactUs"/>
 
-<mvc:view-controller path="productForm" view-name="productForm"/>
+<!-- <mvc:view-controller path="/productForm" view-name="productForm"/> -->
 
 
 

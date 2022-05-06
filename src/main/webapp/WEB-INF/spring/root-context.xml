@@ -39,6 +39,7 @@
 			<value>com.dto.OrderDTO</value>
 			<value>com.dto.CartDTO</value>
 			<value>com.dto.WishDTO</value>
+			<value>com.dto.ProductCategoryDTO</value>
 		</list>
 	</property>
 	</bean>

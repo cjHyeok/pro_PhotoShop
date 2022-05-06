@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dto.MemberDTO;
+import com.dto.ProductCategoryDTO;
 import com.dto.ProductDTO;
 import com.service.ProductService;
 
@@ -66,15 +67,33 @@ public class ProductController {
 		return pdto;
 	}
 
-	
-@RequestMapping(value = "/productAdd") //상품추가
-	
-	public String productAdd(ProductDTO p, Model model) {  
-		System.out.println("ProductDTO p =" + p);
-		pservice.productAdd(p);
-		model.addAttribute("success", "회원 가입 성공");
-		return "productForm";
+	@RequestMapping("/productForm")
+	public ModelAndView productForm() {
+
+		List<ProductCategoryDTO> clist = pservice.category_List();
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("category_List", clist);
+		System.out.println("category_List =" + clist);
+		mav.setViewName("productForm");
+
+		return mav;
+
 	}
-	
+
+	@RequestMapping("/productAdd")
+	public ModelAndView productForm(ProductDTO p, Model model) {
+		System.out.println("ProductDTO p =" + p);
+
+		pservice.productAdd(p);
+
+		List<ProductCategoryDTO> clist = pservice.category_List();
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("category_List", clist);
+		System.out.println("category_List =" + clist);
+		mav.setViewName("productForm");
+
+		return mav;
+
+	}
 
 }

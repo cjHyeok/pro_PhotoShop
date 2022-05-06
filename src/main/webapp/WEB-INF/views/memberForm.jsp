@@ -685,8 +685,8 @@ $(document).ready(function() {
                     <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-custom">
                         <div class="login-register-wrapper">
                             <div class="section-content text-center mb-5">
-                                <h2 class="title-4 mb-2">Create Account</h2>
-                                <p class="desc-content">Please Register using account detail bellow.</p>
+                                <h2 class="title-4 mb-2">회원가입</h2>
+                                <p class="desc-content">회원가입을 위해 정보를 넣어주세요</p>
                             </div>
                             <form action="/memberAdd" method="post">
                                 <div class="single-input-item mb-3">

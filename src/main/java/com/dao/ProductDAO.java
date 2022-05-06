@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.dto.ProductCategoryDTO;
 import com.dto.ProductDTO;
 
 @Repository
@@ -41,6 +42,12 @@ public class ProductDAO {
 		int n = template.insert("ProductMapper.productAdd", p);
 		
 		System.out.println("ProductDTO p  2 ===" + p);
+	}
+
+	public List<ProductCategoryDTO> category_List() {
+		int category_level=2;
+		List<ProductCategoryDTO> clist = template.selectList("ProductMapper.category_List", category_level);
+		return clist;
 	}
 
 
