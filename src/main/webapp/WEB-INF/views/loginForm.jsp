@@ -135,12 +135,12 @@
 														<div
 															style="font-size: 15px; line-height: 1.6; font-weight: 600; color: #303030;">
 															${login.user_name } 님</div>
-														<span><a href="/loginCheck/logout">logout</a></span>
-														<span><a href="memberForm">Register</a></span>
+														<span><a href="/loginCheck/logout">로그아웃</a></span>
+														<span><a href="memberForm">회원가입</a></span>
 													</c:when>
 													<c:otherwise>
-														<span><a href="loginForm">login</a></span>
-														<span><a href="memberForm">Register</a></span>
+														<span><a href="loginForm">로그인</a></span>
+														<span><a href="memberForm">회원가입</a></span>
 													</c:otherwise>
 												</c:choose></li> &nbsp;&nbsp;
 											<li class="minicart-wrap"><a href="#"
@@ -342,12 +342,12 @@
                                                 <c:choose>
                                                 <c:when test="${!empty login }"> &nbsp;&nbsp; <!-- 확인용 -->
                                                 <div style="  font-size: 15px; line-height: 1.6; font-weight: 600; color: #303030;"> ${login.user_name } 님 </div>
-												<span><a href="/loginCheck/logout">logout</a></span>
-												<span><a href="memberForm">Register</a></span>
+												<span><a href="/loginCheck/logout">로그아웃</a></span>
+												<span><a href="memberForm">회원가입</a></span>
 												</c:when>
 												<c:otherwise>
-												<span><a href="loginForm">login</a></span>
-                                                <span><a href="memberForm">Register</a></span>
+												<span><a href="loginForm">로그인</a></span>
+                                                <span><a href="memberForm">회원가입</a></span>
                                                 </c:otherwise>
 												</c:choose>
 											</li>
@@ -520,12 +520,12 @@
                                                 <c:choose>
                                                 <c:when test="${!empty login }"> &nbsp;&nbsp; <!-- 확인용 -->
                                                 <div style="  font-size: 15px; line-height: 1.6; font-weight: 600; color: #303030;"> ${login.user_name } 님 </div>
-												<span><a href="/loginCheck/logout">logout</a></span>
-												<span><a href="memberForm">Register</a></span>
+												<span><a href="/loginCheck/logout">로그아웃</a></span>
+												<span><a href="memberForm">회원가입</a></span>
 												</c:when>
 												<c:otherwise>
-												<span><a href="loginForm">login</a></span>
-                                                <span><a href="memberForm">Register</a></span>
+												<span><a href="loginForm">로그인</a></span>
+                                                <span><a href="memberForm">회원가입</a></span>
                                                 </c:otherwise>
 												</c:choose>
 											</li>	
@@ -588,8 +588,8 @@
                     <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-custom">
                         <div class="login-register-wrapper">
                             <div class="section-content text-center mb-5">
-                                <h2 class="title-4 mb-2">Login</h2>
-                                <p class="desc-content">Please login using account detail bellow.</p>
+                                <h2 class="title-4 mb-2">로그인</h2>
+                                <!-- <p class="desc-content">Please login using account detail bellow.</p> -->
                             </div>
                             <form action="login" method="post">
                                 <div class="single-input-item mb-3">
@@ -603,17 +603,17 @@
                                         <div class="remember-meta mb-3">
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="rememberMe">
-                                                <label class="custom-control-label" for="rememberMe">Remember Me</label>
+                                                <label class="custom-control-label" for="rememberMe">아이디 기억하기</label>
                                             </div>
                                         </div>
-                                        <a href="#" class="forget-pwd mb-3">Forget Password?</a>
+                                        <a href="#" class="forget-pwd mb-3">비밀번호를 잊으셨나요?</a>
                                     </div>
                                 </div>
                                 <div class="single-input-item mb-3">
-                                    <button class="btn obrien-button-2 primary-color">Login</button>
+                                    <button class="btn obrien-button-2 primary-color">로그인</button>
                                 </div>
                                 <div class="single-input-item">
-                                    <a href="register.html">Creat Account</a>
+                                    <a href="memberForm">회원가입 하기</a>
                                 </div>
                             </form>
                         </div>

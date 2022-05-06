@@ -20,6 +20,8 @@ public class MemberDTO {
 	private String email;
 	private int post;
 	private String address;
+	private String address1;
+	private String address2;
 	private String phone;
 	private String user_state;
 	private Date join_date;
