@@ -57,7 +57,7 @@ public class MemberController {
 	 
 
  
-		@RequestMapping(value = "/myAccount")
+		@RequestMapping(value = "/myAccount")  //주문 내역 확인 부분
 		public ModelAndView myAccount(RedirectAttributes attr, HttpSession session) {
 			MemberDTO dto = (MemberDTO) session.getAttribute("login");
 
@@ -73,6 +73,21 @@ public class MemberController {
 
 			return mav;
 
+		}
+		
+		
+		@RequestMapping(value = "/memberUpdate" , method=RequestMethod.POST) // 회원정보수정
+		public String memberUpdate(MemberDTO mdto, HttpSession session) {
+			
+			System.out.println("멤버업데이트 =="+ mdto);
+			
+			
+			mservice.memberUpdate(mdto);
+			System.out.println(" /memberUpda ====" + mdto);
+			session.setAttribute("login", mdto);
+			session.setAttribute("mesg", mdto.getUser_id());
+			
+			return "myAccount";
 		}
 
 }

@@ -103,7 +103,7 @@
 													<i class="fa fa-angle-down"></i>
 											</a>
 												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="frequently-questions.html">FAQ</a></li>
+													<li><a href="faqForm">FAQ</a></li>
 													<li><a href="myAccount">My Account</a></li>
 													<li><a href="loginForm">로그인</a></li>
 													<li><a href="memberForm">회원가입</a></li>
@@ -309,7 +309,7 @@
                                                     <i class="fa fa-angle-down"></i>
                                                 </a>
                                                 <ul class="dropdown-submenu dropdown-hover">
-                                                    <li><a href="frequently-questions.html">FAQ</a></li>
+                                                    <li><a href="faqForm">FAQ</a></li>
                                                     <li><a href="my-account.html">My Account</a></li>
                                                     <li><a href="loginForm">Login</a></li>
                                                     <li><a href="memberForm">Register</a></li>
@@ -492,7 +492,7 @@
                                     </li>
                                     <li class="menu-item-has-children "><a href="#">Pages</a>
                                         <ul class="dropdown">
-                                            <li><a href="frequently-questions.html">FAQ</a></li>
+                                            <li><a href="faqForm">FAQ</a></li>
                                             <li><a href="my-account.html">My Account</a></li>
                                             <li><a href="login-memberForm">login &amp; register</a></li>
                                         </ul>

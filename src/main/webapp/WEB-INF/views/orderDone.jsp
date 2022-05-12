@@ -55,7 +55,9 @@
 <c:set var="user_id" value="${xxx.user_id}" />
 <c:set var="user_name" value="${xxx.user_name}" />
 <c:set var="post" value="${xxx.post}" />
-<c:set var="address" value="${xxx.address}" />
+<c:set var="address1" value="${xxx.address1}" />
+<c:set var="address2" value="${xxx.address2}" />
+<c:set var="address_detail" value="${xxx.address_detail}" />
 <c:set var="phone" value="${xxx.phone}" />
 
 
@@ -119,7 +121,7 @@
 													<i class="fa fa-angle-down"></i>
 											</a>
 												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="frequently-questions.html">FAQ</a></li>
+													<li><a href="faqForm">FAQ</a></li>
 													<li><a href="myAccount">My Account</a></li>
 													<li><a href="loginForm">로그인</a></li>
 													<li><a href="memberForm">회원가입</a></li>
@@ -298,7 +300,7 @@
 													<i class="fa fa-angle-down"></i>
 											</a>
 												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="frequently-questions.html">FAQ</a></li>
+													<li><a href="faqForm">FAQ</a></li>
 													<li><a href="myAccount">My Account</a></li>
 													<li><a href="loginForm">로그인</a></li>
 													<li><a href="memberForm">회원가입</a></li>
@@ -467,7 +469,7 @@
 											class="fa fa-angle-down"></i>
 									</a>
 										<ul class="dropdown-submenu dropdown-hover">
-											<li><a href="frequently-questions.html">FAQ</a></li>
+											<li><a href="faqForm">FAQ</a></li>
 											<li><a href="myAccount">My Account</a></li>
 											<li><a href="loginForm">로그인</a></li>
 											<li><a href="memberForm">회원가입</a></li>
@@ -586,7 +588,7 @@
 				</tr>
 				<tr>
 					<td class="td_default" height="35">주소</td>
-					<td class="td_default" height="35">${address}
+					<td class="td_default" height="35">${address1}&nbsp${address_detail}
 					</td>
 				</tr>
 

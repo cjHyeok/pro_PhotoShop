@@ -101,6 +101,32 @@ $(document).ready(function() {
 			alert("전화번호를 제대로 입력해주세요")
 			$("#phone").focus();
 			event.preventDefault();
+			
+		} else if (phone.length < 8) {
+			alert("전화번호를 제대로 입력해주세요")
+			$("#phone").focus();
+			event.preventDefault();
+			
+		} else if (phone.length < 8) {
+			alert("전화번호를 제대로 입력해주세요")
+			$("#phone").focus();
+			event.preventDefault();
+			
+		} else if (phone.length < 8) {
+			alert("전화번호를 제대로 입력해주세요")
+			$("#phone").focus();
+			event.preventDefault();
+		
+		} else if (phone.length < 1) {
+			alert("우편번호를 입력해주세요")
+			$("#post").focus();
+			event.preventDefault();
+		
+		} else if (phone.length < 1) {
+			alert("상세주소를 입력해주세요")
+			$("#address_detail").focus();
+			event.preventDefault();
+		
 		} else {
 			if (result == "사용불가") {
 				alert("사용가능한 아이디를 넣어주세요")
@@ -208,7 +234,7 @@ $(document).ready(function() {
 													<i class="fa fa-angle-down"></i>
 											</a>
 												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="frequently-questions.html">FAQ</a></li>
+													<li><a href="faqForm">FAQ</a></li>
 													<li><a href="myAccount">My Account</a></li>
 													<li><a href="loginForm">로그인</a></li>
 													<li><a href="memberForm">회원가입</a></li>
@@ -414,7 +440,7 @@ $(document).ready(function() {
                                                     <i class="fa fa-angle-down"></i>
                                                 </a>
                                                 <ul class="dropdown-submenu dropdown-hover">
-                                                    <li><a href="frequently-questions.html">FAQ</a></li>
+                                                    <li><a href="faqForm">FAQ</a></li>
                                                     <li><a href="myAccount">My Account</a></li>
                                                     <li><a href="login.html">Login</a></li>
                                                     <li><a class="active" href="register.html">Register</a></li>
@@ -594,7 +620,7 @@ $(document).ready(function() {
                                     </li>
                                     <li class="menu-item-has-children "><a href="#">Pages</a>
                                         <ul class="dropdown">
-                                            <li><a href="frequently-questions.html">FAQ</a></li>
+                                            <li><a href="faqForm">FAQ</a></li>
                                             <li><a href="myAccount">My Account</a></li>
                                             <li><a href="login-register.html">login &amp; register</a></li>
                                         </ul>
@@ -711,13 +737,18 @@ $(document).ready(function() {
            					    <div class="single-input-item mb-3">             
                               	    <input type="text" name="post" id="sample4_postcode" placeholder="우편번호"> 
 									<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-									<input type="text" name="addr1" id="sample4_roadAddress" placeholder="도로명주소"> 
-									<input type="text" name="addr2" id="sample4_jibunAddress" placeholder="지번주소"> <span id="guide" style="color: #999"></span> 
+									<input type="text" name="address1" id="sample4_roadAddress" placeholder="도로명주소"> 
+									<input type="text" name="address2" id="sample4_jibunAddress" placeholder="지번주소"> <span id="guide" style="color: #999"></span> 
 								 </div>
+	                                
+	                            <div class="single-input-item mb-3">
+                                    <input id="address_detail" name="address_detail" type="text" placeholder="상세주소를 입력해주세요">
+                                </div>
 	
                                 <div class="single-input-item mb-3">
                                     <input id="phone" name="phone" type="text" placeholder="전화번호를 입력해주세요">
                                 </div>
+
                                 
                                 <div class="single-input-item mb-3">
                                     <div class="login-reg-form-meta d-flex align-items-center justify-content-between">

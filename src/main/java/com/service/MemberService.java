@@ -34,4 +34,10 @@ public class MemberService {
 		return dto;
 	}
 
+	public void memberUpdate(MemberDTO mdto) {
+		System.out.println("업데이트 서비스1 ===" + mdto);
+		mdao.memberUpdate(mdto);
+		System.out.println("업데이트 서비스2 ===" + mdto);
+	}
+
 }

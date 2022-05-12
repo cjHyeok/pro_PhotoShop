@@ -124,7 +124,7 @@
 													<c:choose>
 													<c:when test="${!empty login }"> 
 													
-													<li><a href="frequently-questions.html">FAQ</a></li>
+													<li><a href="faqForm">FAQ</a></li>
 													<li><a href="/myAccount">My Account</a></li>
 													<li><a href="loginForm">로그인</a></li>
 													<li><a href="memberForm">회원가입</a></li>
@@ -137,7 +137,7 @@
 													
 													
 													<c:otherwise>
-														<li><a href="frequently-questions.html">FAQ</a></li>
+														<li><a href="faqForm">FAQ</a></li>
 														<li><a href="loginForm">로그인</a></li>
 														<li><a href="memberForm">회원가입</a></li>
 														<li><a href="productList">상품리스트</a></li>
@@ -339,7 +339,7 @@
 														Pages</span> <i class="fa fa-angle-down"></i>
 											</a>
 												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="frequently-questions.html">FAQ</a></li>
+													<li><a href="faqForm">FAQ</a></li>
 													<li><a href="/loginCheck//myAccount">My Account</a></li>
 													<li><a href="loginForm">Login</a></li>
 													<li><a href="memberForm">Register</a></li>
@@ -537,7 +537,7 @@
 													<c:choose>
 													<c:when test="${!empty login }"> 
 													
-													<li><a href="frequently-questions.html">FAQ</a></li>
+													<li><a href="faqForm">FAQ</a></li>
 													<li><a href="/myAccount">My Account</a></li>
 													<li><a href="loginForm">로그인</a></li>
 													<li><a href="memberForm">회원가입</a></li>
@@ -550,7 +550,7 @@
 													
 													
 													<c:otherwise>
-														<li><a href="frequently-questions.html">FAQ</a></li>
+														<li><a href="faqForm">FAQ</a></li>
 														<li><a href="loginForm">로그인</a></li>
 														<li><a href="memberForm">회원가입</a></li>
 														<li><a href="productList">상품리스트</a></li>

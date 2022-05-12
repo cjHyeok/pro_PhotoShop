@@ -52,18 +52,28 @@
 		if (n.checked) {
 			document.getElementById("user_name").value = document
 					.getElementById("muser_name").value;
-			document.getElementById("address").value = document
-					.getElementById("maddress").value;
+
 			document.getElementById("email").value = document
 					.getElementById("memail").value;
 			document.getElementById("phone").value = document
 					.getElementById("mphone").value;
+			document.getElementById("post").value = document
+					.getElementById("mpost").value;
+			document.getElementById("address1").value = document
+					.getElementById("maddress1").value;
+			document.getElementById("address2").value = document
+					.getElementById("maddress2").value;
+			document.getElementById("address_detail").value = document
+					.getElementById("maddress_detail").value;
 		} else {
 			document.getElementById("user_name").value = "";
-			document.getElementById("address").value = "";
 			document.getElementById("email").value = "";
 			document.getElementById("phone").value = "";
-
+			document.getElementById("post").value = "";
+			document.getElementById("address1").value = "";
+			document.getElementById("address2").value = "";
+			document.getElementById("address_detail").value = "";
+			
 		}
 
 	}
@@ -130,7 +140,7 @@
 													<i class="fa fa-angle-down"></i>
 											</a>
 												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="frequently-questions.html">FAQ</a></li>
+													<li><a href="faqForm">FAQ</a></li>
 													<li><a href="myAccount">My Account</a></li>
 													<li><a href="loginForm">로그인</a></li>
 													<li><a href="memberForm">회원가입</a></li>
@@ -259,7 +269,7 @@
 								<div class="row align-items-center">
 									<div class="col-lg-2 col-xl-2 col-sm-6 col-6 col-custom">
 										<div class="header-logo">
-											<a href="index.html"> <img class="img-full"
+											<a href="/"> <img class="img-full"
 												src="assets/images/logo/logo.png" alt="Header Logo">
 											</a>
 										</div>
@@ -309,7 +319,7 @@
 														<i class="fa fa-angle-down"></i>
 												</a>
 													<ul class="dropdown-submenu dropdown-hover">
-														<li><a href="frequently-questions.html">FAQ</a></li>
+														<li><a href="faqForm">FAQ</a></li>
 														<li><a href="myAccount">My Account</a></li>
 														<li><a href="loginForm">로그인</a></li>
 														<li><a href="memberForm">회원가입</a></li>
@@ -444,7 +454,7 @@
 									<ul class="mobile-menu">
 										<li class="menu-item-has-children"><a href="#">Home</a>
 											<ul class="dropdown">
-												<li><a href="index.html">Home Page 1</a></li>
+												<li><a href="/">Home Page 1</a></li>
 												<li><a href="index-2.html">Home Page 2</a></li>
 												<li><a href="index-3.html">Home Page 3</a></li>
 												<li><a href="index-4.html">Home Page 4</a></li>
@@ -505,7 +515,7 @@
 											</ul></li>
 										<li class="menu-item-has-children "><a href="#">Pages</a>
 											<ul class="dropdown">
-												<li><a href="frequently-questions.html">FAQ</a></li>
+												<li><a href="faqForm">FAQ</a></li>
 												<li><a href="my-account.html">My Account</a></li>
 												<li><a href="login-register.html">login &amp;
 														register</a></li>
@@ -581,7 +591,7 @@
 							<div class="breadcrumb-content position-relative section-content">
 								<h3 class="title-3">Checkout</h3>
 								<ul>
-									<li><a href="index.html">Home</a></li>
+									<li><a href="/">Home</a></li>
 									<li>Checkout</li>
 								</ul>
 							</div>
@@ -653,64 +663,40 @@
 
 										<div class="col-md-6">
 											<div class="checkout-form-list">
-												<label> Name <span class="required">*</span></label> <input
+												<label> 이름 <span class="required">*</span></label> <input
 													placeholder="" type="text" id="muser_name"
 													value="${mDTO.user_name}">
 											</div>
 										</div>
 
 
+										
+										
+										<div class="col-md-10">
+										<div class="checkout-form-list">
+										<input type="text" name="post" id="post" placeholder="우편번호" value="${mDTO.post}"> 
+	<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 변경"><br>
+	<input type="text" name="address1" id="address1" placeholder="도로명주소" value="${mDTO.address1}">
+	<input type="hidden" name="address2" id="address2" placeholder="지번주소" value="${mDTO.address2}"> <span id="guide" style="color: #999"></span> 
+	<br> 
+</div>
+</div>
 										<div class="col-md-12">
 											<div class="checkout-form-list">
-												<label>Address <span class="required">*</span></label> <input
-													placeholder="Street address" type="text" id="maddress" value="${mDTO.address}">
+												<label>상세주소 <span class="required">*</span></label> <input
+													placeholder="상세주소를 입력해주세요" type="text" id="maddress_detail" value="${mDTO.address_detail}">
 											</div>
 										</div>
 										
 										<div class="col-md-6">
-										<input type="text" name="post" id="sample4_postcode" placeholder="우편번호"> 
-	<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-	<input type="text" name="address1" id="sample4_roadAddress" placeholder="도로명주소"> 
-	<input type="text" name="address2" id="sample4_jibunAddress" placeholder="지번주소"> <span id="guide" style="color: #999"></span> 
-	<br> 
-</div>
-										<div class="col-md-6">
 											<div class="checkout-form-list">
-												<label>Email Address <span class="required">*</span></label>
-												<input placeholder="" type="email" id="memail"
-													value="${mDTO.email}">
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="checkout-form-list">
-												<label>Phone <span class="required">*</span></label> <input
+												<label>번호 <span class="required">*</span></label> <input
 													type="text" id="mphone" value="${mDTO.phone}">
 											</div>
 										</div>
-										<div class="col-md-12">
-											<div class="checkout-form-list create-acc">
-												<input id="cbox" type="checkbox"> <label for="cbox">Create
-													an account?</label>
-											</div>
-											<div id="cbox-info" class="checkout-form-list create-account">
-												<p class="mb-2">Create an account by entering the
-													information below. If you are a returning customer please
-													login at the top of the page.</p>
-												<label>Account password <span class="required">*</span></label>
-												<input placeholder="password" type="password">
-											</div>
-										</div>
+										
 									</div>
-									<div class="different-address">
-										<div class="ship-different-title">
-											<div>
-												<input id="ship-box" type="checkbox"> <label
-													for="ship-box">Ship to a different address?</label>
-											</div>
-										</div>
-
-
-									</div>
+									
 								</div>
 							</form>
 						</div>
@@ -857,7 +843,7 @@
 					<div class="col-12 col-sm-12 col-md-12 col-lg-3 col-custom">
 						<div class="single-footer-widget m-0">
 							<div class="footer-logo">
-								<a href="index.html"> <img
+								<a href="/"> <img
 									src="assets/images/logo/footer.png" alt="Logo Image">
 								</a>
 							</div>
@@ -1014,9 +1000,9 @@
 						}
 
 						// 우편번호와 주소 정보를 해당 필드에 넣는다.
-						document.getElementById('sample4_postcode').value = data.zonecode; //5자리 새우편번호 사용
-						document.getElementById('sample4_roadAddress').value = fullRoadAddr;
-						document.getElementById('sample4_jibunAddress').value = data.jibunAddress;
+						document.getElementById('post').value = data.zonecode; //5자리 새우편번호 사용
+						document.getElementById('address1').value = fullRoadAddr;
+						document.getElementById('address2').value = data.jibunAddress;
 
 						// 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
 						if (data.autoRoadAddress) {

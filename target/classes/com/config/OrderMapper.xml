@@ -23,8 +23,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="orderInsert" parameterType="MemberDTO">
 
-		insert into t_order (order_id, user_id, order_date, total_price)
-		values(orders_seq.nextval, #{user_id}, sysdate, #{total_price})
+		insert into t_order (order_id, user_id, order_date, total_price, post, address1, address2, address_detail)
+		values(orders_seq.nextval, #{user_id}, sysdate, #{total_price}, #{post}, #{address1}, #{address2}, #{address_detail})
 
 		<selectKey keyProperty="order_id" resultType="int" order="AFTER">
 			SELECT orders_seq.CURRVAL AS id FROM DUAL

@@ -6,25 +6,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="MemberMapper">
 
 	<insert id="memberAdd" parameterType="MemberDTO"> <!-- 회원가입 -->
-		insert into t_member (user_id, user_pw, user_pw2, user_name, email, phone )
-		values( #{user_id}, #{user_pw},#{user_pw2}, #{user_name}, #{email}, #{phone})
+		insert into t_member (user_id, user_pw, user_pw2, user_name, email, phone, join_date, post, address1, address2 , address_detail)
+		values( #{user_id}, #{user_pw},#{user_pw2}, #{user_name}, #{email}, #{phone}, sysdate, #{post}, #{address1}, #{address2}, #{address_detail})
 	</insert>
 
 
 	<select id="login" parameterType="hashmap" resultType="MemberDTO">
-		select user_id, user_pw, user_name, email, phone
+		select user_id, user_pw, user_name, email, phone, post, address1, address2, address_detail
 		from t_member
 		where email = #{email} and user_pw = #{user_pw}
 	</select>
 	
 	<select id="idDuplicatedCheck" parameterType="string" resultType="MemberDTO">
-		select user_id, user_pw, user_name,email, phone
+		select user_id, user_pw, user_name, email, phone
 		from t_member
 		where user_id = #{user_id}
 	</select>
 	
 	<select id="Account" parameterType="string" resultType="MemberDTO">
-		select user_id, user_pw, user_name, post, email, address, phone
+		select user_id, user_pw, user_name, post, email,  phone, address1, address2, address_detail
 		from t_member
 		where user_id = #{user_id}
 		
@@ -33,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	SELECT  LAST.*
 	FROM    (SELECT ROWNUM RNUM,
                 TEMP.*   
-        FROM    (select  m.user_id, m.user_pw, m.user_name, m.post, m.email, m.address, m.phone, o.total_price, o.order_date, o.order_state
+        FROM    (select  m.user_id, m.user_pw, m.user_name, m.post, m.email, m.address1, m.address2,m.address_detail, m.phone, o.total_price, o.order_date, o.order_state
                     from t_member m join t_order o 
                     on m.user_id = o.user_id
                     where m.user_id = '${user_id}'
@@ -43,4 +43,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	WHERE   RNUM BETWEEN 1 AND 3
 	
 	</select> 
+	
+	<update id="memberUpdate" parameterType="MemberDTO">
+		update t_member
+		set 
+			user_name= #{user_name},
+			<!-- email=#{email}, -->
+			<!-- phone= #{phone}, -->
+			user_pw= #{user_pw}
+			
+			
+		where user_id= #{user_id}
+	</update>
 </mapper>

@@ -47,7 +47,59 @@
     <!-- <link rel="stylesheet" href="assets/css/style.min.css"> -->
 </head>
 
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+		
+	$("form").on("submit", function(event) {
+				var password1 = $("#memberPw").val();
+				var passwordUp1 = $("#memberPw1").val();
+				var passwordUp2 = $("#memberPw2").val();
+				
+				
+				console.log("password1" + password1);
+				
+			 	if (password1.length < 3) {
+					alert("현재 비밀번호를 입력해주세요")
+					$("#memberPw").focus();
+					event.preventDefault();
+				
+				} 
+				 
+				
+			 	else if (passwordUp1.length < 3) {
+					alert("변경하실 비밀번호를 입력해주세요")
+					$("#memberPw1").focus();
+					console.log("passwordUp1" + passwordUp1);
+					
+					event.preventDefault();
+					
+			 	}
+				else if (passwordUp2 !== passwordUp1) {
+					alert("변경 비밀번호를 다시 확인해주세요")
+					$("#memberPw2").focus();
+					console.log("passwordUp2" + passwordUp2);
+					event.preventDefault();
+				
+				} 
+				
+		});
+	});
+	</script>
+
+
+
 <body>
+
+	<c:if test="${!empty mesg }">
+		<script>
+			//session.removeAttribute("mesg");
+			alert("${mesg} 상품을 장바구니에 담았습니다.");
+		</script>
+	</c:if>
+
 
     <div class="contact-wrapper">
         <header class="main-header-area">
@@ -112,7 +164,7 @@
 												<c:choose>
 													<c:when test="${!empty login }"> 
 													
-													<li><a href="frequently-questions.html">FAQ</a></li>
+													<li><a href="faqForm">FAQ</a></li>
 													<li><a href="/myAccount">My Account</a></li>
 													<li><a href="loginForm">로그인</a></li>
 													<li><a href="memberForm">회원가입</a></li>
@@ -125,7 +177,7 @@
 													
 													
 													<c:otherwise>
-														<li><a href="frequently-questions.html">FAQ</a></li>
+														<li><a href="faqForm">FAQ</a></li>
 														<li><a href="loginForm">로그인</a></li>
 														<li><a href="memberForm">회원가입</a></li>
 														<li><a href="productList">상품리스트</a></li>
@@ -333,7 +385,7 @@
 														Pages</span> <i class="fa fa-angle-down"></i>
 											</a>
 												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="frequently-questions.html">FAQ</a></li>
+													<li><a href="faqForm">FAQ</a></li>
 													<li><a href="/loginCheck//myAccount">My Account</a></li>
 													<li><a href="loginForm">Login</a></li>
 													<li><a href="memberForm">Register</a></li>
@@ -475,7 +527,7 @@
 							<form>
 								<input type="text" placeholder="Search product...">
 								<button class="search-btn">
-									<i class="fa fa-search"></i>
+									<i class="fa fa-search" ></i>
 								</button>
 							</form>
 						</div>
@@ -529,7 +581,7 @@
 											<c:choose>
 													<c:when test="${!empty login }"> 
 													
-													<li><a href="frequently-questions.html">FAQ</a></li>
+													<li><a href="faqForm">FAQ</a></li>
 													<li><a href="/myAccount">My Account</a></li>
 													<li><a href="loginForm">로그인</a></li>
 													<li><a href="memberForm">회원가입</a></li>
@@ -542,7 +594,7 @@
 													
 													
 													<c:otherwise>
-														<li><a href="frequently-questions.html">FAQ</a></li>
+														<li><a href="faqForm">FAQ</a></li>
 														<li><a href="loginForm">로그인</a></li>
 														<li><a href="memberForm">회원가입</a></li>
 														<li><a href="productList">상품리스트</a></li>
@@ -785,52 +837,48 @@
                                             <div class="myaccount-content">
                                                 <h3>Account Details</h3>
                                                 <div class="account-details-form">
-                                                    <form action="#">
+                                                    <form action="/memberUpdate" method="post" id="pwUpdate">
+                                                    <input type="hidden" id="user_id" name="user_id" value="${login.user_id}">
                                                         <div class="row">
                                                             <div class="col-lg-6 col-custom">
                                                                 <div class="single-input-item mb-3">
-                                                                    <label for="first-name" class="required mb-1">First Name</label>
-                                                                    <input type="text" id="first-name" placeholder="First Name" />
+                                                                    <label for="first-name" class="required mb-1">이름</label>
+                                                                    <input type="text" id="user_name" name="user_name" placeholder="이름를 입력해주세요" value="${login.user_name}" />
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-6 col-custom">
-                                                                <div class="single-input-item mb-3">
-                                                                    <label for="last-name" class="required mb-1">Last Name</label>
-                                                                    <input type="text" id="last-name" placeholder="Last Name" />
-                                                                </div>
-                                                            </div>
+                                                            
                                                         </div>
                                                         <div class="single-input-item mb-3">
-                                                            <label for="display-name" class="required mb-1">Display Name</label>
-                                                            <input type="text" id="display-name" placeholder="Display Name" />
+                                                            <label for="display-name" class="required mb-1">전화번호</label>
+                                                            <input type="text" id="phone" name="phone" placeholder="전화번호를 입력해주세요" value="${login.phone}" />
                                                         </div>
-                                                        <div class="single-input-item mb-3">
-                                                            <label for="email" class="required mb-1">Email Addres</label>
-                                                            <input type="email" id="email" placeholder="Email Address" />
-                                                        </div>
+                                                        <%-- <div class="single-input-item mb-3">
+                                                            <label for="email" class="required mb-1">이메일 주소</label>
+                                                            <input type="email" id="email" placeholder="이메일 주소를 입력해주세요" value="${login.email}" />
+                                                        </div> --%>
                                                         <fieldset>
                                                             <legend>Password change</legend>
                                                             <div class="single-input-item mb-3">
-                                                                <label for="current-pwd" class="required mb-1">Current Password</label>
-                                                                <input type="password" id="current-pwd" placeholder="Current Password" />
-                                                            </div>
+                                                                <label for="current-pwd" class="required mb-1">현재 비밀번호</label>
+                                                                <input type="password" id="memberPw" name="memberPw" placeholder="Current Password" />
+                                                            </div>  
                                                             <div class="row">
                                                                 <div class="col-lg-6 col-custom">
                                                                     <div class="single-input-item mb-3">
-                                                                        <label for="new-pwd" class="required mb-1">New Password</label>
-                                                                        <input type="password" id="new-pwd" placeholder="New Password" />
+                                                                        <label for="new-pwd" class="required mb-1">변경 비밀번호</label>
+                                                                        <input type="password" id="memberPw1" name="memberPw1" placeholder="New Password" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-6 col-custom">
                                                                     <div class="single-input-item mb-3">
-                                                                        <label for="confirm-pwd" class="required mb-1">Confirm Password</label>
-                                                                        <input type="password" id="confirm-pwd" placeholder="Confirm Password" />
+                                                                        <label for="confirm-pwd" class="required mb-1">변경 비밀번호 확인</label>
+                                                                        <input type="password" id="memberPw2" name="user_pw" placeholder="Confirm Password" />
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </fieldset>
                                                         <div class="single-input-item single-item-button">
-                                                            <button class="btn obrien-button primary-btn">Save Changes</button>
+                                                            <button class="btn obrien-button primary-btn" >저장하기</button>
                                                         </div>
                                                     </form>
                                                 </div>

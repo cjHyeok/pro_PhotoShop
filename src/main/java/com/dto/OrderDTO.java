@@ -25,5 +25,12 @@ public class OrderDTO {
 	private int product_id;
 	private int order_quantity;
 	private int order_price;
+	
+	private int address_id;
+	private Date deliver_date;
+	private String post;
+	private String address1;
+	private String address2;
+	private String address_detail;
 
 }
