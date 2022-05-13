@@ -29,7 +29,7 @@ public class MemberController {
 	@Autowired
 	OrderService oservice;
 	
-	@RequestMapping(value = "/memberAdd")
+	@RequestMapping(value = "/memberAdd", method = RequestMethod.POST)
 	
 	public String memberAdd(MemberDTO m, Model model) {  //회원가입
 		System.out.println("m =" + m);
@@ -85,7 +85,7 @@ public class MemberController {
 			mservice.memberUpdate(mdto);
 			System.out.println(" /memberUpda ====" + mdto);
 			session.setAttribute("login", mdto);
-			session.setAttribute("mesg", mdto.getUser_id());
+			session.setAttribute("mesg", "비밀번호가 변경되었습니다.");
 			
 			return "myAccount";
 		}
