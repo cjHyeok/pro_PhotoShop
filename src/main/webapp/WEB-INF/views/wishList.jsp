@@ -105,7 +105,7 @@
 							<div class="row align-items-center">
 								<div class="col-lg-2 col-xl-2 col-sm-6 col-6 col-custom">
 									<div class="header-logo d-flex align-items-center">
-										<a href=".//"> <img class="img-full"
+										<a href="./"> <img class="img-full"
 											src="assets/images/logo/logo.png" alt="Header Logo">
 										</a>
 									</div>
@@ -114,7 +114,7 @@
 									class="col-lg-8 col-xl-7 position-static d-none d-lg-block col-custom">
 									<nav class="main-nav d-flex justify-content-center">
 										<ul class="nav">
-											<li><a href=".//"> <span class="menu-text">
+											<li><a href="./"> <span class="menu-text">
 														Home</span>
 											</a></li>
 											<li><a class="active" href="./shop.html"> <span
@@ -124,10 +124,10 @@
 													<div class="menu-colum">
 														<ul>
 															<li><span class="mega-menu-text">계절</span></li>
-															<li><a href=".//productList?category_name=봄">봄</a></li>
-															<li><a href=".//productList?category_name=여름">여름</a></li>
-															<li><a href=".//productList?category_name=가을">가을</a></li>
-															<li><a href=".//productList?category_name=겨울">겨울</a></li>
+															<li><a href="./productList?category_name=봄">봄</a></li>
+															<li><a href="./productList?category_name=여름">여름</a></li>
+															<li><a href="./productList?category_name=가을">가을</a></li>
+															<li><a href="./productList?category_name=겨울">겨울</a></li>
 
 
 														</ul>
@@ -283,7 +283,7 @@
 							<div class="row align-items-center">
 								<div class="col-lg-2 col-xl-2 col-sm-6 col-6 col-custom">
 									<div class="header-logo">
-										<a href=".//"> <img class="img-full"
+										<a href="./"> <img class="img-full"
 											src="assets/images/logo/logo.png" alt="Header Logo">
 										</a>
 									</div>
@@ -292,11 +292,11 @@
 									class="col-lg-8 col-xl-7 position-static d-none d-lg-block col-custom">
 									<nav class="main-nav d-flex justify-content-center">
 										<ul class="nav">
-											<li><a href=".//"> <span class="menu-text">
+											<li><a href="./"> <span class="menu-text">
 														Home</span> <i class="fa fa-angle-down"></i>
 											</a>
 												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href=".//">Home Page - 1</a></li>
+													<li><a href="./">Home Page - 1</a></li>
 													<li><a href="./index-2.html">Home Page - 2</a></li>
 													<li><a href="./index-3.html">Home Page - 3</a></li>
 													<li><a href="./index-4.html">Home Page - 4</a></li>
@@ -503,7 +503,7 @@
 								<ul class="mobile-menu">
 									<li class="menu-item-has-children"><a href="./#">Home</a>
 										<ul class="dropdown">
-											<li><a href=".//">Home Page 1</a></li>
+											<li><a href="./">Home Page 1</a></li>
 											<li><a href="./index-2.html">Home Page 2</a></li>
 											<li><a href="./index-3.html">Home Page 3</a></li>
 											<li><a href="./index-4.html">Home Page 4</a></li>
@@ -623,7 +623,7 @@
 						<div class="breadcrumb-content position-relative section-content">
 							<h3 class="title-3">Wishlist</h3>
 							<ul>
-								<li><a href=".//">Home</a></li>
+								<li><a href="./">Home</a></li>
 								<li>Wishlist</li>
 							</ul>
 						</div>
@@ -660,7 +660,7 @@
 														value="${wish.product_price}" /></span></td>
 
 											
-											 <td class="pro-cart"><a href ="/loginCheck/wishCartadd?product_id=${wish.product_id}">
+											 <td class="pro-cart"><a href ="./loginCheck/wishCartadd?product_id=${wish.product_id}">
 											 Add to Cart</a></td> 
 										
 
@@ -707,7 +707,7 @@
 						<div class="col-12 col-sm-12 col-md-12 col-lg-3 col-custom">
 							<div class="single-footer-widget m-0">
 								<div class="footer-logo">
-									<a href=".//"> <img
+									<a href="./"> <img
 										src="assets/images/logo/footer.png" alt="Logo Image">
 									</a>
 								</div>
