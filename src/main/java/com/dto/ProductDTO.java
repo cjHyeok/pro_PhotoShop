@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString
 public class ProductDTO {
 
-	private int product_id;
+	private String product_id;
 	private String product_name;
 	private int product_category_id;
 	private String product_description_summary;

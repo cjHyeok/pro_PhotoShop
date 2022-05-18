@@ -28,6 +28,7 @@
 			<value>classpath:com/config/OrderMapper.xml</value>
 			<value>classpath:com/config/CartMapper.xml</value>
 			<value>classpath:com/config/WishMapper.xml</value>
+			<value>classpath:com/config/ReviewMapper.xml</value>
 			
 		</list>
 	</property>
@@ -40,6 +41,7 @@
 			<value>com.dto.CartDTO</value>
 			<value>com.dto.WishDTO</value>
 			<value>com.dto.ProductCategoryDTO</value>
+			<value>com.dto.ReviewDTO</value>
 		</list>
 	</property>
 	</bean>

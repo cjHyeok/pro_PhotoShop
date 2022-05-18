@@ -22,7 +22,7 @@ public class OrderDTO {
 	private int total_price;
 	
 	private int order_detail_id;
-	private int product_id;
+	private String product_id;
 	private int order_quantity;
 	private int order_price;
 	

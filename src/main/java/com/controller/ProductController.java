@@ -15,7 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.dto.MemberDTO;
 import com.dto.ProductCategoryDTO;
 import com.dto.ProductDTO;
+import com.dto.ReviewDTO;
 import com.service.ProductService;
+import com.service.ReviewService;
 
 @Controller
 public class ProductController {
@@ -23,6 +25,9 @@ public class ProductController {
 	@Autowired
 	ProductService pservice;
 
+	@Autowired
+	ReviewService rservice;
+	
 	@RequestMapping("/productList") // 상품리스트 값 없을 때 나오게 하는거
 	public ModelAndView productList(@RequestParam(value = "category_name", required = false) String category_name) {
 		List<ProductDTO> plist = null;
@@ -57,14 +62,23 @@ public class ProductController {
 
 	@RequestMapping("/productDetails") // 상품 상세페이지
 	@ModelAttribute("productDetails")
-	public ProductDTO productDetails(@RequestParam Map<String, String> map) {
+	public ModelAndView productDetails(@RequestParam Map<String, String> map) {
 		System.out.println("map 1==" + map);
 
 		ProductDTO pdto = pservice.productDetails(map);
-
 		System.out.println("pD =" + pdto);
+		
+		List<ReviewDTO> rlist = rservice.ReviewList(pdto.getProduct_id());
+		System.out.println("pdto.getProduct_id() ==" + pdto.getProduct_id());
+		System.out.println("product_id 2== "+ rlist);
 
-		return pdto;
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("ReviewList", rlist);
+		mav.addObject("productDetails", pdto);
+		mav.setViewName("productDetails");
+
+		return mav;
+		
 	}
 
 	@RequestMapping("/productForm")

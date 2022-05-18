@@ -13,7 +13,7 @@ public class CartDTO {
 
 	private int cart_id;
 	private String user_id;
-	private int product_id;
+	private String product_id;
 	private int cart_quantity;
 	private Date cart_date;
 

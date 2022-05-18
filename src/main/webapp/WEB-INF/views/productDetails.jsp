@@ -17,7 +17,8 @@
 <!-- Favicon -->
 <link rel="shortcut icon" type="image/x-icon"
 	href="./assets/images/favicon.ico">
-
+<!--Bootstrap Js--> <!-- 이걸로 버전 맞췄음 -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script> 
 <!-- CSS
 	============================================ -->
 <!-- Bootstrap CSS -->
@@ -54,38 +55,9 @@
 
 </head>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
-	$(function() {
 
-		$("#cart").on("click", function() {
-			var count = $("#cart_quantity").val();
-			console.log(count);
-			$("form").attr("action", "loginCheck/cartAdd")
-			
-		})
-		
-		$("#wish").on("click", function() {
-			
-			$("form").attr("action", "loginCheck/wishAdd")
-			
-		})
 
-		$("#up").on("click", function() {
-			var count = $("#cart_quantity").val();
-			console.log(count);
-			
-			$("#cart_quantity").val(parseInt(count) + 1);
-		});
 
-		$("#down").on("click", function() {
-			var count = $("#cart_quantity").val();
-			if (count != 1) {
-				$("#cart_quantity").val(parseInt(count) - 1);
-			}
-		});
-	});
-</script>
 
 
 
@@ -812,16 +784,16 @@
 						<ul class="nav nav-tabs" id="myTab" role="tablist">
 							<li class="nav-item"><a
 								class="nav-link active text-uppercase" id="home-tab"
-								data-bs-toggle="tab" href="./#connect-1" role="tab"
+								data-bs-toggle="tab" href="#connect-1" role="tab"
 								aria-selected="true">Description</a></li>
 							<li class="nav-item"><a class="nav-link text-uppercase"
-								id="profile-tab" data-bs-toggle="tab" href="./#connect-2"
+								id="profile-tab" data-bs-toggle="tab" href="#connect-2"
 								role="tab" aria-selected="false">Reviews</a></li>
 							<li class="nav-item"><a class="nav-link text-uppercase"
-								id="contact-tab" data-bs-toggle="tab" href="./#connect-3"
+								id="contact-tab" data-bs-toggle="tab" href="#connect-3"
 								role="tab" aria-selected="false">Shipping Policy</a></li>
 							<li class="nav-item"><a class="nav-link text-uppercase"
-								id="review-tab" data-bs-toggle="tab" href="./#connect-4"
+								id="review-tab" data-bs-toggle="tab" href="#connect-4"
 								role="tab" aria-selected="false">Size Chart</a></li>
 						</ul>
 						<div class="tab-content mb-text" id="myTabContent">
@@ -836,31 +808,36 @@
 								<!-- Start Single Content -->
 								<div class="product_tab_content  border p-3">
 									<div class="review_address_inner">
+										
+										
 										<!-- Start Single Review -->
-										<div class="pro_review mb-5">
-											<div class="review_thumb">
-												<img alt="review images" src="assets/images/review/1.jpg">
-											</div>
-											<div class="review_details">
-												<div class="review_info mb-2">
-													<div class="product-rating mb-2">
-														<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-															class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-															class="fa fa-star-o"></i>
-													</div>
-													<h5>
-														Admin - <span> December 19, 2020</span>
-													</h5>
-												</div>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing
-													elit. Proin in viverra ex, vitae vestibulum arcu. Duis
-													sollicitudin metus sed lorem commodo, eu dapibus libero
-													interdum. Morbi convallis viverra erat, et aliquet orci
-													congue vel. Integer in odio enim. Pellentesque in dignissim
-													leo. Vivamus varius ex sit amet quam tincidunt iaculis.</p>
-											</div>
-										</div>
-										<!-- End Single Review -->
+                                        <div class="pro_review mb-5" id="reviewList">
+                                           <!--  <div class="review_thumb">
+                                                <img alt="review images" src="assets/images/review/1.jpg">
+                                            </div> -->
+                                            <table>
+                                            <c:forEach var="rlist" items="${ReviewList}" varStatus="status">
+                                            <div class="review_details">
+                                                <div class="review_info mb-2">
+                                                    <div class="product-rating mb-2">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                    </div>
+                                                    
+                                                    <h5>${rlist.user_name} <span> ${rlist.review_date}</span></h5>
+                                                </div>
+                                                <p>${rlist.review_content}</p>
+                                            </div>
+                                            </c:forEach>
+                                            </table>
+                                        </div>
+
+
+
+                                        <!-- End Single Review -->
 									</div>
 									<!-- Start RAting Area -->
 									<div class="rating_wrap">
@@ -883,7 +860,7 @@
 										<div class="row">
 											<div class="col-lg-12 col-custom">
 												<form action="#" class="comment-form-area">
-													<div class="row comment-input">
+													<!-- <div class="row comment-input">
 														<div class="col-md-6 col-custom comment-form-author mb-3">
 															<label>Name <span class="required">*</span></label> <input
 																type="text" required="required" name="Name">
@@ -892,14 +869,20 @@
 															<label>Email <span class="required">*</span></label> <input
 																type="text" required="required" name="email">
 														</div>
-													</div>
+													</div> -->
 													<div class="comment-form-comment mb-3">
 														<label>Comment</label>
-														<textarea class="comment-notes" required="required"></textarea>
+														<form>
+														<tr>
+														<!-- <textarea class="comment-notes" required="required"></textarea> -->
+														<input type="text" name="review_content" id="review_content">
+														</tr>
+														</form>
 													</div>
 													<div class="comment-form-submit">
-														<input type="submit" value="Submit"
-															class="comment-submit btn obrien-button primary-btn">
+													<button name="btnComment" id="btnComment" type="button" class="comment-submit btn obrien-button primary-btn">댓글 작성</button>
+														<!-- <input type="submit" value="Submit"
+															class="comment-submit btn obrien-button primary-btn"> -->
 													</div>
 												</form>
 											</div>
@@ -998,6 +981,7 @@
 			</div>
 		</div>
 		<!-- Single Product Main Area End -->
+
 
 
 
@@ -1172,6 +1156,79 @@
 	<!-- Main JS -->
 	<script src="assets/js/main.js"></script>
 
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<%
+String user_name = (String) session.getAttribute("user_name");/* 	이거는 로그인쪽에서 가져옴 */
+%>
+<script type="text/javascript">
+
+
+	$(function() {
+
+		$("#cart").on("click", function() {
+			var count = $("#cart_quantity").val();
+			console.log(count);
+			$("form").attr("action", "loginCheck/cartAdd")
+			
+		})
+		
+		$("#wish").on("click", function() {
+			
+			$("form").attr("action", "loginCheck/wishAdd")
+			
+		})
+
+		$("#up").on("click", function() {
+			var count = $("#cart_quantity").val();
+			console.log(count);
+			
+			$("#cart_quantity").val(parseInt(count) + 1);
+		});
+
+		$("#down").on("click", function() {
+			var count = $("#cart_quantity").val();
+			if (count != 1) {
+				$("#cart_quantity").val(parseInt(count) - 1);
+			}
+		});
+		
+		
+			
+		
+		$("#btnComment").click(function() {
+
+			console.log("btnComment");
+			
+			  $.ajax({
+					 url:'reviewWriteAdd',
+					 type:'post',
+					 data:{
+						 //review_id:'${review_id}', 
+						 product_id:"${productDetails.product_id}",
+						 
+						 user_name:'${login.user_name }', 
+						 
+						 review_content: document.getElementById("review_content").value,
+						 
+					 },
+					 dataType:"text",
+					 success:function(data,status,xhr){
+						 console.log("data==", data);
+						 document.getElementById("reviewList").value=""; //div 클래스 쪽 (<div class="pro_review mb-5" id="reviewList">여기서 가져옴)리뷰 리스트 내용 지우기.
+						 document.getElementById("review_content").value=""; //리뷰 내용 적는 곳 ajax 성공했을 때 지우기
+						
+						$("#reviewList").html(data); //리뷰 retData 하나하나 넣어주는 부분 (controller확인)
+						
+					 },
+					 error:function(xhr,status,error){}
+			  });//end ajax	 
+		});
+		
+		
+	});
+</script>
 </body>
 
 </html>
