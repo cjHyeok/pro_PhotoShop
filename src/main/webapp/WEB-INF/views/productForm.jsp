@@ -121,6 +121,16 @@
 			
 			}  
 	});
+		
+		
+		
+		$("#modify_Btn").on("click", function() {
+
+			location.href = "/loginCheck/productModify";
+		})
+		
+	
+		
 });
 </script>
 <body>
@@ -641,11 +651,11 @@
                             </div>
                             <form action="productAdd" method="post">
                             
-                            <div class="single-input-item mb-3">
-                                    <input id="product_id" name="product_id" type="text" placeholder="상품 번호"> 
+                            	<div class="single-input-item mb-3">
+                                    <input id="product_id" name="product_id" type="text" placeholder="상품 번호" value="${productUpdate.product_id}"> 
                                 </div>
                             
-                                <div class="single-input-item mb-3">
+                                <div class="single-input-item mb-3"> <!-- 봄 여름 가을 겨울 -->
                                 
                                     <select id="product_category_id" name="product_category_id">
             							<c:forEach var="category_list" items="${category_List}" varStatus="status">
@@ -710,6 +720,8 @@
                                 </div>
                                 <div class="single-input-item mb-3">
                                     <button class="btn obrien-button-2 primary-color">상품 등록</button>
+                                   
+                                    
                                 </div>
                             </form>
                         </div>

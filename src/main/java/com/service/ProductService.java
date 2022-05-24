@@ -1,5 +1,6 @@
 package com.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -46,6 +47,19 @@ public class ProductService {
 		List<ProductCategoryDTO> clist = pdao.category_List();
 		return clist;
 	}
+
+	public void ItemDelete(ArrayList<String> list) {
+		pdao.ItemDelete(list);
+		
+	}
+
+	public void ModifyUpdate(Map<String, String> map) {
+		pdao.ModifyUpdate(map);
+		
+	}
+
+
+	
 
 
 

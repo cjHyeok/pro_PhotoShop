@@ -1,5 +1,6 @@
 package com.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -38,10 +39,10 @@ public class ProductDAO {
 	}
 
 	public void productAdd(ProductDTO p) {
-		System.out.println("ProductDTO p  1 ===" + p);
+		System.out.println("productAdd ProductDTO p  1 ===" + p);
 		int n = template.insert("ProductMapper.productAdd", p);
 		
-		System.out.println("ProductDTO p  2 ===" + p);
+		System.out.println("productAdd ProductDTO p  2 ===" + p);
 	}
 
 	public List<ProductCategoryDTO> category_List() {
@@ -49,6 +50,21 @@ public class ProductDAO {
 		List<ProductCategoryDTO> clist = template.selectList("ProductMapper.category_List", category_level);
 		return clist;
 	}
+
+	public void ItemDelete(ArrayList<String> list) {
+		int n = template.delete("ProductMapper.ItemDelete", list);
+		int m = template.delete("ProductMapper.ItemImgDelete", list);
+		
+	}
+
+	public void ModifyUpdate(Map<String, String> map) {
+		int n = template.update("ProductMapper.ModifyUpdate", map);
+		int m = template.update("ProductMapper.ModifyImgUpdate", map);
+		
+		
+	}
+
+	
 
 
 

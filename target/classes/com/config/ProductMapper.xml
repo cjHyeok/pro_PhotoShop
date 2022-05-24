@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<select id="productListAll" parameterType="int" resultType="ProductDTO">
-	    select p.product_id, p.product_name, p.product_price, p.product_description_summary, p.product_description, c.product_category_id , c.category_name, i.product_img, p.product_quantity
+	    select p.product_id, p.product_name, p.product_price, p.product_description_summary, p.product_description, c.product_category_id , c.category_name, i.product_img, p.product_quantity, p.product_register_date
 		from t_product p join t_product_cate c
 								on p.product_category_id = c.product_category_id
                                 join t_product_img i
@@ -40,7 +40,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<select id="productDetails" parameterType="hashmap" resultType="ProductDTO">
-		select p.product_id, p.product_name, p.product_price, p.product_description_summary, p.product_quantity,p.product_description, i.product_img, i.product_img_type, 
+		select p.product_id, p.product_name, p.product_price, p.product_category_id, p.product_description_summary, p.product_quantity,p.product_description,p.product_sales_quantity,p.product_sales_state, i.product_img, i.product_img_type, 
 				i.product_sub_img_1, i.product_sub_img_2, i.product_sub_img_3, i.product_sub_img_4
 		from t_product p join t_product_img i
                                	on p.product_id = i.product_id
@@ -52,9 +52,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                 
  		INSERT ALL
 			INTO t_product (product_id, product_category_id, product_name, product_price, product_quantity, product_description_summary, 
-			product_description, product_sales_state)
+			product_description, product_sales_state, product_register_date)
       	  values(#{product_id},#{product_category_id}, #{product_name}, #{product_price}, #{product_quantity}, #{product_description_summary},
-      	   #{product_description}, #{product_sales_state})
+      	   #{product_description}, #{product_sales_state}, sysdate)
 		
       	  INTO t_product_img (product_id, product_photo_id, product_img, product_sub_img_1, product_sub_img_2, product_sub_img_3, product_sub_img_4)
       	  values(#{product_id}, PRODUCT_PHOTO_ID_SEQ.nextval, #{product_img}, #{product_sub_img_1}, #{product_sub_img_2},#{product_sub_img_3},#{product_sub_img_4})
@@ -69,5 +69,56 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where category_level = #{category_level}
 		
 	</select>
+	
+	<delete id="ItemDelete" parameterType="arraylist">
+		delete
+		from t_product
+		where product_id IN
+
+		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+		
+	
+	</delete>
+
+	<delete id="ItemImgDelete" parameterType="arraylist">
+		delete
+		from t_product_img
+		where product_id IN
+
+		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+		
+	</delete>
+	
+	<update id="ModifyUpdate" parameterType="hashmap">
+		update t_product
+		set 
+			product_id = #{product_id}
+			product_category_id = #{product_category_id}
+			product_name = #{product_name}
+			product_price = #{product_price}
+			product_quantity = #{product_quantity}
+			product_description_summary = #{product_description_summary}
+			product_description = #{product_description}
+			product_sales_state = #{product_sales_state}
+		
+		where product_id = #{product_id}
+	</update>
+
+	<update id="ModifyImgUpdate" parameterType="hashmap">
+		update t_product_img
+		set 
+			product_img = #{product_img}
+			product_sub_img_1 = #{product_sub_img_1}
+			product_sub_img_2 = #{product_sub_img_2}
+			product_sub_img_3 = #{product_sub_img_3}
+			product_sub_img_4 = #{product_sub_img_4}
+		where product_id = #{product_id}
+	</update>
+	
+
 	
 </mapper>

@@ -47,9 +47,50 @@
 <!-- <link rel="stylesheet" href="./assets/css/style.min.css"> -->
 </head>
 
-<body>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(
+			function() {
+				$(".pro-remove").on("click", function() {
+					console.log("삭제버튼 클릭 ");
+					var product_id = $(this).attr("data-num");
+					var xxx = $(this);
+					$.ajax({
+						url : "/loginCheck/ItemDelete",
+						type : "get",
+						dataType : "text",
+						data : {
+							product_id : product_id
+						},
+						success : function(data, status, xhr) {
+							console.log("success");
+							location.reload();//성공하면 자동 새로고침으로 지워주기
+							
+							
+						},
+						error : function(xhr, status, error) {
+							console.log(error);
+						}
+					});
+				});
+			});
+</script>
 
-	<div class="shop-wrapper">
+<body>
+<c:set var="xxx" value="${mDTO}" />
+
+<c:set var="user_id" value="${xxx.user_id}" />
+<c:set var="user_name" value="${xxx.user_name}" />
+<c:set var="post" value="${xxx.post}" />
+<c:set var="address1" value="${xxx.address1}" />
+<c:set var="address2" value="${xxx.address2}" />
+<c:set var="address_detail" value="${xxx.address_detail}" />
+<c:set var="phone" value="${xxx.phone}" />
+
+
+
+	<div class="contact-wrapper">
 		<header class="main-header-area">
 			<!-- Main Header Area Start -->
 			<div class="main-header">
@@ -132,7 +173,7 @@
 														<div
 															style="font-size: 15px; line-height: 1.6; font-weight: 600; color: #303030;">
 															${login.user_name } 님</div>
-														<span><a href="./loginCheck/logout">logout</a></span>
+														<span><a href="././loginCheck/logout">logout</a></span>
 														<span><a href="./memberForm">Register</a></span>
 													</c:when>
 													<c:otherwise>
@@ -246,8 +287,8 @@
 									class="col-lg-8 col-xl-7 position-static d-none d-lg-block col-custom">
 									<nav class="main-nav d-flex justify-content-center">
 										<ul class="nav">
-											
-												<li><a href="./"> <span class="menu-text">
+											<li>
+											<li><a href="./"> <span class="menu-text">
 														Home</span>
 											</a></li>
 											<li><a class="active" href="./shop.html"> <span
@@ -267,8 +308,8 @@
 													</div>
 
 												</div></li>
-												
-												
+
+
 											<li><a href="./blog-details-fullwidth.html"> <span
 													class="menu-text"> 추천 상품</span> <i class="fa fa-angle-down"></i>
 											</a>
@@ -295,8 +336,8 @@
 											<li><a href="./aboutUs"> <span class="menu-text">
 														About</span>
 											</a></li>
-											
-											<li><a href="./contactUs"> <span class="menu-text">Contact</span>
+											<li><a href="./contact-us.html"> <span
+													class="menu-text">Contact</span>
 											</a></li>
 										</ul>
 									</nav>
@@ -305,8 +346,8 @@
 									<div class="header-right-area main-nav">
 										<ul class="nav">
 											<li class="login-register-wrap d-none d-xl-flex"><span><a
-													href="./loginForm">로그인</a></span> <span><a
-													href="./memberForm">회원가입</a></span></li>
+													href="./loginForm">Login</a></span> <span><a
+													href="./memberForm">Register</a></span></li>
 
 											<li class="minicart-wrap"><a href="./#"
 												class="minicart-btn toolbar-btn"> <i class="ion-bag"></i>
@@ -317,7 +358,7 @@
 													<div class="single-cart-item">
 														<div class="cart-img">
 															<a href="./cartList"><img
-																src="assets/images/cart/1.jpg" alt=""></a>
+																src="assets/images/cart/1.png" alt=""></a>
 														</div>
 														<div class="cart-text">
 															<h5 class="title">
@@ -405,9 +446,7 @@
 					<div class="btn-close-off-canvas">
 						<i class="fa fa-times"></i>
 					</div>
-
 					<div class="off-canvas-inner">
-
 						<div class="search-box-offcanvas">
 							<form>
 								<input type="text" placeholder="Search product...">
@@ -416,69 +455,62 @@
 								</button>
 							</form>
 						</div>
-
 						<!-- mobile menu start -->
 						<div class="mobile-navigation">
-
 							<!-- mobile menu navigation start -->
 							<nav>
 								<ul class="mobile-menu">
-								<li><a href="./"> <span class="menu-text">
-														Home</span>
-											</a></li>
-											<li><a class="active" href="./shop.html"> <span
-													class="menu-text">아트스타일</span> <i class="fa fa-angle-down"></i>
-											</a>
-												<div class="mega-menu dropdown-hover">
-													<div class="menu-colum">
-														<ul>
-															<li><span class="mega-menu-text">계절</span></li>
-															<li><a href="./productList?category_name=봄">봄</a></li>
-															<li><a href="./productList?category_name=여름">여름</a></li>
-															<li><a href="./productList?category_name=가을">가을</a></li>
-															<li><a href="./productList?category_name=겨울">겨울</a></li>
+									<li><a href="./"> <span class="menu-text"> Home</span>
+									</a></li>
+									<li><a class="active" href="./shop.html"> <span
+											class="menu-text">아트스타일</span> <i class="fa fa-angle-down"></i>
+									</a>
+										<div class="mega-menu dropdown-hover">
+											<div class="menu-colum">
+												<ul>
+													<li><span class="mega-menu-text">계절</span></li>
+													<li><a href="./productList?category_name=봄">봄</a></li>
+													<li><a href="./productList?category_name=여름">여름</a></li>
+													<li><a href="./productList?category_name=가을">가을</a></li>
+													<li><a href="./productList?category_name=겨울">겨울</a></li>
 
-															<li><a href="./productList">상품리스트</a></li>
-														</ul>
-													</div>
+													<li><a href="./productList">상품리스트</a></li>
+												</ul>
+											</div>
 
-												</div></li>
-												
-												
-											<li><a href="./blog-details-fullwidth.html"> <span
-													class="menu-text"> 추천 상품</span> <i class="fa fa-angle-down"></i>
-											</a>
-												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="./blog.html">인기 상품</a></li>
-												</ul></li>
-											<li><a href="./blog-details-fullwidth.html"> <span
-													class="menu-text">상품 목록</span> <i class="fa fa-angle-down"></i>
-											</a>
-												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="./blog.html">일러스트</a></li>
-													<li><a href="./blog.html">풍경화</a></li>
-													<li><a href="./blog.html">캘리그라피</a></li>
-												</ul></li>
-											<li><a href="./#"> <span class="menu-text">Page</span>
-													<i class="fa fa-angle-down"></i>
-											</a>
-												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="./faqForm">FAQ</a></li>
-													<li><a href="./myAccount">My Account</a></li>
-													<li><a href="./loginForm">로그인</a></li>
-													<li><a href="./memberForm">회원가입</a></li>
-												</ul></li>
-											<li><a href="./aboutUs"> <span class="menu-text">
-														About</span>
-											</a></li>
-									<li><a href="./contactUs">Contact</a></li>
+										</div></li>
+									<li><a href="./blog-details-fullwidth.html"> <span
+											class="menu-text"> 추천 상품</span> <i class="fa fa-angle-down"></i>
+									</a>
+										<ul class="dropdown-submenu dropdown-hover">
+											<li><a href="./blog.html">인기 상품</a></li>
+										</ul></li>
+									<li><a href="./blog-details-fullwidth.html"> <span
+											class="menu-text">상품 목록</span> <i class="fa fa-angle-down"></i>
+									</a>
+										<ul class="dropdown-submenu dropdown-hover">
+											<li><a href="./blog.html">일러스트</a></li>
+											<li><a href="./blog.html">풍경화</a></li>
+											<li><a href="./blog.html">캘리그라피</a></li>
+										</ul></li>
+									<li><a href="./#"> <span class="menu-text">Page</span> <i
+											class="fa fa-angle-down"></i>
+									</a>
+										<ul class="dropdown-submenu dropdown-hover">
+											<li><a href="./faqForm">FAQ</a></li>
+											<li><a href="./myAccount">My Account</a></li>
+											<li><a href="./loginForm">로그인</a></li>
+											<li><a href="./memberForm">회원가입</a></li>
+										</ul></li>
+									<li><a href="./aboutUs"> <span class="menu-text">
+												About</span>
+									</a></li>
+									<li><a href="./contact-us.html">Contact</a></li>
 								</ul>
 							</nav>
 							<!-- mobile menu navigation end -->
 						</div>
 						<!-- mobile menu end -->
-
-
 						<div class="header-top-settings offcanvas-curreny-lang-support">
 							<!-- mobile menu navigation start -->
 							<nav>
@@ -494,7 +526,6 @@
 							</nav>
 							<!-- mobile menu navigation end -->
 						</div>
-
 						<!-- offcanvas widget area start -->
 						<div class="offcanvas-widget-area">
 							<div class="top-info-wrap text-left text-black">
@@ -525,10 +556,10 @@
 				<div class="row">
 					<div class="col-12 text-center">
 						<div class="breadcrumb-content position-relative section-content">
-							<h3 class="title-3">Shop Fullwidth</h3>
+							<h3 class="title-3">Shopping Cart</h3>
 							<ul>
-								<li><a href= "/">Home</a></li>
-								<li>Shop</li>
+								<li><a href="./">Home</a></li>
+								<li>Cart</li>
 							</ul>
 						</div>
 					</div>
@@ -536,170 +567,89 @@
 			</div>
 		</div>
 		<!-- Breadcrumb Area End Here -->
-		<!-- Shop Main Area Start Here -->
-		<div class="shop-main-area shop-fullwidth">
-			<div class="container container-default custom-area">
-				<div class="row flex-row-reverse">
-					<div class="col-12 col-custom widget-mt">
-						<!--shop toolbar start-->
-						<div class="shop_toolbar_wrapper">
-							<div class="shop_toolbar_btn">
-								<button data-role="grid_4" type="button"
-									class="active btn-grid-4" data-bs-toggle="tooltip" title="4">
-									<i class="fa fa-th"></i>
-								</button>
-								<button data-role="grid_3" type="button" class="btn-grid-3"
-									data-bs-toggle="tooltip" title="3">
-									<i class="fa fa-th-large"></i>
-								</button>
-								<button data-role="grid_list" type="button" class="btn-list"
-									data-bs-toggle="tooltip" title="List">
-									<i class="fa fa-th-list"></i>
-								</button>
-							</div>
-							<div class="shop-select">
-								<form class="d-flex flex-column w-100" action="#">
-									<div class="form-group">
-										<select class="form-control nice-select w-100">
-											<option selected value="1">Alphabetically, A-Z</option>
-											<option value="2">Sort by popularity</option>
-											<option value="3">Sort by newness</option>
-											<option value="4">Sort by price: low to high</option>
-											<option value="5">Sort by price: high to low</option>
-											<option value="6">Product Name: Z</option>
-										</select>
-									</div>
-								</form>
-							</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		<!-- Wishlist main wrapper start -->
+		<div class="wishlist-main-wrapper mt-no-text mb-no-text">
+			<div class="container container-default-2 custom-area">
+				<div class="row">
+					<div class="col-lg-12">
+						<!-- Wishlist Table Area -->
+						<div class="wishlist-table table-responsive">
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										
+										<th class="pro-Item">상품번호</th>
+										<th class="pro-thumbnail">상품 이미지</th>
+										<th class="pro-title">상품 이름</th>
+										<th class="pro-price">가격</th>
+										<th class="pro-state">등록일</th>
+										<th class="pro-remove">삭제</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="Item" items="${productItem}" varStatus="status">
+										<tr>
+											<td class="pro-Item">
+												<a href ="./productModify?product_id=${Item.product_id}">${Item.product_id}</a>
+											</td>
+											
+											
+											<td class="pro-thumbnail"><a href="./#"><img
+													class="img-fluid"
+													src="assets/images/${Item.product_img}.png" alt="Product" /></a></td>
+											
+											<td class="pro-title"><a href="./#">${Item.product_name}</td>
+											
+											<td class="pro-price"><span><fmt:formatNumber
+														value="${Item.product_price}" /></span></td>
+
+											
+											 <td class="pro-state"><fmt:formatDate var="dateTempParse" pattern="yyyy-MM-dd" value="${Item.product_register_date}"/><c:out value="${dateTempParse}"/></td>
+											 
+
+											
+											
+											<td class="pro-remove" data-num="${Item.product_id}"><i class="ion-trash-b"></i></a></td>
+										</tr>
+
+									</c:forEach>
+								</tbody>
+							</table>
 						</div>
-
-
-
-
-						<!--shop toolbar end-->
-						<!-- Shop Wrapper Start -->
-						<div class="row shop_wrapper grid_4">
-							<c:forEach var="dto" items="${productList}" varStatus="status">
-
-								<div class="col-lg-3 col-md-6 col-sm-6 col-custom product-area">
-									<div class="single-product position-relative">
-										<div class="product-image">
-											<a class="d-block"
-												href="./productDetails?product_id=${dto.product_id}"> <img
-												src="assets/images/${dto.product_img}.png" alt=""
-												class="product-image-1 w-100"> <%-- <img src="assets/images/${dto.product_img}_on.jpg" alt="" class="product-image-2 position-absolute w-100"> --%>
-											</a>
-										</div>
-										<div class="product-content">
-											<div class="product-rating">
-												<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-													class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-													class="fa fa-star-o"></i>
-											</div>
-											<div class="product-title">
-												<h4 class="title-2">
-													<a href="./productDetails?product_id=${dto.product_id}">${dto.product_name}</a>
-												</h4>
-											</div>
-											<div class="price-box">
-
-												<span class="regular-price "><fmt:formatNumber
-														value="${dto.product_price}" type="currency"
-														currencySymbol="￦ " /></span>
-
-												<!-- <span class="old-price"><del>$50.00</del></span> -->
-											</div>
-										</div>
-										<div class="add-action d-flex position-absolute">
-											<a href="./cartList" title="Add To cart"> <i
-												class="ion-bag"></i>
-											</a> <a href="./compare.html" title="Compare"> <i
-												class="ion-ios-loop-strong"></i>
-											</a> <a href="./wishlist.html" title="Add To Wishlist"> <i
-												class="ion-ios-heart-outline"></i>
-											</a> <a href="./#exampleModalCenter" data-bs-toggle="modal"
-												title="Quick View"> <i class="ion-eye"></i>
-											</a>
-										</div>
-
-
-										<div class="product-content-listview">
-											<div class="product-rating">
-												<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-													class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-													class="fa fa-star-o"></i>
-											</div>
-											<div class="product-title">
-												<h4 class="title-2">
-													<a href="./product-details.html">${dto.product_name}</a>
-												</h4>
-											</div>
-											<div class="price-box">
-												<span class="regular-price "><fmt:formatNumber
-														value="${dto.product_price}" type="currency"
-														currencySymbol="￦" /></span> <span class="old-price"><del>$50.00</del></span>
-											</div>
-											<div class="add-action-listview d-flex">
-												<a href="./cartList" title="Add To cart"> <i
-													class="ion-bag"></i>
-												</a> <a href="./compare.html" title="Compare"> <i
-													class="ion-ios-loop-strong"></i>
-												</a> <a href="./wishlist.html" title="Add To Wishlist"> <i
-													class="ion-ios-heart-outline"></i>
-												</a> <a href="./#exampleModalCenter" data-bs-toggle="modal"
-													title="Quick View"> <i class="ion-eye"></i>
-												</a>
-											</div>
-											<p class="desc-content">
-												${dto.product_description_summary}</p>
-										</div>
-									</div>
-								</div>
-								<tr>
-									<td height="10"></td>
-								</tr>
-
-							</c:forEach>
-
-						</div>
-
-
-
-
-
-
-
-
-
-
-
-						<!-- Shop Wrapper End -->
-						<!-- Bottom Toolbar Start -->
-						<div class="row">
-							<div class="col-sm-12 col-custom">
-								<div class="toolbar-bottom mt-30">
-									<nav class="pagination pagination-wrap mb-10 mb-sm-0">
-										<ul class="pagination">
-											<li class="disabled prev"><i
-												class="ion-ios-arrow-thin-left"></i></li>
-											<li class="active"><a>1</a></li>
-											<li><a href="./#">2</a></li>
-											<li class="next"><a href="./#" title="Next >>"><i
-													class="ion-ios-arrow-thin-right"></i></a></li>
-										</ul>
-									</nav>
-									<p class="desc-content text-center text-sm-right">Showing 1
-										- 12 of 34 result</p>
-								</div>
-							</div>
-						</div>
-						<!-- Bottom Toolbar End -->
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<!-- Shop Main Area End Here -->
+		<!-- Wishlist main wrapper end -->
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		<!-- Support Area Start Here -->
 		<div class="support-area">
 			<div class="container container-default custom-area">
@@ -712,7 +662,7 @@
 									01234-567-890</p>
 							</div>
 							<div class="support-button d-flex align-items-center">
-								<a class="obrien-button primary-btn" href="./contactUs">Contact
+								<a class="obrien-button primary-btn" href="./contact-us.html">Contact
 									now</a>
 							</div>
 						</div>
@@ -761,11 +711,11 @@
 							<div class="single-footer-widget">
 								<h2 class="widget-title">Information</h2>
 								<ul class="widget-list">
-									<li><a href="./aboutUs">Our Company</a></li>
-									<li><a href="./contactUs">Contact Us</a></li>
-									<li><a href="./aboutUs">Our Services</a></li>
-									<li><a href="./aboutUs">Why We?</a></li>
-									<li><a href="./aboutUs">Careers</a></li>
+									<li><a href="./about-us.html">Our Company</a></li>
+									<li><a href="./contact-us.html">Contact Us</a></li>
+									<li><a href="./about-us.html">Our Services</a></li>
+									<li><a href="./about-us.html">Why We?</a></li>
+									<li><a href="./about-us.html">Careers</a></li>
 								</ul>
 							</div>
 						</div>
@@ -773,11 +723,11 @@
 							<div class="single-footer-widget">
 								<h2 class="widget-title">Quicklink</h2>
 								<ul class="widget-list">
-									<li><a href="./aboutUs">About</a></li>
+									<li><a href="./about-us.html">About</a></li>
 									<li><a href="./blog.html">Blog</a></li>
 									<li><a href="./shop.html">Shop</a></li>
 									<li><a href="./cartList">Cart</a></li>
-									<li><a href="./contactUs">Contact</a></li>
+									<li><a href="./contact-us.html">Contact</a></li>
 								</ul>
 							</div>
 						</div>
@@ -785,11 +735,11 @@
 							<div class="single-footer-widget">
 								<h2 class="widget-title">Support</h2>
 								<ul class="widget-list">
-									<li><a href="./contactUs">Online Support</a></li>
-									<li><a href="./contactUs">Shipping Policy</a></li>
-									<li><a href="./contactUs">Return Policy</a></li>
-									<li><a href="./contactUs">Privacy Policy</a></li>
-									<li><a href="./contactUs">Terms of Service</a></li>
+									<li><a href="./contact-us.html">Online Support</a></li>
+									<li><a href="./contact-us.html">Shipping Policy</a></li>
+									<li><a href="./contact-us.html">Return Policy</a></li>
+									<li><a href="./contact-us.html">Privacy Policy</a></li>
+									<li><a href="./contact-us.html">Terms of Service</a></li>
 								</ul>
 							</div>
 						</div>
@@ -827,83 +777,6 @@
 		</footer>
 		<!-- Footer Area End Here -->
 	</div>
-
-	<!-- Modal Area Start Here -->
-	<div class="modal fade obrien-modal" id="exampleModalCenter"
-		tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<button type="button" class="close close-button"
-					data-bs-dismiss="modal" aria-label="Close">
-					<span class="close-icon" aria-hidden="true">x</span>
-				</button>
-				<div class="modal-body">
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-lg-6 col-md-6 text-center">
-								<div class="product-image">
-									<img src="assets/images/product/1.jpg" alt="Product Image">
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6">
-								<div class="modal-product">
-									<div class="product-content">
-										<div class="product-title">
-											<h4 class="title">Product dummy name</h4>
-										</div>
-										<div class="price-box">
-											<span class="regular-price ">$80.00</span> <span
-												class="old-price"><del>$90.00</del></span>
-										</div>
-										<div class="product-rating">
-											<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-												class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-												class="fa fa-star-o"></i> <span>1 Review</span>
-										</div>
-										<p class="desc-content">we denounce with righteous
-											indignation and dislike men who are so beguiled and
-											demoralized by the charms of pleasure of the moment, so
-											blinded by desire, that they cannot foresee the pain and
-											trouble that are bound to ensue; and equal blame bel...</p>
-										<form class="d-flex flex-column w-100" action="#">
-											<div class="form-group">
-												<select class="form-control nice-select w-100">
-													<option>S</option>
-													<option>M</option>
-													<option>L</option>
-													<option>XL</option>
-													<option>XXL</option>
-												</select>
-											</div>
-										</form>
-										<div class="quantity-with_btn">
-											<div class="quantity">
-												<div class="cart-plus-minus">
-													<input class="cart-plus-minus-box" value="0" type="text">
-													<div class="dec qtybutton">-</div>
-													<div class="inc qtybutton">+</div>
-												</div>
-											</div>
-											<div class="add-to_cart">
-												<a class="btn obrien-button primary-btn" href="./cartList">Add
-													to cart</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Modal Area End Here -->
-
-	<!-- Scroll to Top Start -->
-	<a class="scroll-to-top" href="./#"> <i class="ion-chevron-up"></i>
-	</a>
-	<!-- Scroll to Top End -->
 
 	<!-- JS
 ============================================ -->

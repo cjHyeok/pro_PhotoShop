@@ -58,13 +58,7 @@ public class CartController {
 
 	}
 
-	/*
-	 * @RequestMapping(value="/loginCheck/cartDelete")//장바구니에서 삭제
-	 * public @ResponseBody void cartDelte(@RequestParam("product_id") int
-	 * product_id) { System.out.println("product_id==="+product_id);
-	 * 
-	 * cservice.cartDelete(product_id); }
-	 */
+	
 	
 	@RequestMapping(value = "/loginCheck/cartDelete") // 장바구니에서
 	public @ResponseBody void cartDelte(@RequestParam("cart_id") ArrayList<String> list) {

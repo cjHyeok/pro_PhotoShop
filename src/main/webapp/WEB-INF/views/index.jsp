@@ -84,6 +84,15 @@
 											<li><a href="./"> <span class="menu-text">
 														Home</span>
 											</a></li>
+											
+											<li><a href="./productItem"> <span class="menu-text">
+														상품 관리</span>
+											</a></li>
+											
+											 
+											
+											
+											
 											<li><a class="active" href="./shop.html"> <span
 													class="menu-text">아트스타일</span> <i class="fa fa-angle-down"></i>
 											</a>
