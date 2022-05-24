@@ -96,13 +96,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="ModifyUpdate" parameterType="hashmap">
 		update t_product
 		set 
-			product_id = #{product_id}
-			product_category_id = #{product_category_id}
-			product_name = #{product_name}
-			product_price = #{product_price}
-			product_quantity = #{product_quantity}
-			product_description_summary = #{product_description_summary}
-			product_description = #{product_description}
+			
+			product_category_id = #{product_category_id},
+			product_name = #{product_name},
+			product_price = #{product_price},
+			product_quantity = #{product_quantity},
+			product_description_summary = #{product_description_summary},
+			product_description = #{product_description},
 			product_sales_state = #{product_sales_state}
 		
 		where product_id = #{product_id}
@@ -111,10 +111,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="ModifyImgUpdate" parameterType="hashmap">
 		update t_product_img
 		set 
-			product_img = #{product_img}
-			product_sub_img_1 = #{product_sub_img_1}
-			product_sub_img_2 = #{product_sub_img_2}
-			product_sub_img_3 = #{product_sub_img_3}
+			product_img = #{product_img},
+			product_sub_img_1 = #{product_sub_img_1},
+			product_sub_img_2 = #{product_sub_img_2},
+			product_sub_img_3 = #{product_sub_img_3},
 			product_sub_img_4 = #{product_sub_img_4}
 		where product_id = #{product_id}
 	</update>

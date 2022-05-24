@@ -124,10 +124,7 @@
 		
 		
 		
-		$("#modify_Btn").on("click", function() {
-
-			location.href = "/loginCheck/productModify";
-		})
+	
 		
 	
 		

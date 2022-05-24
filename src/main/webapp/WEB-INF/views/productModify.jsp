@@ -134,41 +134,17 @@
 	});
 		
 		
-		$("#modify_Btn").on("click", function() {  //상품 수정 업데이트
-			console.log("상품 내용 업데이트===");
-			var product_id = $(this).attr("data-num");
-			console.log(product_id);
-			$.ajax({
-				url : "/loginCheck/ModifyUpdate",
-				type : "get",
-				dataType : "text",
-				data : {
-					product_id : product_id,
-					
-				},
-				success : function(data, status, xhr) {
 
-				},
-				error : function(xhr, status, error) {
-					console.log(error);
-				}
-			});
+		$("#modify_Btn").on("click", function() {
+
+		location.href = "/productItem";
 		});
-
 	
 		
 		
 });
 </script>
 <body>
-<c:set var="xxx" value="${mDTO}" />
-
-<c:set var="user_id" value="${xxx.user_id}" />
-<c:set var="user_name" value="${xxx.user_name}" />
-<c:set var="post" value="${xxx.post}" />
-<c:set var="address" value="${xxx.address}" />
-<c:set var="phone" value="${xxx.phone}" />
-
 
 
 	<div class="contact-wrapper">
@@ -676,10 +652,10 @@
                                 <h2 class="title-4 mb-2">상품 수정</h2>
                                 
                             </div>
-                            <form action="productAdd" method="post">
+                            <form action="/loginCheck/ModifyUpdate" method="post">
                             
                             	<div class="single-input-item mb-3">
-                                    <input id="product_id" name="product_id" type="text" value="${productModify.product_id}">
+                                    <p id="product_id" name="product_id" type="text" value="${productModify.product_id}" readonly>
                                 </div>
                            
                                 <div class="single-input-item mb-3"> <!-- 봄 여름 가을 겨울 -->
@@ -748,7 +724,7 @@
                                 </div>
                                 <div class="single-input-item mb-3">
                                     
-                                    <button class="btn obrien-button-2 primary-color" data-num="${productModify.product_id}" id="modify_Btn">상품 수정</button>
+                                    <button class="btn obrien-button-2 primary-color" id="modify_Btn">상품 수정</button>
                                     
                                 </div>
                                 

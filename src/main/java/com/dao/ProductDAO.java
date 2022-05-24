@@ -60,8 +60,9 @@ public class ProductDAO {
 	public void ModifyUpdate(Map<String, String> map) {
 		int n = template.update("ProductMapper.ModifyUpdate", map);
 		int m = template.update("ProductMapper.ModifyImgUpdate", map);
-		
-		
+		//int v = template.delete("ProductMapper.ItemDelete", list);
+		//int w = template.delete("ProductMapper.ItemImgDelete", list);
+		//System.out.println("list== moupdate"+list);
 	}
 
 	

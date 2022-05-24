@@ -1,5 +1,6 @@
 package com.controller;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -168,7 +169,6 @@ public class ProductController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("category_List", clist);
 		mav.addObject("productModify", modto);
-		mav.setViewName("productModify");
 
 		return mav;
 		
@@ -176,8 +176,10 @@ public class ProductController {
 	
 	@RequestMapping(value = "/loginCheck/ModifyUpdate") // 상품 수정
 	public @ResponseBody void ModifyUpdate(@RequestParam Map<String, String> map) {
-		
+		System.out.println("ModifyUpdate controller  before" + map); //맵은 변수로 만들어져있음 modifyUpdate.jsp에 그래서 form 누르면 정보 넘어옴
 		pservice.ModifyUpdate(map);
-		System.out.println("/loginCheck/ModifyUpdate"+map);
+		System.out.println("ModifyUpdate controller  after" + map);
+		
+		
 	}
 }
