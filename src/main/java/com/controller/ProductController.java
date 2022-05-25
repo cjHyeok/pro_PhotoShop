@@ -122,9 +122,9 @@ public class ProductController {
 			List<ProductDTO> pitem = null;
 			System.out.println("/productItem category_name =" + category_name);
 			if (category_name == null) {
-				pitem = pservice.productListAll();
+				pitem = pservice.productListAll(); //카테고리 네임이 따로 없으면 전체 부르기
 			} else {
-				pitem = pservice.productList(category_name);
+				pitem = pservice.productList(category_name); //있으면 그 카테고리 네임 부르기 를 응용해서 검색할때 상품 이름으로 넣어주고 새로 컨트롤러에 만들기 mapper에는 where절 like이용해서 찾도록
 			}
 			/*
 			session.setAttribute("product_id", pitem);
@@ -175,11 +175,12 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/loginCheck/ModifyUpdate") // 상품 수정
-	public @ResponseBody void ModifyUpdate(@RequestParam Map<String, String> map) {
+	public String ModifyUpdate(@RequestParam Map<String, String> map) {
 		System.out.println("ModifyUpdate controller  before" + map); //맵은 변수로 만들어져있음 modifyUpdate.jsp에 그래서 form 누르면 정보 넘어옴
 		pservice.ModifyUpdate(map);
 		System.out.println("ModifyUpdate controller  after" + map);
 		
+		return "redirect:/productItem";
 		
 	}
 }

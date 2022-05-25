@@ -184,7 +184,8 @@
 		</script>
 	</c:if>
 
-	<div class="contact-wrapper">
+	<div class="home-wrapper home-3">
+		<!-- Header Area Start Here -->
 		<header class="main-header-area">
 			<!-- Main Header Area Start -->
 			<div class="main-header">
@@ -199,63 +200,53 @@
 										</a>
 									</div>
 								</div>
-								<div
-									class="col-lg-8 col-xl-7 position-static d-none d-lg-block col-custom">
+								<div class="col-lg-8 col-xl-7 position-static d-none d-lg-block col-custom">
 									<nav class="main-nav d-flex justify-content-center">
 										<ul class="nav">
-											<li><a href="./"> <span class="menu-text">
-														Home</span>
-											</a></li>
-											<li><a class="active" href="./shop.html"> <span
-													class="menu-text">아트스타일</span> <i class="fa fa-angle-down"></i>
-											</a>
-												<div class="mega-menu dropdown-hover">
-													<div class="menu-colum">
-														<ul>
-															<li><span class="mega-menu-text">계절</span></li>
-															<li><a href="./productList?category_name=봄">봄</a></li>
-															<li><a href="./productList?category_name=여름">여름</a></li>
-															<li><a href="./productList?category_name=가을">가을</a></li>
-															<li><a href="./productList?category_name=겨울">겨울</a></li>
+											<li><a href="./aboutUs"> <span class="menu-text">소개</span></a></li>
+											
+											<li><a href="./productItem"> <span class="menu-text">상품 관리</span></a></li>
+											
+											 
+											<li><a> <span class="menu-text">캘리그라피</span><i class="fa fa-angle-down"></i></a> 
+												<div class="menu-colum">
+													<ul class="dropdown-submenu dropdown-hover">
+														<li><a href="./productList?category_name=액자">액자</a></li>
+														<li><a href="./productList?category_name=캔버스">캔버스</a></li>
+														<li><a href="./productList?category_name=엽서">엽서</a></li>
+														<li><a href="./productList?category_name=캘리키트">캘리키트</a></li> 
+													</ul>
+												</div>
+											</li>
+											
+											
+											<li><a> <span class="menu-text">그림</span><i class="fa fa-angle-down"></i></a> 
+												<div class="menu-colum">
+													<ul class="dropdown-submenu dropdown-hover">
+														<li><a href="./productList?category_name=그림액자">액자</a></li>
+														<li><a href="./productList?category_name=그림캔버스">캔버스</a></li>
+														<li><a href="./productList?category_name=그림엽서">엽서</a></li>
+													</ul>
+												</div>
+											</li>										
+											
+												
+											<li><a> <span class="menu-text">스탠드</span><i class="fa fa-angle-down"></i></a> 
+												<div class="menu-colum">
+													<ul class="dropdown-submenu dropdown-hover">
+														<li><a href="./productList?category_name=무드등">무드등</a></li>
+													</ul>
+												</div>
+											</li>	
 
-
-														</ul>
-													</div>
-
-												</div></li>
-
-
-											<li><a href="./blog-details-fullwidth.html"> <span
-													class="menu-text"> 추천 상품</span> <i class="fa fa-angle-down"></i>
-											</a>
-												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="./blog.html">인기 상품</a></li>
-												</ul></li>
-											<li><a href="./blog-details-fullwidth.html"> <span
-													class="menu-text">상품 목록</span> <i class="fa fa-angle-down"></i>
-											</a>
-												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="./blog.html">일러스트</a></li>
-													<li><a href="./blog.html">풍경화</a></li>
-													<li><a href="./blog.html">캘리그라피</a></li>
-												</ul></li>
-											<li><a href="./#"> <span class="menu-text">Page</span>
-													<i class="fa fa-angle-down"></i>
-											</a>
-												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="./faqForm">FAQ</a></li>
-													<li><a href="./myAccount">My Account</a></li>
-													<li><a href="./loginForm">로그인</a></li>
-													<li><a href="./memberForm">회원가입</a></li>
-													<li><a href="./productList">상품리스트</a></li>
-													<li><a href="./cartList">카트리스트</a></li>
-													<li><a href="./wishList">위시리스트</a></li>
-												</ul></li>
-											<li><a href="./aboutUs"> <span class="menu-text">
-														About</span>
-											</a></li>
-											<li><a href="./contactUs"> <span class="menu-text">Contact</span>
-											</a></li>
+											<li><a> <span class="menu-text">액세사리</span><i class="fa fa-angle-down"></i></a> 
+												<div class="menu-colum">
+													<ul class="dropdown-submenu dropdown-hover">
+														<li><a href="./productList?category_name=골프공캘리">골프공캘리</a></li>
+														<li><a href="./productList?category_name=봉투">봉투</a></li>
+													</ul>
+												</div> 
+											</li>
 										</ul>
 									</nav>
 								</div>
@@ -267,12 +258,12 @@
 														<div
 															style="font-size: 15px; line-height: 1.6; font-weight: 600; color: #303030;">
 															${login.user_name } 님</div>
-														<span><a href="././loginCheck/logout">logout</a></span>
-														<span><a href="./memberForm">Register</a></span>
+														<span><a href="./loginCheck/logout">로그아웃</a></span>
+														<span><a href="./memberForm">회원가입</a></span>
 													</c:when>
 													<c:otherwise>
-														<span><a href="./loginForm">login</a></span>
-														<span><a href="./memberForm">Register</a></span>
+														<span><a href="./loginForm">로그인</a></span>
+														<span><a href="./memberForm">회원가입</a></span>
 													</c:otherwise>
 												</c:choose></li> &nbsp;&nbsp;
 											<li class="minicart-wrap"><a href="./#"
@@ -684,7 +675,7 @@
 										<tr>
 											<td class="pro-thumbnail"><a href="./#"><img
 													class="img-fluid"
-													src="assets/images/${cart.product_img}.png" alt="Product" /></a></td>
+													src="assets/images/${cart.product_img}" alt="Product" /></a></td>
 											<td class="pro-title"><a href="./#">${cart.product_name}</td>
 											<td class="pro-price"><span><fmt:formatNumber
 														value="${cart.product_price}" /></span></td>
