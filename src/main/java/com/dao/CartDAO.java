@@ -45,7 +45,8 @@ public class CartDAO {
 		System.out.println("wishCartadd dao");
 		WishDTO wdto = new WishDTO();
 		wdto.setUser_id(user_id);
-		wdto.setProduct_id(Integer.parseInt(product_id));
+		wdto.setProduct_id(product_id);
+		/* wdto.setProduct_id(Integer.parseInt(product_id)); */
 		System.out.println("유저, 상품" + wdto);
 		template.insert("CartMapper.wishCartadd", wdto);
 		

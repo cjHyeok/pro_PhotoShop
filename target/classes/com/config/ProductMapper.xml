@@ -32,7 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                                 join t_product_img i
 								on p.product_id = i.product_id
 								
-		where p.product_best = 'best'						
+		<!-- where p.product_best = 'best' -->						
 		order by p.product_id desc
 
 	</select>

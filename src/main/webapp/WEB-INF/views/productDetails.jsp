@@ -9,7 +9,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Obrien - Organic Food HTML5 Template</title>
+<title>WOOM 에 오신걸 환영합니다.   ->  WOOM !</title>
 <meta name="robots" content="noindex, follow" />
 <meta name="description" content="">
 <meta name="viewport"
@@ -58,7 +58,77 @@
 
 
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<%
+String user_name = (String) session.getAttribute("user_name");/* 	이거는 로그인쪽에서 가져옴 */
+%>
+<script type="text/javascript">
 
+
+	$(function() {
+
+		$("#cart").on("click", function() {
+			var count = $("#cart_quantity").val();
+			console.log(count);
+			$("form").attr("action", "loginCheck/cartAdd")
+			
+		})
+		
+		$("#wish").on("click", function() {
+			
+			$("form").attr("action", "loginCheck/wishAdd")
+			
+		})
+
+		$("#up").on("click", function() {
+			var count = $("#cart_quantity").val();
+			console.log(count);
+			
+			$("#cart_quantity").val(parseInt(count) + 1);
+		});
+
+		$("#down").on("click", function() {
+			var count = $("#cart_quantity").val();
+			if (count != 1) {
+				$("#cart_quantity").val(parseInt(count) - 1);
+			}
+		});
+		
+		
+			
+		
+		$("#btnComment").click(function() {
+
+			console.log("btnComment");
+			
+			  $.ajax({
+					 url:'reviewWriteAdd',
+					 type:'post',
+					 data:{
+						 //review_id:'${review_id}', 
+						 product_id:"${productDetails.product_id}",
+						 
+						 user_name:'${login.user_name }', 
+						 
+						 review_content: document.getElementById("review_content").value,
+						 
+					 },
+					 dataType:"text",
+					 success:function(data,status,xhr){
+						 console.log("data==", data);
+						 document.getElementById("reviewList").value=""; //div 클래스 쪽 (<div class="pro_review mb-5" id="reviewList">여기서 가져옴)리뷰 리스트 내용 지우기.
+						 document.getElementById("review_content").value=""; //리뷰 내용 적는 곳 ajax 성공했을 때 지우기
+						
+						$("#reviewList").html(data); //리뷰 retData 하나하나 넣어주는 부분 (controller확인)
+						
+					 },
+					 error:function(xhr,status,error){}
+			  });//end ajax	 
+		});
+		
+		
+	});
+</script>
 
 
 
@@ -66,7 +136,7 @@
 
 
 <body>
-<form name="productDetailsForm" method="GET" action="#">
+<form name="productDetailsForm" method="GET" action="">
 	<input type="hidden" name="product_img" value="${productDetails.product_img}">
 	<input type="hidden" name="product_name" value="${productDetails.product_name}">
 	<input type="hidden" name="product_price" value="${productDetails.product_price}">
@@ -82,6 +152,7 @@
 
 
 	<div class="shop-wrapper">
+		<!-- Header Area Start Here -->
 		<header class="main-header-area">
 			<!-- Main Header Area Start -->
 			<div class="main-header">
@@ -101,9 +172,6 @@
 										<ul class="nav">
 											<li><a href="./aboutUs"> <span class="menu-text">소개</span></a></li>
 											
-											<li><a href="./productItem"> <span class="menu-text">상품 관리</span></a></li>
-											
-											 
 											<li><a> <span class="menu-text">캘리그라피</span><i class="fa fa-angle-down"></i></a> 
 												<div class="menu-colum">
 													<ul class="dropdown-submenu dropdown-hover">
@@ -143,6 +211,8 @@
 													</ul>
 												</div> 
 											</li>
+											
+											<li><a href="./productItem"> <span class="menu-text">상품 관리</span></a></li>
 										</ul>
 									</nav>
 								</div>
@@ -151,18 +221,17 @@
 										<ul class="nav">
 											<li class="login-register-wrap d-none d-xl-flex"><c:choose>
 													<c:when test="${!empty login }"> &nbsp;&nbsp; <!-- 확인용 -->
-														<div
-															style="font-size: 15px; line-height: 1.6; font-weight: 600; color: #303030;">
-															${login.user_name } 님</div>
+														<div style="font-size: 15px; line-height: 1.6; font-weight: 600; color: #303030;">
+														
+														<a href="./myAccount">
+															${login.user_name } 님
+															</a>
+															
+															
+															</div>
 														<span><a href="./loginCheck/logout">로그아웃</a></span>
-														<span><a href="./memberForm">회원가입</a></span>
-													</c:when>
-													<c:otherwise>
-														<span><a href="./loginForm">로그인</a></span>
-														<span><a href="./memberForm">회원가입</a></span>
-													</c:otherwise>
-												</c:choose></li> &nbsp;&nbsp;
-											<li class="minicart-wrap"><a href="./#"
+														&nbsp;&nbsp;
+														<li class="minicart-wrap"><a href="./#"
 												class="minicart-btn toolbar-btn"> <i class="ion-bag"></i>
 													<span class="cart-item_count">3</span>
 											</a>
@@ -239,6 +308,13 @@
 															href="./checkout.html">Checkout</a>
 													</div>
 												</div></li>
+													</c:when>
+													<c:otherwise>
+														<span><a href="./loginForm">로그인</a></span>
+														<span><a href="./memberForm">회원가입</a></span>
+														
+													</c:otherwise>
+												</c:choose></li> &nbsp;&nbsp;
 											<li class="mobile-menu-btn d-lg-none"><a
 												class="off-canvas-btn" href="./#"> <i class="fa fa-bars"></i>
 											</a></li>
@@ -251,173 +327,7 @@
 				</div>
 			</div>
 			<!-- Main Header Area End -->
-			<!-- Sticky Header Start Here-->
-			<div class="main-header header-sticky">
-				<div class="container container-default custom-area">
-					<div class="row">
-						<div class="col-lg-12 col-custom">
-							<div class="row align-items-center">
-								<div class="col-lg-2 col-xl-2 col-sm-6 col-6 col-custom">
-									<div class="header-logo">
-										<a href="./"> <img class="img-full"
-											src="assets/images/logo/logo.png" alt="Header Logo">
-										</a>
-									</div>
-								</div>
-								<div
-									class="col-lg-8 col-xl-7 position-static d-none d-lg-block col-custom">
-									<nav class="main-nav d-flex justify-content-center">
-										<ul class="nav">
-											<li><a href="./"> <span class="menu-text">
-														Home</span>
-											</a></li>
-											<li><a class="active" href="./shop.html"> <span
-													class="menu-text">아트스타일</span> <i class="fa fa-angle-down"></i>
-											</a>
-												<div class="mega-menu dropdown-hover">
-													<div class="menu-colum">
-														<ul>
-															<li><span class="mega-menu-text">계절</span></li>
-															<li><a href="./productList?category_name=봄">봄</a></li>
-															<li><a href="./productList?category_name=여름">여름</a></li>
-															<li><a href="./productList?category_name=가을">가을</a></li>
-															<li><a href="./productList?category_name=겨울">겨울</a></li>
-
-															<li><a href="./productList">상품리스트</a></li>
-														</ul>
-													</div>
-
-												</div></li>
-												
-												
-											<li><a href="./blog-details-fullwidth.html"> <span
-													class="menu-text"> 추천 상품</span> <i class="fa fa-angle-down"></i>
-											</a>
-												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="./blog.html">인기 상품</a></li>
-												</ul></li>
-											<li><a href="./blog-details-fullwidth.html"> <span
-													class="menu-text">상품 목록</span> <i class="fa fa-angle-down"></i>
-											</a>
-												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="./blog.html">일러스트</a></li>
-													<li><a href="./blog.html">풍경화</a></li>
-													<li><a href="./blog.html">캘리그라피</a></li>
-												</ul></li>
-											<li><a href="./#"> <span class="menu-text">Page</span>
-													<i class="fa fa-angle-down"></i>
-											</a>
-												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="./faqForm">FAQ</a></li>
-													<li><a href="./myAccount">My Account</a></li>
-													<li><a href="./loginForm">로그인</a></li>
-													<li><a href="./memberForm">회원가입</a></li>
-												</ul></li>
-											<li><a href="./aboutUs"> <span class="menu-text">
-														About</span>
-											</a></li>
-											<li><a href="./contactUs"> <span class="menu-text">Contact</span>
-											</a></li>
-										</ul>
-									</nav>
-								</div>
-								<div class="col-lg-2 col-xl-3 col-sm-6 col-6 col-custom">
-									<div class="header-right-area main-nav">
-										<ul class="nav">
-											<li class="login-register-wrap d-none d-xl-flex"><span><a
-													href="./loginForm">Login</a></span> <span><a
-													href="./memberForm">Register</a></span></li>
-
-											<li class="minicart-wrap"><a href="./#"
-												class="minicart-btn toolbar-btn"> <i class="ion-bag"></i>
-													<span class="cart-item_count">3</span>
-											</a>
-												<div
-													class="cart-item-wrapper dropdown-sidemenu dropdown-hover-2">
-													<div class="single-cart-item">
-														<div class="cart-img">
-															<a href="./cartList"><img
-																src="assets/images/cart/1.jpg" alt=""></a>
-														</div>
-														<div class="cart-text">
-															<h5 class="title">
-																<a href="./cartList">11. Product with video - navy</a>
-															</h5>
-															<div class="cart-text-btn">
-																<div class="cart-qty">
-																	<span>1×</span> <span class="cart-price">$98.00</span>
-																</div>
-																<button type="button">
-																	<i class="ion-trash-b"></i>
-																</button>
-															</div>
-														</div>
-													</div>
-													<div class="single-cart-item">
-														<div class="cart-img">
-															<a href="./cartList"><img
-																src="assets/images/cart/2.jpg" alt=""></a>
-														</div>
-														<div class="cart-text">
-															<h5 class="title">
-																<a href="./cartList"
-																	title="10. This is the large title for testing large title and there is an image for testing - white">10.
-																	This is the large title for testing...</a>
-															</h5>
-															<div class="cart-text-btn">
-																<div class="cart-qty">
-																	<span>1×</span> <span class="cart-price">$98.00</span>
-																</div>
-																<button type="button">
-																	<i class="ion-trash-b"></i>
-																</button>
-															</div>
-														</div>
-													</div>
-													<div class="single-cart-item">
-														<div class="cart-img">
-															<a href="./cartList"><img
-																src="assets/images/cart/3.jpg" alt=""></a>
-														</div>
-														<div class="cart-text">
-															<h5 class="title">
-																<a href="./cartList">1. New and sale badge product - s
-																	/ red</a>
-															</h5>
-															<div class="cart-text-btn">
-																<div class="cart-qty">
-																	<span>1×</span> <span class="cart-price">$98.00</span>
-																</div>
-																<button type="button">
-																	<i class="ion-trash-b"></i>
-																</button>
-															</div>
-														</div>
-													</div>
-													<div
-														class="cart-price-total d-flex justify-content-between">
-														<h5>Total :</h5>
-														<h5>$166.00</h5>
-													</div>
-													<div class="cart-links d-flex justify-content-center">
-														<a class="obrien-button white-btn" href="./cartList">View
-															cart</a> <a class="obrien-button white-btn"
-															href="./checkout.html">Checkout</a>
-													</div>
-												</div></li>
-											<li class="mobile-menu-btn d-lg-none"><a
-												class="off-canvas-btn" href="./#mobileMenu"> <i
-													class="fa fa-bars"></i>
-											</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Sticky Header End Here -->
+			
 			<!-- off-canvas menu start -->
 			<aside class="off-canvas-wrapper" id="mobileMenu">
 				<div class="off-canvas-overlay"></div>
@@ -426,96 +336,90 @@
 						<i class="fa fa-times"></i>
 					</div>
 					<div class="off-canvas-inner">
-						<div class="search-box-offcanvas">
+
+						<!-- <div class="search-box-offcanvas">
 							<form>
 								<input type="text" placeholder="Search product...">
 								<button class="search-btn">
 									<i class="fa fa-search"></i>
 								</button>
 							</form>
-						</div>
+						</div> -->
+						
+						
+						
+						
+						
+						
+						
+						
 						<!-- mobile menu start -->
 						<div class="mobile-navigation">
+
 							<!-- mobile menu navigation start -->
 							<nav>
 								<ul class="mobile-menu">
-									<li class="menu-item-has-children"><a href="./#">Home</a>
+									<li><a href="./aboutUs"> <span class="menu-text">소개</span></a></li>
+									
+									<li><a href="./productItem"> <span class="menu-text">상품 관리</span></a></li>
+									
+									<!-- 참고하기 <li class="menu-item-has-children"><a href="./#">내 정보</a>
+										<ul class="dropdown"> -->
+									<li class="menu-item-has-children"><a href="./#">캘리그라피</a> 
 										<ul class="dropdown">
-											<li><a href="./">Home Page 1</a></li>
-											<li><a href="./index-2.html">Home Page 2</a></li>
-											<li><a href="./index-3.html">Home Page 3</a></li>
-											<li><a href="./index-4.html">Home Page 4</a></li>
-										</ul></li>
-									<li class="menu-item-has-children"><a href="./#">Shop</a>
-										<ul class="megamenu dropdown">
-											<li class="mega-title has-children"><a href="./#">Shop
-													Layouts</a>
-												<ul class="dropdown">
+											<li><a href="./productList?category_name=액자">액자</a></li>
+											<li><a href="./productList?category_name=캔버스">캔버스</a></li>
+											<li><a href="./productList?category_name=엽서">엽서</a></li>
+											<li><a href="./productList?category_name=캘리키트">캘리키트</a></li> 
+										</ul>
+									</li>
+									
+									<li class="menu-item-has-children"><a href="./#">그림</a> 
+                                    	<ul class="dropdown">
+                                        	<li><a href="./productList?category_name=그림액자">액자</a></li>
+                                            <li><a href="./productList?category_name=그림캔버스">캔버스</a></li>
+                                            <li><a href="./productList?category_name=그림엽서">엽서</a></li>
+                                        </ul>
+                                    </li>   
+                                            
+                                            
+									<li class="menu-item-has-children"><a href="./#">스탠드</a> 
+                                    	<ul class="dropdown">
+                                        	<li><a href="./productList?category_name=무드등">무드등</a></li>
+                                        </ul>
+                                    </li> 
 
-													<li><a href="./productList">상품리스트</a></li>
-												</ul></li>
-											<li class="mega-title has-children"><a href="./#">Product
-													Details</a>
-												<ul class="dropdown">
-													<li><a href="./product-details.html">Single Product
-															Details</a></li>
-													<li><a href="./variable-product-details.html">Variable
-															Product Details</a></li>
-													<li><a href="./external-product-details.html">External
-															Product Details</a></li>
-													<li><a href="./gallery-product-details.html">Gallery
-															Product Details</a></li>
-													<li><a href="./countdown-product-details.html">Countdown
-															Product Details</a></li>
-												</ul></li>
-											<li class="mega-title has-children"><a href="./#">Others</a>
-												<ul class="dropdown">
-													<li><a href="./error404.html">Error 404</a></li>
-													<li><a href="./compare.html">Compare Page</a></li>
-													<li><a href="./cartList">Cart Page</a></li>
-													<li><a href="./checkout.html">Checkout Page</a></li>
-													<li><a href="./wishlist.html">Wish List Page</a></li>
-												</ul></li>
-										</ul></li>
-									<li class="menu-item-has-children "><a href="./#">Blog</a>
-										<ul class="dropdown">
-											<li><a href="./blog.html">Blog Left Sidebar</a></li>
-											<li><a href="./blog-list-right-sidebar.html">Blog List
-													Right Sidebar</a></li>
-											<li><a href="./blog-list-fullwidth.html">Blog List
-													Fullwidth</a></li>
-											<li><a href="./blog-grid.html">Blog Grid Page</a></li>
-											<li><a href="./blog-grid-right-sidebar.html">Blog Grid
-													Right Sidebar</a></li>
-											<li><a href="./blog-grid-fullwidth.html">Blog Grid
-													Fullwidth</a></li>
-											<li><a href="./blog-details-sidebar.html">Blog Details
-													Sidebar Page</a></li>
-											<li><a href="./blog-details-fullwidth.html">Blog
-													Details Fullwidth Page</a></li>
-										</ul></li>
-									<li class="menu-item-has-children "><a href="./#">Pages</a>
-										<ul class="dropdown">
-											<li><a href="./faqForm">FAQ</a></li>
-											<li><a href="./my-account.html">My Account</a></li>
-											<li><a href="./login-memberForm">login &amp; register</a></li>
-										</ul></li>
-									<li><a href="./aboutUs">About Us</a></li>
-									<li><a href="./contactUs">Contact</a></li>
-								</ul>
-							</nav>
-							<!-- mobile menu navigation end -->
-						</div>
+									<li class="menu-item-has-children"><a href="./#">액세사리</a> 
+                                    	<ul class="dropdown">
+                                    		<li><a href="./productList?category_name=골프공캘리">골프공캘리</a></li>
+                                    		<li><a href="./productList?category_name=봉투">봉투</a></li>
+                                    	</ul>
+                                    </li>
+                                            
+                                    <li><a href="./productItem"> <span class="menu-text">상품 관리</span></a></li>
+                				</ul>
+                			</nav>
+
+				<!-- mobile menu navigation end -->
+					</div>
 						<!-- mobile menu end -->
 						<div class="header-top-settings offcanvas-curreny-lang-support">
 							<!-- mobile menu navigation start -->
 							<nav>
 								<ul class="mobile-menu">
-									<li class="menu-item-has-children"><a href="./#">My
-											Account</a>
+									<li class="menu-item-has-children"><a href="./#">내 정보</a>
 										<ul class="dropdown">
-											<li><a href="./loginForm">Login</a></li>
-											<li><a href="./memberForm">Register</a></li>
+											<c:choose>
+												<c:when test="${!empty login }">  
+													<a href="./myAccount">${login.user_name }님&nbsp;&nbsp;  <!-- 확인용 -->
+													<span><a href="./loginCheck/logout">로그아웃</a></span>
+												</c:when>
+												
+												<c:otherwise>
+													<span><a href="./loginForm">로그인</a></span>
+													<span><a href="./memberForm">회원가입</a></span>
+												</c:otherwise>
+											</c:choose>
 										</ul></li>
 
 								</ul>
@@ -526,18 +430,15 @@
 						<div class="offcanvas-widget-area">
 							<div class="top-info-wrap text-left text-black">
 								<ul>
-									<li><i class="fa fa-phone"></i> <a
-										href="./info@yourdomain.com">(1245) 2456 012</a></li>
+									<!-- <li><i class="fa fa-phone"></i> <a
+										href="./info@yourdomain.com">(1245) 2456 012</a></li> -->
 									<li><i class="fa fa-envelope"></i> <a
-										href="./info@yourdomain.com">info@yourdomain.com</a></li>
+										href="./info@yourdomain.com">um.woom@gmail.com</a></li>
 								</ul>
 							</div>
 							<div class="off-canvas-widget-social">
 								<a title="Facebook-f" href="./#"><i class="fa fa-facebook-f"></i></a>
-								<a title="Twitter" href="./#"><i class="fa fa-twitter"></i></a> <a
-									title="Linkedin" href="./#"><i class="fa fa-linkedin"></i></a> <a
-									title="Youtube" href="./#"><i class="fa fa-youtube"></i></a> <a
-									title="Vimeo" href="./#"><i class="fa fa-vimeo"></i></a>
+								<a title="Twitter" href="./#"><i class="fa fa-twitter"></i></a>
 							</div>
 						</div>
 						<!-- offcanvas widget area end -->
@@ -729,29 +630,30 @@
 									</div>
 								</div>
 								<div class="add-to_cart">
-									<button class="btn obrien-button primary-btn" id="cart" href="./cartList">Add
+									<button class="btn obrien-button primary-btn" id="cart">Add
 										to cart</button>
 										
-										<button class="btn obrien-button primary-btn" id="wish" href="./wishList">Add
+									<button class="btn obrien-button primary-btn" id="wish">Add
 										to wishlist</button>
 										
 								</div>
 							</div>
 							<div class="buy-button mb-5">
-								<a href="./#" class="btn obrien-button-3 black-button">Buy it
-									now</a>
+								<a href="./orderConfirm" class="btn obrien-button-3 black-button">구매하기</a>
 							</div>
 							<div class="social-share mb-4">
-								<span>Share :</span> <a href="./#"><i
-									class="fa fa-facebook-square facebook-color"></i></a> <a href="./#"><i
-									class="fa fa-twitter-square twitter-color"></i></a> <a href="./#"><i
-									class="fa fa-linkedin-square linkedin-color"></i></a> <a href="./#"><i
-									class="fa fa-pinterest-square pinterest-color"></i></a>
+								<span>Share :</span> 
+									<!-- <a href=""> -->
+									<a>
+										<i class="fa fa-facebook-square facebook-color"></i>
+										<i class="fa fa-twitter-square twitter-color"></i>
+									</a>
+									<!-- </a> -->
 							</div>
-							<div class="payment">
+							<!-- <div class="payment">
 								<a href="./#"><img class="border"
 									src="assets/images/payment/img-payment.png" alt="Payment"></a>
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</div>
@@ -775,16 +677,14 @@
 							<li class="nav-item"><a
 								class="nav-link active text-uppercase" id="home-tab"
 								data-bs-toggle="tab" href="#connect-1" role="tab"
-								aria-selected="true">Description</a></li>
+								aria-selected="true">상품정보</a></li>
 							<li class="nav-item"><a class="nav-link text-uppercase"
 								id="profile-tab" data-bs-toggle="tab" href="#connect-2"
-								role="tab" aria-selected="false">Reviews</a></li>
+								role="tab" aria-selected="false">상품후기</a></li>
 							<li class="nav-item"><a class="nav-link text-uppercase"
 								id="contact-tab" data-bs-toggle="tab" href="#connect-3"
-								role="tab" aria-selected="false">Shipping Policy</a></li>
-							<li class="nav-item"><a class="nav-link text-uppercase"
-								id="review-tab" data-bs-toggle="tab" href="#connect-4"
-								role="tab" aria-selected="false">Size Chart</a></li>
+								role="tab" aria-selected="false">교환 및 반품안내</a></li>
+							
 						</ul>
 						<div class="tab-content mb-text" id="myTabContent">
 							<div class="tab-pane fade show active" id="connect-1"
@@ -796,6 +696,9 @@
 							<div class="tab-pane fade" id="connect-2" role="tabpanel"
 								aria-labelledby="profile-tab">
 								<!-- Start Single Content -->
+								
+								
+							
 								<div class="product_tab_content  border p-3">
 									<div class="review_address_inner">
 										
@@ -849,8 +752,8 @@
 									<div class="comments-area comments-reply-area">
 										<div class="row">
 											<div class="col-lg-12 col-custom">
-												<form action="#" class="comment-form-area">
-													<!-- <div class="row comment-input">
+												<!-- <form action="#" class="comment-form-area">
+													<div class="row comment-input">
 														<div class="col-md-6 col-custom comment-form-author mb-3">
 															<label>Name <span class="required">*</span></label> <input
 																type="text" required="required" name="Name">
@@ -859,22 +762,22 @@
 															<label>Email <span class="required">*</span></label> <input
 																type="text" required="required" name="email">
 														</div>
-													</div> -->
+													</div>
 													<div class="comment-form-comment mb-3">
 														<label>Comment</label>
 														<form>
 														<tr>
-														<!-- <textarea class="comment-notes" required="required"></textarea> -->
+														<textarea class="comment-notes" required="required"></textarea>
 														<input type="text" name="review_content" id="review_content">
 														</tr>
 														</form>
 													</div>
 													<div class="comment-form-submit">
 													<button name="btnComment" id="btnComment" type="button" class="comment-submit btn obrien-button primary-btn">댓글 작성</button>
-														<!-- <input type="submit" value="Submit"
-															class="comment-submit btn obrien-button primary-btn"> -->
+														<input type="submit" value="Submit"
+															class="comment-submit btn obrien-button primary-btn">
 													</div>
-												</form>
+												</form> -->
 											</div>
 										</div>
 									</div>
@@ -884,85 +787,50 @@
 							<div class="tab-pane fade" id="connect-3" role="tabpanel"
 								aria-labelledby="contact-tab">
 								<div class="shipping-policy">
-									<h4 class="title-3 mb-4">Shipping policy for our store</h4>
-									<p class="desc-content mb-2">Lorem ipsum dolor sit amet,
-										consectetuer adipiscing elit, sed diam nonummy nibh euismod
-										tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut
-										wisi enim ad minim veniam, quis nostrud exerci tation
-										ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-										consequat. Duis autem vel eum iriure dolor in hendrerit in
-										vulputate</p>
-									<ul class="policy-list mb-2">
+									<h4 class="title-3 mb-4">배송안내</h4>
+									<p class="desc-content mb-2">
+										배송비 : 기본 배송료는 3,000원입니다. <br>
+										50,000원 이상 구매 시 무료배송입니다.<br>
+										상품의 평균 배송일은 입금 확인 후 영업일 기준 3일입니다.<br>
+										배송 마감 시간에 따라 이미 택배 발송된 경우 주문취소가 불가능합니다.<br>
+										주문 취소가 불가능한 경우 이메일로 연락 주시기 바랍니다.  (이메일 : um.woom@gmail.com )<br>
+										주문 순으로 순차 배송 되며, 재고가 없을 경우 고객센터에서 연락드립니다.</p><br>
+									<!-- <ul class="policy-list mb-2">
 										<li>1-2 business days (Typically by end of day)</li>
 										<li><a href="./#">30 days money back guaranty</a></li>
 										<li>24/7 live support</li>
 										<li>odio dignissim qui blandit praesent</li>
 										<li>luptatum zzril delenit augue duis dolore</li>
 										<li>te feugait nulla facilisi.</li>
-									</ul>
-									<p class="desc-content mb-2">Nam liber tempor cum soluta
-										nobis eleifend option congue nihil imperdiet doming id quod
-										mazim placerat facer possim assum. Typi non habent claritatem
-										insitam; est usus legentis in iis qui facit eorum</p>
-									<p class="desc-content mb-2">claritatem. Investigationes
-										demonstraverunt lectores legere me lius quod ii legunt
-										saepius. Claritas est etiam processus dynamicus, qui sequitur
-										mutationem consuetudium lectorum. Mirum est notare quam
-										littera gothica, quam nunc putamus parum claram, anteposuerit
-										litterarum formas humanitatis per</p>
-									<p class="desc-content mb-2">seacula quarta decima et
-										quinta decima. Eodem modo typi, qui nunc nobis videntur parum
-										clari, fiant sollemnes in futurum.</p>
+									</ul> -->
+									<h4 class="title-3 mb-4">교환 및 반품안내</h4>
+									<p class="desc-content mb-2">
+										고객 단순 변심일 경우 교환 비용 왕복 배송비 6,000원 부과됩니다.<br>
+										<li>단, 고객 변심의 경우에만 발생하며 부분 반품 시, 남은 금액이 무료배송 조건이 유지되는 경우 반품 회송 비용(3,000원)만 발생합니다.</li><br>
+										교환/반품 신청 기준일: 단순 변심에 의한 상품의 교환/반품은 수령 후 7일 이내까지만 가능합니다.<br>
+										상품의 불량이나 오배송일 경우 당사가 택배비를 부담하며, 수령 후 7일 이내 교환 신청 부탁드립니다.<br>
+										상품의 내용이 표시·광고의 내용과 다른 경우에는 상품을 수령한 날부터 30일 이내 교환/환불이 가능합니다.<br>
+										상품 택(tag) 제거 또는 포장 개봉으로 상품 가치 훼손 시에는 상품 수령 후 7일 이내라도 교환/반품이 불가능합니다.<br>
+										구매 후 가격 변경, 추가 혜택 제공으로 인한 교환/환불은 불가능합니다.<br>
+										일부 행사 상품은 교환/반품이 불가할 수 있습니다.</p><br>
+										
+									<h4 class="title-3 mb-4">환불안내</h4>
+									<p class="desc-content mb-2">
+										상품 청약철회 가능 기간은 상품 수령일로부터 7일 이내입니다.<br>
+										반품 신청 후 규정에 따라 환불 가능하며, 카드 결제로 구매한 경우 시 취소 승인 완료까지 카드사에 따라 최대 7일이 소요될 수 있습니다<br>
+									</p><br>
+									
+									<h4 class="title-3 mb-4">A/S안내</h4>
+									<p class="desc-content mb-2">
+										소비자분쟁해결 기준(공정거래위원회 고시)에 따라 피해를 보상받을 수 있습니다.<br>
+										A/S는 이메일로 연락 주시기 바랍니다.  (이메일 : um.woom@gmail.com )  <br>
+									</p>
 								</div>
 							</div>
 							<div class="tab-pane fade" id="connect-4" role="tabpanel"
 								aria-labelledby="review-tab">
 								<div class="size-tab table-responsive-lg">
-									<h4 class="title-3 mb-4">Size Chart</h4>
-									<table class="table border">
-										<tbody>
-											<tr>
-												<td class="cun-name"><span>UK</span></td>
-												<td>18</td>
-												<td>20</td>
-												<td>22</td>
-												<td>24</td>
-												<td>26</td>
-											</tr>
-											<tr>
-												<td class="cun-name"><span>European</span></td>
-												<td>46</td>
-												<td>48</td>
-												<td>50</td>
-												<td>52</td>
-												<td>54</td>
-											</tr>
-											<tr>
-												<td class="cun-name"><span>usa</span></td>
-												<td>14</td>
-												<td>16</td>
-												<td>18</td>
-												<td>20</td>
-												<td>22</td>
-											</tr>
-											<tr>
-												<td class="cun-name"><span>Australia</span></td>
-												<td>28</td>
-												<td>10</td>
-												<td>12</td>
-												<td>14</td>
-												<td>16</td>
-											</tr>
-											<tr>
-												<td class="cun-name"><span>Canada</span></td>
-												<td>24</td>
-												<td>18</td>
-												<td>14</td>
-												<td>42</td>
-												<td>36</td>
-											</tr>
-										</tbody>
-									</table>
+									
 								</div>
 							</div>
 						</div>
@@ -992,8 +860,7 @@
 						<div class="support-wrapper d-flex">
 							<div class="support-content">
 								<h1 class="title">Need Help </h1>
-								<p class="desc-content">Call our support 24/7 at
-									01234-567-890</p>
+								<p class="desc-content">Email: um.woom@gmail.com</p>
 							</div>
 							<div class="support-button d-flex align-items-center">
 								<a class="obrien-button primary-btn" href="./contactUs">Contact
@@ -1017,10 +884,8 @@
 										alt="Logo Image">
 									</a>
 								</div>
-								<p class="desc-content">Obrien is the best parts shop of
-									your daily nutritions. What kind of nutrition do you need you
-									can get here soluta nobis</p>
-								<div class="social-links">
+								<p class="desc-content">WOOM is the best parts shop of your daily routine. What kind of routine do you need you can get here  </p>
+								<!-- <div class="social-links">
 									<ul class="d-flex">
 										<li><a class="border rounded-circle" href="./#"
 											title="Facebook"> <i class="fa fa-facebook-f"></i>
@@ -1038,7 +903,7 @@
 											title="Vimeo"> <i class="fa fa-vimeo"></i>
 										</a></li>
 									</ul>
-								</div>
+								</div> -->
 							</div>
 						</div>
 						<div class="col-12 col-sm-6 col-md-6 col-lg-2 col-custom">
@@ -1057,11 +922,20 @@
 							<div class="single-footer-widget">
 								<h2 class="widget-title">Quicklink</h2>
 								<ul class="widget-list">
-									<li><a href="./aboutUs">About</a></li>
-									<li><a href="./blog.html">Blog</a></li>
-									<li><a href="./shop.html">Shop</a></li>
-									<li><a href="./cartList">Cart</a></li>
-									<li><a href="./contactUs">Contact</a></li>
+									<c:choose>
+										<c:when test="${!empty login }">
+											<li><a href="./aboutUs">About</a></li>
+											<li><a href="./productList">Shop</a></li>
+											<li><a href="./cartList">Cart</a></li>
+											<li><a href="./contactUs">Contact</a></li>
+										</c:when>
+										
+										<c:otherwise>
+											<li><a href="./aboutUs">About</a></li>
+											<li><a href="./productList">Shop</a></li>
+											<li><a href="./contactUs">Contact</a></li>
+										</c:otherwise>
+									</c:choose>
 								</ul>
 							</div>
 						</div>
@@ -1082,9 +956,8 @@
 								<h2 class="widget-title">See Information</h2>
 								<div class="widget-body">
 									<address>
-										123, H2, Road #21, Main City, Your address goes here.<br>Phone:
-										01254 698 785, 36598 254 987<br>Email:
-										https://example.com
+										서울특별시 송파구 백제고분로 501, 청호빌딩 <br>
+										Email: um.woom@gmail.com
 									</address>
 								</div>
 							</div>
@@ -1097,12 +970,7 @@
 					<div class="row">
 						<div class="col-12 text-center col-custom">
 							<div class="copyright-content">
-								<p>
-									Copyright © 2020 <a href="./https://hasthemes.com/"
-										title="https://hasthemes.com/">HasThemes</a> | Built
-									with&nbsp;<strong>Obrien</strong>&nbsp;by <a
-										href="./https://hasthemes.com/" title="https://hasthemes.com/">HasThemes</a>.
-								</p>
+								<p>Copyright ⓒ WOOM Foundation. All Rights Reserved.</p>
 							</div>
 						</div>
 					</div>
@@ -1148,77 +1016,7 @@
 
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<%
-String user_name = (String) session.getAttribute("user_name");/* 	이거는 로그인쪽에서 가져옴 */
-%>
-<script type="text/javascript">
 
-
-	$(function() {
-
-		$("#cart").on("click", function() {
-			var count = $("#cart_quantity").val();
-			console.log(count);
-			$("form").attr("action", "loginCheck/cartAdd")
-			
-		})
-		
-		$("#wish").on("click", function() {
-			
-			$("form").attr("action", "loginCheck/wishAdd")
-			
-		})
-
-		$("#up").on("click", function() {
-			var count = $("#cart_quantity").val();
-			console.log(count);
-			
-			$("#cart_quantity").val(parseInt(count) + 1);
-		});
-
-		$("#down").on("click", function() {
-			var count = $("#cart_quantity").val();
-			if (count != 1) {
-				$("#cart_quantity").val(parseInt(count) - 1);
-			}
-		});
-		
-		
-			
-		
-		$("#btnComment").click(function() {
-
-			console.log("btnComment");
-			
-			  $.ajax({
-					 url:'reviewWriteAdd',
-					 type:'post',
-					 data:{
-						 //review_id:'${review_id}', 
-						 product_id:"${productDetails.product_id}",
-						 
-						 user_name:'${login.user_name }', 
-						 
-						 review_content: document.getElementById("review_content").value,
-						 
-					 },
-					 dataType:"text",
-					 success:function(data,status,xhr){
-						 console.log("data==", data);
-						 document.getElementById("reviewList").value=""; //div 클래스 쪽 (<div class="pro_review mb-5" id="reviewList">여기서 가져옴)리뷰 리스트 내용 지우기.
-						 document.getElementById("review_content").value=""; //리뷰 내용 적는 곳 ajax 성공했을 때 지우기
-						
-						$("#reviewList").html(data); //리뷰 retData 하나하나 넣어주는 부분 (controller확인)
-						
-					 },
-					 error:function(xhr,status,error){}
-			  });//end ajax	 
-		});
-		
-		
-	});
-</script>
 </body>
 
 </html>

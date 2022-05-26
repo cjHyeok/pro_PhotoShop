@@ -29,7 +29,7 @@ public class LoginController {
 		
 		if (mdto != null) {
 			session.setAttribute("login", mdto);
-			return "index";
+			return "redirect:./";
 		}else {
 			model.addAttribute("mesg", "아이디 또는 비밀번호를 다시 확인해주세요.");
 			return "loginForm";

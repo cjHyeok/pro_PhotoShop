@@ -9,7 +9,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Obrien - Organic Food HTML5 Template</title>
+<title>WOOM 에 오신걸 환영합니다.   ->  WOOM !</title>
 <meta name="robots" content="noindex, follow" />
 <meta name="description" content="">
 <meta name="viewport"
@@ -96,6 +96,7 @@
 
 	
 	<div class="contact-wrapper">
+		<!-- Header Area Start Here -->
 		<header class="main-header-area">
 			<!-- Main Header Area Start -->
 			<div class="main-header">
@@ -115,9 +116,6 @@
 										<ul class="nav">
 											<li><a href="./aboutUs"> <span class="menu-text">소개</span></a></li>
 											
-											<li><a href="./productItem"> <span class="menu-text">상품 관리</span></a></li>
-											
-											 
 											<li><a> <span class="menu-text">캘리그라피</span><i class="fa fa-angle-down"></i></a> 
 												<div class="menu-colum">
 													<ul class="dropdown-submenu dropdown-hover">
@@ -157,6 +155,8 @@
 													</ul>
 												</div> 
 											</li>
+											
+											<li><a href="./productItem"> <span class="menu-text">상품 관리</span></a></li>
 										</ul>
 									</nav>
 								</div>
@@ -165,18 +165,17 @@
 										<ul class="nav">
 											<li class="login-register-wrap d-none d-xl-flex"><c:choose>
 													<c:when test="${!empty login }"> &nbsp;&nbsp; <!-- 확인용 -->
-														<div
-															style="font-size: 15px; line-height: 1.6; font-weight: 600; color: #303030;">
-															${login.user_name } 님</div>
+														<div style="font-size: 15px; line-height: 1.6; font-weight: 600; color: #303030;">
+														
+														<a href="./myAccount">
+															${login.user_name } 님
+															</a>
+															
+															
+															</div>
 														<span><a href="./loginCheck/logout">로그아웃</a></span>
-														<span><a href="./memberForm">회원가입</a></span>
-													</c:when>
-													<c:otherwise>
-														<span><a href="./loginForm">로그인</a></span>
-														<span><a href="./memberForm">회원가입</a></span>
-													</c:otherwise>
-												</c:choose></li> &nbsp;&nbsp;
-											<li class="minicart-wrap"><a href="./#"
+														&nbsp;&nbsp;
+														<li class="minicart-wrap"><a href="./#"
 												class="minicart-btn toolbar-btn"> <i class="ion-bag"></i>
 													<span class="cart-item_count">3</span>
 											</a>
@@ -253,6 +252,13 @@
 															href="./checkout.html">Checkout</a>
 													</div>
 												</div></li>
+													</c:when>
+													<c:otherwise>
+														<span><a href="./loginForm">로그인</a></span>
+														<span><a href="./memberForm">회원가입</a></span>
+														
+													</c:otherwise>
+												</c:choose></li> &nbsp;&nbsp;
 											<li class="mobile-menu-btn d-lg-none"><a
 												class="off-canvas-btn" href="./#"> <i class="fa fa-bars"></i>
 											</a></li>
@@ -265,211 +271,7 @@
 				</div>
 			</div>
 			<!-- Main Header Area End -->
-			<!-- Sticky Header Start Here-->
-			<div class="main-header header-sticky">
-				<div class="container container-default custom-area">
-					<div class="row">
-						<div class="col-lg-12 col-custom">
-							<div class="row align-items-center">
-								<div class="col-lg-2 col-xl-2 col-sm-6 col-6 col-custom">
-									<div class="header-logo">
-										<a href="./"> <img class="img-full"
-											src="assets/images/logo/logo.png" alt="Header Logo">
-										</a>
-									</div>
-								</div>
-								<div
-									class="col-lg-8 col-xl-7 position-static d-none d-lg-block col-custom">
-									<nav class="main-nav d-flex justify-content-center">
-										<ul class="nav">
-											<li><a href="./"> <span class="menu-text">
-														Home</span> <i class="fa fa-angle-down"></i>
-											</a>
-												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="./">Home Page - 1</a></li>
-													<li><a href="./index-2.html">Home Page - 2</a></li>
-													<li><a href="./index-3.html">Home Page - 3</a></li>
-													<li><a href="./index-4.html">Home Page - 4</a></li>
-												</ul></li>
-											<li><a class="active" href="./shop.html"> <span
-													class="menu-text">Shop</span> <i class="fa fa-angle-down"></i>
-											</a>
-												<div class="mega-menu dropdown-hover">
-													<div class="menu-colum">
-														<ul>
-															<li><span class="mega-menu-text">Shop</span></li>
-															<li><a href="./shop.html">Shop Left Sidebar</a></li>
-															<li><a href="./shop-right-sidebar.html">Shop Right
-																	Sidebar</a></li>
-															<li><a href="./shop-list-left.html">Shop List Left
-																	Sidebar</a></li>
-															<li><a href="./shop-list-right.html">Shop List
-																	Right Sidebar</a></li>
-															<li><a href="./shop-fullwidth.html">Shop Full
-																	Width</a></li>
-														</ul>
-													</div>
-													<div class="menu-colum">
-														<ul>
-															<li><span class="mega-menu-text">Product</span></li>
-															<li><a href="./product-details.html">Single
-																	Product</a></li>
-															<li><a href="./variable-product-details.html">Variable
-																	Product</a></li>
-															<li><a href="./external-product-details.html">External
-																	Product</a></li>
-															<li><a href="./gallery-product-details.html">Gallery
-																	Product</a></li>
-															<li><a href="./countdown-product-details.html">Countdown
-																	Product</a></li>
-														</ul>
-													</div>
-													<div class="menu-colum">
-														<ul>
-															<li><span class="mega-menu-text">Others</span></li>
-															<li><a href="./error-404.html">Error 404</a></li>
-															<li><a href="./compare.html">Compare Page</a></li>
-															<li><a href="./cart.html">Cart Page</a></li>
-															<li><a href="./checkout.html">Checkout Page</a></li>
-															<li><a class="active" href="./wishlist.html">Wishlist
-																	Page</a></li>
-														</ul>
-													</div>
-												</div></li>
-											<li><a href="./blog-details-fullwidth.html"> <span
-													class="menu-text"> Blog</span> <i class="fa fa-angle-down"></i>
-											</a>
-												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="./blog.html">Blog Left Sidebar</a></li>
-													<li><a href="./blog-list-right-sidebar.html">Blog
-															List Right Sidebar</a></li>
-													<li><a href="./blog-list-fullwidth.html">Blog List
-															Fullwidth</a></li>
-													<li><a href="./blog-grid.html">Blog Grid Page</a></li>
-													<li><a href="./blog-grid-right-sidebar.html">Blog
-															Grid Right Sidebar</a></li>
-													<li><a href="./blog-grid-fullwidth.html">Blog Grid
-															Fullwidth</a></li>
-													<li><a href="./blog-details-sidebar.html">Blog
-															Details Sidebar</a></li>
-													<li><a href="./blog-details-fullwidth.html">Blog
-															Details Fullwidth</a></li>
-												</ul></li>
-											<li><a href="./#"> <span class="menu-text">
-														Pages</span> <i class="fa fa-angle-down"></i>
-											</a>
-												<ul class="dropdown-submenu dropdown-hover">
-													<li><a href="./faqForm">FAQ</a></li>
-													<li><a href="./my-account.html">My Account</a></li>
-													<li><a href="./loginForm">Login</a></li>
-													<li><a href="./memberForm">Register</a></li>
-												</ul></li>
-											<li><a href="./about-us.html"> <span class="menu-text">
-														About</span>
-											</a></li>
-											<li><a href="./contact-us.html"> <span
-													class="menu-text">Contact</span>
-											</a></li>
-										</ul>
-									</nav>
-								</div>
-								<div class="col-lg-2 col-xl-3 col-sm-6 col-6 col-custom">
-									<div class="header-right-area main-nav">
-										<ul class="nav">
-											<li class="login-register-wrap d-none d-xl-flex"><span><a
-													href="./loginForm">Login</a></span> <span><a
-													href="./memberForm">Register</a></span></li>
-
-											<li class="minicart-wrap"><a href="./#"
-												class="minicart-btn toolbar-btn"> <i class="ion-bag"></i>
-													<span class="cart-item_count">3</span>
-											</a>
-												<div
-													class="cart-item-wrapper dropdown-sidemenu dropdown-hover-2">
-													<div class="single-cart-item">
-														<div class="cart-img">
-															<a href="./cart.html"><img
-																src="assets/images/cart/1.jpg" alt=""></a>
-														</div>
-														<div class="cart-text">
-															<h5 class="title">
-																<a href="./cart.html">11. Product with video - navy</a>
-															</h5>
-															<div class="cart-text-btn">
-																<div class="cart-qty">
-																	<span>1×</span> <span class="cart-price">$98.00</span>
-																</div>
-																<button type="button">
-																	<i class="ion-trash-b"></i>
-																</button>
-															</div>
-														</div>
-													</div>
-													<div class="single-cart-item">
-														<div class="cart-img">
-															<a href="./cart.html"><img
-																src="assets/images/cart/2.jpg" alt=""></a>
-														</div>
-														<div class="cart-text">
-															<h5 class="title">
-																<a href="./cart.html"
-																	title="10. This is the large title for testing large title and there is an image for testing - white">10.
-																	This is the large title for testing...</a>
-															</h5>
-															<div class="cart-text-btn">
-																<div class="cart-qty">
-																	<span>1×</span> <span class="cart-price">$98.00</span>
-																</div>
-																<button type="button">
-																	<i class="ion-trash-b"></i>
-																</button>
-															</div>
-														</div>
-													</div>
-													<div class="single-cart-item">
-														<div class="cart-img">
-															<a href="./cart.html"><img
-																src="assets/images/cart/3.jpg" alt=""></a>
-														</div>
-														<div class="cart-text">
-															<h5 class="title">
-																<a href="./cart.html">1. New and sale badge product -
-																	s / red</a>
-															</h5>
-															<div class="cart-text-btn">
-																<div class="cart-qty">
-																	<span>1×</span> <span class="cart-price">$98.00</span>
-																</div>
-																<button type="button">
-																	<i class="ion-trash-b"></i>
-																</button>
-															</div>
-														</div>
-													</div>
-													<div
-														class="cart-price-total d-flex justify-content-between">
-														<h5>Total :</h5>
-														<h5>$166.00</h5>
-													</div>
-													<div class="cart-links d-flex justify-content-center">
-														<a class="obrien-button white-btn" href="./cart.html">View
-															cart</a> <a class="obrien-button white-btn"
-															href="./checkout.html">Checkout</a>
-													</div>
-												</div></li>
-											<li class="mobile-menu-btn d-lg-none"><a
-												class="off-canvas-btn" href="./#mobileMenu"> <i
-													class="fa fa-bars"></i>
-											</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Sticky Header End Here -->
+			
 			<!-- off-canvas menu start -->
 			<aside class="off-canvas-wrapper" id="mobileMenu">
 				<div class="off-canvas-overlay"></div>
@@ -478,103 +280,90 @@
 						<i class="fa fa-times"></i>
 					</div>
 					<div class="off-canvas-inner">
-						<div class="search-box-offcanvas">
+
+						<!-- <div class="search-box-offcanvas">
 							<form>
 								<input type="text" placeholder="Search product...">
 								<button class="search-btn">
 									<i class="fa fa-search"></i>
 								</button>
 							</form>
-						</div>
+						</div> -->
+						
+						
+						
+						
+						
+						
+						
+						
 						<!-- mobile menu start -->
 						<div class="mobile-navigation">
+
 							<!-- mobile menu navigation start -->
 							<nav>
 								<ul class="mobile-menu">
-									<li class="menu-item-has-children"><a href="./#">Home</a>
+									<li><a href="./aboutUs"> <span class="menu-text">소개</span></a></li>
+									
+									<li><a href="./productItem"> <span class="menu-text">상품 관리</span></a></li>
+									
+									<!-- 참고하기 <li class="menu-item-has-children"><a href="./#">내 정보</a>
+										<ul class="dropdown"> -->
+									<li class="menu-item-has-children"><a href="./#">캘리그라피</a> 
 										<ul class="dropdown">
-											<li><a href="./">Home Page 1</a></li>
-											<li><a href="./index-2.html">Home Page 2</a></li>
-											<li><a href="./index-3.html">Home Page 3</a></li>
-											<li><a href="./index-4.html">Home Page 4</a></li>
-										</ul></li>
-									<li class="menu-item-has-children"><a href="./#">Shop</a>
-										<ul class="megamenu dropdown">
-											<li class="mega-title has-children"><a href="./#">Shop
-													Layouts</a>
-												<ul class="dropdown">
-													<li><a href="./shop.html">Shop Left Sidebar</a></li>
-													<li><a href="./shop-right-sidebar.html">Shop Right
-															Sidebar</a></li>
-													<li><a href="./shop-list-left.html">Shop List Left
-															Sidebar</a></li>
-													<li><a href="./shop-list-right.html">Shop List Right
-															Sidebar</a></li>
-													<li><a href="./shop-fullwidth.html">Shop Full Width</a></li>
-												</ul></li>
-											<li class="mega-title has-children"><a href="./#">Product
-													Details</a>
-												<ul class="dropdown">
-													<li><a href="./product-details.html">Single Product
-															Details</a></li>
-													<li><a href="./variable-product-details.html">Variable
-															Product Details</a></li>
-													<li><a href="./external-product-details.html">External
-															Product Details</a></li>
-													<li><a href="./gallery-product-details.html">Gallery
-															Product Details</a></li>
-													<li><a href="./countdown-product-details.html">Countdown
-															Product Details</a></li>
-												</ul></li>
-											<li class="mega-title has-children"><a href="./#">Others</a>
-												<ul class="dropdown">
-													<li><a href="./error404.html">Error 404</a></li>
-													<li><a href="./compare.html">Compare Page</a></li>
-													<li><a href="./cart.html">Cart Page</a></li>
-													<li><a href="./checkout.html">Checkout Page</a></li>
-													<li><a href="./wishlist.html">Wish List Page</a></li>
-												</ul></li>
-										</ul></li>
-									<li class="menu-item-has-children "><a href="./#">Blog</a>
-										<ul class="dropdown">
-											<li><a href="./blog.html">Blog Left Sidebar</a></li>
-											<li><a href="./blog-list-right-sidebar.html">Blog List
-													Right Sidebar</a></li>
-											<li><a href="./blog-list-fullwidth.html">Blog List
-													Fullwidth</a></li>
-											<li><a href="./blog-grid.html">Blog Grid Page</a></li>
-											<li><a href="./blog-grid-right-sidebar.html">Blog Grid
-													Right Sidebar</a></li>
-											<li><a href="./blog-grid-fullwidth.html">Blog Grid
-													Fullwidth</a></li>
-											<li><a href="./blog-details-sidebar.html">Blog Details
-													Sidebar Page</a></li>
-											<li><a href="./blog-details-fullwidth.html">Blog
-													Details Fullwidth Page</a></li>
-										</ul></li>
-									<li class="menu-item-has-children "><a href="./#">Pages</a>
-										<ul class="dropdown">
-											<li><a href="./faqForm">FAQ</a></li>
-											<li><a href="./my-account.html">My Account</a></li>
-											<li><a href="./login-memberForm">login &amp;
-													register</a></li>
-										</ul></li>
-									<li><a href="./about-us.html">About Us</a></li>
-									<li><a href="./contact-us.html">Contact</a></li>
-								</ul>
-							</nav>
-							<!-- mobile menu navigation end -->
-						</div>
+											<li><a href="./productList?category_name=액자">액자</a></li>
+											<li><a href="./productList?category_name=캔버스">캔버스</a></li>
+											<li><a href="./productList?category_name=엽서">엽서</a></li>
+											<li><a href="./productList?category_name=캘리키트">캘리키트</a></li> 
+										</ul>
+									</li>
+									
+									<li class="menu-item-has-children"><a href="./#">그림</a> 
+                                    	<ul class="dropdown">
+                                        	<li><a href="./productList?category_name=그림액자">액자</a></li>
+                                            <li><a href="./productList?category_name=그림캔버스">캔버스</a></li>
+                                            <li><a href="./productList?category_name=그림엽서">엽서</a></li>
+                                        </ul>
+                                    </li>   
+                                            
+                                            
+									<li class="menu-item-has-children"><a href="./#">스탠드</a> 
+                                    	<ul class="dropdown">
+                                        	<li><a href="./productList?category_name=무드등">무드등</a></li>
+                                        </ul>
+                                    </li> 
+
+									<li class="menu-item-has-children"><a href="./#">액세사리</a> 
+                                    	<ul class="dropdown">
+                                    		<li><a href="./productList?category_name=골프공캘리">골프공캘리</a></li>
+                                    		<li><a href="./productList?category_name=봉투">봉투</a></li>
+                                    	</ul>
+                                    </li>
+                                            
+                                    <li><a href="./productItem"> <span class="menu-text">상품 관리</span></a></li>
+                				</ul>
+                			</nav>
+
+				<!-- mobile menu navigation end -->
+					</div>
 						<!-- mobile menu end -->
 						<div class="header-top-settings offcanvas-curreny-lang-support">
 							<!-- mobile menu navigation start -->
 							<nav>
 								<ul class="mobile-menu">
-									<li class="menu-item-has-children"><a href="./#">My
-											Account</a>
+									<li class="menu-item-has-children"><a href="./#">내 정보</a>
 										<ul class="dropdown">
-											<li><a href="./loginForm">Login</a></li>
-											<li><a href="./memberForm">Register</a></li>
+											<c:choose>
+												<c:when test="${!empty login }">  
+													<a href="./myAccount">${login.user_name }님&nbsp;&nbsp;  <!-- 확인용 -->
+													<span><a href="./loginCheck/logout">로그아웃</a></span>
+												</c:when>
+												
+												<c:otherwise>
+													<span><a href="./loginForm">로그인</a></span>
+													<span><a href="./memberForm">회원가입</a></span>
+												</c:otherwise>
+											</c:choose>
 										</ul></li>
 
 								</ul>
@@ -585,18 +374,15 @@
 						<div class="offcanvas-widget-area">
 							<div class="top-info-wrap text-left text-black">
 								<ul>
-									<li><i class="fa fa-phone"></i> <a
-										href="./info@yourdomain.com">(1245) 2456 012</a></li>
+									<!-- <li><i class="fa fa-phone"></i> <a
+										href="./info@yourdomain.com">(1245) 2456 012</a></li> -->
 									<li><i class="fa fa-envelope"></i> <a
-										href="./info@yourdomain.com">info@yourdomain.com</a></li>
+										href="./info@yourdomain.com">um.woom@gmail.com</a></li>
 								</ul>
 							</div>
 							<div class="off-canvas-widget-social">
 								<a title="Facebook-f" href="./#"><i class="fa fa-facebook-f"></i></a>
-								<a title="Twitter" href="./#"><i class="fa fa-twitter"></i></a> <a
-									title="Linkedin" href="./#"><i class="fa fa-linkedin"></i></a> <a
-									title="Youtube" href="./#"><i class="fa fa-youtube"></i></a> <a
-									title="Vimeo" href="./#"><i class="fa fa-vimeo"></i></a>
+								<a title="Twitter" href="./#"><i class="fa fa-twitter"></i></a>
 							</div>
 						</div>
 						<!-- offcanvas widget area end -->
@@ -676,8 +462,7 @@
 						<div class="support-wrapper d-flex">
 							<div class="support-content">
 								<h1 class="title">Need Help ?</h1>
-								<p class="desc-content">Call our support 24/7 at
-									01234-567-890</p>
+								<p class="desc-content">Email: um.woom@gmail.com</p>
 							</div>
 							<div class="support-button d-flex align-items-center">
 								<a class="obrien-button primary-btn" href="./contact-us.html">Contact
@@ -701,10 +486,8 @@
 										src="assets/images/logo/footer.png" alt="Logo Image">
 									</a>
 								</div>
-								<p class="desc-content">Obrien is the best parts shop of
-									your daily nutritions. What kind of nutrition do you need you
-									can get here soluta nobis</p>
-								<div class="social-links">
+								<p class="desc-content">WOOM is the best parts shop of your daily routine. What kind of routine do you need you can get here  </p>
+								<!-- <div class="social-links">
 									<ul class="d-flex">
 										<li><a class="border rounded-circle" href="./#"
 											title="Facebook"> <i class="fa fa-facebook-f"></i>
@@ -722,7 +505,7 @@
 											title="Vimeo"> <i class="fa fa-vimeo"></i>
 										</a></li>
 									</ul>
-								</div>
+								</div> -->
 							</div>
 						</div>
 						<div class="col-12 col-sm-6 col-md-6 col-lg-2 col-custom">
@@ -741,11 +524,20 @@
 							<div class="single-footer-widget">
 								<h2 class="widget-title">Quicklink</h2>
 								<ul class="widget-list">
-									<li><a href="./about-us.html">About</a></li>
-									<li><a href="./blog.html">Blog</a></li>
-									<li><a href="./shop.html">Shop</a></li>
-									<li><a href="./cart.html">Cart</a></li>
-									<li><a href="./contact-us.html">Contact</a></li>
+									<c:choose>
+										<c:when test="${!empty login }">
+											<li><a href="./aboutUs">About</a></li>
+											<li><a href="./productList">Shop</a></li>
+											<li><a href="./cartList">Cart</a></li>
+											<li><a href="./contactUs">Contact</a></li>
+										</c:when>
+										
+										<c:otherwise>
+											<li><a href="./aboutUs">About</a></li>
+											<li><a href="./productList">Shop</a></li>
+											<li><a href="./contactUs">Contact</a></li>
+										</c:otherwise>
+									</c:choose>
 								</ul>
 							</div>
 						</div>
@@ -766,9 +558,8 @@
 								<h2 class="widget-title">See Information</h2>
 								<div class="widget-body">
 									<address>
-										123, H2, Road #21, Main City, Your address goes here.<br>Phone:
-										01254 698 785, 36598 254 987<br>Email:
-										https://example.com
+										서울특별시 송파구 백제고분로 501, 청호빌딩 <br>
+										Email: um.woom@gmail.com
 									</address>
 								</div>
 							</div>
@@ -781,12 +572,7 @@
 					<div class="row">
 						<div class="col-12 text-center col-custom">
 							<div class="copyright-content">
-								<p>
-									Copyright © 2020 <a href="./https://hasthemes.com/"
-										title="https://hasthemes.com/">HasThemes</a> | Built
-									with&nbsp;<strong>Obrien</strong>&nbsp;by <a
-										href="./https://hasthemes.com/" title="https://hasthemes.com/">HasThemes</a>.
-								</p>
+								<p>Copyright ⓒ WOOM Foundation. All Rights Reserved.</p>
 							</div>
 						</div>
 					</div>
