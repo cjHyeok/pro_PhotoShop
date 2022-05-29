@@ -20,7 +20,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="./assets/images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/images/icon1.png">
 
     <!-- CSS
 	============================================ -->
@@ -52,13 +52,16 @@
     
     
 
-<style>
-.single-input-item mb-3 {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+
+
+<!-- <style>
+.single-input-item mb-31{
+margin:auto;
+display:block;
+width: 580px;
 }
-</style>
+</style> -->
+
 </head>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -171,9 +174,9 @@ $(document).ready(function() {
 	//비밀번호 일치 검사
 	$("#user_pw2").on("keyup", function() {
 		var user_pw = $("#user_pw").val();
-		var mesg = "일치하지 않음";
+		var mesg = "일치하지 않습니다";
 		if (user_pw == $(this).val()) {
-			mesg = "비밀번호 일치";
+			mesg = "일치합니다";
 		}
 		$("#result2").text(mesg);
 	});
@@ -209,9 +212,9 @@ $(document).ready(function() {
 											<li><a> <span class="menu-text">캘리그라피</span><i class="fa fa-angle-down"></i></a> 
 												<div class="menu-colum">
 													<ul class="dropdown-submenu dropdown-hover">
-														<li><a href="./productList?category_name=액자">액자</a></li>
-														<li><a href="./productList?category_name=캔버스">캔버스</a></li>
-														<li><a href="./productList?category_name=엽서">엽서</a></li>
+														<li><a href="./productList?category_name=캘리액자">액자</a></li>
+														<li><a href="./productList?category_name=캘리캔버스">캔버스</a></li>
+														<li><a href="./productList?category_name=캘리엽서">엽서</a></li>
 														<li><a href="./productList?category_name=캘리키트">캘리키트</a></li> 
 													</ul>
 												</div>
@@ -246,7 +249,14 @@ $(document).ready(function() {
 												</div> 
 											</li>
 											
+											<c:choose>
+											<c:when test="${login.role eq 'R'}">
 											<li><a href="./productItem"> <span class="menu-text">상품 관리</span></a></li>
+											</c:when>
+											<c:otherwise>
+											
+											</c:otherwise>
+											</c:choose>
 										</ul>
 									</nav>
 								</div>
@@ -401,10 +411,10 @@ $(document).ready(function() {
 										<ul class="dropdown"> -->
 									<li class="menu-item-has-children"><a href="./#">캘리그라피</a> 
 										<ul class="dropdown">
-											<li><a href="./productList?category_name=액자">액자</a></li>
-											<li><a href="./productList?category_name=캔버스">캔버스</a></li>
-											<li><a href="./productList?category_name=엽서">엽서</a></li>
-											<li><a href="./productList?category_name=캘리키트">캘리키트</a></li> 
+											<li><a href="./productList?category_name=캘리액자">액자</a></li>
+											<li><a href="./productList?category_name=캘리캔버스">캔버스</a></li>
+											<li><a href="./productList?category_name=캘리엽서">엽서</a></li>
+											<li><a href="./productList?category_name=캘리캘리키트">캘리키트</a></li> 
 										</ul>
 									</li>
 									
@@ -502,61 +512,68 @@ $(document).ready(function() {
         <div class="login-register-area mt-no-text mb-no-text">
             <div class="container container-default-2 custom-area">
                 <div class="row">
-                    <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-custom">
+                    <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-custom" style="width: 1000">
                         <div class="login-register-wrapper">
                             <div class="section-content text-center mb-5">
                                 <h2 class="title-4 mb-2">회원가입</h2>
                                 <p class="desc-content">회원가입을 위해 정보를 넣어주세요</p>
                             </div>
                             <form action="memberAdd" method="post">
-                                <div class="single-input-item mb-3">
-                                    <input id="user_id" name="user_id" type="text" placeholder="아이디를 입력해주세요"> <span id="result"></span>
+                                <div class="single-input-item mb-3" style="width: 580px; display: block;">
+                                    <input id="user_id" name="user_id" type="text" placeholder="아이디를 입력해주세요"> <p id="result"/>
                                 </div>
 
 
-                                <div class="single-input-item mb-3">
+                                <div class="single-input-item mb-3" style="width: 580px "><!-- height: 100px;   https://dubaiyu.tistory.com/25 -->
                                     <input id="user_name" name="user_name" type="text" placeholder="이름을 입력해주세요"> 
                                 </div>
-                                <div class="single-input-item mb-3">
+                                <div class="single-input-item mb-3" style="width: 580px">
                                     <input id="user_pw" name="user_pw" type="password" placeholder="비밀번호를 입력해주세요">
                                 </div>
-                                <div class="single-input-item mb-3">
-                                    <input id="user_pw2" name="user_pw2" type="password" placeholder="다시 한번 비밀번호를 입력해주세요"> <span id="result2"></span>
+                                <div class="single-input-item mb-3" style="width: 580px">
+                                    <input id="user_pw2" name="user_pw2" type="password" placeholder="다시 한번 비밀번호를 입력해주세요"> <p id="result2"/>
                                 </div>
                                 
-                                <div class="single-input-item mb-3">
+                                <div class="single-input-item mb-3" style="width: 580px">
                                     <input id="email" name="email" type="email" placeholder="이메일을 입력해주세요">
                                 
                                 </div>                              
-           					    <div class="single-input-item mb-3">  
-           					    <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>           
-                              	    <input type="text" name="post" id="sample4_postcode" placeholder="우편번호"> 
-									<input type="text" name="address1" id="sample4_roadAddress" placeholder="도로명주소"> 
-									<input type="text" name="address2" id="sample4_jibunAddress" placeholder="지번주소"> <span id="guide" style="color: #999"></span> 
-								 </div>
+           					    <div class="single-input-item mb-3" >  
+           					    <input type="text" name="post" id="sample4_postcode" style="text-align:center; width:161px;" placeholder="우편번호">&nbsp;<span>           
+                              	    <input type="button" onclick="sample4_execDaumPostcode()" style="width:275px; margin-left:1em" value="우편번호 찾기"></span>
+									<input type="text" name="address1" id="sample4_roadAddress" style="width:465px;" placeholder="도로명주소"> 
+									<input type="text" name="address2" id="sample4_jibunAddress" style="width:465px;"placeholder="지번주소"> <span id="guide" style="color: #999"></span> 
+									<input id="address_detail" name="address_detail" type="text"style="width:465px;" placeholder="상세주소를 입력해주세요">
+								</div>
+								<!--  </div>
 	                                
 	                            <div class="single-input-item mb-3">
                                     <input id="address_detail" name="address_detail" type="text" placeholder="상세주소를 입력해주세요">
-                                </div>
+                                </div> -->
 	
-                                <div class="single-input-item mb-3">
+                                <div class="single-input-item mb-3" style="width: 580px">
                                     <input id="phone" name="phone" type="text" placeholder="전화번호를 입력해주세요">
                                 </div>
 
                                 
-                                <div class="single-input-item mb-3">
+                                <!-- <div class="single-input-item mb-3">
                                     <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
                                         <div class="remember-meta mb-3">
-                                            <!-- <div class="custom-control custom-checkbox">
+                                            <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="rememberMe">
                                                 <label class="custom-control-label" for="rememberMe">Subscribe Our Newsletter</label>
-                                            </div> -->
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="single-input-item mb-3" >
-                                    <button class="btn obrien-button-2 primary-color">회원가입</button>
-                                </div>
+                                </div> -->
+                                
+                                
+                                	<!-- <div class="single-input-item mb-31"> -->
+                                	<div>
+                                	    <button class="btn obrien-button-2 primary-color" style="margin:auto; display:block; width: 150px;">회원가입</button>
+                               	 	</div>
+                              
+                                
                             </form>
                         </div>
                     </div>
@@ -596,35 +613,25 @@ $(document).ready(function() {
                                     </a>
                                 </div>
                                 <p class="desc-content">WOOM is the best parts shop of your daily routine. What kind of routine do you need you can get here  </p>
-                               <!--  <div class="social-links">
-                                    <ul class="d-flex">
-                                        <li>
-                                            <a class="border rounded-circle" href="./#" title="Facebook">
-                                                <i class="fa fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="border rounded-circle" href="./#" title="Twitter">
-                                                <i class="fa fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="border rounded-circle" href="./#" title="Linkedin">
-                                                <i class="fa fa-linkedin"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="border rounded-circle" href="./#" title="Youtube">
-                                                <i class="fa fa-youtube"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="border rounded-circle" href="./#" title="Vimeo">
-                                                <i class="fa fa-vimeo"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div> -->
+                               <div class="social-links">
+									<ul class="d-flex">
+										<li><a class="border rounded-circle" href="./#"
+											title="Facebook"> <i class="fa fa-facebook-f"></i>
+										</a></li>
+										<li><a class="border rounded-circle" href="https://www.instagram.com/nada_u.m/"
+											title="Instagram"> <i class="fa fa-instagram"></i>
+										</a></li>
+										<!-- <li><a class="border rounded-circle" href="./#"
+											title="Twitter"> <i class="fa fa-twitter"></i>
+										</a></li>
+										<li><a class="border rounded-circle" href="./#"
+											title="Youtube"> <i class="fa fa-youtube"></i>
+										</a></li>
+										<li><a class="border rounded-circle" href="./#"
+											title="Vimeo"> <i class="fa fa-vimeo"></i>
+										</a></li> -->
+									</ul>
+								</div> 
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 col-md-6 col-lg-2 col-custom">

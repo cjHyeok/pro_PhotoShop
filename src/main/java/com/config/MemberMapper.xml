@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<select id="login" parameterType="hashmap" resultType="MemberDTO">
-		select user_id, user_pw, user_name, email, phone, post, address1, address2, address_detail
+		select user_id, user_pw, user_name, email, phone, post, address1, address2, address_detail, role
 		from t_member
 		where email = #{email} and user_pw = #{user_pw}
 	</select>

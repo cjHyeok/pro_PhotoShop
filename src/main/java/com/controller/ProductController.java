@@ -16,11 +16,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.dto.CartDTO;
 import com.dto.MemberDTO;
 import com.dto.ProductCategoryDTO;
 import com.dto.ProductDTO;
 import com.dto.ReviewDTO;
+import com.service.MemberService;
+import com.service.OrderService;
 import com.service.ProductService;
 import com.service.ReviewService;
 
@@ -32,6 +36,12 @@ public class ProductController {
 
 	@Autowired
 	ReviewService rservice;
+
+	@Autowired
+	MemberService mservice;
+	
+	@Autowired
+	OrderService oservice;
 	
 	@RequestMapping("/productList") // 상품리스트 값 없을 때 나오게 하는거
 	public ModelAndView productList(@RequestParam(value = "category_name", required = false) String category_name) {
@@ -45,6 +55,7 @@ public class ProductController {
 
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("productList", plist);
+		mav.addObject("category_name", category_name);
 		System.out.println("/productList plist =" + plist); // 리스트에서 가져오나 확인
 		mav.setViewName("productList");
 
@@ -85,6 +96,31 @@ public class ProductController {
 		return mav;
 		
 	}
+	
+/*
+	@RequestMapping("/loginCheck/productDetail_Order") // 오더 전체 주문하기
+	public String orderConfirm(HttpSession session, RedirectAttributes xxx) {
+		MemberDTO mDTO = (MemberDTO) session.getAttribute("login");
+		String user_id = mDTO.getUser_id();
+		System.out.println("유저 아이디"+user_id);
+		mDTO = mservice.Account(user_id); // 사용자 정보 가져오기
+		
+		
+		List<ProductDTO> clist = oservice.cartList(mDTO);
+		
+		System.out.println("/loginCheck/productDetail_Order controller = "+clist);
+		xxx.addFlashAttribute("cList", clist);
+		xxx.addFlashAttribute("mDTO", mDTO); // request에 회원정보저장
+		
+		return "redirect:../orderConfirm"; 
+
+	}
+	*/
+	
+	
+	
+	
+	
 
 	@RequestMapping("/productForm")
 	public ModelAndView productForm() {

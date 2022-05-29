@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dao.ProductDAO;
+import com.dto.CartDTO;
+import com.dto.MemberDTO;
 import com.dto.ProductCategoryDTO;
 import com.dto.ProductDTO;
 
@@ -56,6 +58,11 @@ public class ProductService {
 	public void ModifyUpdate(Map<String, String> map) {
 		pdao.ModifyUpdate(map);
 		
+	}
+
+	public List<ProductDTO> produtDetailList(MemberDTO dto) {
+		List<ProductDTO> list = pdao.produtDetailList(dto);
+		return list;
 	}
 
 

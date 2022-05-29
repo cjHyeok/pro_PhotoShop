@@ -12,11 +12,25 @@
 <title>WOOM 에 오신걸 환영합니다.   ->  WOOM !</title>
 <meta name="robots" content="noindex, follow" />
 <meta name="description" content="">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Favicon -->
-<link rel="shortcut icon" type="image/x-icon"
-	href="./assets/images/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="./assets/images/icon1.png">
+
+
+
+<!-- <meta property="og:title" content="woom 쇼핑몰 " />
+<meta property="og:image" content="%PUBLIC_URL%/icon.png" /> -->
+<!-- 메타 태그
+https://iancoding.tistory.com/231
+https://parkjh7764.tistory.com/57 -->
+
+
+
+
+
+
+
+
 
 <!-- CSS
 	============================================ -->
@@ -102,15 +116,12 @@
 										<ul class="nav">
 											<li><a href="./aboutUs"> <span class="menu-text">소개</span></a></li>
 											
-											<li><a href="./productItem"> <span class="menu-text">상품 관리</span></a></li>
-											
-											 
 											<li><a> <span class="menu-text">캘리그라피</span><i class="fa fa-angle-down"></i></a> 
 												<div class="menu-colum">
 													<ul class="dropdown-submenu dropdown-hover">
-														<li><a href="./productList?category_name=액자">액자</a></li>
-														<li><a href="./productList?category_name=캔버스">캔버스</a></li>
-														<li><a href="./productList?category_name=엽서">엽서</a></li>
+														<li><a href="./productList?category_name=캘리액자">액자</a></li>
+														<li><a href="./productList?category_name=캘리캔버스">캔버스</a></li>
+														<li><a href="./productList?category_name=캘리엽서">엽서</a></li>
 														<li><a href="./productList?category_name=캘리키트">캘리키트</a></li> 
 													</ul>
 												</div>
@@ -144,6 +155,14 @@
 													</ul>
 												</div> 
 											</li>
+											<c:choose>
+											<c:when test="${login.role eq 'R'}">
+											<li><a href="./productItem"> <span class="menu-text">상품 관리</span></a></li>
+											</c:when>
+											<c:otherwise>
+											
+											</c:otherwise>
+											</c:choose>
 										</ul>
 									</nav>
 								</div>
@@ -152,18 +171,17 @@
 										<ul class="nav">
 											<li class="login-register-wrap d-none d-xl-flex"><c:choose>
 													<c:when test="${!empty login }"> &nbsp;&nbsp; <!-- 확인용 -->
-														<div
-															style="font-size: 15px; line-height: 1.6; font-weight: 600; color: #303030;">
-															${login.user_name } 님</div>
+														<div style="font-size: 15px; line-height: 1.6; font-weight: 600; color: #303030;">
+														
+														<a href="./myAccount">
+															${login.user_name } 님
+															</a>
+															
+															
+															</div>
 														<span><a href="./loginCheck/logout">로그아웃</a></span>
-														<span><a href="./memberForm">회원가입</a></span>
-													</c:when>
-													<c:otherwise>
-														<span><a href="./loginForm">로그인</a></span>
-														<span><a href="./memberForm">회원가입</a></span>
-													</c:otherwise>
-												</c:choose></li> &nbsp;&nbsp;
-											<li class="minicart-wrap"><a href="./#"
+														&nbsp;&nbsp;
+														<li class="minicart-wrap"><a href="./#"
 												class="minicart-btn toolbar-btn"> <i class="ion-bag"></i>
 													<span class="cart-item_count">3</span>
 											</a>
@@ -240,6 +258,13 @@
 															href="./checkout.html">Checkout</a>
 													</div>
 												</div></li>
+													</c:when>
+													<c:otherwise>
+														<span><a href="./loginForm">로그인</a></span>
+														<span><a href="./memberForm">회원가입</a></span>
+														
+													</c:otherwise>
+												</c:choose></li> &nbsp;&nbsp;
 											<li class="mobile-menu-btn d-lg-none"><a
 												class="off-canvas-btn" href="./#"> <i class="fa fa-bars"></i>
 											</a></li>
@@ -292,10 +317,10 @@
 										<ul class="dropdown"> -->
 									<li class="menu-item-has-children"><a href="./#">캘리그라피</a> 
 										<ul class="dropdown">
-											<li><a href="./productList?category_name=액자">액자</a></li>
-											<li><a href="./productList?category_name=캔버스">캔버스</a></li>
-											<li><a href="./productList?category_name=엽서">엽서</a></li>
-											<li><a href="./productList?category_name=캘리키트">캘리키트</a></li> 
+											<li><a href="./productList?category_name=캘리액자">액자</a></li>
+											<li><a href="./productList?category_name=캘리캔버스">캔버스</a></li>
+											<li><a href="./productList?category_name=캘리엽서">엽서</a></li>
+											<li><a href="./productList?category_name=캘리캘리키트">캘리키트</a></li> 
 										</ul>
 									</li>
 									
@@ -518,6 +543,7 @@
 															data-bs-target="#collapseThree" aria-expanded="false"
 															aria-controls="collapseThree"> 장바구니 가기 </a>
 													</h5>
+													<br>
 												</div>
 												<div id="collapseThree" class="collapse"data-parent="#accordion">
 													<div class="card-body mb-2 mt-2">
@@ -526,8 +552,12 @@
 											</div>
 										</div>
 										
-										<input type="radio" id="cb1" value="agree"><strong>(필수) 구매하실 상품의 결제정보를 확인하였으며, 구매진행에 동의합니다.</strong>
-									
+										<!-- <input type="radio" id="cb1" value="agree"><strong>(필수) 구매하실 상품의 결제정보를 확인하였으며, 구매진행에 동의합니다.</strong> -->
+										<!-- <input type="checkbox" id="cb1" value="agree"><strong>(필수) 구매하실 상품의 결제정보를 확인하였으며, 구매진행에 동의합니다.</strong> -->
+											<div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="rememberMe">
+                                                <label class="custom-control-label" for="rememberMe">(필수) 구매하실 상품의 결제정보를 확인하였으며, 구매진행에 동의합니다.</label>
+                                            </div>
 										
 										<div class="order-button-payment">
 											<input value="주문하기" type="submit">
@@ -589,25 +619,25 @@
 								</a>
 							</div>
 							<p class="desc-content">WOOM is the best parts shop of your daily routine. What kind of routine do you need you can get here  </p>
-<!-- 							<div class="social-links">
-								<ul class="d-flex">
-									<li><a class="border rounded-circle" href="./#"
-										title="Facebook"> <i class="fa fa-facebook-f"></i>
-									</a></li>
-									<li><a class="border rounded-circle" href="./#"
-										title="Twitter"> <i class="fa fa-twitter"></i>
-									</a></li>
-									<li><a class="border rounded-circle" href="./#"
-										title="Linkedin"> <i class="fa fa-linkedin"></i>
-									</a></li>
-									<li><a class="border rounded-circle" href="./#"
-										title="Youtube"> <i class="fa fa-youtube"></i>
-									</a></li>
-									<li><a class="border rounded-circle" href="./#"
-										title="Vimeo"> <i class="fa fa-vimeo"></i>
-									</a></li>
-								</ul>
-							</div> -->
+								<div class="social-links">
+									<ul class="d-flex">
+										<li><a class="border rounded-circle" href="./#"
+											title="Facebook"> <i class="fa fa-facebook-f"></i>
+										</a></li>
+										<li><a class="border rounded-circle" href="https://www.instagram.com/nada_u.m/"
+											title="Instagram"> <i class="fa fa-instagram"></i>
+										</a></li>
+										<!-- <li><a class="border rounded-circle" href="./#"
+											title="Twitter"> <i class="fa fa-twitter"></i>
+										</a></li>
+										<li><a class="border rounded-circle" href="./#"
+											title="Youtube"> <i class="fa fa-youtube"></i>
+										</a></li>
+										<li><a class="border rounded-circle" href="./#"
+											title="Vimeo"> <i class="fa fa-vimeo"></i>
+										</a></li> -->
+									</ul>
+								</div> 
 						</div>
 					</div>
 					<div class="col-12 col-sm-6 col-md-6 col-lg-2 col-custom">

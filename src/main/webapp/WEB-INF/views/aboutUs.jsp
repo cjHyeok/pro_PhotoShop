@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="./assets/images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/images/icon1.png">	
 
     <!-- CSS
 	============================================ -->
@@ -72,9 +72,9 @@
 											<li><a> <span class="menu-text">캘리그라피</span><i class="fa fa-angle-down"></i></a> 
 												<div class="menu-colum">
 													<ul class="dropdown-submenu dropdown-hover">
-														<li><a href="./productList?category_name=액자">액자</a></li>
-														<li><a href="./productList?category_name=캔버스">캔버스</a></li>
-														<li><a href="./productList?category_name=엽서">엽서</a></li>
+														<li><a href="./productList?category_name=캘리액자">액자</a></li>
+														<li><a href="./productList?category_name=캘리캔버스">캔버스</a></li>
+														<li><a href="./productList?category_name=캘리엽서">엽서</a></li>
 														<li><a href="./productList?category_name=캘리키트">캘리키트</a></li> 
 													</ul>
 												</div>
@@ -108,8 +108,14 @@
 													</ul>
 												</div> 
 											</li>
-											
+											<c:choose>
+											<c:when test="${login.role eq 'R'}">
 											<li><a href="./productItem"> <span class="menu-text">상품 관리</span></a></li>
+											</c:when>
+											<c:otherwise>
+											
+											</c:otherwise>
+											</c:choose>
 										</ul>
 									</nav>
 								</div>
@@ -264,10 +270,10 @@
 										<ul class="dropdown"> -->
 									<li class="menu-item-has-children"><a href="./#">캘리그라피</a> 
 										<ul class="dropdown">
-											<li><a href="./productList?category_name=액자">액자</a></li>
-											<li><a href="./productList?category_name=캔버스">캔버스</a></li>
-											<li><a href="./productList?category_name=엽서">엽서</a></li>
-											<li><a href="./productList?category_name=캘리키트">캘리키트</a></li> 
+											<li><a href="./productList?category_name=캘리액자">액자</a></li>
+											<li><a href="./productList?category_name=캘리캔버스">캔버스</a></li>
+											<li><a href="./productList?category_name=캘리엽서">엽서</a></li>
+											<li><a href="./productList?category_name=캘리캘리키트">캘리키트</a></li> 
 										</ul>
 									</li>
 									
@@ -353,7 +359,7 @@
                         <div class="breadcrumb-content position-relative section-content">
                             <h3 class="title-3">About Us</h3>
                             <ul>
-                                <li><a href="./index.html">Home</a></li>
+                                <li><a href="./">Home</a></li>
                                 <li>About Us</li>
                             </ul>
                         </div>
@@ -369,20 +375,22 @@
                 <div class="row">
                     <div class="col-xl-6 col-lg-5 col-md-12 col-custom">
                         <div class="feature-content-wrapper">
-                            <h2 class="title">Important to eat fruit</h2>
-                            <p class="desc-content">Eating fruit provides health benefits — people who eat more fruits and vegetables as part of an overall healthy diet are likely to have a reduced risk of some chronic diseases. Fruits provide nutrients vital for health and maintenance of your body.</p>
-                            <p class="desc-content"> Fruits are sources of many essential nutrients that are underconsumed, including potassium, dietary fiber, vitamin C, and folate (folic acid).</p>
-                            <p class="desc-content"> Most fruits are naturally low in fat, sodium, and calories. None have cholesterol.</p>
+                            <h3 class="title">사물이 움트는 곳에서 꿈을 이루다</h3>
+                            <p class="desc-content">나다움으로 만든 아룸다움이 삶에 풍요로움을 주고 소소한 여유로움이 때로는 멋스럽게 다가옵니다.
+							별다를 것 없는 일상을 향기로움으로 채움으로써 오늘을 사는 당신을 더욱 더 풍성하게 만들 수 있도록 움이 탄생했습니다. </p>
+                            <p class="desc-content">우리는 여러분의 일상을 완벽하게 만들 모든 것에 조금이라도 기여하고자 노력합니다. ‘완벽한 일상’ 을 보내기 위해서는 좋은 제품도 필요하지만 비슷한 
+							취향과 가치관을 공유하는 사람들을 만나는 것도 중요합니다.</p>
+                            <p class="desc-content">조금 더 업그레이드 할 수 있는 소통의 커뮤니티를 형성하여 오늘의 삷을 향긋하게 같이 만들어 보아요.</p>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-7 col-md-12 col-custom">
                         <div class="feature-image position-relative">
-                            <img src="assets/images/feature/feature-2.jpg" alt="Obrien Feature">
-                            <div class="popup-video position-absolute">
+                            <img src="assets/images/feature/aboutUs_Img.jpg" style="width: 300px;" alt="Woom">
+                            <!-- <div class="popup-video position-absolute">
                                 <a class="popup-vimeo" href="./https://www.youtube.com/watch?v=_9VUPq3SxOc">
                                     <i class="ion-play"></i>
                                 </a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -390,7 +398,7 @@
         </div>
         <!-- Feature Area End Here -->
         <!-- Newslatter Area Start Here -->
-        <div class="newsletter-area mt-no-text mb-text-p">
+        <!-- <div class="newsletter-area mt-no-text mb-text-p">
             <div class="container container-default h-100 custom-area">
                 <div class="row h-100">
                     <div class="col-lg-8 col-xl-5 offset-xl-6 offset-lg-3 col-custom">
@@ -405,22 +413,22 @@
                                     <input type="email" id="mc-email" class="form-control email-box" placeholder="email@example.com" name="EMAIL">
                                     <button id="mc-submit" class="btn primary-btn obrien-button newsletter-btn position-absolute" type="submit">Subscribe</button>
                                 </form>
-                                <!-- mailchimp-alerts Start -->
+                                mailchimp-alerts Start
                                 <div class="mailchimp-alerts text-centre">
-                                    <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                                    <div class="mailchimp-success text-success"></div><!-- mailchimp-success end -->
-                                    <div class="mailchimp-error text-danger"></div><!-- mailchimp-error end -->
+                                    <div class="mailchimp-submitting"></div>mailchimp-submitting end
+                                    <div class="mailchimp-success text-success"></div>mailchimp-success end
+                                    <div class="mailchimp-error text-danger"></div>mailchimp-error end
                                 </div>
-                                <!-- mailchimp-alerts end -->
+                                mailchimp-alerts end
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Newslatter Area End Here -->
         <!-- Brand Logo Area Start Here -->
-        <div class="brand-logo-area mt-text mb-no-text">
+        <!-- <div class="brand-logo-area mt-text mb-no-text">
             <div class="container custom-area">
                 <div class="row">
                     <div class="col-lg-12 col-custom">
@@ -478,7 +486,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Brand Logo Area End Here -->
         <!-- About Us Area End Here -->
         <!-- Support Area Start Here -->
@@ -513,35 +521,25 @@
                                     </a>
                                 </div>
                                 <p class="desc-content">WOOM is the best parts shop of your daily routine. What kind of routine do you need you can get here  </p>
-                                <!-- <div class="social-links">
-                                    <ul class="d-flex">
-                                        <li>
-                                            <a class="border rounded-circle" href="./#" title="Facebook">
-                                                <i class="fa fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="border rounded-circle" href="./#" title="Twitter">
-                                                <i class="fa fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="border rounded-circle" href="./#" title="Linkedin">
-                                                <i class="fa fa-linkedin"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="border rounded-circle" href="./#" title="Youtube">
-                                                <i class="fa fa-youtube"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="border rounded-circle" href="./#" title="Vimeo">
-                                                <i class="fa fa-vimeo"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div> -->
+                                <div class="social-links">
+									<ul class="d-flex">
+										<li><a class="border rounded-circle" href="./#"
+											title="Facebook"> <i class="fa fa-facebook-f"></i>
+										</a></li>
+										<li><a class="border rounded-circle" href="https://www.instagram.com/nada_u.m/"
+											title="Linkedin"> <i class="fa fa-instagram"></i>
+										</a></li>
+										<!-- <li><a class="border rounded-circle" href="./#"
+											title="Twitter"> <i class="fa fa-twitter"></i>
+										</a></li>
+										<li><a class="border rounded-circle" href="./#"
+											title="Youtube"> <i class="fa fa-youtube"></i>
+										</a></li>
+										<li><a class="border rounded-circle" href="./#"
+											title="Vimeo"> <i class="fa fa-vimeo"></i>
+										</a></li> -->
+									</ul>
+								</div> 
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 col-md-6 col-lg-2 col-custom">

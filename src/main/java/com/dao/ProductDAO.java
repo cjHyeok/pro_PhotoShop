@@ -8,6 +8,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.dto.CartDTO;
+import com.dto.MemberDTO;
 import com.dto.ProductCategoryDTO;
 import com.dto.ProductDTO;
 
@@ -63,6 +65,11 @@ public class ProductDAO {
 		//int v = template.delete("ProductMapper.ItemDelete", list);
 		//int w = template.delete("ProductMapper.ItemImgDelete", list);
 		//System.out.println("list== moupdate"+list);
+	}
+
+	public List<ProductDTO> produtDetailList(MemberDTO dto) {
+		List<ProductDTO> list = template.selectList("ProductMapper.produtDetailList", dto);
+		return list;
 	}
 
 	

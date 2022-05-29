@@ -15,8 +15,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Favicon -->
-<link rel="shortcut icon" type="image/x-icon"
-	href="./assets/images/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="./assets/images/icon1.png">
 
 <!-- CSS
 	============================================ -->
@@ -165,9 +164,9 @@
 											<li><a> <span class="menu-text">캘리그라피</span><i class="fa fa-angle-down"></i></a> 
 												<div class="menu-colum">
 													<ul class="dropdown-submenu dropdown-hover">
-														<li><a href="./productList?category_name=액자">액자</a></li>
-														<li><a href="./productList?category_name=캔버스">캔버스</a></li>
-														<li><a href="./productList?category_name=엽서">엽서</a></li>
+														<li><a href="./productList?category_name=캘리액자">액자</a></li>
+														<li><a href="./productList?category_name=캘리캔버스">캔버스</a></li>
+														<li><a href="./productList?category_name=캘리엽서">엽서</a></li>
 														<li><a href="./productList?category_name=캘리키트">캘리키트</a></li> 
 													</ul>
 												</div>
@@ -202,7 +201,14 @@
 												</div> 
 											</li>
 											
+											<c:choose>
+											<c:when test="${login.role eq 'R'}">
 											<li><a href="./productItem"> <span class="menu-text">상품 관리</span></a></li>
+											</c:when>
+											<c:otherwise>
+											
+											</c:otherwise>
+											</c:choose>
 										</ul>
 									</nav>
 								</div>
@@ -305,6 +311,7 @@
 														
 													</c:otherwise>
 												</c:choose></li> &nbsp;&nbsp;
+											
 											<li class="mobile-menu-btn d-lg-none"><a
 												class="off-canvas-btn" href="./#"> <i class="fa fa-bars"></i>
 											</a></li>
@@ -318,6 +325,12 @@
 			</div>
 			<!-- Main Header Area End -->
 			
+			
+			
+			
+			
+			
+		
 			<!-- off-canvas menu start -->
 			<aside class="off-canvas-wrapper" id="mobileMenu">
 				<div class="off-canvas-overlay"></div>
@@ -357,9 +370,9 @@
 										<ul class="dropdown"> -->
 									<li class="menu-item-has-children"><a href="./#">캘리그라피</a> 
 										<ul class="dropdown">
-											<li><a href="./productList?category_name=액자">액자</a></li>
-											<li><a href="./productList?category_name=캔버스">캔버스</a></li>
-											<li><a href="./productList?category_name=엽서">엽서</a></li>
+											<li><a href="./productList?category_name=캘리액자">액자</a></li>
+											<li><a href="./productList?category_name=캘리캔버스">캔버스</a></li>
+											<li><a href="./productList?category_name=캘리엽서">엽서</a></li>
 											<li><a href="./productList?category_name=캘리키트">캘리키트</a></li> 
 										</ul>
 									</li>
@@ -610,25 +623,25 @@
 									</a>
 								</div>
 								<p class="desc-content">WOOM is the best parts shop of your daily routine. What kind of routine do you need you can get here  </p>
-								<!-- <div class="social-links">
+								<div class="social-links">
 									<ul class="d-flex">
 										<li><a class="border rounded-circle" href="./#"
 											title="Facebook"> <i class="fa fa-facebook-f"></i>
 										</a></li>
-										<li><a class="border rounded-circle" href="./#"
-											title="Twitter"> <i class="fa fa-twitter"></i>
+										<li><a class="border rounded-circle" href="https://www.instagram.com/nada_u.m/"
+											title="Instagram"> <i class="fa fa-instagram"></i>
 										</a></li>
-										<li><a class="border rounded-circle" href="./#"
-											title="Linkedin"> <i class="fa fa-linkedin"></i>
+										<!-- <li><a class="border rounded-circle" href="./#"
+											title="Twitter"> <i class="fa fa-twitter"></i>
 										</a></li>
 										<li><a class="border rounded-circle" href="./#"
 											title="Youtube"> <i class="fa fa-youtube"></i>
 										</a></li>
 										<li><a class="border rounded-circle" href="./#"
 											title="Vimeo"> <i class="fa fa-vimeo"></i>
-										</a></li>
+										</a></li> -->
 									</ul>
-								</div> -->
+								</div> 
 							</div>
 						</div>
 						<div class="col-12 col-sm-6 col-md-6 col-lg-2 col-custom">
