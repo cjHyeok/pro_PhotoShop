@@ -542,7 +542,7 @@
 								title="Quick View"> <i class="ion-eye"></i>
 							</a>
 						</div>
-						<div class="product-content-listview">
+						<%-- <div class="product-content-listview">
 							<div class="product-rating">
 								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
 									class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
@@ -569,7 +569,7 @@
 								</a>
 							</div>
 							<p class="desc-content">${dto.product_description_summary}</p>
-						</div>
+						</div> --%>
 					</div>
 				</div>
 				<tr>
