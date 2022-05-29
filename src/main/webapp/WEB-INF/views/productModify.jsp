@@ -440,7 +440,7 @@
 							</div>
 							<div class="off-canvas-widget-social">
 								<a title="Facebook-f" href="./#"><i class="fa fa-facebook-f"></i></a>
-								<a title="Twitter" href="./#"><i class="fa fa-twitter"></i></a>
+								<a title="Instagram" href="https://www.instagram.com/nada_u.m/"><i class="fa fa-instagram"></i></a>
 							</div>
 						</div>
 						<!-- offcanvas widget area end -->

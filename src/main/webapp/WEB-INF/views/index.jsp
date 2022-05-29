@@ -10,7 +10,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>WOOM 에 오신걸 환영합니다.   ->  WOOM !</title>
+<title>WOOM 에 오신걸 환영합니다. -> WOOM !</title>
 <meta name="robots" content="noindex, follow" />
 <meta name="description" content="">
 <meta name="viewport"
@@ -77,57 +77,59 @@
 										</a>
 									</div>
 								</div>
-								<div class="col-lg-8 col-xl-7 position-static d-none d-lg-block col-custom">
+								<div
+									class="col-lg-8 col-xl-7 position-static d-none d-lg-block col-custom">
 									<nav class="main-nav d-flex justify-content-center">
 										<ul class="nav">
 											<li><a href="./aboutUs"> <span class="menu-text">소개</span></a></li>
-											
-											<li><a> <span class="menu-text">캘리그라피</span><i class="fa fa-angle-down"></i></a> 
+
+											<li><a> <span class="menu-text">캘리그라피</span><i
+													class="fa fa-angle-down"></i></a>
 												<div class="menu-colum">
 													<ul class="dropdown-submenu dropdown-hover">
 														<li><a href="./productList?category_name=캘리액자">액자</a></li>
 														<li><a href="./productList?category_name=캘리캔버스">캔버스</a></li>
 														<li><a href="./productList?category_name=캘리엽서">엽서</a></li>
-														<li><a href="./productList?category_name=캘리키트">캘리키트</a></li> 
+														<li><a href="./productList?category_name=캘리키트">캘리키트</a></li>
 													</ul>
-												</div>
-											</li>
-											
-											
-											<li><a> <span class="menu-text">그림</span><i class="fa fa-angle-down"></i></a> 
+												</div></li>
+
+
+											<li><a> <span class="menu-text">그림</span><i
+													class="fa fa-angle-down"></i></a>
 												<div class="menu-colum">
 													<ul class="dropdown-submenu dropdown-hover">
 														<li><a href="./productList?category_name=그림액자">액자</a></li>
 														<li><a href="./productList?category_name=그림캔버스">캔버스</a></li>
 														<li><a href="./productList?category_name=그림엽서">엽서</a></li>
 													</ul>
-												</div>
-											</li>										
-											
-												
-											<li><a> <span class="menu-text">스탠드</span><i class="fa fa-angle-down"></i></a> 
+												</div></li>
+
+
+											<li><a> <span class="menu-text">스탠드</span><i
+													class="fa fa-angle-down"></i></a>
 												<div class="menu-colum">
 													<ul class="dropdown-submenu dropdown-hover">
 														<li><a href="./productList?category_name=무드등">무드등</a></li>
 													</ul>
-												</div>
-											</li>	
+												</div></li>
 
-											<li><a> <span class="menu-text">액세사리</span><i class="fa fa-angle-down"></i></a> 
+											<li><a> <span class="menu-text">액세사리</span><i
+													class="fa fa-angle-down"></i></a>
 												<div class="menu-colum">
 													<ul class="dropdown-submenu dropdown-hover">
 														<li><a href="./productList?category_name=골프공캘리">골프공캘리</a></li>
 														<li><a href="./productList?category_name=봉투">봉투</a></li>
 													</ul>
-												</div> 
-											</li>
+												</div></li>
 											<c:choose>
-											<c:when test="${login.role eq 'R'}">
-											<li><a href="./productItem"> <span class="menu-text">상품 관리</span></a></li>
-											</c:when>
-											<c:otherwise>
-											
-											</c:otherwise>
+												<c:when test="${login.role eq 'R'}">
+													<li><a href="./productItem"> <span
+															class="menu-text">상품 관리</span></a></li>
+												</c:when>
+												<c:otherwise>
+
+												</c:otherwise>
 											</c:choose>
 										</ul>
 									</nav>
@@ -137,101 +139,101 @@
 										<ul class="nav">
 											<li class="login-register-wrap d-none d-xl-flex"><c:choose>
 													<c:when test="${!empty login }"> &nbsp;&nbsp; <!-- 확인용 -->
-														<div style="font-size: 15px; line-height: 1.6; font-weight: 600; color: #303030;">
-														
-														<a href="./myAccount">
-															${login.user_name } 님
-															</a>
-															
-															
-															</div>
+														<div
+															style="font-size: 15px; line-height: 1.6; font-weight: 600; color: #303030;">
+
+															<a href="./myAccount"> ${login.user_name } 님 </a>
+
+
+														</div>
 														<span><a href="./loginCheck/logout">로그아웃</a></span>
 														&nbsp;&nbsp;
 														<li class="minicart-wrap"><a href="./#"
-												class="minicart-btn toolbar-btn"> <i class="ion-bag"></i>
-													<span class="cart-item_count">3</span>
-											</a>
-												<div
-													class="cart-item-wrapper dropdown-sidemenu dropdown-hover-2">
-													<div class="single-cart-item">
-														<div class="cart-img">
-															<a href="./cartList"><img
-																src="assets/images/cart/1.jpg" alt=""></a>
-														</div>
-														<div class="cart-text">
-															<h5 class="title">
-																<a href="./cartList">11. Product with video - navy</a>
-															</h5>
-															<div class="cart-text-btn">
-																<div class="cart-qty">
-																	<span>1×</span> <span class="cart-price">$98.00</span>
+															class="minicart-btn toolbar-btn"> <i class="ion-bag"></i>
+																<span class="cart-item_count">3</span>
+														</a>
+															<div
+																class="cart-item-wrapper dropdown-sidemenu dropdown-hover-2">
+																<div class="single-cart-item">
+																	<div class="cart-img">
+																		<a href="./cartList"><img
+																			src="assets/images/cart/1.jpg" alt=""></a>
+																	</div>
+																	<div class="cart-text">
+																		<h5 class="title">
+																			<a href="./cartList">11. Product with video -
+																				navy</a>
+																		</h5>
+																		<div class="cart-text-btn">
+																			<div class="cart-qty">
+																				<span>1×</span> <span class="cart-price">$98.00</span>
+																			</div>
+																			<button type="button">
+																				<i class="ion-trash-b"></i>
+																			</button>
+																		</div>
+																	</div>
 																</div>
-																<button type="button">
-																	<i class="ion-trash-b"></i>
-																</button>
-															</div>
-														</div>
-													</div>
-													<div class="single-cart-item">
-														<div class="cart-img">
-															<a href="./cartList"><img
-																src="assets/images/cart/2.jpg" alt=""></a>
-														</div>
-														<div class="cart-text">
-															<h5 class="title">
-																<a href="./cartList"
-																	title="10. This is the large title for testing large title and there is an image for testing - white">10.
-																	This is the large title for testing...</a>
-															</h5>
-															<div class="cart-text-btn">
-																<div class="cart-qty">
-																	<span>1×</span> <span class="cart-price">$98.00</span>
+																<div class="single-cart-item">
+																	<div class="cart-img">
+																		<a href="./cartList"><img
+																			src="assets/images/cart/2.jpg" alt=""></a>
+																	</div>
+																	<div class="cart-text">
+																		<h5 class="title">
+																			<a href="./cartList"
+																				title="10. This is the large title for testing large title and there is an image for testing - white">10.
+																				This is the large title for testing...</a>
+																		</h5>
+																		<div class="cart-text-btn">
+																			<div class="cart-qty">
+																				<span>1×</span> <span class="cart-price">$98.00</span>
+																			</div>
+																			<button type="button">
+																				<i class="ion-trash-b"></i>
+																			</button>
+																		</div>
+																	</div>
 																</div>
-																<button type="button">
-																	<i class="ion-trash-b"></i>
-																</button>
-															</div>
-														</div>
-													</div>
-													<div class="single-cart-item">
-														<div class="cart-img">
-															<a href="./cartList"><img
-																src="assets/images/cart/3.jpg" alt=""></a>
-														</div>
-														<div class="cart-text">
-															<h5 class="title">
-																<a href="./cartList">1. New and sale badge product - s
-																	/ red</a>
-															</h5>
-															<div class="cart-text-btn">
-																<div class="cart-qty">
-																	<span>1×</span> <span class="cart-price">$98.00</span>
+																<div class="single-cart-item">
+																	<div class="cart-img">
+																		<a href="./cartList"><img
+																			src="assets/images/cart/3.jpg" alt=""></a>
+																	</div>
+																	<div class="cart-text">
+																		<h5 class="title">
+																			<a href="./cartList">1. New and sale badge
+																				product - s / red</a>
+																		</h5>
+																		<div class="cart-text-btn">
+																			<div class="cart-qty">
+																				<span>1×</span> <span class="cart-price">$98.00</span>
+																			</div>
+																			<button type="button">
+																				<i class="ion-trash-b"></i>
+																			</button>
+																		</div>
+																	</div>
 																</div>
-																<button type="button">
-																	<i class="ion-trash-b"></i>
-																</button>
-															</div>
-														</div>
-													</div>
-													<div
-														class="cart-price-total d-flex justify-content-between">
-														<h5>Total :</h5>
-														<h5>$166.00</h5>
-													</div>
-													<div class="cart-links d-flex justify-content-center">
-														<a class="obrien-button white-btn" href="./cartList">View
-															cart</a> <a class="obrien-button white-btn"
-															href="./checkout.html">Checkout</a>
-													</div>
-												</div></li>
+																<div
+																	class="cart-price-total d-flex justify-content-between">
+																	<h5>Total :</h5>
+																	<h5>$166.00</h5>
+																</div>
+																<div class="cart-links d-flex justify-content-center">
+																	<a class="obrien-button white-btn" href="./cartList">View
+																		cart</a> <a class="obrien-button white-btn"
+																		href="./checkout.html">Checkout</a>
+																</div>
+															</div></li>
 													</c:when>
 													<c:otherwise>
 														<span><a href="./loginForm">로그인</a></span>
 														<span><a href="./memberForm">회원가입</a></span>
-														
+
 													</c:otherwise>
 												</c:choose></li> &nbsp;&nbsp;
-											
+
 											<li class="mobile-menu-btn d-lg-none"><a
 												class="off-canvas-btn" href="./#"> <i class="fa fa-bars"></i>
 											</a></li>
@@ -244,13 +246,13 @@
 				</div>
 			</div>
 			<!-- Main Header Area End -->
-			
-			
-			
-			
-			
-			
-		
+
+
+
+
+
+
+
 			<!-- off-canvas menu start -->
 			<aside class="off-canvas-wrapper" id="mobileMenu">
 				<div class="off-canvas-overlay"></div>
@@ -268,14 +270,14 @@
 								</button>
 							</form>
 						</div> -->
-						
-						
-						
-						
-						
-						
-						
-						
+
+
+
+
+
+
+
+
 						<!-- mobile menu start -->
 						<div class="mobile-navigation">
 
@@ -283,48 +285,46 @@
 							<nav>
 								<ul class="mobile-menu">
 									<li><a href="./aboutUs"> <span class="menu-text">소개</span></a></li>
-									
-									<li><a href="./productItem"> <span class="menu-text">상품 관리</span></a></li>
-									
+
+									<li><a href="./productItem"> <span class="menu-text">상품
+												관리</span></a></li>
+
 									<!-- 참고하기 <li class="menu-item-has-children"><a href="./#">내 정보</a>
 										<ul class="dropdown"> -->
-									<li class="menu-item-has-children"><a href="./#">캘리그라피</a> 
+									<li class="menu-item-has-children"><a href="./#">캘리그라피</a>
 										<ul class="dropdown">
 											<li><a href="./productList?category_name=액자">액자</a></li>
 											<li><a href="./productList?category_name=캔버스">캔버스</a></li>
 											<li><a href="./productList?category_name=엽서">엽서</a></li>
-											<li><a href="./productList?category_name=캘리키트">캘리키트</a></li> 
-										</ul>
-									</li>
-									
-									<li class="menu-item-has-children"><a href="./#">그림</a> 
-                                    	<ul class="dropdown">
-                                        	<li><a href="./productList?category_name=그림액자">액자</a></li>
-                                            <li><a href="./productList?category_name=그림캔버스">캔버스</a></li>
-                                            <li><a href="./productList?category_name=그림엽서">엽서</a></li>
-                                        </ul>
-                                    </li>   
-                                            
-                                            
-									<li class="menu-item-has-children"><a href="./#">스탠드</a> 
-                                    	<ul class="dropdown">
-                                        	<li><a href="./productList?category_name=무드등">무드등</a></li>
-                                        </ul>
-                                    </li> 
+											<li><a href="./productList?category_name=캘리키트">캘리키트</a></li>
+										</ul></li>
 
-									<li class="menu-item-has-children"><a href="./#">액세사리</a> 
-                                    	<ul class="dropdown">
-                                    		<li><a href="./productList?category_name=골프공캘리">골프공캘리</a></li>
-                                    		<li><a href="./productList?category_name=봉투">봉투</a></li>
-                                    	</ul>
-                                    </li>
-                                            
-                                    <li><a href="./productItem"> <span class="menu-text">상품 관리</span></a></li>
-                				</ul>
-                			</nav>
+									<li class="menu-item-has-children"><a href="./#">그림</a>
+										<ul class="dropdown">
+											<li><a href="./productList?category_name=그림액자">액자</a></li>
+											<li><a href="./productList?category_name=그림캔버스">캔버스</a></li>
+											<li><a href="./productList?category_name=그림엽서">엽서</a></li>
+										</ul></li>
 
-				<!-- mobile menu navigation end -->
-					</div>
+
+									<li class="menu-item-has-children"><a href="./#">스탠드</a>
+										<ul class="dropdown">
+											<li><a href="./productList?category_name=무드등">무드등</a></li>
+										</ul></li>
+
+									<li class="menu-item-has-children"><a href="./#">액세사리</a>
+										<ul class="dropdown">
+											<li><a href="./productList?category_name=골프공캘리">골프공캘리</a></li>
+											<li><a href="./productList?category_name=봉투">봉투</a></li>
+										</ul></li>
+
+									<li><a href="./productItem"> <span class="menu-text">상품
+												관리</span></a></li>
+								</ul>
+							</nav>
+
+							<!-- mobile menu navigation end -->
+						</div>
 						<!-- mobile menu end -->
 						<div class="header-top-settings offcanvas-curreny-lang-support">
 							<!-- mobile menu navigation start -->
@@ -333,11 +333,11 @@
 									<li class="menu-item-has-children"><a href="./#">내 정보</a>
 										<ul class="dropdown">
 											<c:choose>
-												<c:when test="${!empty login }">  
-													<a href="./myAccount">${login.user_name }님&nbsp;&nbsp;  <!-- 확인용 -->
-													<span><a href="./loginCheck/logout">로그아웃</a></span>
+												<c:when test="${!empty login }">
+													<a href="./myAccount">${login.user_name }님&nbsp;&nbsp;
+														<!-- 확인용 --> <span><a href="./loginCheck/logout">로그아웃</a></span>
 												</c:when>
-												
+
 												<c:otherwise>
 													<span><a href="./loginForm">로그인</a></span>
 													<span><a href="./memberForm">회원가입</a></span>
@@ -361,7 +361,10 @@
 							</div>
 							<div class="off-canvas-widget-social">
 								<a title="Facebook-f" href="./#"><i class="fa fa-facebook-f"></i></a>
-								<a title="Twitter" href="./#"><i class="fa fa-twitter"></i></a>
+								<a title="Instagram" href="https://www.instagram.com/nada_u.m/"><i
+									class="fa fa-instagram"></i></a>
+
+
 							</div>
 						</div>
 						<!-- offcanvas widget area end -->
@@ -393,22 +396,27 @@
         "dots": true
         }}
         ]'>
-				<div class="slide-item slide-1 bg-position slide-bg-2 animation-style-01">
+				<div
+					class="slide-item slide-1 bg-position slide-bg-2 animation-style-01"
+					style="height: 600px;">
 					<div class="slider-content">
 						<h4 class="slider-small-title">Organic Products</h4>
 						<h2 class="slider-large-title">Life with Beauty</h2>
 						<div class="slider-btn">
-							<a class="obrien-button black-btn" href="./productList">Shop Now</a>
+							<a class="obrien-button black-btn" href="./productList">Shop
+								Now</a>
 						</div>
 					</div>
 				</div>
 				<div
-					class="slide-item slide-4 bg-position slide-bg-2 animation-style-01">
+					class="slide-item slide-4 bg-position slide-bg-2 animation-style-01"
+					style="height: 600px;">
 					<div class="slider-content">
 						<h4 class="slider-small-title">Cold process organic</h4>
 						<h2 class="slider-large-title">Superior skin care</h2>
 						<div class="slider-btn">
-							<a class="obrien-button black-btn" href="./productList">Shop Now</a>
+							<a class="obrien-button black-btn" href="./productList">Shop
+								Now</a>
 						</div>
 					</div>
 				</div>
@@ -418,7 +426,7 @@
 
 
 
-<!-- BEST  Area End Here -->
+		<!-- BEST  Area End Here -->
 
 
 		<!-- Product Area Start Here -->
@@ -428,23 +436,21 @@
 					<div class="col-lg-5 m-auto text-center col-custom">
 						<!-- <div class="section-content"> -->
 						<h2 class="title-1 text-uppercase">Best Sellers</h2>
-							<div class="desc-content">
-								
-							</div>
+						<div class="desc-content"></div>
 					</div>
 				</div>
 			</div>
-				<div class="row">
-					<div class="col-lg-12 product-wrapper col-custom">
-						<div class="product-slider"
-							data-slick-options='{
+			<div class="row">
+				<div class="col-lg-12 product-wrapper col-custom">
+					<div class="product-slider"
+						data-slick-options='{
                         "slidesToShow": 4,
                         "slidesToScroll": 1,
                         "infinite": true,
                         "arrows": false,
                         "dots": false
                         }'
-							data-slick-responsive='[
+						data-slick-responsive='[
                         {"breakpoint": 1200, "settings": {
                         "slidesToShow": 3
                         }},
@@ -456,14 +462,14 @@
                         }}
                         ]'>
 
-							
-							
-						</div>
+
+
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- Product Area End Here -->
+	</div>
+	<!-- Product Area End Here -->
 
 
 
@@ -471,15 +477,15 @@
 
 
 
-		<!-- Slider Area One End Here -->
-		<!-- MAIN ProductLIST Area Start Here -->
-		<div class="product-area mt-text mb-no-text">
-								
-						
-					 <!-- <h2 class="title-1 text-uppercase">Best Sellers</h2>  -->
-							
-					
-<!-- 			<div class="container container-default custom-area">
+	<!-- Slider Area One End Here -->
+	<!-- MAIN ProductLIST Area Start Here -->
+	<div class="product-area mt-text mb-no-text">
+
+
+		<!-- <h2 class="title-1 text-uppercase">Best Sellers</h2>  -->
+
+
+		<!-- 			<div class="container container-default custom-area">
 				<div class="row">
 					<div class="col-lg-5 col-custom m-auto text-center">
 						<div class="section-content">
@@ -493,96 +499,92 @@
 					</div>
 				</div> -->
 
-				<!-- productlist-=------------------------------------ -->
+		<!-- productlist-=------------------------------------ -->
 
-				<div class="row shop_wrapper grid_4">
-					<c:forEach var="dto" items="${productList}" varStatus="status">
+		<div class="row shop_wrapper grid_4">
+			<c:forEach var="dto" items="${productList}" varStatus="status">
 
-						<div class="col-lg-3 col-md-6 col-sm-6 col-custom product-area">
-							<div class="single-product position-relative">
-								<div class="product-image">
-									<a class="d-block"
-										href="./productDetails?product_id=${dto.product_id}"> <img
-										src="assets/images/${dto.product_img}" alt=""
-										class="product-image-1 w-100"> <%-- <img src="assets/images/${dto.product_img}_on.jpg" alt="" class="product-image-2 position-absolute w-100"> --%>
-									</a>
-								</div>
-								<div class="product-content">
-									<div class="product-rating">
-										<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-											class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-											class="fa fa-star-o"></i>
-									</div>
-									<div class="product-title">
-										<h4 class="title-2">
-											<a href="./productDetails?product_id=${dto.product_id}">${dto.product_name}</a>
-										</h4>
-									</div>
-									<div class="price-box">
+				<div class="col-lg-3 col-md-6 col-sm-6 col-custom product-area">
+					<div class="single-product position-relative">
+						<div class="product-image">
+							<a class="d-block"
+								href="./productDetails?product_id=${dto.product_id}"> <img
+								src="assets/images/${dto.product_img}" alt=""
+								class="product-image-1 w-100"> <%-- <img src="assets/images/${dto.product_img}_on.jpg" alt="" class="product-image-2 position-absolute w-100"> --%>
+							</a>
+						</div>
+						<div class="product-content">
+							<div class="product-rating">
+								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
+									class="fa fa-star-o"></i>
+							</div>
+							<div class="product-title">
+								<h4 class="title-2">
+									<a href="./productDetails?product_id=${dto.product_id}">${dto.product_name}</a>
+								</h4>
+							</div>
+							<div class="price-box">
 
-										<span class="regular-price "><fmt:formatNumber
-												value="${dto.product_price}" type="currency"
-												currencySymbol="￦" /></span>
+								<span class="regular-price "><fmt:formatNumber
+										value="${dto.product_price}" type="currency"
+										currencySymbol="￦" /></span>
 
-									</div>
-								</div>
-								<div class="add-action d-flex position-absolute">
-									<a href="./cartList" title="Add To cart"> <i class="ion-bag"></i>
-									</a> <a href="./compare.html" title="Compare"> <i
-										class="ion-ios-loop-strong"></i>
-									</a> <a href="./wishlist.html" title="Add To Wishlist"> <i
-										class="ion-ios-heart-outline"></i>
-									</a> <a href="./#exampleModalCenter" data-bs-toggle="modal"
-										title="Quick View"> <i class="ion-eye"></i>
-									</a>
-								</div>
-								<div class="product-content-listview">
-									<div class="product-rating">
-										<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-											class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-											class="fa fa-star-o"></i>
-									</div>
-									<div class="product-title">
-										<h4 class="title-2">
-											<a href="./productDetails?product_id=${dto.product_id}">${dto.product_name}</a>
-										</h4>
-									</div>
-									<div class="price-box">
-										<span class="regular-price "><fmt:formatNumber
-												value="${dto.product_price}" type="currency"
-												currencySymbol="￦" /></span> <span class="old-price"><del>$50.00</del></span>
-									</div>
-									<div class="add-action-listview d-flex">
-										<a href="./cartList" title="Add To cart"> <i class="ion-bag"></i>
-										</a> <a href="./compare.html" title="Compare"> <i
-											class="ion-ios-loop-strong"></i>
-										</a> <a href="./wishlist.html" title="Add To Wishlist"> <i
-											class="ion-ios-heart-outline"></i>
-										</a> <a href="./#exampleModalCenter" data-bs-toggle="modal"
-											title="Quick View"> <i class="ion-eye"></i>
-										</a>
-									</div>
-									<p class="desc-content">${dto.product_description_summary}
-									</p>
-								</div>
 							</div>
 						</div>
-						<tr>
-							<td height="10"></td>
-						</tr>
-
-					</c:forEach>
-
+						<div class="add-action d-flex position-absolute">
+							<a href="./cartList" title="Add To cart"> <i class="ion-bag"></i>
+							</a> <a href="./compare.html" title="Compare"> <i
+								class="ion-ios-loop-strong"></i>
+							</a> <a href="./wishlist.html" title="Add To Wishlist"> <i
+								class="ion-ios-heart-outline"></i>
+							</a> <a href="./#exampleModalCenter" data-bs-toggle="modal"
+								title="Quick View"> <i class="ion-eye"></i>
+							</a>
+						</div>
+						<div class="product-content-listview">
+							<div class="product-rating">
+								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
+									class="fa fa-star-o"></i>
+							</div>
+							<div class="product-title">
+								<h4 class="title-2">
+									<a href="./productDetails?product_id=${dto.product_id}">${dto.product_name}</a>
+								</h4>
+							</div>
+							<div class="price-box">
+								<span class="regular-price "><fmt:formatNumber
+										value="${dto.product_price}" type="currency"
+										currencySymbol="￦" /></span> <span class="old-price"><del>$50.00</del></span>
+							</div>
+							<div class="add-action-listview d-flex">
+								<a href="./cartList" title="Add To cart"> <i class="ion-bag"></i>
+								</a> <a href="./compare.html" title="Compare"> <i
+									class="ion-ios-loop-strong"></i>
+								</a> <a href="./wishlist.html" title="Add To Wishlist"> <i
+									class="ion-ios-heart-outline"></i>
+								</a> <a href="./#exampleModalCenter" data-bs-toggle="modal"
+									title="Quick View"> <i class="ion-eye"></i>
+								</a>
+							</div>
+							<p class="desc-content">${dto.product_description_summary}</p>
+						</div>
+					</div>
 				</div>
+				<tr>
+					<td height="10"></td>
+				</tr>
 
+			</c:forEach>
 
-				
-			</div>
-<!-- MAIN productlist END------------------------------------ -->
 		</div>
 
 
 
+	</div>
+	<!-- MAIN productlist END------------------------------------ -->
+	</div>
 
 
 
@@ -609,52 +611,58 @@
 
 
 
-		
-		
-		
-		
-		<!-- Support Area Start Here -->
-		<div class="support-area">
-			<div class="container container-default custom-area">
-				<div class="row">
-					<div class="col-lg-12 col-custom">
-						<div class="support-wrapper d-flex">
-							<div class="support-content">
-								<h1 class="title">Need Help ?</h1>
-								<p class="desc-content">Email: um.woom@gmail.com</p>
-							</div>
-							<div class="support-button d-flex align-items-center">
-								<a class="obrien-button primary-btn" href="./contactUs">Contact
-									now</a>
-							</div>
+
+
+
+
+
+
+
+	<!-- Support Area Start Here -->
+	<div class="support-area">
+		<div class="container container-default custom-area">
+			<div class="row">
+				<div class="col-lg-12 col-custom">
+					<div class="support-wrapper d-flex">
+						<div class="support-content">
+							<h1 class="title">Need Help ?</h1>
+							<p class="desc-content">Email: um.woom@gmail.com</p>
+						</div>
+						<div class="support-button d-flex align-items-center">
+							<a class="obrien-button primary-btn" href="./contactUs">Contact
+								now</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- Support Area End Here -->
-		<!-- Footer Area Start Here -->
-		<footer class="footer-area">
-			<div class="footer-widget-area">
-				<div class="container container-default custom-area">
-					<div class="row">
-						<div class="col-12 col-sm-12 col-md-12 col-lg-3 col-custom">
-							<div class="single-footer-widget m-0">
-								<div class="footer-logo">
-									<a href="./"> <img src="assets/images/logo/footer.png"
-										alt="Logo Image">
-									</a>
-								</div>
-								<p class="desc-content">WOOM is the best parts shop of your daily routine. What kind of routine do you need you can get here  </p>
-								<div class="social-links">
-									<ul class="d-flex">
-										<li><a class="border rounded-circle" href="./#"
-											title="Facebook"> <i class="fa fa-facebook-f"></i>
-										</a></li>
-										<li><a class="border rounded-circle" href="https://www.instagram.com/nada_u.m/"
-											title="Instagram"> <i class="fa fa-instagram"></i>
-										</a></li>
-										<!-- <li><a class="border rounded-circle" href="./#"
+	</div>
+	<!-- Support Area End Here -->
+	<!-- Footer Area Start Here -->
+	<footer class="footer-area">
+		<div class="footer-widget-area">
+			<div class="container container-default custom-area">
+				<div class="row">
+					<div class="col-12 col-sm-12 col-md-12 col-lg-3 col-custom">
+						<div class="single-footer-widget m-0">
+							<div class="footer-logo">
+								<a href="./"> <img src="assets/images/logo/footer.png"
+									alt="Logo Image">
+								</a>
+							</div>
+							<p class="desc-content">WOOM is the best parts shop of your
+								daily routine. What kind of routine do you need you can get here
+							</p>
+							<div class="social-links">
+								<ul class="d-flex">
+									<li><a class="border rounded-circle" href="./#"
+										title="Facebook"> <i class="fa fa-facebook-f"></i>
+									</a></li>
+									<li><a class="border rounded-circle"
+										href="https://www.instagram.com/nada_u.m/" title="Instagram">
+											<i class="fa fa-instagram"></i>
+									</a></li>
+									<!-- <li><a class="border rounded-circle" href="./#"
 											title="Twitter"> <i class="fa fa-twitter"></i>
 										</a></li>
 										<li><a class="border rounded-circle" href="./#"
@@ -663,84 +671,81 @@
 										<li><a class="border rounded-circle" href="./#"
 											title="Vimeo"> <i class="fa fa-vimeo"></i>
 										</a></li> -->
-									</ul>
-								</div> 
-							</div>
-						</div>
-						<div class="col-12 col-sm-6 col-md-6 col-lg-2 col-custom">
-							<div class="single-footer-widget">
-								<h2 class="widget-title">Information</h2>
-								<ul class="widget-list">
-									<li><a href="./aboutUs">Our Company</a></li>
-									<li><a href="./contactUs">Contact Us</a></li>
-									<li><a href="./aboutUs">Our Services</a></li>
-									<li><a href="./aboutUs">Why We?</a></li>
-									<li><a href="./aboutUs">Careers</a></li>
 								</ul>
 							</div>
 						</div>
-						<div class="col-12 col-sm-6 col-md-6 col-lg-2 col-custom">
-							<div class="single-footer-widget">
-								<h2 class="widget-title">Quicklink</h2>
-								<ul class="widget-list">
-									<c:choose>
-										<c:when test="${!empty login }">
-											<li><a href="./aboutUs">About</a></li>
-											<li><a href="./productList">Shop</a></li>
-											<li><a href="./cartList">Cart</a></li>
-											<li><a href="./contactUs">Contact</a></li>
-										</c:when>
-										
-										<c:otherwise>
-											<li><a href="./aboutUs">About</a></li>
-											<li><a href="./productList">Shop</a></li>
-											<li><a href="./contactUs">Contact</a></li>
-										</c:otherwise>
-									</c:choose>
-								</ul>
-							</div>
+					</div>
+					<div class="col-12 col-sm-6 col-md-6 col-lg-2 col-custom">
+						<div class="single-footer-widget">
+							<h2 class="widget-title">Information</h2>
+							<ul class="widget-list">
+								<li><a href="./aboutUs">Our Company</a></li>
+								<li><a href="./contactUs">Contact Us</a></li>
+								<li><a href="./aboutUs">Our Services</a></li>
+								<li><a href="./aboutUs">Why We?</a></li>
+								<li><a href="./aboutUs">Careers</a></li>
+							</ul>
 						</div>
-						<div class="col-12 col-sm-6 col-md-6 col-lg-2 col-custom">
-							<div class="single-footer-widget">
-								<h2 class="widget-title">Support</h2>
-								<ul class="widget-list">
-									<li><a href="./contactUs">Online Support</a></li>
-									<li><a href="./contactUs">Shipping Policy</a></li>
-									<li><a href="./contactUs">Return Policy</a></li>
-									<li><a href="./contactUs">Privacy Policy</a></li>
-									<li><a href="./contactUs">Terms of Service</a></li>
-								</ul>
-							</div>
+					</div>
+					<div class="col-12 col-sm-6 col-md-6 col-lg-2 col-custom">
+						<div class="single-footer-widget">
+							<h2 class="widget-title">Quicklink</h2>
+							<ul class="widget-list">
+								<c:choose>
+									<c:when test="${!empty login }">
+										<li><a href="./aboutUs">About</a></li>
+										<li><a href="./productList">Shop</a></li>
+										<li><a href="./cartList">Cart</a></li>
+										<li><a href="./contactUs">Contact</a></li>
+									</c:when>
+
+									<c:otherwise>
+										<li><a href="./aboutUs">About</a></li>
+										<li><a href="./productList">Shop</a></li>
+										<li><a href="./contactUs">Contact</a></li>
+									</c:otherwise>
+								</c:choose>
+							</ul>
 						</div>
-						<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-custom">
-							<div class="single-footer-widget">
-								<h2 class="widget-title">See Information</h2>
-								<div class="widget-body">
-									<address>
-										서울특별시 송파구 백제고분로 501, 청호빌딩 <br>
-										Email: um.woom@gmail.com
-									</address>
-								</div>
+					</div>
+					<div class="col-12 col-sm-6 col-md-6 col-lg-2 col-custom">
+						<div class="single-footer-widget">
+							<h2 class="widget-title">Support</h2>
+							<ul class="widget-list">
+								<li><a href="./contactUs">Online Support</a></li>
+								<li><a href="./contactUs">Shipping Policy</a></li>
+								<li><a href="./contactUs">Return Policy</a></li>
+								<li><a href="./contactUs">Privacy Policy</a></li>
+								<li><a href="./contactUs">Terms of Service</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-custom">
+						<div class="single-footer-widget">
+							<h2 class="widget-title">See Information</h2>
+							<div class="widget-body">
+								<address>
+									서울특별시 송파구 백제고분로 501, 청호빌딩 <br> Email: um.woom@gmail.com
+								</address>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="footer-copyright-area">
-				<div class="container custom-area">
-					<div class="row">
-						<div class="col-12 text-center col-custom">
-							<div class="copyright-content">
-								<p>
-									Copyright ⓒ WOOM Foundation. All Rights Reserved.
-								</p>
-							</div>
+		</div>
+		<div class="footer-copyright-area">
+			<div class="container custom-area">
+				<div class="row">
+					<div class="col-12 text-center col-custom">
+						<div class="copyright-content">
+							<p>Copyright ⓒ WOOM Foundation. All Rights Reserved.</p>
 						</div>
 					</div>
 				</div>
 			</div>
-		</footer>
-		<!-- Footer Area End Here -->
+		</div>
+	</footer>
+	<!-- Footer Area End Here -->
 	</div>
 
 	<!-- Modal Area Start Here -->

@@ -445,7 +445,7 @@ String user_name = (String) session.getAttribute("user_name");/* 	이거는 로�
 							</div>
 							<div class="off-canvas-widget-social">
 								<a title="Facebook-f" href="./#"><i class="fa fa-facebook-f"></i></a>
-								<a title="Twitter" href="./#"><i class="fa fa-twitter"></i></a>
+								<a title="Instagram" href="https://www.instagram.com/nada_u.m/"><i class="fa fa-instagram"></i></a>
 							</div>
 						</div>
 						<!-- offcanvas widget area end -->
@@ -652,9 +652,8 @@ String user_name = (String) session.getAttribute("user_name");/* 	이거는 로�
 								<span>Share :</span> 
 									<!-- <a href=""> -->
 									<a>
-										<i class="fa fa-facebook-square facebook-color"></i>
-										<i class="fa fa-twitter-square twitter-color"></i>
-									</a>
+										<i class="fa fa-facebook-square facebook-color" href="./#"></i>
+										<a title="Instagram" href="https://www.instagram.com/nada_u.m/"><i class="fa fa-instagram"></i></a>
 									<!-- </a> -->
 							</div>
 							<!-- <div class="payment">

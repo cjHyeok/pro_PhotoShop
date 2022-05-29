@@ -388,7 +388,7 @@
 							</div>
 							<div class="off-canvas-widget-social">
 								<a title="Facebook-f" href="./#"><i class="fa fa-facebook-f"></i></a>
-								<a title="Twitter" href="./#"><i class="fa fa-twitter"></i></a>
+								<a title="Instagram" href="https://www.instagram.com/nada_u.m/"><i class="fa fa-instagram"></i></a>
 							</div>
 						</div>
 						<!-- offcanvas widget area end -->
@@ -424,11 +424,11 @@
 							<table class="table table-bordered">
 								<thead>
 									<tr>
-										<th class="pro-thumbnail">Image</th>
-										<th class="pro-title">Product</th>
-										<th class="pro-price">Price</th>
-										<th class="pro-cart">Add to Cart</th>
-										<th class="pro-remove">Remove</th>
+										<th class="pro-thumbnail">상품 사진</th>
+										<th class="pro-title">상품 이름</th>
+										<th class="pro-price">가격</th>
+										<th class="pro-cart">카트에 담기</th>
+										<th class="pro-remove">삭제</th>
 									</tr>
 								</thead>
 								<tbody>
