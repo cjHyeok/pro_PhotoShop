@@ -81,7 +81,7 @@ public class ReviewController {
 		}
 		retData += "</table>";
 
-		System.out.println("retData=" + retData);
+		System.out.println("review controller  retData=" + retData);
 
 		return retData;
 	}

@@ -48,11 +48,11 @@
 </head>
 
 <body>
-<c:if test="${!empty mesg }"> <!-- login 실패시 -->
+<%-- <c:if test="${!empty mesg }"> <!-- login 실패시 -->
 	<script>
 		alert('${mesg}');
 	</script>
-</c:if>
+</c:if> --%>
 
 
 
@@ -392,14 +392,14 @@
                                 </div>
                                 <div class="single-input-item mb-3">
                                     <input name="user_pw" type="password" placeholder="비밀번호를 입력해주세요" style="width: 455px" value="12341234">
-                                </div>
+                                </div><!-- value="hoban@naver.com"value="12341234" -->
                                 <div class="single-input-item mb-3">
                                     <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
                                         <div class="remember-meta mb-3">
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="rememberMe">
                                                 <label class="custom-control-label" for="rememberMe">아이디 기억하기</label>
-                                            </div>
+                                            </div> 
                                         </div>
                                         
                                     </div>
@@ -408,9 +408,15 @@
                                     <button class="btn obrien-button-2 primary-color">로그인</button>
                                 </div> -->
                                 <div class="single-input-item">
-                                <button class="btn obrien-button-2 primary-color">로그인</button>
-                                     
-                                 <a href="./memberForm" class="btn obrien-button-2 primary-color">회원가입 하기</a>
+                                <button class="btn obrien-button-2 primary-color" style="width: 455px;">로그인</button>
+                                    <br>
+                                    <hr>
+                                <ul style="text-align: center;">
+                                	<span><a>아이디 찾기</a></span>&ensp;&ensp;|&ensp;&ensp;
+                                	<span><a>비밀번호 찾기</a></span>&ensp;&ensp;|&ensp;&ensp;
+                                	<span><a href="./memberForm" >회원가입</a></span>
+                                </ul>
+                                <!-- <a href="./memberForm" >회원가입</a> -->
                                       
                                     
                                 </div>
@@ -512,9 +518,9 @@
                                 <h2 class="widget-title">Support</h2>
                                 <ul class="widget-list">
                                     <li><a href="./contactUs">Online Support</a></li>
-                                    <li><a href="./contactUs">Shipping Policy</a></li>
-                                    <li><a href="./contactUs">Return Policy</a></li>
-                                    <li><a href="./contactUs">Privacy Policy</a></li>
+								<li><a href="./policyForm">Shipping Policy</a></li>
+								<li><a href="./policyForm">Return Policy</a></li>
+								<li><a href="./policyForm">Privacy Policy</a></li>
                                     <li><a href="./contactUs">Terms of Service</a></li>
                                 </ul>
                             </div>

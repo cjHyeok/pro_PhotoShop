@@ -5,16 +5,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="ReviewMapper">
 
 	<select id="ReviewList" parameterType="String" resultType="ReviewDTO">
-		select review_id, review_date, review_content, user_name , product_id, review_like
-		from t_review 
-		where product_id = #{product_id}
-		order by review_date desc
+	SELECT r.review_id, r.review_date, r.review_content, r.user_name, r.product_id, r.review_like, p.product_name
+    FROM t_review r JOIN t_product p 
+                    on r.product_id = p.product_id
+    WHERE r.product_id = #{product_id}
+    ORDER BY review_date desc
 	</select>
 
 
 	<insert id="reviewWriteAdd" parameterType="ReviewDTO">
-		insert into
+		INSERT INTO
 		t_review (review_id, user_name, product_id, review_content, review_date, review_like)
-		values(review_seq.nextval, #{user_name}, #{product_id}, #{review_content}, sysdate, #{review_like})
+		VALUES(review_seq.nextval, #{user_name}, #{product_id}, #{review_content}, sysdate, #{review_like})
 	</insert>
 </mapper>

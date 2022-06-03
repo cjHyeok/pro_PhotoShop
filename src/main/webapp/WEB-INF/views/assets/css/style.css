@@ -4839,8 +4839,8 @@ button,
   }
 }
 
-.slide-bg-2 {
-  min-height: 850px;
+.slide-bg-2 { /* 메인 사진 변경 */
+  min-height: 400px;
 }
 
 @media (max-width: 1800px) {
@@ -4852,12 +4852,14 @@ button,
 @media (max-width: 1500px) {
   .slide-bg-2 {
     min-height: 600px;
+    
   }
 }
 
 @media (max-width: 1199px) {
   .slide-bg-2 {
     min-height: 550px;
+    height: 300px;
   }
 }
 

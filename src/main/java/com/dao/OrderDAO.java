@@ -60,4 +60,19 @@ public class OrderDAO {
 		return olist;
 	}
 
+	public List<CartDTO> lastOrderCartList(MemberDTO mDTO) {
+		List<CartDTO> list = template.selectList("DirectOrderMapper.lastOrderCartList", mDTO);
+		return list;
+	}
+
+
+	public void DirectDelCart(List<CartDTO> clist, MemberDTO mDTO) {
+		CartDTO cDto = null;
+		for (int i = 0; i < clist.size(); i++) {
+			cDto = clist.get(i);
+			
+		}	
+		int n = template.delete("DirectOrderMapper.DirectDelCart", cDto.getCart_id());
+	}
+
 }

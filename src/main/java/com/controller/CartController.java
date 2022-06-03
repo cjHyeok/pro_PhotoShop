@@ -27,7 +27,7 @@ public class CartController {
 
 	@RequestMapping("/loginCheck/cartAdd") // 카트에 추가
 	public String cartAdd(CartDTO cart, HttpSession session) {
-		System.out.println("***** cart ==" + cart);
+		System.out.println("/loginCheck/cartAdd controller cart ==" + cart);
 
 		MemberDTO mDTO = (MemberDTO) session.getAttribute("login");
 		cart.setUser_id(mDTO.getUser_id());
@@ -45,10 +45,10 @@ public class CartController {
 		MemberDTO dto = (MemberDTO) session.getAttribute("login");
 
 		String user_id = dto.getUser_id();
-		System.out.println("user_id ====" + user_id);
+		System.out.println("/cartList controller  user_id ====" + user_id);
 
 		List<CartDTO> clist = cservice.cartList(dto);
-		System.out.println("cartList===" + clist);
+		System.out.println("/cartList controller  cartList===" + clist);
 
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("cartList", clist);
@@ -62,7 +62,7 @@ public class CartController {
 	
 	@RequestMapping(value = "/loginCheck/cartDelete") // 장바구니에서
 	public @ResponseBody void cartDelte(@RequestParam("cart_id") ArrayList<String> list) {
-		System.out.println("delete list ---" + list);
+		System.out.println("/loginCheck/cartDelete controller list ---" + list);
 		cservice.cartDelete(list); // 삭제
 
 	}
@@ -70,7 +70,7 @@ public class CartController {
 	@RequestMapping(value = "/loginCheck/cartUpdate") // 장바구니 수정
 	@ResponseBody
 	public void cartUpdate(@RequestParam Map<String, String> map) {
-		System.out.println(map);
+		System.out.println("/loginCheck/cartUpdate controller == " + map);
 		cservice.cartUpdate(map);
 	}
 

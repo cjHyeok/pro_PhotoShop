@@ -580,9 +580,9 @@
                                 <h2 class="widget-title">Support</h2>
                                 <ul class="widget-list">
                                     <li><a href="./contactUs">Online Support</a></li>
-                                    <li><a href="./contactUs">Shipping Policy</a></li>
-                                    <li><a href="./contactUs">Return Policy</a></li>
-                                    <li><a href="./contactUs">Privacy Policy</a></li>
+								<li><a href="./policyForm">Shipping Policy</a></li>
+								<li><a href="./policyForm">Return Policy</a></li>
+								<li><a href="./policyForm">Privacy Policy</a></li>
                                     <li><a href="./contactUs">Terms of Service</a></li>
                                 </ul>
                             </div>

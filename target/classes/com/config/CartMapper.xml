@@ -5,25 +5,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="CartMapper">
 
 	<insert id="cartAdd" parameterType="CartDTO">
-		insert into t_cart (cart_id, user_id, product_id, cart_quantity, cart_date)
-		values (cart_seq.nextval, #{user_id}, #{product_id}, #{cart_quantity}, sysdate)
+		INSERT INTO t_cart (cart_id, user_id, product_id, cart_quantity, cart_date)
+		VALUES (cart_seq.nextval, #{user_id}, #{product_id}, #{cart_quantity}, sysdate)
 	</insert>
 	
 	
 	<select id="cartList" parameterType="MemberDTO" resultType="CartDTO">
-		select p.product_name, p.product_price, p.product_quantity, p.product_id, i.product_img, c.user_id, c.cart_id, c.cart_quantity
-		from t_product p join t_cart c
-			on p.product_id = c.product_id
-				join t_product_img i
-					on p.product_id = i.product_id
-		where c.user_id = '${user_id}'
-		order by c.cart_id asc
+		SELECT p.product_name, p.product_price, p.product_quantity, p.product_id, i.product_img, c.user_id, c.cart_id, c.cart_quantity
+		FROM t_product p JOIN t_cart c
+			ON p.product_id = c.product_id
+				JOIN t_product_img i
+					ON p.product_id = i.product_id
+		WHERE c.user_id = '${user_id}'
+		ORDER BY c.cart_id asc
 	</select>
 	
 	<delete id="cartDelete" parameterType="arraylist">
-		delete
-		from t_cart
-		where cart_id IN
+		DELETE
+		FROM t_cart
+		WHERE cart_id IN
 
 		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
 			#{item}
@@ -31,14 +31,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<update id="cartUpdate" parameterType="hashmap">
-		update t_cart
-		set cart_quantity = #{cart_quantity}
-		where cart_id = #{cart_id}
+		UPDATE t_cart
+		SET cart_quantity = #{cart_quantity}
+		WHERE cart_id = #{cart_id}
 	</update>
 	
 	<insert id="wishCartadd" parameterType="WishDTO">
-		insert into t_cart (cart_id, user_id, product_id, cart_quantity, cart_date)
-		values (cart_seq.nextval, #{user_id}, #{product_id}, 1, sysdate)
+		INSERT INTO t_cart (cart_id, user_id, product_id, cart_quantity, cart_date)
+		VALUES (cart_seq.nextval, #{user_id}, #{product_id}, 1, sysdate)
 	</insert>
 	
 	

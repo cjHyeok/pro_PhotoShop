@@ -388,7 +388,8 @@
                             </div>
                             <div class="con-info-txt">
                                 <h4>Our Location</h4>
-                                <p>(800) 123 456 789 / (800) 123 456 789 info@example.com</p>
+                                <p>서울특별시 송파구 백제고분로 501, 청호빌딩 <br>
+										Email: um.woom@gmail.com</p>
                             </div>
                         </div>
                     </div>
@@ -410,7 +411,7 @@
                             </div>
                             <div class="con-info-txt">
                                 <h4>Support Overall</h4>
-                                <p>Support24/7@example.com <br> info@example.com</p>
+                                <p>um.woom@gmail.com</p>
                             </div>
                         </div>
                     </div>
@@ -474,12 +475,44 @@
         <div id="map" style="width:100%;height:400px;"></div>
 
 <script>
-var mapOptions = {
-    center: new naver.maps.LatLng(37.3595704, 127.105399),
-    zoom: 10
-};
+var HOME_PATH = window.HOME_PATH || '.';
+var cityhall = new naver.maps.LatLng(37.515075482388, 127.11479489226416),
+    map = new naver.maps.Map('map', {
+        center: cityhall,
+        zoom: 17
+    }),
+    marker = new naver.maps.Marker({
+        map: map,
+        position: cityhall
+    });
 
-var map = new naver.maps.Map('map', mapOptions);
+var contentString = [
+        '<div class="iw_inner">',
+        '   <h5>서울특별시 송파구 백제고분로 501, 청호빌딩</h5>',
+        '   <p>501 Baekjegobun-ro, Songpa-gu, Seoul, Republic of Korea (05545) | 서울특별시 송파구 백제고분로 501, 청호빌딩<br />',
+        '   </p>',
+        '</div>'
+    ].join('');
+
+var infowindow = new naver.maps.InfoWindow({
+    content: contentString,
+    maxWidth: 140,
+    backgroundColor: "#eee",
+    borderColor: "#2db400",
+    borderWidth: 5,
+    anchorSize: new naver.maps.Size(30, 30),
+    anchorSkew: true,
+    anchorColor: "#eee",
+    pixelOffset: new naver.maps.Point(20, -20)
+});
+
+naver.maps.Event.addListener(marker, "click", function(e) {
+    if (infowindow.getMap()) {
+        infowindow.close();
+    } else {
+        infowindow.open(map, marker);
+    }
+});
 </script>
         <!-- naver Maps end-->
         
@@ -578,9 +611,9 @@ var map = new naver.maps.Map('map', mapOptions);
                                 <h2 class="widget-title">Support</h2>
                                 <ul class="widget-list">
                                     <li><a href="./contactUs">Online Support</a></li>
-                                    <li><a href="./contactUs">Shipping Policy</a></li>
-                                    <li><a href="./contactUs">Return Policy</a></li>
-                                    <li><a href="./contactUs">Privacy Policy</a></li>
+								<li><a href="./policyForm">Shipping Policy</a></li>
+								<li><a href="./policyForm">Return Policy</a></li>
+								<li><a href="./policyForm">Privacy Policy</a></li>
                                     <li><a href="./contactUs">Terms of Service</a></li>
                                 </ul>
                             </div>

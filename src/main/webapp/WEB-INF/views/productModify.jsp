@@ -494,7 +494,7 @@
                                 <h2 class="title-4 mb-2">상품 수정</h2>
                                 
                             </div>
-                            <form action="/loginCheck/ModifyUpdate" method="post">
+                            <form action="loginCheck/ModifyUpdate" method="post">
                             
                             	<div class="single-input-item mb-3">
                                     <input id="product_id" name="product_id" type="text" value="${productModify.product_id}" readonly/>
@@ -522,18 +522,18 @@
                                 </div>
                                 
                                 <div class="single-input-item mb-3">
-                                    <input id="product_description_summary" name="product_description_summary" type="text"  style="padding: 30px 10px 150px;" value="${productModify.product_description_summary}">
+                                    <textarea rows="3" cols="48" id="product_description_summary" name="product_description_summary" type="text">${productModify.product_description_summary}</textarea>
                                 
                                 </div>                              
                                 
                                 <div class="single-input-item mb-3">
-                                    <input id="product_description" name="product_description" type="text" style="padding: 40px 10px 250px;" value="${productModify.product_description}">
+                                    <textarea rows="4" cols="48" id="product_description" name="product_description" type="text">${productModify.product_description}</textarea>
                                 </div>
                                 
                                 <div class="single-input-item mb-3">
                                     <input id="product_sales_state" name="product_sales_state" type="text" value="${productModify.product_sales_state}">
                                 </div>
-                                
+                         
                                 
                                 
                                 
@@ -683,9 +683,9 @@
 								<h2 class="widget-title">Support</h2>
 								<ul class="widget-list">
 									<li><a href="./contact-us.html">Online Support</a></li>
-									<li><a href="./contact-us.html">Shipping Policy</a></li>
-									<li><a href="./contact-us.html">Return Policy</a></li>
-									<li><a href="./contact-us.html">Privacy Policy</a></li>
+									<li><a href="./policyForm">Shipping Policy</a></li>
+									<li><a href="./policyForm">Return Policy</a></li>
+									<li><a href="./policyForm">Privacy Policy</a></li>
 									<li><a href="./contact-us.html">Terms of Service</a></li>
 								</ul>
 							</div>

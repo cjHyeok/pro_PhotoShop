@@ -32,7 +32,7 @@ public class WishController {
 
 	@RequestMapping("/loginCheck/wishAdd") //위시리스트에 추가
 	public String wishAdd(WishDTO wish, HttpSession session) {
-		System.out.println("위시리스트에 추가 ==" + wish);
+		System.out.println("/loginCheck/wishAdd  controller  위시리스트에 추가 ==" + wish);
 
 		MemberDTO mDTO = (MemberDTO) session.getAttribute("login");
 		wish.setUser_id(mDTO.getUser_id());
@@ -48,14 +48,14 @@ public class WishController {
 	@RequestMapping("/loginCheck/wishCartadd") //위시리스트에 추가
 	public String wishCartadd(@RequestParam("product_id") String product_id, HttpSession session) {
 	
-		System.out.println("위시리스트에서 카트리스트로 ==" + product_id);
+		System.out.println("/loginCheck/wishAdd  controller  위시리스트에서 카트리스트로 ==" + product_id);
 
 		MemberDTO mDTO = (MemberDTO) session.getAttribute("login");
 		//cart.setUser_id(mDTO.getUser_id());
 
 		//session.setAttribute("mesg", cart.getProduct_name());
 
-		System.out.println("위시리스트에서 카트 userid ==" + mDTO.getUser_id());
+		System.out.println("/loginCheck/wishAdd  controller  위시리스트에서 카트 userid ==" + mDTO.getUser_id());
 		cservice.wishCartadd(product_id, mDTO.getUser_id());
 
 		/*
@@ -79,13 +79,15 @@ public class WishController {
 		MemberDTO dto = (MemberDTO) session.getAttribute("login");
 
 		String user_id = dto.getUser_id();
-		System.out.println("user_id ====" + user_id);
+		System.out.println("/wishList controller  user_id ====" + user_id);
 
 		List<WishDTO> wlist = wservice.wishList(dto);
-		System.out.println("위시리스트 리스트 출력===" + wlist);
+		System.out.println("/wishList controller  위시리스트 리스트 출력===" + wlist);
 
+		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("wishList", wlist);
+		mav.addObject("wlistSize", wlist.size());
 		mav.setViewName("wishList");
 
 		return mav;
@@ -95,10 +97,17 @@ public class WishController {
 	
 	
 	@RequestMapping(value = "/loginCheck/wishDelete") 
-	public @ResponseBody void wishDelte(@RequestParam("wish_id") ArrayList<String> list) {
-		System.out.println("delete list -" + list);
+	public @ResponseBody String wishDelte(@RequestParam("wish_id") ArrayList<String> list, HttpSession session) {
+		System.out.println("wishDelete contorller list -" + list);
 		wservice.wishDelete(list); // 삭제
-
+		
+		
+		//위시리스트 상품없을 때 문구 나오게 하기
+		MemberDTO dto = (MemberDTO) session.getAttribute("login");
+		List<WishDTO> wlist = wservice.wishList(dto);
+		return Integer.toString(wlist.size()); //위시리스트 상품없을 때 문구 나오게 하기 위해서  
+											//리스트 개수 가져가려고 숫자를 문자열로 바꿔주고 String return 사용해서 사이즈 담음
+											//삭제한다음 나오게하기위해서 삭제 ajax data 사용, data 0일때 출력
 	}
 
 	

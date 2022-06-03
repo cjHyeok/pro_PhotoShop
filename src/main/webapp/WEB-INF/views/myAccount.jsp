@@ -93,12 +93,12 @@ $(document).ready(function() {
 
 <body>
 
-	<c:if test="${!empty mesg }">
+<%-- 	<c:if test="${!empty mesg }">
 		<script>
 			//session.removeAttribute("mesg");
 			alert("${mesg}.");
 		</script>
-	</c:if>
+	</c:if> --%>
 
 
     <div class="contact-wrapper">
@@ -445,6 +445,7 @@ $(document).ready(function() {
                                             address</a>
                                         <a href="#account-info" data-bs-toggle="tab"><i class="fa fa-user"></i> Account
                                             Details</a>
+                                        <a href="#product-review" data-bs-toggle="tab"><i class="fa fa-star" aria-hidden="true"></i> Product Review</a>
                                         <a href="./loginCheck/logout"><i class="fa fa-sign-out"></i>로그아웃</a>
                                     </div>
                                 </div>
@@ -609,6 +610,46 @@ $(document).ready(function() {
                                                 </div>
                                             </div>
                                         </div> <!-- Single Tab Content End -->
+                                        <!-- Single Tab Content Start 리뷰-->
+                                        
+                                        <div class="tab-pane fade" id="product-review" role="tabpanel">
+                                            <div class="product-review-content">
+                                                <h3>상품 리뷰</h3>
+                                                <br>
+                                                <div class="myaccount-table table-responsive text-center">
+                                                    <table class="table table-bordered">
+                                                        <!-- <thead class="thead-light">
+                                                            <tr>
+                                                                <th>상품이미지</th>
+                                                                <th>Date</th>
+                                                                <th>Status</th>
+                                                                <th>Total</th>
+                                                                <th>Action</th>
+                                                            </tr>
+                                                        </thead> -->
+                                                        <tbody>
+                                                        <c:forEach var="order" items="${orderList}" varStatus="status">
+                                                       		
+                                                            <tr>
+                                                                <td>이미지</td>
+                                                                <td>
+                                                                	<p><fmt:formatDate var="dateTempParse" pattern="yyyy-MM-dd" value="${order.order_date}"/><c:out value="${dateTempParse}"/>
+                                                                	<p>상품이름</p>
+                                                                </td>
+                                                                <td><a href="" class="btn obrien-button-2 primary-color rounded-0">리뷰쓰기</a></td>
+                                                            </tr>
+                                                            
+                                                            </c:forEach>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                        <!-- Single Tab Con
+                                        tent End -->
                                     </div>
                                 </div> <!-- My Account Tab Content End -->
                             </div>
@@ -709,9 +750,9 @@ $(document).ready(function() {
                                 <h2 class="widget-title">Support</h2>
                                 <ul class="widget-list">
                                     <li><a href="./contact-us.html">Online Support</a></li>
-                                    <li><a href="./contact-us.html">Shipping Policy</a></li>
-                                    <li><a href="./contact-us.html">Return Policy</a></li>
-                                    <li><a href="./contact-us.html">Privacy Policy</a></li>
+								<li><a href="./policyForm">Shipping Policy</a></li>
+								<li><a href="./policyForm">Return Policy</a></li>
+								<li><a href="./policyForm">Privacy Policy</a></li>
                                     <li><a href="./contact-us.html">Terms of Service</a></li>
                                 </ul>
                             </div>

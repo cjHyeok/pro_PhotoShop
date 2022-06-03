@@ -392,14 +392,10 @@
 							<div class="shop-select">
 								<form class="d-flex flex-column w-100" action="#">
 									<div class="form-group">
-										<select class="form-control nice-select w-100">
-											<option selected value="1">추천</option>
-											<option value="2">판매인</option>
-											<option value="3">낮은 가격</option>
-											<option value="4">높은 가격</option>
-											<option value="5">등록일</option>
-											
-										</select>
+										<!-- <select class="form-control nice-select w-100">
+											<option selected value="1">낮은 가격</option>
+											<option value="2">높은 가격</option>
+										</select> -->
 									</div>
 								</form>
 							</div>
@@ -474,11 +470,9 @@
 											<div class="add-action-listview d-flex">
 												<a href="./cartList" title="Add To cart"> <i
 													class="ion-bag"></i>
-												</a> <a href="./compare.html" title="Compare"> <i
-													class="ion-ios-loop-strong"></i>
-												</a> <a href="./wishlist.html" title="Add To Wishlist"> <i
+												</a>  <a href="./wishlist.html" title="Add To Wishlist"> <i
 													class="ion-ios-heart-outline"></i>
-												</a> <a href="./#exampleModalCenter" data-bs-toggle="modal"
+												</a> <a href="./productDetails?product_id=${dto.product_id}" data-bs-toggle="modal"
 													title="Quick View"> <i class="ion-eye"></i>
 												</a>
 											</div>
@@ -623,9 +617,9 @@
 								<h2 class="widget-title">Support</h2>
 								<ul class="widget-list">
 									<li><a href="./contactUs">Online Support</a></li>
-									<li><a href="./contactUs">Shipping Policy</a></li>
-									<li><a href="./contactUs">Return Policy</a></li>
-									<li><a href="./contactUs">Privacy Policy</a></li>
+									<li><a href="./policyForm">Shipping Policy</a></li>
+									<li><a href="./policyForm">Return Policy</a></li>
+									<li><a href="./policyForm">Privacy Policy</a></li>
 									<li><a href="./contactUs">Terms of Service</a></li>
 								</ul>
 							</div>

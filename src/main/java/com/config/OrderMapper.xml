@@ -6,25 +6,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<select id="cartList" parameterType="MemberDTO" resultType="CartDTO">
-		select p.product_name, p.product_price, p.product_quantity, p.product_id, i.product_img, c.user_id, c.cart_id, c.cart_quantity
-		from t_product p join t_cart c
-			on p.product_id = c.product_id
-				join t_product_img i
-					on p.product_id = i.product_id
-		where c.user_id = '${user_id}'
-		order by c.cart_id asc
+		SELECT p.product_name, p.product_price, p.product_quantity, p.product_id, i.product_img, c.user_id, c.cart_id, c.cart_quantity
+		FROM t_product p JOIN t_cart c
+			ON p.product_id = c.product_id
+				JOIN t_product_img i
+					ON p.product_id = i.product_id
+		WHERE c.user_id = '${user_id}'
+		ORDER BY c.cart_id ASC
 	</select>
 	
 	<delete id="delCart" parameterType="MemberDTO">
-		delete
-		from t_cart
-		where user_id = #{user_id}
+		DELETE
+		FROM t_cart
+		WHERE user_id = #{user_id}
 	</delete>
 	
 	<insert id="orderInsert" parameterType="MemberDTO">
 
-		insert into t_order (order_id, user_id, order_date, total_price, post, address1, address2, address_detail)
-		values(order_seq.nextval, #{user_id}, sysdate, #{total_price}, #{post}, #{address1}, #{address2}, #{address_detail})
+		INSERT INTO t_order (order_id, user_id, order_date, total_price, post, address1, address2, address_detail)
+		VALUES(order_seq.nextval, #{user_id}, sysdate, #{total_price}, #{post}, #{address1}, #{address2}, #{address_detail})
 
 		<selectKey keyProperty="order_id" resultType="int" order="AFTER">
 			SELECT order_seq.CURRVAL AS id FROM DUAL
@@ -34,8 +34,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<insert id="orderDetailInsert" parameterType="OrderDTO">
-		insert into t_order_detail
-		values( order_detail_seq.nextval, #{order_id},#{product_id},#{order_quantity})
+		INSERT INTO t_order_detail
+		VALUES( order_detail_seq.nextval, #{order_id},#{product_id},#{order_quantity})
 	</insert>
 
 

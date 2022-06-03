@@ -92,6 +92,11 @@ margin:auto;
 						$("#cart_quantity").val(parseInt(count) - 1);
 					}
 				}); */
+				
+				function numberWithCommas(x) {
+				    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				}
+			
 
 				//수정버튼이벤트 처리 
 				$(".updateBtn").on("click", function() {
@@ -101,6 +106,8 @@ margin:auto;
 									.val();
 							var product_price = $(this).attr("data-price");
 							console.log(cart_id, cart_quantity, product_price);
+							
+							
 							$.ajax({
 								url : "loginCheck/cartUpdate",
 								type : "get",
@@ -113,9 +120,8 @@ margin:auto;
 
 									var total = parseInt(cart_quantity)
 											* parseInt(product_price);
-									//var fomattotal = total.toString()
-									//  .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-									$("#sum" + cart_id).text(total);
+																		
+									$("#sum" + cart_id).text(numberWithCommas(total));
 									totalXXX(); /// 총합 다시 구하기 
 									//location.reload();
 								},
@@ -128,28 +134,38 @@ margin:auto;
 				function totalXXX() { //총합을 구하는 함수 
 					var totalSum = 0;
 					$(".sum").each(function(idx, data) {//idx, element
-						totalSum += parseInt($(data).text());
+						
+						numberStr = $(data).text(); //,붙어있는 상태
+						const number = numberStr.split(',').join(""); //,제거하고 조인에서 숫자 붙이고
+						totalSum += parseInt(number);
 					    console.log($(data).text());
 					});
 					
-					$("#subTotal").text(totalSum);
+					console.log(totalSum);
+					
+					$("#subTotal").text(numberWithCommas(totalSum));
 					
 					// 20,000 미만일 경우 배송료 2,000 
 					// 20,000 이상일경우 배송료 0 
-					if( totalSum < 20000)
-						$("#shipping").text("2000");
+					if(totalSum == 0)  //0일때부터 먼저 처리
+						$("#shipping").text("0"); 
+					else if( totalSum < 20000)
+						$("#shipping").text("2,000");
 					else
 						$("#shipping").text("0");
 					
 					
-					//session.setAttribute("shipping", $("#shipping").text());
-					//$.session.set("shipping", $("#shipping").text());
-					//var shipping =$.session.get("shipping");
-					//request.getSession().setAttribute("shipping", $("#shipping").text());
-					//console.log("shipping = " + shipping);
+					shippingStr = $("#shipping").text();
+					const number = shippingStr.split(',').join("");
+					totalSum += parseInt(number); 
 					
-					totalSum += parseInt($("#shipping").text()); 
-					$("#totalSum").text(totalSum);
+					$("#totalSum").text(numberWithCommas(totalSum));
+					
+					if(totalSum == 0){
+						$("#cartTotalSummary").text("");
+						$("#cartBody").text("");
+						$("#cartBody").text("장바구니에 담은 상품이 없습니다.");
+					}
 				}
 					
 					
@@ -180,12 +196,12 @@ margin:auto;
 <body>
 
 
-	<c:if test="${!empty mesg }">
+<%-- 	<c:if test="${!empty mesg }">
 		<script>
 			//session.removeAttribute("mesg");
 			alert("${mesg} 상품을 장바구니에 담았습니다.");
 		</script>
-	</c:if>
+	</c:if> --%>
 
 	<div class="home-wrapper home-3">
 		<!-- Header Area Start Here -->
@@ -526,6 +542,7 @@ margin:auto;
 									</tr>
 								</thead>
 								<tbody>
+									
 									<c:forEach var="cart" items="${cartList}" varStatus="status">
 										<tr>
 											<td class="pro-thumbnail"><a href="./#"><img
@@ -549,43 +566,55 @@ margin:auto;
 											</td>
 
 
-
+<%-- <fmt:formatNumber value="${cart.product_price}" /> --%>
 											<td class="pro-subtotal"><span class="sum"
-												id="sum${cart.cart_id}"> ${cart.product_price * cart.cart_quantity}
+												id="sum${cart.cart_id}"> <fmt:formatNumber value="${cart.product_price * cart.cart_quantity}"/>
 											</span> &nbsp; <input type="button" value="수정" class="updateBtn"
 												data-num="${cart.cart_id}"
 												data-price="${cart.product_price}" /></td>
 
 
-											<td class="pro-remove" data-num="${cart.cart_id}"><a
-												href="./#;"><i class="ion-trash-b"></i></a></td>
+											<td class="pro-remove" data-num="${cart.cart_id}"><i class="ion-trash-b"></i></td>
 										</tr>
 
 									</c:forEach>
+									
 								</tbody>
 
 
 							</table>
+							<br>
+							<br>
+							
+							<div>
+								
+								<br>
+									<h5><p style="text-align: center;" id="cartBody"></p></h5>
+								<br>
+								
+							</div>
 						</div>
 						<!-- Cart Update Option -->
-						<div
-							class="cart-update-option d-block d-md-flex justify-content-between">
-							<div class="apply-coupon-wrapper">
-								<!--                                 <form action="#" method="post" class=" d-block d-md-flex">
+							<!-- <div class="cart-update-option d-block d-md-flex justify-content-between">
+							
+						<div class="apply-coupon-wrapper">
+								                                <form action="#" method="post" class=" d-block d-md-flex">
                                     <input type="text" placeholder="Enter Your Coupon Code" required />
                                     <button class="btn obrien-button primary-btn">Apply Coupon</button>
-                                </form> -->
+                                </form> 
 							</div>
-							<!--  <div class="cart-update mt-sm-16">
+							 <div class="cart-update mt-sm-16">
                                 <a href="./#" class="btn obrien-button primary-btn">Update Cart</a>
-                            </div> -->
-						</div>
+                            </div>
+						</div> -->
 					</div>
 				</div>
+				
+				
 				<div class="row">
 					<div class="col-lg-5 ml-auto">
 						<!-- Cart Calculation Area -->
-						<div class="cart-calculator-wrapper">
+						<div class="cart-calculator-wrapper" id="cartTotalSummary">
 							<div class="cart-calculate-items">
 								<h3>장바구니</h3>
 								<div class="table-responsive">
@@ -597,7 +626,7 @@ margin:auto;
 										</tr>
 										<tr>
 											<td>배송비</td>
-											<td id="shipping">1000</td>
+											<td id="shipping"></td>
 										</tr>
 										<tr class="total">
 											<td>합계</td>
@@ -606,6 +635,7 @@ margin:auto;
 									</table>
 								</div>
 							</div>
+							
 							<button id="orderConfirm" 
 								class="btn obrien-button primary-btn d-block">구매하기</button>
 						</div>
@@ -706,9 +736,9 @@ margin:auto;
 								<h2 class="widget-title">Support</h2>
 								<ul class="widget-list">
 									<li><a href="./contact-us.html">Online Support</a></li>
-									<li><a href="./contact-us.html">Shipping Policy</a></li>
-									<li><a href="./contact-us.html">Return Policy</a></li>
-									<li><a href="./contact-us.html">Privacy Policy</a></li>
+								<li><a href="./policyForm">Shipping Policy</a></li>
+								<li><a href="./policyForm">Return Policy</a></li>
+								<li><a href="./policyForm">Privacy Policy</a></li>
 									<li><a href="./contact-us.html">Terms of Service</a></li>
 								</ul>
 							</div>

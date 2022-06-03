@@ -29,6 +29,14 @@ public class OrderService {
 		List<OrderDTO> olist = odao.myAccount(dto);
 		return olist;
 	}
+	public List<CartDTO> lastOrderCartList(MemberDTO mDTO) {
+		List<CartDTO> list = odao.lastOrderCartList(mDTO);
+		return list;
+	}
+	public void DirectOrderDone(List<CartDTO> clist, MemberDTO mDTO) {
+		odao.orderDone(clist, mDTO); 
+		odao.DirectDelCart(clist, mDTO);
+	}
 	
 
 }

@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="./assets/css/plugins/magnific-popup.css">
 
 <!-- Vendor & Plugins CSS (Please remove the comment from below vendor.min.css & plugins.min.css for better website load performance and remove css files from the above) -->
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script> 
 <!-- <link rel="stylesheet" href="./assets/css/vendor/vendor.min.css">
     <link rel="stylesheet" href="./assets/css/plugins/plugins.min.css"> -->
 
@@ -67,9 +67,15 @@
 				},
 				success : function(data, status, xhr) {
 					console.log("success");
+					console.log("data"+data);
+					console.log("status"+status);
 
 					//dom삭제 
-					xxx.parents().filter("tr").remove();
+					xxx.parents().filter("tr").remove(); //tr태그 삭제해서 항목 지우기
+					if(data == 0){ //size넘긴값 0일때 나오게하려고
+						$("#wishBody").text("");
+						$("#wishBody").text("위시리스트에 담긴 상품이 없습니다.");
+					}
 
 				},
 				error : function(xhr, status, error) {
@@ -78,7 +84,6 @@
 			});
 		});//end event
 
-
 	});
 </script>
 
@@ -86,12 +91,12 @@
 
 <body>
 
-	<c:if test="${!empty mesg }">
+<%-- 	<c:if test="${!empty mesg }">
 		<script>
 			//session.removeAttribute("mesg");
 			alert("${mesg} 상품을 위시리스트에 담았습니다.");
 		</script>
-	</c:if>
+	</c:if> --%>
 
 	
 	<div class="contact-wrapper">
@@ -443,16 +448,23 @@
 
 											
 											 <td class="pro-cart"><a href ="./loginCheck/wishCartadd?product_id=${wish.product_id}">
-											 Add to Cart</a></td> 
+											 장바구니에 담기</a></td> 
+<%-- 											 <td class="pro-cart"><a href ="./loginCheck/wishCartadd?product_id=${wish.product_id}" class="btn obrien-button primary-btn text-uppercase">
+											 장바구니에 담기</a></td>  --%>
 										
 
-											<td class="pro-remove" data-num="${wish.wish_id}"><a
-												href="./#;"><i class="ion-trash-b"></i></a></td>
+											<td class="pro-remove" data-num="${wish.wish_id}"><i class="ion-trash-b"></i></a></td>
 										</tr>
 
 									</c:forEach>
 								</tbody>
 							</table>
+							
+						</div>
+							<br>
+							<br>
+						<div>
+							<h5><p style="text-align: center;" id="wishBody"></p></h5>
 						</div>
 					</div>
 				</div>
@@ -552,9 +564,9 @@
 								<h2 class="widget-title">Support</h2>
 								<ul class="widget-list">
 									<li><a href="./contact-us.html">Online Support</a></li>
-									<li><a href="./contact-us.html">Shipping Policy</a></li>
-									<li><a href="./contact-us.html">Return Policy</a></li>
-									<li><a href="./contact-us.html">Privacy Policy</a></li>
+									<li><a href="./policyForm">Shipping Policy</a></li>
+									<li><a href="./policyForm">Return Policy</a></li>
+									<li><a href="./policyForm">Privacy Policy</a></li>
 									<li><a href="./contact-us.html">Terms of Service</a></li>
 								</ul>
 							</div>

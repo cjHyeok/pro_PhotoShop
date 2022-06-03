@@ -89,7 +89,10 @@ public class ProductController {
 		System.out.println("/productDetails product_id 2== "+ rlist);
 
 		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("ReviewCount", rlist.size());
 		mav.addObject("ReviewList", rlist);
+		
 		mav.addObject("productDetails", pdto);
 		mav.setViewName("productDetails");
 
@@ -194,13 +197,13 @@ public class ProductController {
 	@RequestMapping("/productModify") // 상품 수정 페이지 
 	@ModelAttribute("productModify")
 	public ModelAndView productModify(@RequestParam Map<String, String> map) {
-		System.out.println("productModify map 1==" + map);
+		System.out.println("productModify  controller  map 1==" + map);
 
 		ProductDTO modto = pservice.productDetails(map);
-		System.out.println("modto pD =" + modto);
+		System.out.println("/productModify controller  modto pD =" + modto);
 		
 		List<ProductCategoryDTO> clist = pservice.category_List(); //선택 박스 리스트 나오게 하는거
-		System.out.println("/productModify clist==" + clist);
+		System.out.println("/productModify controller  clist==" + clist);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("category_List", clist);

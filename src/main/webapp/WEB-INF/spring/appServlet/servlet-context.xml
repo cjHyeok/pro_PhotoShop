@@ -15,6 +15,7 @@
 <mvc:view-controller path="/" view-name="index"/>
 <mvc:view-controller path="/loginForm" view-name="loginForm"/>
 <mvc:view-controller path="/memberForm" view-name="memberForm"/>
+<mvc:view-controller path="/welcomeForm" view-name="welcomeForm"/>
 
 <mvc:view-controller path="/myAccount" view-name="myAccount"/>
 
@@ -30,10 +31,12 @@
 <mvc:view-controller path="/aboutUs" view-name="aboutUs"/>
 <mvc:view-controller path="/contactUs" view-name="contactUs"/>
 <mvc:view-controller path="/faqForm" view-name="faqForm"/>
+<mvc:view-controller path="/policyForm" view-name="policyForm"/>
 
 <!-- <mvc:view-controller path="/productForm" view-name="productForm"/> -->
 <mvc:view-controller path="/productModify" view-name="productModify"/>
 <mvc:view-controller path="/productItem" view-name="productItem"/>
+
 
 
 

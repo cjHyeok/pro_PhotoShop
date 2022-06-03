@@ -9,12 +9,16 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <meta charset="utf-8">
-<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta http-equiv="x-ua-compatible" content="ie=edge"> 
 <title>WOOM 에 오신걸 환영합니다. -> WOOM !</title>
-<meta name="robots" content="noindex, follow" />
+<!-- <meta name="robots" content="noindex, follow" />
 <meta name="description" content="">
 <meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+<meta property="og:image"   content="http://um-woom.shop/goods/assets/images/logo/logo.png" />
+<meta property="og:title"   content="Woom!" />
+<meta property="og:description"   content="WOOM에 오신걸 환영합니다." />
+
 <!-- Favicon -->
 <link rel="shortcut icon" type="image/x-icon"
 	href="./assets/images/icon1.png">
@@ -47,14 +51,30 @@
 <link rel="stylesheet" href="./assets/css/style.css">
 <!-- <link rel="stylesheet" href="./assets/css/style.min.css"> -->
 </head>
+<script type="text/javascript">
+	$(function() {
 
+		$("#cart").on("click", function() {
+			/* var count = $("#cart_quantity").val();
+			console.log(count); */
+			$("form").attr("action", "loginCheck/cartAdd")
+
+		})
+
+		$("#wish").on("click", function() {
+
+			$("form").attr("action", "loginCheck/wishAdd")
+
+		})
+	});
+		</script>
 <body>
-	<c:if test="${!empty success }">
+<%-- 	<c:if test="${!empty success }">
 		<!-- 회원가입성공메세지 -->
 		<script>
 			alert('${success}');
 		</script>
-	</c:if>
+	</c:if> --%>
 
 
 
@@ -139,15 +159,19 @@
 										<ul class="nav">
 											<li class="login-register-wrap d-none d-xl-flex"><c:choose>
 													<c:when test="${!empty login }"> &nbsp;&nbsp; <!-- 확인용 -->
-														<div
-															style="font-size: 15px; line-height: 1.6; font-weight: 600; color: #303030;">
+														<div style="font-size: 15px; line-height: 1.6; font-weight: 600; color: #303030;">
 
 															<a href="./myAccount"> ${login.user_name } 님 </a>
 
 
 														</div>
 														<span><a href="./loginCheck/logout">로그아웃</a></span>
-														&nbsp;&nbsp;
+														<span><a href="./faqForm">faq</a></span>
+														
+														&nbsp;&nbsp;&nbsp;
+														
+														
+														<!-- 장바구니 미니 시작 -->
 														<li class="minicart-wrap"><a href="./#"
 															class="minicart-btn toolbar-btn"> <i class="ion-bag"></i>
 																<span class="cart-item_count">3</span>
@@ -225,12 +249,22 @@
 																		cart</a> <a class="obrien-button white-btn"
 																		href="./checkout.html">Checkout</a>
 																</div>
-															</div></li>
+															</div>
+															
+															</li>
+															&nbsp;&nbsp;
+															
+															<!-- 장바구니 미니 끝 -->
+														
 													</c:when>
 													<c:otherwise>
 														<span><a href="./loginForm">로그인</a></span>
 														<span><a href="./memberForm">회원가입</a></span>
-
+														
+														<span><a href="./faqForm">faq</a></span>
+														
+														
+														
 													</c:otherwise>
 												</c:choose></li> &nbsp;&nbsp;
 
@@ -363,7 +397,7 @@
 								<a title="Facebook-f" href="./#"><i class="fa fa-facebook-f"></i></a>
 								<a title="Instagram" href="https://www.instagram.com/nada_u.m/"><i
 									class="fa fa-instagram"></i></a>
-
+								
 
 							</div>
 						</div>
@@ -375,7 +409,7 @@
 		</header>
 		<!-- Header Area End Here -->
 		<!-- Begin Slider Area One -->
-		<div class="slider-area">
+		<div class="slider-area" >
 			<div class="obrien-slider arrow-style"
 				data-slick-options='{
         "slidesToShow": 1,
@@ -398,7 +432,7 @@
         ]'>
 				<div
 					class="slide-item slide-1 bg-position slide-bg-2 animation-style-01"
-					style="height: 600px;">
+					>
 					<div class="slider-content">
 						<h4 class="slider-small-title">Organic Products</h4>
 						<h2 class="slider-large-title">Life with Beauty</h2>
@@ -410,7 +444,7 @@
 				</div>
 				<div
 					class="slide-item slide-4 bg-position slide-bg-2 animation-style-01"
-					style="height: 600px;">
+					>
 					<div class="slider-content">
 						<h4 class="slider-small-title">Cold process organic</h4>
 						<h2 class="slider-large-title">Superior skin care</h2>
@@ -501,7 +535,7 @@
 
 		<!-- productlist-=------------------------------------ -->
 
-		<div class="row shop_wrapper grid_4">
+		<div class="row shop_wrapper grid_4" style="padding: 0px 100px 0px 100px;">
 			<c:forEach var="dto" items="${productList}" varStatus="status">
 
 				<div class="col-lg-3 col-md-6 col-sm-6 col-custom product-area">
@@ -533,14 +567,10 @@
 							</div>
 						</div>
 						<div class="add-action d-flex position-absolute">
-							<a href="./cartList" title="Add To cart"> <i class="ion-bag"></i>
-							</a> <a href="./compare.html" title="Compare"> <i
-								class="ion-ios-loop-strong"></i>
-							</a> <a href="./wishlist.html" title="Add To Wishlist"> <i
-								class="ion-ios-heart-outline"></i>
-							</a> <a href="./#exampleModalCenter" data-bs-toggle="modal"
-								title="Quick View"> <i class="ion-eye"></i>
-							</a>
+							<a href="./cartList" id="cart"title="Add To cart"> <i class="ion-bag"></i></a>  
+							<a href="./wishlist.html" title="Add To Wishlist"> <i class="ion-ios-heart-outline"></i></a> 
+							<a href="./productDetails?product_id=${dto.product_id}" data-bs-toggle="modal" title="Quick View"> 
+							<i class="ion-eye"></i></a>
 						</div>
 						<%-- <div class="product-content-listview">
 							<div class="product-rating">
@@ -713,9 +743,9 @@
 							<h2 class="widget-title">Support</h2>
 							<ul class="widget-list">
 								<li><a href="./contactUs">Online Support</a></li>
-								<li><a href="./contactUs">Shipping Policy</a></li>
-								<li><a href="./contactUs">Return Policy</a></li>
-								<li><a href="./contactUs">Privacy Policy</a></li>
+								<li><a href="./policyForm">Shipping Policy</a></li>
+								<li><a href="./policyForm">Return Policy</a></li>
+								<li><a href="./policyForm">Privacy Policy</a></li>
 								<li><a href="./contactUs">Terms of Service</a></li>
 							</ul>
 						</div>

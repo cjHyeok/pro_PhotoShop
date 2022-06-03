@@ -32,10 +32,10 @@ public class MemberController {
 	@RequestMapping(value = "/memberAdd", method = RequestMethod.POST)
 	
 	public String memberAdd(MemberDTO m, Model model) {  //회원가입
-		System.out.println("m =" + m);
+		System.out.println("/memberAdd\" controller m =" + m);
 		mservice.memberAdd(m);
-		model.addAttribute("success", "회원 가입 성공"); //index.jsp 확인
-		return "index";
+		//model.addAttribute("success", "회원 가입 성공"); //index.jsp 확인
+		return "welcomeForm";
 	}
 	
 	 
@@ -62,10 +62,10 @@ public class MemberController {
 			MemberDTO dto = (MemberDTO) session.getAttribute("login");
 
 			String user_id = dto.getUser_id();
-			System.out.println(" /loginCheck/myAccount user_id ====" + user_id);
+			System.out.println(" /loginCheck/myAccount controller user_id ====" + user_id);
 
 			List<OrderDTO> olist =oservice.myAccount(dto);
-			System.out.println("orderList===" + olist);
+			System.out.println("/myAccount  controller  orderList===" + olist);
 
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("orderList", olist);
@@ -83,7 +83,7 @@ public class MemberController {
 			
 			
 			mservice.memberUpdate(mdto);
-			System.out.println(" /memberUpda ====" + mdto);
+			System.out.println(" /memberUpdate  controller ====" + mdto);
 			session.setAttribute("login", mdto);
 			session.setAttribute("mesg", "비밀번호가 변경되었습니다.");
 			

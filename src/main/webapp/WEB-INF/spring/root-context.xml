@@ -29,6 +29,7 @@
 			<value>classpath:com/config/CartMapper.xml</value>
 			<value>classpath:com/config/WishMapper.xml</value>
 			<value>classpath:com/config/ReviewMapper.xml</value>
+			<value>classpath:com/config/DirectOrderMapper.xml</value>
 			
 		</list>
 	</property>
