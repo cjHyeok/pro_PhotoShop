@@ -25,4 +25,9 @@ public class ReviewService {
 		
 	}
 
+	public void reviewWriteAction(ReviewDTO r) {
+		rdao.reviewWriteAction(r);
+		
+	}
+
 }

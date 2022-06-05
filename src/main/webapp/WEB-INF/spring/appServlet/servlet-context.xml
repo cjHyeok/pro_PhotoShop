@@ -32,6 +32,10 @@
 <mvc:view-controller path="/contactUs" view-name="contactUs"/>
 <mvc:view-controller path="/faqForm" view-name="faqForm"/>
 <mvc:view-controller path="/policyForm" view-name="policyForm"/>
+<mvc:view-controller path="/reviewWrite" view-name="reviewWrite"/>
+<mvc:view-controller path="/reviewDone" view-name="reviewDone"/>
+
+
 
 <!-- <mvc:view-controller path="/productForm" view-name="productForm"/> -->
 <mvc:view-controller path="/productModify" view-name="productModify"/>

@@ -11,10 +11,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 
 
-	<select id="login" parameterType="hashmap" resultType="MemberDTO">
+	<select id="login" parameterType="MemberDTO" resultType="MemberDTO">
 		SELECT user_id, user_pw, user_name, email, phone, post, address1, address2, address_detail, role
 		FROM t_member
-		WHERE email = #{email} and user_pw = #{user_pw}
+		WHERE user_id = #{user_id} and user_pw = #{user_pw}
 	</select>
 	
 	<select id="idDuplicatedCheck" parameterType="string" resultType="MemberDTO">
@@ -29,7 +29,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE user_id = #{user_id}
 		
 	</select>
-	<select id="myAccount" parameterType="MemberDTO" resultType="OrderDTO"> <!-- 최근 주문 나오도록 -->
+	
+	<select id="myAccountOrderList" parameterType="MemberDTO" resultType="OrderDTO"> <!-- 최근 주문 나오도록 -->
 	SELECT  LAST.*
 	FROM    (SELECT ROWNUM RNUM,
                 TEMP.*   
@@ -55,4 +56,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			
 		WHERE user_id= #{user_id}
 	</update>
+	
+	<select id="productReview" parameterType="MemberDTO" resultType="ReviewDTO">
+	select  m.user_id, m.user_name,o.order_date, TO_CHAR(TO_DATE(o.order_date,'YYYY-MM-DD') + 7, 'YY/MM/DD') AS writeday, o.order_id, o.order_state, od.product_id, p.product_name, i.product_img 
+                    from t_member m join t_order o on m.user_id = o.user_id
+                                    join t_order_detail od on od.order_id = o.order_id
+                                     join t_product p  on p.product_id = od.product_id
+                                     join t_product_img i on p.product_id = i.product_id
+                                     
+                    where m.user_id = #{user_id}
+                    and o.order_date >= TO_CHAR(SYSDATE-1,'YYYYMMDD')
+    </select>
 </mapper>

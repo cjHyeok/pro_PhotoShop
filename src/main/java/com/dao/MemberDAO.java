@@ -19,8 +19,8 @@ public class MemberDAO {
 		
 	}
 
-	public MemberDTO login(Map<String, String> map) {
-		MemberDTO mdto = template.selectOne("MemberMapper.login", map);
+	public MemberDTO login(MemberDTO memberDto) {
+		MemberDTO mdto = template.selectOne("MemberMapper.login", memberDto);
 		return mdto;
 	}
 

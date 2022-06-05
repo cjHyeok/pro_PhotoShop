@@ -9,6 +9,7 @@ import com.dao.OrderDAO;
 import com.dto.CartDTO;
 import com.dto.MemberDTO;
 import com.dto.OrderDTO;
+import com.dto.ReviewDTO;
 
 @Service
 public class OrderService {
@@ -25,8 +26,8 @@ public class OrderService {
 		odao.delCart(mDTO); 
 	}
 	
-	public List<OrderDTO> myAccount(MemberDTO dto) {
-		List<OrderDTO> olist = odao.myAccount(dto);
+	public List<OrderDTO> myAccountOrderList(MemberDTO dto) {
+		List<OrderDTO> olist = odao.myAccountOrderList(dto);
 		return olist;
 	}
 	public List<CartDTO> lastOrderCartList(MemberDTO mDTO) {
@@ -36,6 +37,10 @@ public class OrderService {
 	public void DirectOrderDone(List<CartDTO> clist, MemberDTO mDTO) {
 		odao.orderDone(clist, mDTO); 
 		odao.DirectDelCart(clist, mDTO);
+	}
+	public List<ReviewDTO> productReview(MemberDTO dto) {
+		List<ReviewDTO> rlist = odao.productReview(dto);
+		return rlist;
 	}
 	
 

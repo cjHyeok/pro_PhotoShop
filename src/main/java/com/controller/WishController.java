@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -29,7 +30,7 @@ public class WishController {
 	
 	@Autowired
 	CartService cservice;
-
+/*
 	@RequestMapping("/loginCheck/wishAdd") //위시리스트에 추가
 	public String wishAdd(WishDTO wish, HttpSession session) {
 		System.out.println("/loginCheck/wishAdd  controller  위시리스트에 추가 ==" + wish);
@@ -44,7 +45,28 @@ public class WishController {
 		return "redirect:../wishList";
 
 	}
+*/
+	
+	@RequestMapping(value ="/loginCheck/wishAdd", method = RequestMethod.POST) // 리뷰 쓰기
+	public  @ResponseBody String wishAdd(@RequestParam Map<String, String> map, HttpSession session) {
+		System.out.println("/loginCheck/wishAdd controller map 1==" + map);
 
+		MemberDTO mDTO = (MemberDTO) session.getAttribute("login");
+		
+		WishDTO wish = new WishDTO();
+		wish.setUser_id(mDTO.getUser_id()); 
+		wish.setProduct_id(map.get("product_id"));
+		 
+		if (!wservice.wishCheck(wish))
+			wservice.wishAdd(wish);
+ 
+
+		System.out.println("/loginCheck/wishAdd controller wish=="+wish);
+		return "true";
+		
+	}
+	
+	
 	@RequestMapping("/loginCheck/wishCartadd") //위시리스트에 추가
 	public String wishCartadd(@RequestParam("product_id") String product_id, HttpSession session) {
 	
@@ -58,20 +80,11 @@ public class WishController {
 		System.out.println("/loginCheck/wishAdd  controller  위시리스트에서 카트 userid ==" + mDTO.getUser_id());
 		cservice.wishCartadd(product_id, mDTO.getUser_id());
 
-		/*
-		 * List<CartDTO> clist = cservice.cartList(mDTO);
-		 * System.out.println("cartList===" + clist);
-		 * 
-		 * ModelAndView mav = new ModelAndView(); mav.addObject("cartList", clist);
-		 * mav.setViewName("cartList");
-		 * 
-		 * return mav;
-		 */
+		
 		return "redirect:../cartList";
 	}
 	
 
-	
 	
 	
 	@RequestMapping("/wishList")  //리스트 출력

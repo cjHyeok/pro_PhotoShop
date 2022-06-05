@@ -32,6 +32,11 @@ public class WishService {
 		wdao.wishDelete(list);
 		
 	}
+
+	public boolean wishCheck(WishDTO wish) {
+		return wdao.wishCheck(wish);
+		
+	}
 	
 	
 	

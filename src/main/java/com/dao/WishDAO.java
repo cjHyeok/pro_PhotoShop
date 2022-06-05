@@ -33,5 +33,13 @@ public class WishDAO {
 		
 	}
 
+	public boolean wishCheck(WishDTO wish) {
+		List<WishDTO> wlist = template.selectList("WishMapper.wishCheck", wish);
+		if(wlist.size() > 0) {
+			return true;
+		}
+		return false;
+	}
+
 
 }

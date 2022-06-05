@@ -1,7 +1,16 @@
 package com.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.InvalidParameterSpecException;
 import java.util.List;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +26,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.dto.CartDTO;
 import com.dto.MemberDTO;
 import com.dto.OrderDTO;
+import com.dto.ReviewDTO;
 import com.service.MemberService;
 import com.service.OrderService;
 
@@ -30,10 +40,27 @@ public class MemberController {
 	OrderService oservice;
 	
 	@RequestMapping(value = "/memberAdd", method = RequestMethod.POST)
-	
 	public String memberAdd(MemberDTO m, Model model) {  //회원가입
 		System.out.println("/memberAdd\" controller m =" + m);
+		 
+			
+			String encrypted;
+				try {
+					encrypted = CryptoUtil.md5(m.getUser_pw());
+					System.out.println("AES-256 : enc - " + encrypted);
+					
+					m.setUser_pw(encrypted);
+					
+				} catch (NoSuchAlgorithmException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				 
+		
 		mservice.memberAdd(m);
+		
+		
 		//model.addAttribute("success", "회원 가입 성공"); //index.jsp 확인
 		return "welcomeForm";
 	}
@@ -64,16 +91,23 @@ public class MemberController {
 			String user_id = dto.getUser_id();
 			System.out.println(" /loginCheck/myAccount controller user_id ====" + user_id);
 
-			List<OrderDTO> olist =oservice.myAccount(dto);
+			List<OrderDTO> olist =oservice.myAccountOrderList(dto);
 			System.out.println("/myAccount  controller  orderList===" + olist);
 
+			List<ReviewDTO> rlist = oservice.productReview(dto);
+			System.out.println("/myAccount controller  productReview===" + rlist);
+			
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("orderList", olist);
+			mav.addObject("productReview", rlist);
 			mav.setViewName("myAccount");
 
 			return mav;
 
 		}
+		
+		
+		
 		
 		
 		@RequestMapping(value = "/memberUpdate" , method=RequestMethod.POST) // 회원정보수정

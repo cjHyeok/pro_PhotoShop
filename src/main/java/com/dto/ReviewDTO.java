@@ -18,4 +18,8 @@ public class ReviewDTO {
 	private String review_content;
 	private int review_like;
 	private String product_name;
+	private int order_id;
+	private String product_img;
+	private Date order_date;
+	private String writeday;
 }

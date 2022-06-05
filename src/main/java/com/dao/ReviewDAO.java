@@ -26,4 +26,9 @@ public class ReviewDAO {
 		
 	}
 
+	public void reviewWriteAction(ReviewDTO r) {
+		int n = template.insert("ReviewMapper.reviewWriteAdd", r);
+		
+	}
+
 }

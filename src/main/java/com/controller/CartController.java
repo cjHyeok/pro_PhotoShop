@@ -8,7 +8,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -17,7 +20,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dto.CartDTO;
 import com.dto.MemberDTO;
+import com.dto.ProductDTO;
 import com.service.CartService;
+import com.service.ProductService;
 
 @Controller
 public class CartController {
@@ -25,7 +30,10 @@ public class CartController {
 	@Autowired
 	CartService cservice;
 
-	@RequestMapping("/loginCheck/cartAdd") // 카트에 추가
+	@Autowired
+	ProductService pservice;
+
+	/*@RequestMapping("/loginCheck/cartAdd") // 카트에 추가
 	public String cartAdd(CartDTO cart, HttpSession session) {
 		System.out.println("/loginCheck/cartAdd controller cart ==" + cart);
 
@@ -38,6 +46,55 @@ public class CartController {
 
 		return "redirect:../cartList";
 
+	}*/
+	
+	@RequestMapping(value ="/loginCheck/cartAdd", method = RequestMethod.POST) 
+	public  @ResponseBody String cartAdd(@RequestParam Map<String, String> map, HttpSession session) {
+		System.out.println("/loginCheck/cartAdd controller map 1==" + map);
+
+		MemberDTO mDTO = (MemberDTO) session.getAttribute("login");
+		
+		CartDTO cart = new CartDTO();
+		cart.setUser_id(mDTO.getUser_id());
+		
+		
+		cart.setProduct_img( map.get("product_img") );
+		cart.setProduct_name(map.get("product_name"));
+		cart.setProduct_description_summary(map.get("product_description_summary"));
+		cart.setProduct_id(map.get("product_id")); 
+		cart.setCart_quantity(Integer.parseInt(map.get("cart_quantity")));
+
+		cservice.cartAdd(cart); 
+
+		System.out.println("/loginCheck/cartAdd controller cart=="+cart);
+		return "true";
+		
+	}
+	
+	
+	@RequestMapping(value ="/loginCheck/cartAddDirect", method = RequestMethod.GET)  
+	public  @ResponseBody String cartAddDirect(@RequestParam Map<String, String> map, HttpSession session) {
+		System.out.println("/loginCheck/cartAddDirect controller map 1==" + map);
+		
+		MemberDTO mDTO = (MemberDTO) session.getAttribute("login");
+		
+		CartDTO cart = new CartDTO();
+		cart.setUser_id(mDTO.getUser_id());
+		cart.setProduct_id(map.get("product_id")); 
+		
+		ProductDTO pdto = pservice.productDetails(map);
+		
+		cart.setProduct_img( pdto.getProduct_img() );
+		cart.setProduct_name(pdto.getProduct_name());
+		cart.setProduct_description_summary(pdto.getProduct_description_summary());
+		
+		cart.setCart_quantity(1);
+		
+		cservice.cartAdd(cart); 
+		
+		System.out.println("/loginCheck/cartAddDirect controller cart=="+cart);
+		return "true";
+		
 	}
 
 	@RequestMapping("/cartList") // 장바구니

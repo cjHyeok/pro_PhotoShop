@@ -5,12 +5,15 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.dto.MemberDTO;
 import com.dto.ProductDTO;
 import com.dto.ReviewDTO;
 import com.service.ProductService;
@@ -18,8 +21,10 @@ import com.service.ReviewService;
 
 @Controller
 public class ReviewController {
+	
 	@Autowired
 	ReviewService rservice;
+	
 	@Autowired
 	ProductService pservice;
 
@@ -85,4 +90,32 @@ public class ReviewController {
 
 		return retData;
 	}
+	
+	
+	@RequestMapping("/reviewWrite") // 리뷰 쓰기
+	@ModelAttribute("reviewWrite")
+	public ModelAndView reviewWrite(@RequestParam Map<String, String> map) {
+		System.out.println("reviewWrite controller map 1==" + map);
+
+		ProductDTO pdto = pservice.productDetails(map);
+		System.out.println("reviewWrite controller pD =" + pdto);
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("productDetails", pdto);
+		mav.addObject("order_id", map.get("order_id"));//맵안 order_id 가져오기
+		mav.setViewName("reviewWrite");
+
+		return mav;
+		
+	}
+	
+	@RequestMapping(value = "/reviewWriteAction", method = RequestMethod.POST)
+	public String reviewWriteAction(ReviewDTO r) { 
+		System.out.println("reviewWriteAction controller m =" + r);
+		
+		rservice.reviewWriteAction(r);
+		
+		return "reviewDone";
+	}	
 }

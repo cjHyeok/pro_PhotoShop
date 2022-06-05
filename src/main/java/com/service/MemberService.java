@@ -19,8 +19,8 @@ public class MemberService {
 		
 	}
 
-	public MemberDTO login(Map<String, String> map) { //로그인
-		MemberDTO dto = mdao.login(map);
+	public MemberDTO login(MemberDTO memberDto) { //로그인
+		MemberDTO dto = mdao.login(memberDto);
 		return dto;
 	}
 

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.dto.CartDTO;
 import com.dto.MemberDTO;
 import com.dto.OrderDTO;
+import com.dto.ReviewDTO;
 
 @Repository
 public class OrderDAO {
@@ -55,8 +56,8 @@ public class OrderDAO {
 	}
 
 	
-	public List<OrderDTO> myAccount(MemberDTO dto) {
-		List<OrderDTO> olist = template.selectList("MemberMapper.myAccount", dto);
+	public List<OrderDTO> myAccountOrderList(MemberDTO dto) {
+		List<OrderDTO> olist = template.selectList("MemberMapper.myAccountOrderList", dto);
 		return olist;
 	}
 
@@ -73,6 +74,11 @@ public class OrderDAO {
 			
 		}	
 		int n = template.delete("DirectOrderMapper.DirectDelCart", cDto.getCart_id());
+	}
+
+	public List<ReviewDTO> productReview(MemberDTO dto) {
+		List<ReviewDTO> rlist = template.selectList("MemberMapper.productReview", dto);
+		return rlist;
 	}
 
 }
