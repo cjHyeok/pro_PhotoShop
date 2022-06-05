@@ -11,10 +11,7 @@
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge"> 
 <title>WOOM 에 오신걸 환영합니다. -> WOOM !</title>
-<!-- <meta name="robots" content="noindex, follow" />
-<meta name="description" content="">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+
 <meta property="og:image"   content="http://um-woom.shop/goods/assets/images/logo/logo.png" />
 <meta property="og:title"   content="Woom!" />
 <meta property="og:description"   content="WOOM에 오신걸 환영합니다." />
@@ -42,32 +39,66 @@
 <!-- Magnific Popup -->
 <link rel="stylesheet" href="./assets/css/plugins/magnific-popup.css">
 
-<!-- Vendor & Plugins CSS (Please remove the comment from below vendor.min.css & plugins.min.css for better website load performance and remove css files from the above) -->
-
-<!-- <link rel="stylesheet" href="./assets/css/vendor/vendor.min.css">
-    <link rel="stylesheet" href="./assets/css/plugins/plugins.min.css"> -->
-
 <!-- Main Style CSS (Please use minify version for better website load performance) -->
 <link rel="stylesheet" href="./assets/css/style.css">
 <!-- <link rel="stylesheet" href="./assets/css/style.min.css"> -->
 </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-	$(function() {
+	$(document).ready(function() {
 
-		$("#cart").on("click", function() {
-			/* var count = $("#cart_quantity").val();
-			console.log(count); */
-			$("form").attr("action", "loginCheck/cartAdd")
+		console.log("index ready");
+		
+		$(".cart").on("click", function() {
+			console.log("카트 담기 버튼 클릭 ");
+			
+			var product_id= $(this).attr("data-num");
+			
+			$.ajax({
+				url : "loginCheck/cartAddDirect",
+				type : "GET",
+				dataType: 'text',
+				data : {
+					product_id : product_id
+				},
+				success : function(data, status, xhr) {
+					console.log("success " + data);
+					
+				},
+				error : function(xhr, status, error) {
+					console.log(error);
+					console.log("fail");
+				}
+			});
+		});
+		
+		
+		$(".wish").on("click", function() {
+			console.log("위시리스트 담기 버튼 클릭 ");
+			
+			var product_id= $(this).attr("data-num");
+			console.log("product_id" +product_id);
+			$.ajax({
+				url : "loginCheck/wishAdd",
+				type : "POST",
+				//contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
+		        dataType: 'text',
+				data :  {
+					product_id : product_id
+				},
+				success : function(data, status, xhr) {
+					console.log("success " + data);
+				
+				},
+				error : function(xhr, status, error) {
+					console.log(error);
+					console.log("fail");
+				}
+			});
+		});
 
-		})
-
-		$("#wish").on("click", function() {
-
-			$("form").attr("action", "loginCheck/wishAdd")
-
-		})
 	});
-		</script>
+</script>
 <body>
 <%-- 	<c:if test="${!empty success }">
 		<!-- 회원가입성공메세지 -->
@@ -244,39 +275,12 @@
 							</div>
 						</div>
 						<div class="add-action d-flex position-absolute">
-							<a href="./cartList" id="cart"title="Add To cart"> <i class="ion-bag"></i></a>  
-							<a href="./wishlist.html" title="Add To Wishlist"> <i class="ion-ios-heart-outline"></i></a> 
+							<a id="cart" class="cart" data-num="${dto.product_id}" title="df  Add To cart"> <i class="ion-bag"></i></a>  
+							<a id="wish" class="wish" data-num="${dto.product_id}" title="xx  Add To Wishlist"> <i class="ion-ios-heart-outline"></i></a> 
 							<a href="./productDetails?product_id=${dto.product_id}" data-bs-toggle="modal" title="Quick View"> 
 							<i class="ion-eye"></i></a>
 						</div>
-						<%-- <div class="product-content-listview">
-							<div class="product-rating">
-								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-									class="fa fa-star-o"></i>
-							</div>
-							<div class="product-title">
-								<h4 class="title-2">
-									<a href="./productDetails?product_id=${dto.product_id}">${dto.product_name}</a>
-								</h4>
-							</div>
-							<div class="price-box">
-								<span class="regular-price "><fmt:formatNumber
-										value="${dto.product_price}" type="currency"
-										currencySymbol="￦" /></span> <span class="old-price"><del>$50.00</del></span>
-							</div>
-							<div class="add-action-listview d-flex">
-								<a href="./cartList" title="Add To cart"> <i class="ion-bag"></i>
-								</a> <a href="./compare.html" title="Compare"> <i
-									class="ion-ios-loop-strong"></i>
-								</a> <a href="./wishlist.html" title="Add To Wishlist"> <i
-									class="ion-ios-heart-outline"></i>
-								</a> <a href="./#exampleModalCenter" data-bs-toggle="modal"
-									title="Quick View"> <i class="ion-eye"></i>
-								</a>
-							</div>
-							<p class="desc-content">${dto.product_description_summary}</p>
-						</div> --%>
+	
 					</div>
 				</div>
 				<tr>
@@ -351,76 +355,7 @@
 	</div>
 
 	<!-- Modal Area Start Here -->
-	<div class="modal fade obrien-modal" id="exampleModalCenter"
-		tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<button type="button" class="close close-button"
-					data-bs-dismiss="modal" aria-label="Close">
-					<span class="close-icon" aria-hidden="true">x</span>
-				</button>
-				<div class="modal-body">
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-lg-6 col-md-6 text-center">
-								<div class="product-image">
-									<img src="assets/images/product/1.png" alt="Product Image">
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6">
-								<div class="modal-product">
-									<div class="product-content">
-										<div class="product-title">
-											<h4 class="title">Product dummy name</h4>
-										</div>
-										<div class="price-box">
-											<span class="regular-price ">$80.00</span> <span
-												class="old-price"><del>$90.00</del></span>
-										</div>
-										<div class="product-rating">
-											<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-												class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-												class="fa fa-star-o"></i> <span>1 Review</span>
-										</div>
-										<p class="desc-content">we denounce with righteous
-											indignation and dislike men who are so beguiled and
-											demoralized by the charms of pleasure of the moment, so
-											blinded by desire, that they cannot foresee the pain and
-											trouble that are bound to ensue; and equal blame bel...</p>
-										<form class="d-flex flex-column w-100" action="#">
-											<div class="form-group">
-												<select class="form-control nice-select w-100">
-													<option>S</option>
-													<option>M</option>
-													<option>L</option>
-													<option>XL</option>
-													<option>XXL</option>
-												</select>
-											</div>
-										</form>
-										<div class="quantity-with_btn">
-											<div class="quantity">
-												<div class="cart-plus-minus">
-													<input class="cart-plus-minus-box" value="0" type="text">
-													<div class="dec qtybutton">-</div>
-													<div class="inc qtybutton">+</div>
-												</div>
-											</div>
-											<div class="add-to_cart">
-												<a class="btn obrien-button primary-btn" href="./cartList">Add
-													to cart</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Modal Area End Here -->
+	
 
 	<!-- Scroll to Top Start -->
 	<a class="scroll-to-top" href="./#"> <i class="ion-chevron-up"></i>

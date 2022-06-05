@@ -290,19 +290,18 @@ $(document).ready(function() {
 											</div>
 										</div>
 									</div>
-
-									<!-- <input type="radio" id="cb1" value="agree"><strong>(필수) 구매하실 상품의 결제정보를 확인하였으며, 구매진행에 동의합니다.</strong> -->
-									<!-- <input type="checkbox" id="cb1" value="agree"><strong>(필수) 구매하실 상품의 결제정보를 확인하였으며, 구매진행에 동의합니다.</strong> -->
+									<br>
+									
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
 											id="rememberMe" name="rememberMe"> <label class="custom-control-label"
 											for="rememberMe">(필수) 구매하실 상품의 결제정보를 확인하였으며, 구매진행에
 											동의합니다.</label>
 									</div>
-
+									<br>
 									<div>
 										<!-- <input value="주문하기" type="button"> -->
-										<button class="btn obrien-button-3 black-button">주문하기</button>
+										<button class="btn obrien-button-3 black-button" style="width: 450px; margin: auto;">주문하기</button>
 									</div>
 
 								</div>

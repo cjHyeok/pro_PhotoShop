@@ -49,7 +49,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	
-	$("#cart").on("click", function() {
+	$(".cart").on("click", function() {
 		console.log("카트 담기 버튼 클릭 ");
 		
 		var product_id= $(this).attr("data-num");
@@ -73,7 +73,7 @@ $(document).ready(function() {
 	});
 	
 	
-	$("#wish").on("click", function() {
+	$(".wish").on("click", function() {
 		console.log("위시리스트 담기 버튼 클릭 ");
 		
 		var product_id= $(this).attr("data-num");
@@ -160,16 +160,10 @@ $(document).ready(function() {
 						<!-- Shop Wrapper Start -->
 						<form name="productListForm" id="productListForm" method="post" action="">
 						<c:forEach var="dto" items="${productList}" varStatus="status">
-						<input type="hidden" name="product_img" id="product_img"
-			value="${dto.product_img}"> 
-			<input type="hidden"
-			name="product_name" value="${dto.product_name}"> 
-			<input
-			type="hidden" name="product_price"
-			value="${dto.product_price}"> 
-		
-			<input
-			type="hidden" name="product_id" value="${dto.product_id}">
+						<input type="hidden" name="product_img" id="product_img" value="${dto.product_img}"> 
+						<input type="hidden" name="product_name" value="${dto.product_name}"> 
+						<input type="hidden" name="product_price" value="${dto.product_price}"> 
+						<input type="hidden" name="product_id" value="${dto.product_id}">
 
 		
 		
@@ -206,10 +200,10 @@ $(document).ready(function() {
 											</div>
 										</div>
 										<div class="add-action d-flex position-absolute">
-											<a id="cart" data-num="${dto.product_id}" title="Add To cart"> 
+											<a id="cart" class="cart" data-num="${dto.product_id}" title="Add To cart"> 
 											<i class="ion-bag"></i></a> 
 											
-											<a id="wish" data-num="${dto.product_id}" title="Add To Wishlist"> 
+											<a id="wish" class="wish" data-num="${dto.product_id}" title="Add To Wishlist"> 
 											<i class="ion-ios-heart-outline"></i></a> 
 											
 											<a href="./productDetails?product_id=${dto.product_id}" data-bs-toggle="modal" title="Quick View">
