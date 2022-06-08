@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dto.CartDTO;
 import com.dto.MemberDTO;
@@ -35,10 +36,11 @@ public class LoginController {
 	CartService cservice;
 	
 	@RequestMapping(value = "/login",  method = RequestMethod.POST)
-	public String login(@RequestParam Map<String, String> map, Model model, HttpSession session) {
+	public String login(@RequestParam Map<String, String> map, Model model, HttpSession session, RedirectAttributes attr) {
 		System.out.println("map = " + map);
 		
-		
+		System.out.println("session=  "+ session);
+		System.out.println("attr=  "+ attr);
 		
 		String encrypted = "";
 		
@@ -66,6 +68,8 @@ public class LoginController {
 		
 		if (mdto != null) {
 			session.setAttribute("login", mdto);
+			
+			session.setAttribute("user_id", mdto.getUser_id());
 			session.setAttribute("cartList", clist);
 			return "redirect:./";
 		}else {

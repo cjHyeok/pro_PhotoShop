@@ -45,18 +45,67 @@
 <link rel="stylesheet" href="./assets/css/style.css">
 <!-- <link rel="stylesheet" href="./assets/css/style.min.css"> -->
 </head>
+<script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
 <script type="text/javascript">
 $(document).ready(function() {
+
+	// "", null, undefined, 이상한 숫자, 빈 Object, 빈 Array도 검사
+	function isEmpty(data) {
+	    if(typeof(data) === 'object') {
+	        if(!data) {
+	            return true;
+	        }
+	        else if(JSON.stringify(data) === '{}' || JSON.stringify(data) === '[]') {
+	            return true;
+	        }
+	        return false;
+	    }
+	    else if(typeof(data) === 'string') {
+	        if(!data.trim()) {
+	            return true;
+	        }
+	        return false;
+	    }
+	    else if(typeof(data) === 'undefined') {
+	        return true;
+	    }
+	    else if(isNaN(data) === true) {
+	        return true;
+	    }
+	    else if( data == 'null') {
+	        return true;
+	    }
+	    else {
+	        return false;
+	    }
+	}	
+	
 	
 	$(".cart").on("click", function() {
 		console.log("카트 담기 버튼 클릭 ");
+		
+		var user_id = '<%=(String)session.getAttribute("user_id")%>';
+		
+
+		console.log("user_id #wish "+user_id);
+		console.log("user_id length "+user_id.length);
+		
+		if( user_id == 'null' || isEmpty(user_id) ) {
+		//if (user_id == "" || user_id === undefined || user_id == null){
+			alert("로그인 해주세요");
+			return;
+		}
+		
+		console.log("user_id length "+user_id.length);
 		
 		var product_id= $(this).attr("data-num");
 		
 		$.ajax({
 			url : "loginCheck/cartAddDirect",
-			type : "GET",
+			type : "POST",
 			dataType: 'text',
 			data : {
 				product_id : product_id
@@ -73,16 +122,17 @@ $(document).ready(function() {
 	});
 	
 	
-	$(".wish").on("click", function() {
+	/*$(".wish").on("click", function() { //찜목록
 		console.log("위시리스트 담기 버튼 클릭 ");
 		
 		var product_id= $(this).attr("data-num");
 		console.log("product_id" +product_id);
+		
+		
 		$.ajax({
 			url : "loginCheck/wishAdd",
 			type : "POST",
-			//contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
-	        dataType: 'text',
+			dataType: 'text',
 			data :  {
 				product_id : product_id
 			},
@@ -95,7 +145,57 @@ $(document).ready(function() {
 				console.log("fail");
 			}
 		});
+	});*/
+	
+	$(".wishLike").on("click", function() {
+		
+		 var user_id = '<%=(String)session.getAttribute("user_id")%>';
+		 console.log("user_id #wish "+user_id);
+		
+		 if( user_id == 'null' || isEmpty(user_id) ) {
+			alert("로그인 해주세요");
+			return;
+		}
+		
+		console.log("위시리스트 담기 버튼 클릭 ");
+		//var params = jQuery("#productListForm").serialize();
+		var product_id= $(this).attr("data-num");
+		//console.log("params" + params);
+		console.log("product_id"+ product_id);
+		
+		$.ajax({
+			url : "loginCheck/wishAdd",
+			type : "POST",
+			//contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
+	        dataType: 'text',
+			data : {
+				//params : params,
+				product_id : product_id      //form 안 데이터
+			},
+			success : function(data, status, xhr) {
+				console.log("success " + data); // wishCount, wish_my  유무
+				
+				var wishdata = data;
+				var after_wishdata = wishdata.split(',');
+				
+				$("#wishCount"+ product_id).text("좋아요 " + after_wishdata[0] + "개");
+				
+				if(after_wishdata[1] == '0'){
+					$("#wish_my"+ product_id).html('<i class="fa fa-heart-o" aria-hidden="true" style="color: red;"></i>');
+				}else{
+					$("#wish_my"+ product_id).html('<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>');
+				}
+				
+				console.log("위시리스트 담기 버튼 클릭2 완료 ");
+				
+			},
+			error : function(xhr, status, error) {
+				console.log(error);
+				console.log("fail");
+			}
+		});
 	});
+	
 });
 </script>
 <body>
@@ -164,32 +264,51 @@ $(document).ready(function() {
 						<input type="hidden" name="product_name" value="${dto.product_name}"> 
 						<input type="hidden" name="product_price" value="${dto.product_price}"> 
 						<input type="hidden" name="product_id" value="${dto.product_id}">
-
+						<input type="hidden" name="user_id" value="${login.user_id}">
 		
 		
 						<div class="row shop_wrapper grid_4">
 							
 
 								<div class="col-lg-3 col-md-6 col-sm-6 col-custom product-area">
+								
 									<div class="single-product position-relative">
 										<div class="product-image">
 											<a class="d-block"
-												href="./productDetails?product_id=${dto.product_id}"> <img
+												href="./productDetails?product_id=${dto.product_id}&user_id=${login.user_id}"> <img
 												src="assets/images/${dto.product_img}" alt=""
 												class="product-image-1 w-100"> <%-- <img src="assets/images/${dto.product_img}_on.jpg" alt="" class="product-image-2 position-absolute w-100"> --%>
 											</a>
 										</div>
+										
 										<div class="product-content">
-											<div class="product-rating">
-												<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-													class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-													class="fa fa-star-o"></i>
-											</div>
-											<div class="product-title">
+										
+											<!-- <div class="product-rating mb-3"> -->
+                           <div class="product-rating mb-3">
+                            <button id="wishLike" data-num="${dto.product_id}" class="wishLike" type="button">
+                            	<div id="wish_my${dto.product_id}">
+	                               <c:if test="${dto.wish_my eq 0}">
+										<i class="fa fa-heart-o" aria-hidden="true" style="color: red;"></i>
+									</c:if>	
+									
+									<c:if test="${dto.wish_my eq 1}">
+										<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+									</c:if>		
+								</div>
+							</button>
+									
+									<div id="wishCount${dto.product_id}">
+									좋아요 ${dto.wish_count}개<br>
+									</div>
+                            </div>
+                           					 <!-- </div> -->
+											
+											 <div class="product-title">
 												<h4 class="title-2">
 													<a href="./productDetails?product_id=${dto.product_id}">${dto.product_name}</a>
 												</h4>
 											</div>
+											
 											<div class="price-box">
 
 												<span class="regular-price "><fmt:formatNumber
@@ -200,19 +319,20 @@ $(document).ready(function() {
 											</div>
 										</div>
 										<div class="add-action d-flex position-absolute">
-											<a id="cart" class="cart" data-num="${dto.product_id}" title="Add To cart"> 
-											<i class="ion-bag"></i></a> 
-											
-											<a id="wish" class="wish" data-num="${dto.product_id}" title="Add To Wishlist"> 
-											<i class="ion-ios-heart-outline"></i></a> 
-											
-											<a href="./productDetails?product_id=${dto.product_id}" data-bs-toggle="modal" title="Quick View">
-											 <i class="ion-eye"></i>
-											</a>
+											<a class="cart" data-num="${dto.product_id}" title="장바구니 담기"> <i class="ion-bag"></i></a>  
+											<a href="./productDetails?product_id=${dto.product_id}" data-bs-toggle="modal" title="상품 상세보기"><i class="ion-eye"></i></a>
+											<%-- <a id="wish" class="wish" data-num="${dto.product_id}" title="찜 하기"> <i class="ion-ios-heart-outline"></i></a> --%>
+											<%-- <a id="wishCount" style="font-size: 15px;">좋아요 ${dto.wish_count}개</a> <br> --%>
+														
+										
+										
+										
+										
+										
 										</div>
 
 
-										<div class="product-content-listview">
+										<%-- <div class="product-content-listview">
 											<div class="product-rating">
 												<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
 													class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
@@ -244,7 +364,7 @@ $(document).ready(function() {
 											</div>
 											<p class="desc-content">
 												${dto.product_description_summary}</p>
-										</div>
+										</div> --%>
 									</div>
 								</div>
 								<tr>
@@ -317,77 +437,7 @@ $(document).ready(function() {
 		<!-- Footer Area End Here -->
 	</div>
 
-	<!-- Modal Area Start Here -->
-	<div class="modal fade obrien-modal" id="exampleModalCenter"
-		tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<button type="button" class="close close-button"
-					data-bs-dismiss="modal" aria-label="Close">
-					<span class="close-icon" aria-hidden="true">x</span>
-				</button>
-				<div class="modal-body">
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-lg-6 col-md-6 text-center">
-								<div class="product-image">
-									<img src="assets/images/product/1.jpg" alt="Product Image">
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6">
-								<div class="modal-product">
-									<div class="product-content">
-										<div class="product-title">
-											<h4 class="title">Product dummy name</h4>
-										</div>
-										<div class="price-box">
-											<span class="regular-price ">$80.00</span> <span
-												class="old-price"><del>$90.00</del></span>
-										</div>
-										<div class="product-rating">
-											<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-												class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-												class="fa fa-star-o"></i> <span>1 Review</span>
-										</div>
-										<p class="desc-content">we denounce with righteous
-											indignation and dislike men who are so beguiled and
-											demoralized by the charms of pleasure of the moment, so
-											blinded by desire, that they cannot foresee the pain and
-											trouble that are bound to ensue; and equal blame bel...</p>
-										<form class="d-flex flex-column w-100" action="#">
-											<div class="form-group">
-												<select class="form-control nice-select w-100">
-													<option>S</option>
-													<option>M</option>
-													<option>L</option>
-													<option>XL</option>
-													<option>XXL</option>
-												</select>
-											</div>
-										</form>
-										<div class="quantity-with_btn">
-											<div class="quantity">
-												<div class="cart-plus-minus">
-													<input class="cart-plus-minus-box" value="0" type="text">
-													<div class="dec qtybutton">-</div>
-													<div class="inc qtybutton">+</div>
-												</div>
-											</div>
-											<div class="add-to_cart">
-												<a class="btn obrien-button primary-btn" href="./cartList">Add
-													to cart</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Modal Area End Here -->
+
 
 	<!-- Scroll to Top Start -->
 	<a class="scroll-to-top" href="./#"> <i class="ion-chevron-up"></i>

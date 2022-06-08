@@ -35,6 +35,9 @@ public class ProductDTO {
 	private String product_sub_img_4;
 	private String product_description;
 	
+	private int wish_count; //좋아요 갯수
+	private int wish_my;  //좋아요 눌렀는지
+	
 	//카트 쪽 
 	private int cart_id;
 	private int cart_quantity;

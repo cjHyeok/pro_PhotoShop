@@ -31,4 +31,5 @@ public class MemberDTO {
 	private int order_id;
 	private int total_price;
 	
+
 }

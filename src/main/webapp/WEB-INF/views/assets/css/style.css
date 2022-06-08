@@ -193,15 +193,18 @@ input[type="checkbox"] + label:after {
   -webkit-transition: .3s;
   -o-transition: .3s;
   transition: .3s;
-  color: #13aff0;
+  color: #E98C81;
+  
 }
 
 input[type="checkbox"]:checked + label:before {
   border: 2px solid #e1e1e1;
 }
 
-input[type="checkbox"]:checked + label:after {
+input[type="checkbox"]:checked + label:after { /* 체크박스 */
   opacity: 1;
+ 
+
 }
 
 button,

@@ -38,5 +38,8 @@ public class CartService {
 		cdao.wishCartadd(product_id, user_id);
 			
 	}
+	public boolean cartSelectUpdate(CartDTO cart) {
+		return cdao.cartSelectUpdate(cart);
+	}
 
 }

@@ -64,15 +64,26 @@ public class CartController {
 		cart.setProduct_id(map.get("product_id")); 
 		cart.setCart_quantity(Integer.parseInt(map.get("cart_quantity")));
 
-		cservice.cartAdd(cart); 
+		cart.setProduct_id(map.get("product_id"));
+		
+		if (!cservice.cartSelectUpdate(cart)) {
+			
+			cservice.cartAdd(cart); 
+		}
+		
+		
+		
 
+		
+		
+		
 		System.out.println("/loginCheck/cartAdd controller cart=="+cart);
 		return "true";
 		
 	}
 	
 	
-	@RequestMapping(value ="/loginCheck/cartAddDirect", method = RequestMethod.GET)  
+	@RequestMapping(value ="/loginCheck/cartAddDirect", method = RequestMethod.POST)  
 	public  @ResponseBody String cartAddDirect(@RequestParam Map<String, String> map, HttpSession session) {
 		System.out.println("/loginCheck/cartAddDirect controller map 1==" + map);
 		

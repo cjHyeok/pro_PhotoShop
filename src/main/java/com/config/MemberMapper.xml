@@ -58,13 +58,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<select id="productReview" parameterType="MemberDTO" resultType="ReviewDTO">
-	select  m.user_id, m.user_name,o.order_date, TO_CHAR(TO_DATE(o.order_date,'YYYY-MM-DD') + 7, 'YY/MM/DD') AS writeday, o.order_id, o.order_state, od.product_id, p.product_name, i.product_img 
+	select  m.user_id, m.user_name,o.order_date, o.order_date + 7 AS writeday, o.order_id, o.order_state, od.product_id, p.product_name, i.product_img 
                     from t_member m join t_order o on m.user_id = o.user_id
                                     join t_order_detail od on od.order_id = o.order_id
                                      join t_product p  on p.product_id = od.product_id
                                      join t_product_img i on p.product_id = i.product_id
                                      
                     where m.user_id = #{user_id}
-                    and o.order_date >= TO_CHAR(SYSDATE-1,'YYYYMMDD')
+                    and o.order_date >= (SYSDATE-1)
     </select>
 </mapper>

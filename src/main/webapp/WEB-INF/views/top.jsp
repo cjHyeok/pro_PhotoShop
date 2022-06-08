@@ -119,15 +119,13 @@
 																</c:forEach>
 																
 																<!-- 총합 -->
-																<div
-																	class="cart-price-total d-flex justify-content-between">
-																	<h5>Total :</h5>
-																	<h5>$166.00</h5>
-																</div>
-																<div class="cart-links d-flex justify-content-center">
+																<div class="cart-price-total d-flex justify-content-between">
+																	<div class="cart-links d-flex justify-content-center">
 																	<a class="obrien-button white-btn" href="./cartList">장바구니</a> <a class="obrien-button white-btn"
 																		href="./loginCheck/orderConfirm">구매하기</a>
 																</div>
+																</div>
+																
 															</div>
 															
 															</li>

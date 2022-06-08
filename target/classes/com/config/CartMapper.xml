@@ -42,4 +42,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	
+	<select id="cartSelect" parameterType="CartDTO" resultType="CartDTO">
+		SELECT cart_id, product_id, user_id , cart_quantity
+		from t_cart
+		where product_id = '${product_id}' and user_id = '${user_id}'
+	</select>
+	
+		<update id="cartSelectUpdate" parameterType="CartDTO">
+		UPDATE t_cart
+		SET cart_quantity = #{cart_quantity}
+		WHERE cart_id = #{cart_id}
+	</update>
 </mapper>

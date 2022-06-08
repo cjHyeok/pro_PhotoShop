@@ -37,4 +37,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where product_id ='${product_id}' AND 
       	user_id ='${user_id}' 
 	</select>
+	
+	
+	<delete id="wishUserDelete" parameterType="WishDTO">
+		DELETE
+		FROM t_wish
+		WHERE user_id= '${user_id}' and product_id = '${product_id}'
+	</delete>
 </mapper>

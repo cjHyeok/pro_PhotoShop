@@ -41,15 +41,8 @@
 <link rel="stylesheet" href="./assets/css/plugins/nice-select.min.css">
 <!-- Magnific Popup -->
 <link rel="stylesheet" href="./assets/css/plugins/magnific-popup.css">
-
-<!-- Vendor & Plugins CSS (Please remove the comment from below vendor.min.css & plugins.min.css for better website load performance and remove css files from the above) -->
-
-<!-- <link rel="stylesheet" href="./assets/css/vendor/vendor.min.css">
-    <link rel="stylesheet" href="./assets/css/plugins/plugins.min.css"> -->
-
 <!-- Main Style CSS (Please use minify version for better website load performance) -->
 <link rel="stylesheet" href="./assets/css/style.css">
-<!-- <link rel="stylesheet" href="./assets/css/style.min.css"> -->
 
 
 <style type="text/css">
@@ -72,16 +65,14 @@
 	top: 5px;
 	right: 5px
 }
+
+
+
 </style>
-
-
-
 
 </head>
 
-
-
-
+<script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <%
@@ -106,12 +97,13 @@ pageContext.setAttribute("BR", "<br/>");
 		})*/
 
 		$("#DirectOrder").on("click", function() {
-
-			$("form").attr("action", "loginCheck/DirectOrder")
+			console.log("#DirectOrder");
+			$("form").attr("action", "loginCheck/DirectOrder");
+			$("form").submit();
 
 		})
 
-		$("#up").on("click", function() {
+/* 		$("#up").on("click", function() {
 			var count = $("#cart_quantity").val();
 			console.log(count);
 
@@ -123,56 +115,59 @@ pageContext.setAttribute("BR", "<br/>");
 			if (count != 1) {
 				$("#cart_quantity").val(parseInt(count) - 1);
 			}
-		});
+		}); */
 
-		$("#btnComment")
-				.click(
-						function() {
+/* 		$("#btnComment").click(function() {
+			console.log("btnComment");
 
-							console.log("btnComment");
+				$.ajax({url : 'reviewWriteAdd',
+						type : 'post',
+						data : {
+								//review_id:'${review_id}', 
+								product_id : "${productDetails.product_id}",
+								user_name : '${login.user_name }',
+								review_content : document.getElementById("review_content").value,
+								},
+						dataType : "text",
+						success : function(data, status, xhr) {
+							console.log("data==", data);
+						document.getElementById("reviewList").value = ""; //div 클래스 쪽 (<div class="pro_review mb-5" id="reviewList">여기서 가져옴)리뷰 리스트 내용 지우기.
+						document.getElementById("review_content").value = ""; //리뷰 내용 적는 곳 ajax 성공했을 때 지우기
 
-							$
-									.ajax({
-										url : 'reviewWriteAdd',
-										type : 'post',
-										data : {
-											//review_id:'${review_id}', 
-											product_id : "${productDetails.product_id}",
+						$("#reviewList").html(data); //리뷰 retData 하나하나 넣어주는 부분 (controller확인)
 
-											user_name : '${login.user_name }',
+						},
+							error : function(xhr, status, error) {}
+				});//end ajax	 
+		}); */
 
-											review_content : document
-													.getElementById("review_content").value,
+/* 		function closeLayer(obj) {
+			console.log("closeLayer####################");
+			//$(obj).parent().parent().hide();
+			$("form").attr("action", "");
+			$("form").submit();
 
-										},
-										dataType : "text",
-										success : function(data, status, xhr) {
-											console.log("data==", data);
-											document
-													.getElementById("reviewList").value = ""; //div 클래스 쪽 (<div class="pro_review mb-5" id="reviewList">여기서 가져옴)리뷰 리스트 내용 지우기.
-											document
-													.getElementById("review_content").value = ""; //리뷰 내용 적는 곳 ajax 성공했을 때 지우기
+		} */
 
-											$("#reviewList").html(data); //리뷰 retData 하나하나 넣어주는 부분 (controller확인)
-
-										},
-										error : function(xhr, status, error) {
-										}
-									});//end ajax	 
-						});
-
-		function closeLayer(obj) {
-			$(obj).parent().parent().hide();
-		}
-
-		$("#cartLinkBtn").on("click", function() {
+		$("#cartLinkBtn").on("click", function() { //장바구니누르고 레이어에서 확인 눌렀을때 장바구니로 이동
 			console.log("cartLinkBtn");
 			location.href = "cartList";
 
 			console.log("cartLinkBtn####################");
-			return true;
+			$("form").attr("action", "cartList");
+			$("form").submit();
 
 		});
+		
+/* 		$("#cartCancelBtn").on("click", function() {
+			console.log("cartCancelBtn");
+			
+
+			console.log("cartCancelBtn####################");
+			$("form").attr("action", "");
+			$("form").submit();
+
+		}); */
 
 		/* 클릭 클릭시 클릭을 클릭한 위치 근처에 레이어가 나타난다. */
 		$('.cartSelect').click(function(e) {
@@ -214,6 +209,17 @@ pageContext.setAttribute("BR", "<br/>");
 		$("#cart").on("click", function() {
 			console.log("카트 담기 버튼 클릭 ");
 			var params = jQuery("#productDetailsForm").serialize();
+			
+			//장바구니 버튼 눌렀을 때 로그인 안 되어있을 경우
+			var user_id = $("#user_id").val();
+			console.log("user_id #wish "+user_id);
+			
+			if (user_id == "" || user_id === undefined){
+				alert("로그인 해주세요");
+				return;
+			}
+			
+			
 			$.ajax({
 				url : "loginCheck/cartAdd",
 				type : "POST",
@@ -223,9 +229,9 @@ pageContext.setAttribute("BR", "<br/>");
 				success : function(data, status, xhr) {
 					console.log("success " + data);
 					
-				 	
-					var divTop = 50;
-					var divLeft = 150;
+					//팝업 위치 조절
+					var divTop = 115;
+					var divLeft = 70; 
 
 					$('.cartPopupLayer').css({
 						"top" : divTop,
@@ -240,9 +246,17 @@ pageContext.setAttribute("BR", "<br/>");
 				}
 			});
 		});
-		
-		
+
 		$("#wish").on("click", function() {
+			
+			var user_id = $("#user_id").val();
+			console.log("user_id #wish "+user_id);
+			
+			if (user_id == "" || user_id === undefined){
+				alert("로그인 해주세요");
+				return;
+			}
+			
 			console.log("위시리스트 담기 버튼 클릭 ");
 			var params = jQuery("#productDetailsForm").serialize();
 			$.ajax({
@@ -252,8 +266,21 @@ pageContext.setAttribute("BR", "<br/>");
 		        dataType: 'html',
 				data : params, //form 안 데이터
 				success : function(data, status, xhr) {
-					console.log("success " + data);
-				
+					console.log("success " + data);  // wishCount, wish_my  유무
+					
+					var wishdata = data;
+					var after_wishdata = wishdata.split(','); //, 없애고
+					
+					$("#wishCount").text("좋아요 " + after_wishdata[0] + "개");
+					
+					if(after_wishdata[1] == '0'){
+						$("#wish_my").html('<i class="fa fa-heart-o" aria-hidden="true" style="color: red;"></i>');
+					}else{
+						$("#wish_my").html('<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>');
+					}
+					
+					console.log("위시리스트 담기 버튼 클릭2 완료 ");
+					
 				},
 				error : function(xhr, status, error) {
 					console.log(error);
@@ -264,31 +291,20 @@ pageContext.setAttribute("BR", "<br/>");
 	});
 </script>
 
-
-
-
-
-
 <body>
+	<!-- <form name="productDetailsForm" id="productDetailsForm" method="post" action=""> -->
 	<form name="productDetailsForm" id="productDetailsForm" method="post" action="">
-		<input type="hidden" name="product_img" id="product_img"
-			value="${productDetails.product_img}"> <input type="hidden"
-			name="product_name" value="${productDetails.product_name}"> <input
-			type="hidden" name="product_price"
-			value="${productDetails.product_price}"> <input type="hidden"
-			name="product_description_summary"
-			value="${productDetails.product_description_summary}"> <input
-			type="hidden" name="product_id" value="${productDetails.product_id}">
+		<input type="hidden" name="product_img" id="product_img" value="${productDetails.product_img}"> 
+		<input type="hidden" name="product_name" value="${productDetails.product_name}"> 
+		<input type="hidden" name="product_price" value="${productDetails.product_price}"> 
+		<input type="hidden" name="product_description_summary" value="${productDetails.product_description_summary}"> 
+		<input type="hidden" name="product_id" value="${productDetails.product_id}">
 		<input type="hidden" name="cart_id" value="${productDetails.cart_id}">
-
-
-
-
-
-
-
-
-
+		<input type="hidden" id="user_id" name="user_id" value="${login.user_id}">
+		
+	
+	
+	
 		<div class="shop-wrapper">
 			<!-- Header Area Start Here -->
 			<jsp:include page="top.jsp" flush="true"></jsp:include>
@@ -307,33 +323,20 @@ pageContext.setAttribute("BR", "<br/>");
 						</div>
 					</div>
 				</div>
-			</div>
-
+			</div>	
 			<!-- Breadcrumb Area End Here -->
-
-
-
-
-
-
-
-
-
-
+			
 			<!-- 상품 상세 파트 시작 -->
 
 
-			<!-- Single Product Main Area Start -->
-			<div class="single-product-main-area">
-				<div class="container container-default custom-area">
-					<div class="row">
-						<input type="hidden" name="product_img"
-							value="${productDetails.product_img }">
-
-						<div class="col-lg-5 col-custom">
-							<div class="product-details-img horizontal-tab">
-								<div class="product-slider popup-gallery product-details_slider"
-									data-slick-options='{
+<!-- Single Product Main Area Start -->
+        <div class="single-product-main-area">
+            <div class="container container-default custom-area">
+                <div class="row">
+                <input type="hidden" name="product_img" value="${productDetails.product_img }">
+                    <div class="col-lg-5 col-custom">
+                        <div class="product-details-img horizontal-tab">
+                            <div class="product-slider popup-gallery product-details_slider" data-slick-options='{
                         "slidesToShow": 1,
                         "arrows": false,
                         "fade": true,
@@ -341,133 +344,113 @@ pageContext.setAttribute("BR", "<br/>");
                         "swipe": false,
                         "asNavFor": ".pd-slider-nav"
                         }'>
-
-									<c:set var="sub_img_1"
-										value="${productDetails.product_sub_img_1}" scope="session" />
-									<c:set var="sub_img_2"
-										value="${productDetails.product_sub_img_2}" scope="session" />
-									<c:set var="sub_img_3"
-										value="${productDetails.product_sub_img_3}" scope="session" />
-									<c:set var="sub_img_4"
-										value="${productDetails.product_sub_img_4}" scope="session" />
-
-
-									<div class="single-image border">
-										<!-- <a href="./assets/images/product/large-size/1.jpg"> -->
-										<!-- <img src="assets/images/product/large-size/1.jpg" alt="Product"> -->
-
-										<a href="./assets/images/${productDetails.product_img}"> <img
-											src="assets/images/${productDetails.product_img}"
-											alt="Product">
+                        
+                        <c:set var="sub_img_1" value="${productDetails.product_sub_img_1}" scope="session" />
+						<c:set var="sub_img_2" value="${productDetails.product_sub_img_2}" scope="session" />
+						<c:set var="sub_img_3" value="${productDetails.product_sub_img_3}" scope="session" />
+						<c:set var="sub_img_4" value="${productDetails.product_sub_img_4}" scope="session" />
+										
+										
+										
+                                <div class="single-image border">
+											<a href="./assets/images/${productDetails.product_img}"> 
+											<img src="assets/images/${productDetails.product_img}" alt="Product">
 										</a>
-
-
-
-									</div>
-
-
-								</div>
-								<div class="pd-slider-nav product-slider"
-									data-slick-options='{
+										</div>
+                            </div>
+                            <div class="pd-slider-nav product-slider" data-slick-options='{
                         "slidesToShow": 4,
                         "asNavFor": ".product-details_slider",
                         "focusOnSelect": true,
                         "arrows" : false,
                         "spaceBetween": 30,
                         "vertical" : false
-                        }'
-									data-slick-responsive='[
+                        }' data-slick-responsive='[
                             {"breakpoint":1501, "settings": {"slidesToShow": 4}},
                             {"breakpoint":1200, "settings": {"slidesToShow": 4}},
                             {"breakpoint":992, "settings": {"slidesToShow": 4}},
                             {"breakpoint":575, "settings": {"slidesToShow": 3}}
                         ]'>
-
-
-
-									<div class="single-thumb border">
+                                <div class="single-thumb border">
 										<c:if test="${not empty sub_img_1}">
-											<img src="assets/images/${productDetails.product_sub_img_1}"
-												alt="Product Thumnail">
+											<img src="assets/images/${productDetails.product_sub_img_1}" alt="Product Thumnail">
 										</c:if>
 									</div>
 
 									<div class="single-thumb border">
 										<c:if test="${not empty sub_img_2}">
-											<img src="assets/images/${productDetails.product_sub_img_2}"
-												alt="Product Thumnail">
+											<img src="assets/images/${productDetails.product_sub_img_2}" alt="Product Thumnail">
 										</c:if>
 									</div>
 
 									<div class="single-thumb border">
 										<c:if test="${not empty sub_img_3}">
-											<img src="assets/images/${productDetails.product_sub_img_3}"
-												alt="Product Thumnail">
+											<img src="assets/images/${productDetails.product_sub_img_3}" alt="Product Thumnail">
 										</c:if>
 									</div>
 
 									<div class="single-thumb border">
 										<c:if test="${not empty sub_img_4}">
-											<img src="assets/images/${productDetails.product_sub_img_4}"
-												alt="Product Thumnail">
+											<img src="assets/images/${productDetails.product_sub_img_4}" alt="Product Thumnail">
 										</c:if>
 									</div>
-
-
-
-
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-7 col-custom">
-							<div class="product-summery position-relative">
-								<div class="product-head mb-3">
-									<h2 class="product-title">${productDetails.product_name}</h2>
-
-								</div>
-								<div class="price-box mb-2">
-									<span class="regular-price"></span>
-									<fmt:formatNumber value="${productDetails.product_price}"
-										type="currency" currencySymbol="￦ " />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-custom">
+                        <div class="product-summery position-relative">
+                            <div class="product-head mb-3">
+                                <h2 class="product-title">${productDetails.product_name}</h2>
+                            </div>
+                            <div class="price-box mb-2">
+                                <span class="regular-price"></span>
+									<fmt:formatNumber value="${productDetails.product_price}" type="currency" currencySymbol="￦ " />
 									<!-- <span class="old-price"><del>$90.00</del></span> -->
+                            </div>
+                           
+                           
+                            <div class="product-rating mb-3">
+                            <button id="wish" type="button">
+                            	<div id="wish_my">
+	                               <c:if test="${productDetails.wish_my eq 0}">
+										<i class="fa fa-heart-o" aria-hidden="true" style="color: red;"></i>
+									</c:if>	
+									
+									<c:if test="${productDetails.wish_my eq 1}">
+										<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+									</c:if>		
 								</div>
-								<div class="product-rating mb-3">
-									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-										class="fa fa-star-o"></i>
-								</div>
-
-								<c:set var="product_description_summary"
-									value="${productDetails.product_description_summary}"></c:set>
-								<p class="desc-content mb-5">${fn:replace(product_description_summary, CRCN, BR)}
-
-								</p>
-								<div class="quantity-with_btn mb-4">
-									<div class="quantity" name="div_quantity" id="div_quantity"
-										onclick="click">
-										<div class="cart-plus-minus">
-											<input class="cart-plus-minus-box" name="cart_quantity"
-												value="1" id="cart_quantity" type="text">
-											<div id="down">-</div>
-											<div id="up">+</div>
-										</div>
+							</button>
+									
+									<div id="wishCount">
+									좋아요 ${productDetails.wish_count}개<br>
 									</div>
-									<div class="add-to_cart">
-										<a class="btn obrien-button primary-btn" id="cart">Add
-											to cart</a>
-
-								<!-- 		<a class="cartSelect">클릭1</a> -->
-
-										<div class="cartPopupLayer">
+                            </div>
+                            
+                            
+                           <c:set var="product_description_summary" value="${productDetails.product_description_summary}"></c:set>
+							<p class="desc-content mb-5"><Br>${fn:replace(product_description_summary, CRCN, BR)}</p>
+                            <div class="quantity-with_btn mb-4">
+                                <div class="quantity">
+                                    <div class="cart-plus-minus">
+                                        <input class="cart-plus-minus-box" name="cart_quantity" value="1" id="cart_quantity" type="text">
+                                        <div class="dec qtybutton">-</div>
+                                        <div class="inc qtybutton">+</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="add-to_cart">
+                                    <button id="cart" type="button"><span class="iconify" data-icon="ion:cart" style="color: #e98c81;"  data-width="50" data-height="50"></span></button>
+                                    <div class="cartPopupLayer">
 											<div>
-												<span onClick="closeLayer(this)"
+												<span onclick="$(this).parent().parent().hide();"
 													style="cursor: pointer; font-size: 1.5em" title="닫기">X</span>
 											</div>
 											상품이 장바구니에 담겼습니다. <br> 바로 확인하시겠습니까? <br> <br>
 
 											&ensp;&ensp;&ensp;&ensp;
-											<button class="btn btn-primary btn-xs"
-												style="background-color: #e0e0e0; border: none; box-shadow: none; color: black; font-size: 12px; width: 60px;">취소</button>
+											<button class="btn btn-primary btn-xs" id="cartCancelBtn" onclick="$(this).parent().hide();"
+												style="background-color: #e0e0e0; border: none; box-shadow: none; color: black; font-size: 12px; width: 60px;" type="button">취소</button>
 											&ensp;<span><button id="cartLinkBtn"
 													class="btn btn-primary btn-xs"
 													style="background-color: #1B1B1C; font-size: 12px; border: none; box-shadow: none; width: 60px;">확인</button></span>
@@ -475,46 +458,24 @@ pageContext.setAttribute("BR", "<br/>");
 											</br>
 
 										</div>
-
-										<button
-											class="btn obrien-button-2 treansparent-color pt-0 pb-0"
-											id="wish">Add to wishlist</button>
-
-									</div>
-								</div>
-								<div class="buy-button mb-5">
-									<button class="btn obrien-button-3 black-button"
-										id="DirectOrder">구매하기</button>
-								</div>
-								<div class="social-share mb-4">
-									<span>Share :</span> <a href="#"><i
-										class="fa fa-facebook-square facebook-color"></i></a> <a href="#"><i
-										class="fa fa-twitter-square twitter-color"></i></a>
-									<!-- </a> -->
-								</div>
-								<!-- <div class="payment">
-								<a href="./#"><img class="border"
-									src="assets/images/payment/img-payment.png" alt="Payment"></a>
-							</div> -->
-							</div>
-						</div>
-					</div>
-	</form>
-	<!--  <상품 상세파트 리뷰위 > -->
-
-
-
-
-
-
-
-
-
-
-
-
-	<div class="row mt-no-text">
-		<div class="col-lg-12">
+                                </div>
+                            </div>
+                            <div class="buy-button mb-5">
+                                <span><button class="btn obrien-button-3 black-button" id="DirectOrder" style="width: 300px;" type="button">구매하기</button></span>
+                            </div>
+                            <div class="social-share mb-4">
+                                <span>Share :</span>
+                                <a href="#">
+                                <i class="fa fa-facebook-square facebook-color"></i></a> 
+								<a href="#">
+								<i class="fa fa-twitter-square twitter-color"></i></a>
+                            </div>
+                            
+                       </div>
+                    </div>
+                </div>
+                <div class="row mt-no-text">
+                    <div class="col-lg-12">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item"><a class="nav-link active text-uppercase"
 					id="home-tab" data-bs-toggle="tab" href="#connect-1" role="tab"
@@ -531,78 +492,73 @@ pageContext.setAttribute("BR", "<br/>");
 					aria-selected="false">교환 및 반품안내</a></li>
 
 			</ul>
-			<div class="tab-content mb-text" id="myTabContent">
-				<div class="tab-pane fade show active" id="connect-1"
-					role="tabpanel" aria-labelledby="home-tab">
-					<div class="desc-content">
-						<c:set var="product_description"
-							value="${productDetails.product_description}"></c:set>
-						<p class="mb-3">${fn:replace(product_description, CRCN, BR)}</p>
-					</div>
-				</div>
-				<div class="tab-pane fade" id="connect-2" role="tabpanel"
-					aria-labelledby="profile-tab">
-					<!-- Start Single Content -->
+                        
+                        <div class="tab-content mb-text" id="myTabContent">
+                            <div class="tab-pane fade show active" id="connect-1" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="desc-content">
+                                    <c:set var="product_description" value="${productDetails.product_description}"></c:set>
+									<p class="mb-3">${fn:replace(product_description, CRCN, BR)}</p>
+								</div>
+                          	</div>
+                          	
+                          	
+                          	
+                          	
+                          	
+                            <div class="tab-pane fade" id="connect-2" role="tabpanel" aria-labelledby="profile-tab">
+                                <!-- Start Single Content -->
+                                <div class="product_tab_content  border p-3"> <!-- 테두리 -->
+                                
+                                   <c:choose>
+								<c:when test="${ReviewCount eq 0}">
+												등록된 상품평이 없습니다.
+												
+											</c:when>
 
+								<c:otherwise>
 
+									<table>
+										<c:forEach var="rlist" items="${ReviewList}" varStatus="status">
+											<div class="review_details">
+												<div class="review_info mb-2">
+													<div class="product-rating mb-2">
+														<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+															class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
+															class="fa fa-star-o"></i>
+													</div>
 
-
-
-
-
-					<c:choose>
-						<c:when test="${ReviewCount eq 0}">
-										등록된 상품평이 없습니다.
-										
-									</c:when>
-
-						<c:otherwise>
-
-							<table>
-								<c:forEach var="rlist" items="${ReviewList}" varStatus="status">
-									<div class="review_details">
-										<div class="review_info mb-2">
-											<div class="product-rating mb-2">
-												<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-													class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-													class="fa fa-star-o"></i>
+													<h5>${rlist.user_name}
+														&ensp;<span> <fmt:formatDate var="dateTempParse"
+																pattern="yyyy-MM-dd" value="${rlist.review_date}" /> <c:out
+																value="${dateTempParse}" /></span>
+													</h5>
+												</div>
+												<p style="font-size: 1px;">${rlist.product_name}</p>
+												<br>
+												<p>${rlist.review_content}</p>
 											</div>
-
-											<h5>${rlist.user_name}
-												&ensp;<span> <fmt:formatDate var="dateTempParse"
-														pattern="yyyy-MM-dd" value="${rlist.review_date}" /> <c:out
-														value="${dateTempParse}" /></span>
-											</h5>
-										</div>
-										<p style="font-size: 1px;">${rlist.product_name}</p>
-										<br>
-										<p>${rlist.review_content}</p>
-									</div>
-									<br>
-								</c:forEach>
-							</table>
-						</c:otherwise>
-					</c:choose>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-					<!-- End Single Content -->
-				</div>
-				<div class="tab-pane fade" id="connect-3" role="tabpanel"
-					aria-labelledby="contact-tab">
-					<div class="shipping-policy">
+											<br>
+										</c:forEach>
+									</table>
+								</c:otherwise>
+							</c:choose>
+                                   
+                                </div><!-- 테두리 -->
+                                <!-- End Single Content -->
+                            </div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            <div class="tab-pane fade" id="connect-3" role="tabpanel" aria-labelledby="contact-tab">
+<div class="shipping-policy">
 						<h4 class="title-3 mb-4">배송안내</h4>
 						<p class="desc-content mb-2">
 							배송비 : 기본 배송료는 3,000원입니다. <br> 50,000원 이상 구매 시 무료배송입니다.<br>
@@ -612,14 +568,7 @@ pageContext.setAttribute("BR", "<br/>");
 							연락드립니다.
 						</p>
 						<br>
-						<!-- <ul class="policy-list mb-2">
-										<li>1-2 business days (Typically by end of day)</li>
-										<li><a href="./#">30 days money back guaranty</a></li>
-										<li>24/7 live support</li>
-										<li>odio dignissim qui blandit praesent</li>
-										<li>luptatum zzril delenit augue duis dolore</li>
-										<li>te feugait nulla facilisi.</li>
-									</ul> -->
+						
 						<h4 class="title-3 mb-4">교환 및 반품안내</h4>
 						<p class="desc-content mb-2">
 							고객 단순 변심일 경우 교환 비용 왕복 배송비 6,000원 부과됩니다.<br>
@@ -646,91 +595,76 @@ pageContext.setAttribute("BR", "<br/>");
 							주시기 바랍니다. (이메일 : um.woom@gmail.com ) <br>
 						</p>
 					</div>
-				</div>
-				<div class="tab-pane fade" id="connect-4" role="tabpanel"
-					aria-labelledby="review-tab">
-					<div class="size-tab table-responsive-lg"></div>
-				</div>
-			</div>
-		</div>
-	</div>
-	</div>
-	</div>
-	<!-- Single Product Main Area End -->
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Single Product Main Area End -->
 
+        
+        <!-- Support Area Start Here -->
+        <div class="support-area">
+            <div class="container container-default custom-area">
+                <div class="row">
+                    <div class="col-lg-12 col-custom">
+                        <div class="support-wrapper d-flex">
+                            <div class="support-content">
+                                <h1 class="title">Need Help ?</h1>
+                                <p class="desc-content">Email: um.woom@gmail.com</p>
+                            </div>
+                            <div class="support-button d-flex align-items-center">
+                                <a class="obrien-button primary-btn" href="./contactUs">Contact now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Support Area End Here -->
+        <!-- Footer Area Start Here -->
+<jsp:include page="support.jsp" flush="true"></jsp:include>
+        <!-- Footer Area End Here -->
+    </div>
 
+ 
 
+    <!-- Scroll to Top Start -->
+    <a class="scroll-to-top" href="#">
+        <i class="ion-chevron-up"></i>
+    </a>
+    <!-- Scroll to Top End -->
 
-
-
-
-
-
-
-
-
-
-	<!-- Support Area Start Here -->
-	<div class="support-area">
-		<div class="container container-default custom-area">
-			<div class="row">
-				<div class="col-lg-12 col-custom">
-					<div class="support-wrapper d-flex">
-						<div class="support-content">
-							<h1 class="title">Need Help</h1>
-							<p class="desc-content">Email: um.woom@gmail.com</p>
-						</div>
-						<div class="support-button d-flex align-items-center">
-							<a class="obrien-button primary-btn" href="./contactUs">Contact
-								now</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Support Area End Here -->
-	<!-- Footer Area Start Here -->
-	<jsp:include page="support.jsp" flush="true"></jsp:include>
-	<!-- Footer Area End Here -->
-	</div>
-
-
-
-	<!-- Scroll to Top Start -->
-	<a class="scroll-to-top" href="./#"> <i class="ion-chevron-up"></i>
-	</a>
-	<!-- Scroll to Top End -->
-
-	<!-- JS
+    <!-- JS
 ============================================ -->
+</form>
+    <!-- jQuery JS -->
+    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <!-- jQuery Migrate JS -->
+    <script src="assets/js/vendor/jquery-migrate-3.3.2.min.js"></script>
+    <!-- Modernizer JS -->
+    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <!-- Slick Slider JS -->
+    <script src="assets/js/plugins/slick.min.js"></script>
+    <!-- Countdown JS -->
+    <script src="assets/js/plugins/jquery.countdown.min.js"></script>
+    <!-- Ajax JS -->
+    <script src="assets/js/plugins/jquery.ajaxchimp.min.js"></script>
+    <!-- Jquery Nice Select JS -->
+    <script src="assets/js/plugins/jquery.nice-select.min.js"></script>
+    <!-- Jquery Ui JS -->
+    <script src="assets/js/plugins/jquery-ui.min.js"></script>
+    <!-- jquery magnific popup js -->
+    <script src="assets/js/plugins/jquery.magnific-popup.min.js"></script>
 
-	<!-- jQuery JS -->
-	<script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
-	<!-- jQuery Migrate JS -->
-	<script src="assets/js/vendor/jquery-migrate-3.3.2.min.js"></script>
-	<!-- Modernizer JS -->
-	<script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
-	<!-- Bootstrap JS -->
-	<script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
-	<!-- Slick Slider JS -->
-	<script src="assets/js/plugins/slick.min.js"></script>
-	<!-- Countdown JS -->
-	<script src="assets/js/plugins/jquery.countdown.min.js"></script>
-	<!-- Ajax JS -->
-	<script src="assets/js/plugins/jquery.ajaxchimp.min.js"></script>
-	<!-- Jquery Nice Select JS -->
-	<script src="assets/js/plugins/jquery.nice-select.min.js"></script>
-	<!-- Jquery Ui JS -->
-	<script src="assets/js/plugins/jquery-ui.min.js"></script>
-	<!-- jquery magnific popup js -->
-	<script src="assets/js/plugins/jquery.magnific-popup.min.js"></script>
-
-	<!-- Main JS -->
-	<script src="assets/js/main.js"></script>
-
-
-
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
+<!--   <iframe  name="myHiddenFrame"  
+style="display:none;"></iframe> -->
 
 </body>
 

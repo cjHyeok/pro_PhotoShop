@@ -49,9 +49,8 @@
 
 
 
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$(".pro-remove").on("click", function() {
@@ -148,12 +147,11 @@
 
 											
 											 <td class="pro-cart"><a href ="./loginCheck/wishCartadd?product_id=${wish.product_id}">
-											 장바구니에 담기</a></td> 
-<%-- 											 <td class="pro-cart"><a href ="./loginCheck/wishCartadd?product_id=${wish.product_id}" class="btn obrien-button primary-btn text-uppercase">
-											 장바구니에 담기</a></td>  --%>
+											 <span class="iconify" data-icon="ion:cart" data-width="30" data-height="30"></span></a></td> 
+
 										
 
-											<td class="pro-remove" data-num="${wish.wish_id}"><i class="ion-trash-b"></i></a></td>
+											<td class="pro-remove" data-num="${wish.wish_id}"><span class="iconify" data-icon="ion:trash" data-width="30" data-height="30"></span></a></td>
 										</tr>
 
 									</c:forEach>

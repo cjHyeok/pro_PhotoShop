@@ -56,7 +56,7 @@
 			
 			$.ajax({
 				url : "loginCheck/cartAddDirect",
-				type : "GET",
+				type : "POST",
 				dataType: 'text',
 				data : {
 					product_id : product_id
@@ -250,16 +250,14 @@
 					<div class="single-product position-relative">
 						<div class="product-image">
 							<a class="d-block"
-								href="./productDetails?product_id=${dto.product_id}"> <img
+								href="./productDetails?product_id=${dto.product_id}&user_id=${login.user_id}"> <img
 								src="assets/images/${dto.product_img}" alt=""
 								class="product-image-1 w-100"> <%-- <img src="assets/images/${dto.product_img}_on.jpg" alt="" class="product-image-2 position-absolute w-100"> --%>
 							</a>
 						</div>
 						<div class="product-content">
 							<div class="product-rating">
-								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-									class="fa fa-star-o"></i>
+								
 							</div>
 							<div class="product-title">
 								<h4 class="title-2">
@@ -274,11 +272,14 @@
 
 							</div>
 						</div>
+						
 						<div class="add-action d-flex position-absolute">
-							<a id="cart" class="cart" data-num="${dto.product_id}" title="df  Add To cart"> <i class="ion-bag"></i></a>  
-							<a id="wish" class="wish" data-num="${dto.product_id}" title="xx  Add To Wishlist"> <i class="ion-ios-heart-outline"></i></a> 
-							<a href="./productDetails?product_id=${dto.product_id}" data-bs-toggle="modal" title="Quick View"> 
-							<i class="ion-eye"></i></a>
+							<a id="cart" class="cart" data-num="${dto.product_id}" title="장바구니 담기"> <i class="ion-bag"></i></a>  
+							<a href="./productDetails?product_id=${dto.product_id}" data-bs-toggle="modal" title="상품 상세보기"><i class="ion-eye"></i></a>
+							<a id="wish" class="wish" data-num="${dto.product_id}" title="찜 하기"> <i class="ion-ios-heart-outline"></i></a>
+							
+							좋아요 0개 
+							
 						</div>
 	
 					</div>

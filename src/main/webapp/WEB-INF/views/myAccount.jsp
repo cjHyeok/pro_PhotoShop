@@ -76,7 +76,7 @@
 </head>
 
 
-
+<script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -115,7 +115,39 @@ $(document).ready(function() {
 				
 		});
 	
+	$(".pro-remove").on("click", function() {
+		console.log("삭제버튼 클릭");
+		var wish_id = $(this).attr("data-num");
+		var xxx = $(this);
+		$.ajax({
+			url : "loginCheck/wishDelete",
+			type : "get",
+			dataType : "text",
+			data : {
+				wish_id : wish_id
+			},
+			success : function(data, status, xhr) {
+				console.log("success");
+				console.log("data"+data);
+				console.log("status"+status);
+
+				//dom삭제 
+				xxx.parents().filter("tr").remove(); //tr태그 삭제해서 항목 지우기
+				if(data == 0){ //size넘긴값 0일때 나오게하려고
+					$("#wishBody").text("");
+					$("#wishBody").text("위시리스트에 담긴 상품이 없습니다.");
+				}
+
+			},
+			error : function(xhr, status, error) {
+				console.log(error);
+			}
+		});
+	});
 	
+	function phone_format(num){ //핸드폰번호
+		return num.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]{4})/,"$1-$2-$3");
+	}
 	
 	});
 	</script>
@@ -123,6 +155,11 @@ $(document).ready(function() {
 
 
 <body>
+
+<c:set var="phone1" value="${fn:substring(login.phone,0,3)}" /> <!-- (시작배열,길이) -->
+<c:set var="phone2" value="${fn:substring(login.phone,3,7)}" />
+<c:set var="phone3" value="${fn:substring(login.phone,7,11)}" />
+
 
 <%-- 	<c:if test="${!empty mesg }">
 		<script>
@@ -164,19 +201,18 @@ $(document).ready(function() {
                                 <div class="col-lg-3 col-md-4 col-custom">
                                     <div class="myaccount-tab-menu nav" role="tablist">
                                         <a href="#dashboad" class="active" data-bs-toggle="tab"><i class="fa fa-dashboard"></i>
-                                            Dashboard</a>
+                                            마이페이지</a>
                                         <a href="#orders" data-bs-toggle="tab"><i class="fa fa-cart-arrow-down"></i>
-                                            Orders</a>
+                                            주문정보</a>
                                         <a href="#download" data-bs-toggle="tab"><i class="fa fa-cloud-download"></i>
-                                            Download</a>
-                                        <a href="#payment-method" data-bs-toggle="tab"><i class="fa fa-credit-card"></i>
+                                            찜리스트</a>
+                                       <!--  <a href="#payment-method" data-bs-toggle="tab"><i class="fa fa-credit-card"></i>
                                             Payment
-                                            Method</a>
+                                            Method</a> -->
                                         <a href="#address-edit" data-bs-toggle="tab"><i class="fa fa-map-marker"></i>
-                                            address</a>
-                                        <a href="#account-info" data-bs-toggle="tab"><i class="fa fa-user"></i> Account
-                                            Details</a>
-                                        <a href="#product-review" data-bs-toggle="tab"><i class="fa fa-star" aria-hidden="true"></i> Product Review</a>
+                                            나의 주소 정보</a>
+                                        <a href="#account-info" data-bs-toggle="tab"><i class="fa fa-user"></i>회원정보 변경</a>
+                                        <a href="#product-review" data-bs-toggle="tab"><i class="fa fa-star" aria-hidden="true"></i>나의 상품후기</a>
                                         <a href="./loginCheck/logout"><i class="fa fa-sign-out"></i>로그아웃</a>
                                     </div>
                                 </div>
@@ -188,7 +224,7 @@ $(document).ready(function() {
                                         <!-- Single Tab Content Start -->
                                         <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
                                             <div class="myaccount-content">
-                                                <h3>Dashboard</h3>
+                                                <h3>마이페이지</h3>
                                                 <div class="welcome">
                                                     <p>Hello, <strong>${login.user_id}</strong> (If Not <strong>${login.user_id} !</strong><a href="./login-register.html" class="logout"> Logout</a>)</p>
                                                 </div>
@@ -200,16 +236,16 @@ $(document).ready(function() {
                                         <!-- Single Tab Content Start -->
                                         <div class="tab-pane fade" id="orders" role="tabpanel">
                                             <div class="myaccount-content">
-                                                <h3>Orders</h3>
+                                                <h3>주문정보</h3>
                                                 <div class="myaccount-table table-responsive text-center">
                                                     <table class="table table-bordered">
                                                         <thead class="thead-light">
                                                             <tr>
-                                                                <th>Order</th>
-                                                                <th>Date</th>
-                                                                <th>Status</th>
-                                                                <th>Total</th>
-                                                                <th>Action</th>
+                                                                <th>NO.</th>
+                                                                <th>날짜</th>
+                                                                <th>주문상태</th>
+                                                                <th>합계</th>
+                                                                <th>상세정보</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -234,33 +270,42 @@ $(document).ready(function() {
                                         <!-- Single Tab Content Start -->
                                         <div class="tab-pane fade" id="download" role="tabpanel">
                                             <div class="myaccount-content">
-                                                <h3>Downloads</h3>
-                                                <div class="myaccount-table table-responsive text-center">
-                                                    <table class="table table-bordered">
-                                                        <thead class="thead-light">
-                                                            <tr>
-                                                                <th>Product</th>
-                                                                <th>Date</th>
-                                                                <th>Expire</th>
-                                                                <th>Download</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>Haven - Free Real Estate PSD Template</td>
-                                                                <td>Aug 22, 2018</td>
-                                                                <td>Yes</td>
-                                                                <td><a href="./#" class="btn obrien-button-2 primary-color rounded-0"><i class="fa fa-cloud-download mr-2"></i>Download File</a></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>HasTech - Profolio Business Template</td>
-                                                                <td>Sep 12, 2018</td>
-                                                                <td>Never</td>
-                                                                <td><a href="./#" class="btn obrien-button-2 primary-color rounded-0"><i class="fa fa-cloud-download mr-2"></i>Download File</a></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                                <h3>찜리스트</h3>
+                                                <div class="wishlist-table table-responsive">
+							<table class="table table-bordered">
+								<thead class="thead-light">
+									<tr>
+										<th class="pro-thumbnail">상품 사진</th>
+										<th class="pro-title">상품 이름</th>
+										<th class="pro-price">가격</th>
+										<th class="pro-cart">카트에 담기</th>
+										<th class="pro-remove">삭제</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="wish" items="${wishList}" varStatus="status">
+										<tr>
+											<td class="pro-thumbnail"><a href="./productDetails?product_id=${wish.product_id}"><img
+													class="img-fluid"
+													src="assets/images/${wish.product_img}" alt="Product" /></a></td>
+											<td class="pro-title"><a href="./productDetails?product_id=${wish.product_id}">${wish.product_name}</td>
+											<td class="pro-price"><span><fmt:formatNumber
+														value="${wish.product_price}" /></span></td>
+
+											
+											 <td class="pro-cart"><a href ="./loginCheck/wishCartadd?product_id=${wish.product_id}">
+											 <span class="iconify" data-icon="ion:cart" data-width="30" data-height="30"></span></a></td> 
+
+										
+
+											<td class="pro-remove" data-num="${wish.wish_id}"><span class="iconify" data-icon="ei:trash" data-width="30" data-height="30"></span></a></td>
+										</tr>
+
+									</c:forEach>
+								</tbody>
+							</table>
+							
+						</div>
                                             </div>
                                         </div>
                                         <!-- Single Tab Content End -->
@@ -277,12 +322,12 @@ $(document).ready(function() {
                                         <!-- Single Tab Content Start -->
                                         <div class="tab-pane fade" id="address-edit" role="tabpanel">
                                             <div class="myaccount-content">
-                                                <h3>Billing Address</h3>
+                                                <h3>나의 주소 정보</h3>
                                                 <address>
-                                                    <p><strong>Alex Aya</strong></p>
-                                                    <p>1355 Market St, Suite 900 <br>
-                                                    San Francisco, CA 94103</p>
-                                                    <p>Mobile: (123) 456-7890</p>
+                                                    <p><strong></strong></p>
+                                                    <p>${login.address1}<br>
+                                                    ${login.address_detail}</p>
+                                                    <p>전화번호: <%-- ${login.phone} --%>${phone1}-${phone2}-${phone3}</p>
                                                 </address>
                                                 <a href="./#" class="btn obrien-button-2 primary-color rounded-0"><i class="fa fa-edit mr-2"></i>Edit Address</a>
                                             </div>
@@ -365,9 +410,12 @@ $(document).ready(function() {
                                                                 	<p><fmt:formatDate var="dateTempParse" pattern="yyyy-MM-dd" value="${Review.order_date}"/><c:out value="${dateTempParse}"/>
                                                                 	<p>${Review.product_name}</p>
                                                                 </td>
-                                                                <td><a href="javascript:void(0);" onclick="window.open('./reviewWrite?product_id=${Review.product_id}&order_id=${Review.order_id}', '_blank', 'top=0, left=0, width=50px, height=50px, menubar=no, toolbar=no, location=no, directories=no, status=no, scrollbars=no, copyhistory=no, resizable=no');" 
-                                                                class="btn obrien-button-2 primary-color rounded-0">리뷰쓰기</a><br>
-                                                                <p>~ ${Review.writeday} 까지</p></td>
+                                                                <td>
+                                                                <p><a href="javascript:void(0);" onclick="window.open('./reviewWrite?product_id=${Review.product_id}&order_id=${Review.order_id}', '_blank', 'top=0, left=0, width=50px, height=50px, menubar=no, toolbar=no, location=no, directories=no, status=no, scrollbars=no, copyhistory=no, resizable=no');" 
+                                                                class="btn obrien-button-2 primary-color rounded-0">리뷰쓰기</a></p>
+                                                                
+                                                                 ~ <fmt:formatDate var="dateTempParse" pattern="yy-MM-dd" value="${Review.writeday}"/><c:out value="${dateTempParse}"/>까지</td>
+
                                                             </tr>
                                                             
                                                             </c:forEach>

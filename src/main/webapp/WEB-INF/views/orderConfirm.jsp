@@ -184,7 +184,7 @@ $(document).ready(function() {
 
 								<div class="col-md-6">
 									<div class="checkout-form-list">
-										<label> 이름 <span class="required">*</span></label> <input
+										<label> 이름 <span class="required" style="color: red;">*</span></label> <input
 											placeholder="" type="text" id="muser_name"
 											value="${mDTO.user_name}">
 									</div>
@@ -195,19 +195,18 @@ $(document).ready(function() {
 
 								<div class="col-md-10">
 									<div class="checkout-form-list">
-										<input type="text" name="post" id="post" placeholder="우편번호"
-											value="${mDTO.post}"> <input type="button"
-											onclick="sample4_execDaumPostcode()" value="우편번호 변경"><br>
+										<input type="text" name="post" id="post" placeholder="우편번호" style="width: 140px; height:40px; text-align:center;"  value="${mDTO.post}"> 
+										
+										<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 변경"><br>
+											
 										<input type="text" name="address1" id="address1"
-											placeholder="도로명주소" value="${mDTO.address1}"> <input
-											type="hidden" name="address2" id="address2"
-											placeholder="지번주소" value="${mDTO.address2}"> <span
-											id="guide" style="color: #999"></span> <br>
+											placeholder="도로명주소" value="${mDTO.address1}"> 
+											<input type="hidden" name="address2" id="address2" placeholder="지번주소" value="${mDTO.address2}"> <span id="guide" style="color: #999"></span> <br>
 									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="checkout-form-list">
-										<label>상세주소 <span class="required">*</span></label> <input
+										<label>상세주소 <span class="required" style="color: red;">*</span></label> <input
 											placeholder="상세주소를 입력해주세요" type="text" id="maddress_detail"
 											value="${mDTO.address_detail}">
 									</div>
@@ -215,7 +214,7 @@ $(document).ready(function() {
 
 								<div class="col-md-6">
 									<div class="checkout-form-list">
-										<label>번호 <span class="required">*</span></label> <input
+										<label>번호 <span class="required" style="color: red;">*</span></label> <input
 											type="text" id="mphone" value="${mDTO.phone}">
 									</div>
 
@@ -293,7 +292,7 @@ $(document).ready(function() {
 									<br>
 									
 									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
+										<input type="checkbox" class="custom-control-input" style="color: acc"
 											id="rememberMe" name="rememberMe"> <label class="custom-control-label"
 											for="rememberMe">(필수) 구매하실 상품의 결제정보를 확인하였으며, 구매진행에
 											동의합니다.</label>
@@ -338,7 +337,7 @@ $(document).ready(function() {
 							<p class="desc-content">Email: um.woom@gmail.com</p>
 						</div>
 						<div class="support-button d-flex align-items-center">
-							<a class="obrien-button primary-btn" href="./contact-us.html">Contact
+							<a class="obrien-button primary-btn" href="./contactUs">Contact
 								now</a>
 						</div>
 					</div>

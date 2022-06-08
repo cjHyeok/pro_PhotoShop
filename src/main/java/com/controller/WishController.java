@@ -18,8 +18,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dto.CartDTO;
 import com.dto.MemberDTO;
+import com.dto.ProductDTO;
 import com.dto.WishDTO;
 import com.service.CartService;
+import com.service.ProductService;
 import com.service.WishService;
 
 @Controller
@@ -30,6 +32,9 @@ public class WishController {
 	
 	@Autowired
 	CartService cservice;
+	
+	@Autowired
+	ProductService pservice;
 /*
 	@RequestMapping("/loginCheck/wishAdd") //위시리스트에 추가
 	public String wishAdd(WishDTO wish, HttpSession session) {
@@ -47,22 +52,44 @@ public class WishController {
 	}
 */
 	
-	@RequestMapping(value ="/loginCheck/wishAdd", method = RequestMethod.POST) // 리뷰 쓰기
+	@RequestMapping(value ="/loginCheck/wishAdd", method = RequestMethod.POST) 
 	public  @ResponseBody String wishAdd(@RequestParam Map<String, String> map, HttpSession session) {
 		System.out.println("/loginCheck/wishAdd controller map 1==" + map);
 
 		MemberDTO mDTO = (MemberDTO) session.getAttribute("login");
 		
 		WishDTO wish = new WishDTO();
-		wish.setUser_id(mDTO.getUser_id()); 
+		wish.setUser_id(mDTO.getUser_id());
+		System.out.println("mDTO.getUser_id() =  " + mDTO.getUser_id());
 		wish.setProduct_id(map.get("product_id"));
+		System.out.println("/loginCheck/wishAdd controller1  pD =" + wish);
+		
+		if(map.get("user_id") == null) {
+			map.put("user_id", mDTO.getUser_id());
+		}
+		
+		if (!wservice.wishCheck(wish)) //위시리스트 체크해서 없을때
+			wservice.wishAdd(wish); //위시리스트 추가
+		else{
+			wservice.wishUserDelete(wish);  //위시리스트 삭제
+		}
+		System.out.println("/loginCheck/wishAdd controller2  pD =" + map);
+		
 		 
-		if (!wservice.wishCheck(wish))
-			wservice.wishAdd(wish);
- 
-
+		ProductDTO pdto = pservice.productDetails(map);
+		System.out.println("/loginCheck/wishAdd controller3  pD =" + pdto);
+		
+		String retMsg = "";
+		
+		//retMsg += "wish_count=";
+		retMsg += pdto.getWish_count(); //좋아요 갯수
+		
+		retMsg += ",";
+		retMsg += pdto.getWish_my(); // 하트 
+		
+		
 		System.out.println("/loginCheck/wishAdd controller wish=="+wish);
-		return "true";
+		return retMsg;
 		
 	}
 	
@@ -106,8 +133,8 @@ public class WishController {
 		return mav;
 
 	}
-
 	
+
 	
 	@RequestMapping(value = "/loginCheck/wishDelete") 
 	public @ResponseBody String wishDelte(@RequestParam("wish_id") ArrayList<String> list, HttpSession session) {

@@ -6,6 +6,11 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.InvalidParameterSpecException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.crypto.BadPaddingException;
@@ -27,8 +32,10 @@ import com.dto.CartDTO;
 import com.dto.MemberDTO;
 import com.dto.OrderDTO;
 import com.dto.ReviewDTO;
+import com.dto.WishDTO;
 import com.service.MemberService;
 import com.service.OrderService;
+import com.service.WishService;
 
 @Controller
 public class MemberController {
@@ -38,6 +45,9 @@ public class MemberController {
 	
 	@Autowired
 	OrderService oservice;
+
+	@Autowired
+	WishService wservice;
 	
 	@RequestMapping(value = "/memberAdd", method = RequestMethod.POST)
 	public String memberAdd(MemberDTO m, Model model) {  //회원가입
@@ -91,15 +101,29 @@ public class MemberController {
 			String user_id = dto.getUser_id();
 			System.out.println(" /loginCheck/myAccount controller user_id ====" + user_id);
 
-			List<OrderDTO> olist =oservice.myAccountOrderList(dto);
+			List<OrderDTO> olist =oservice.myAccountOrderList(dto); //주문
 			System.out.println("/myAccount  controller  orderList===" + olist);
 
-			List<ReviewDTO> rlist = oservice.productReview(dto);
+			List<ReviewDTO> rlist = oservice.productReview(dto); //리뷰
 			System.out.println("/myAccount controller  productReview===" + rlist);
+			
+			
+	
+			
+			
+			
+			List<WishDTO> wlist = wservice.wishList(dto); //위시리스트
+			System.out.println("/myAccount controller  위시리스트 리스트 출력===" + wlist);
+			
+			
+			
 			
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("orderList", olist);
 			mav.addObject("productReview", rlist);
+			
+			mav.addObject("wishList", wlist);
+			mav.addObject("wlistSize", wlist.size());
 			mav.setViewName("myAccount");
 
 			return mav;

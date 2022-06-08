@@ -2,6 +2,7 @@ package com.controller;
 
 import java.lang.ProcessBuilder.Redirect;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -44,13 +45,43 @@ public class ProductController {
 	OrderService oservice;
 	
 	@RequestMapping("/productList") // 상품리스트 값 없을 때 나오게 하는거
-	public ModelAndView productList(@RequestParam(value = "category_name", required = false) String category_name) {
+	public ModelAndView productList(@RequestParam(value = "category_name", required = false) String category_name , HttpSession session) {
 		List<ProductDTO> plist = null;
 		System.out.println("category_name =" + category_name);
 		if (category_name == null) {
 			plist = pservice.productListAll();
 		} else {
 			plist = pservice.productList(category_name);
+		}
+		
+		String user_id = "";
+		
+		
+		System.out.println("/productList userid step1" );  
+		
+		MemberDTO mDTO = (MemberDTO) session.getAttribute("login");
+		if(mDTO==null) {
+			user_id = "guest";
+		} else { 
+			user_id = mDTO.getUser_id();
+		}
+		
+		System.out.println("/productList userid step2 " +  user_id);  
+		
+		
+		for(int i=0; i<plist.size(); i++) {
+			Map<String, String> map = new HashMap<>();
+			
+			ProductDTO pDto = plist.get(i);
+			map.put("user_id",  user_id);
+			map.put("product_id", pDto.getProduct_id()); 
+			
+			ProductDTO pdto = pservice.productDetails(map);
+			
+			plist.set(i, pdto);
+			
+			System.out.println("/productList userid step3  pdto " +  pdto);  
+			
 		}
 
 		ModelAndView mav = new ModelAndView();

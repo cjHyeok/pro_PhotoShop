@@ -52,4 +52,22 @@ public class CartDAO {
 		
 	}
 
+	public boolean cartSelectUpdate(CartDTO cart) {
+		List<CartDTO> clist = template.selectList("CartMapper.cartSelect", cart);
+		System.out.println("clist dao=  "+ clist);
+		if (clist.size() > 0) {
+			System.out.println("clist.size() dao=  "+ clist.size());
+			CartDTO sCart = clist.get(0);
+			cart.setCart_id( sCart.getCart_id() );
+			cart.setCart_quantity(  sCart.getCart_quantity() + cart.getCart_quantity());
+			
+			System.out.println("cartSelectUpdate  cart dao ==" + cart);
+			
+			template.update("CartMapper.cartSelectUpdate", cart);
+			return true;
+		}
+		
+		return false;
+	}
+
 }

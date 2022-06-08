@@ -21,5 +21,5 @@ public class ReviewDTO {
 	private int order_id;
 	private String product_img;
 	private Date order_date;
-	private String writeday;
+	private Date writeday;
 }

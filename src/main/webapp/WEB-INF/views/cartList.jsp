@@ -50,8 +50,9 @@
 margin:auto;
 }
 </style>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(
 			function() {
@@ -78,58 +79,50 @@ margin:auto;
 						}
 					});
 				});//end event
+				
 
-				/* $("#up").on("click", function() {
-					var count = $("#cart_quantity").val();
-					console.log(count);
+				 $(".cart-plus-minus").on("click", function() {   //수량변경 버튼 div
+					 
+					var cart_id = $(this).attr("data-num"); //카트아이디 값
+					var product_price = $(this).attr("data-price"); //상품 가격 값
 					
-					$("#cart_quantity").val(parseInt(count) + 1);
+					
+					var cart_quantity = $("#cartQuantity" + cart_id).val(); //카트아이디에 해당하는 수량
+					
+					
+					console.log(cart_id, cart_quantity, product_price);
+					
+					$.ajax({
+						url : "loginCheck/cartUpdate",
+						type : "get",
+						dataType : "text",
+						data : {
+							cart_id : cart_id,
+							cart_quantity : cart_quantity
+						},
+						success : function(data, status, xhr) {
+
+							var total = parseInt(cart_quantity)
+									* parseInt(product_price);
+																
+							$("#sum" + cart_id).text(numberWithCommas(total));
+							totalXXX(); /// 총합 다시 구하기 
+							//location.reload();
+						},
+						error : function(xhr, status, error) {
+							console.log(error);
+						}
+					});
 				});
 
-				$("#down").on("click", function() {
-					var count = $("#cart_quantity").val();
-					if (count != 1) {
-						$("#cart_quantity").val(parseInt(count) - 1);
-					}
-				}); */
+				
 				
 				function numberWithCommas(x) {
 				    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 				}
 			
 
-				//수정버튼이벤트 처리 
-				$(".updateBtn").on("click", function() {
-							console.log("수정 값 업데이트===");
-							var cart_id = $(this).attr("data-num");
-							var cart_quantity = $("#cartQuantity" + cart_id)
-									.val();
-							var product_price = $(this).attr("data-price");
-							console.log(cart_id, cart_quantity, product_price);
-							
-							
-							$.ajax({
-								url : "loginCheck/cartUpdate",
-								type : "get",
-								dataType : "text",
-								data : {
-									cart_id : cart_id,
-									cart_quantity : cart_quantity
-								},
-								success : function(data, status, xhr) {
-
-									var total = parseInt(cart_quantity)
-											* parseInt(product_price);
-																		
-									$("#sum" + cart_id).text(numberWithCommas(total));
-									totalXXX(); /// 총합 다시 구하기 
-									//location.reload();
-								},
-								error : function(xhr, status, error) {
-									console.log(error);
-								}
-							});
-						});
+				
 
 				function totalXXX() { //총합을 구하는 함수 
 					var totalSum = 0;
@@ -180,13 +173,7 @@ margin:auto;
 
 					location.href = "loginCheck/orderConfirm";
 				})
-			
-				
-				$(document).ready(function(){
-				    $("#btnAdd").click(function(){
-				        location.href="./write.do";
-				    });
-				});
+										
 			
 			});
 </script>
@@ -254,27 +241,24 @@ margin:auto;
 											<td class="pro-quantity">
 												<div class="quantity">
 
-													<div class="cart-plus-minus">
+													<div class="cart-plus-minus" data-num="${cart.cart_id}" data-price="${cart.product_price}" >
 														<input class="cart-plus-minus-box" name=cartQuantity
 															id="cartQuantity${cart.cart_id}"
-															value="${cart.cart_quantity}" type="text">
-														<div id="down">-</div>
-														<div id="up">+</div>
+															value="${cart.cart_quantity}" type="text"  >
+														<div id="down" class="cartQuantityDown">-</div>
+														<div id="up" class="cartQuantityUp">+</div>
 													</div>
-
 												</div>
 											</td>
 
 
-<%-- <fmt:formatNumber value="${cart.product_price}" /> --%>
-											<td class="pro-subtotal"><span class="sum"
-												id="sum${cart.cart_id}"> <fmt:formatNumber value="${cart.product_price * cart.cart_quantity}"/>
-											</span> &nbsp; <input type="button" value="수정" class="updateBtn"
-												data-num="${cart.cart_id}"
-												data-price="${cart.product_price}" /></td>
+
+											<td class="pro-subtotal"><span class="sum" id="sum${cart.cart_id}"> 
+											<fmt:formatNumber value="${cart.product_price * cart.cart_quantity}"/></span> &nbsp; 
+											
 
 
-											<td class="pro-remove" data-num="${cart.cart_id}"><i class="ion-trash-b"></i></td>
+											<td class="pro-remove" data-num="${cart.cart_id}"><span class="iconify" data-icon="ei:trash" data-width="30" data-height="30"></span></td>
 										</tr>
 
 									</c:forEach>

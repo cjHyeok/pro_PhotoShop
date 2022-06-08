@@ -51,7 +51,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="productDetails" parameterType="hashmap" resultType="ProductDTO">
 		select p.product_id, p.product_name, p.product_price, p.product_category_id, p.product_description_summary, p.product_quantity,p.product_description,p.product_sales_quantity,p.product_sales_state, i.product_img, i.product_img_type, 
-				i.product_sub_img_1, i.product_sub_img_2, i.product_sub_img_3, i.product_sub_img_4
+				i.product_sub_img_1, i.product_sub_img_2, i.product_sub_img_3, i.product_sub_img_4,
+				(select count(product_id) from t_wish where product_id = #{product_id}) as wish_count,
+                (select count(product_id) from t_wish where product_id = #{product_id} and user_id=#{user_id}) as wish_my
+                
 		from t_product p JOIN t_product_img i
                                	on p.product_id = i.product_id
 		where p.product_id = #{product_id}

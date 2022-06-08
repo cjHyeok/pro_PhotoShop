@@ -41,5 +41,10 @@ public class WishDAO {
 		return false;
 	}
 
+	public void wishUserDelete(WishDTO wish) {
+		int n = template.delete("WishMapper.wishUserDelete", wish);
+		
+	}
+
 
 }

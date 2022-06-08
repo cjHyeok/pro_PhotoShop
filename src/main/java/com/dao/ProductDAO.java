@@ -36,6 +36,13 @@ public class ProductDAO {
 }
 
 	public ProductDTO productDetails(Map<String, String> map) {
+		
+		System.out.println("user_id productDetail DAO===========" + map.get("user_id"));
+		if (map.get("user_id") == null) {
+			map.put("user_id", "guest");
+		} else if (map.get("user_id") == "") {
+			map.put("user_id", "guest");
+		}
 		ProductDTO pdto = template.selectOne("ProductMapper.productDetails",map);
 		return pdto;
 	}
