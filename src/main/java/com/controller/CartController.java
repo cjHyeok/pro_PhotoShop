@@ -72,18 +72,55 @@ public class CartController {
 		}
 		
 		
+		List<CartDTO> clist = cservice.cartList(mDTO);
 		
-
+		String retMsg = ""; 
+		
+		retMsg += "<a href='./cartList' class='minicart-btn toolbar-btn'> <i class='ion-bag'></i>";
+		retMsg += "<span class='cart-item_count' id='cartSize'>" +clist.size() + "</span></a>"; 
+		retMsg += "<div class='cart-item-wrapper dropdown-sidemenu dropdown-hover-2'>"; 
+			
+		for(int i=0; i< clist.size(); i++ ) {
+			
+			CartDTO cartData = clist.get(i);
+			
+			retMsg += "<div class='single-cart-item'><div class='cart-img'>";
+			retMsg += "	<a href='./productDetails?product_id="+cartData.getProduct_id()+"'>";
+			retMsg += "	<img src='assets/images/"+cartData.getProduct_img()+"' alt=''></a>";
+			retMsg += "</div>";
+			retMsg += "<div class='cart-text'>";
+			retMsg += "	<h5 class='title'>";
+			retMsg += "		<a href='./productDetails?product_id="+cartData.getProduct_id()+"'>"+cartData.getProduct_name()+"</a>";
+			retMsg += "	</h5>";
+			retMsg += "</div></div>";
+			
+		} 
+			
+		retMsg += "<!-- 총합 -->";
+		retMsg += "<div class='cart-price-total d-flex justify-content-between'>";
+		retMsg += "	<div class='cart-links d-flex justify-content-center'>";
+		retMsg += "	<a class='obrien-button white-btn' href='./cartList'>장바구니</a> <a class='obrien-button white-btn' href='./loginCheck/orderConfirm'>구매하기</a>";
+		retMsg += "	</div>";
+		retMsg += "	</div>";
+			
+		retMsg += "</div>"; 
 		
 		
+		
+		
+		  
+		session.setAttribute("cartList", clist);
+		session.setAttribute("cartSize", Integer.toString(clist.size()));
 		
 		System.out.println("/loginCheck/cartAdd controller cart=="+cart);
-		return "true";
+		System.out.println("/loginCheck/cartAdd controller cart size =="+clist.size());
+		
+		return retMsg;
 		
 	}
 	
 	
-	@RequestMapping(value ="/loginCheck/cartAddDirect", method = RequestMethod.POST)  
+	@RequestMapping(value ="/loginCheck/cartAddDirect", method = RequestMethod.POST,produces="text/plain;charset=UTF-8")  
 	public  @ResponseBody String cartAddDirect(@RequestParam Map<String, String> map, HttpSession session) {
 		System.out.println("/loginCheck/cartAddDirect controller map 1==" + map);
 		
@@ -103,8 +140,48 @@ public class CartController {
 		
 		cservice.cartAdd(cart); 
 		
-		System.out.println("/loginCheck/cartAddDirect controller cart=="+cart);
-		return "true";
+		List<CartDTO> clist = cservice.cartList(mDTO);  
+		session.setAttribute("cartList", clist);
+		session.setAttribute("cartSize", Integer.toString(clist.size()));		
+		
+		System.out.println("** /loginCheck/cartAddDirect controller cart=="+cart);
+		System.out.println("** /loginCheck/cartAddDirect controller cart size =="+clist.size());
+		
+		String retMsg = ""; 
+		
+		retMsg += "<a href='./cartList' class='minicart-btn toolbar-btn'> <i class='ion-bag'></i>";
+		retMsg += "<span class='cart-item_count' id='cartSize'>" +clist.size() + "</span></a>"; 
+		retMsg += "<div class='cart-item-wrapper dropdown-sidemenu dropdown-hover-2'>"; 
+			
+		for(int i=0; i< clist.size(); i++ ) {
+			
+			CartDTO cartData = clist.get(i);
+			
+			retMsg += "<div class='single-cart-item'><div class='cart-img'>";
+			retMsg += "	<a href='./productDetails?product_id="+cartData.getProduct_id()+"'>";
+			retMsg += "	<img src='assets/images/"+cartData.getProduct_img()+"' alt=''></a>";
+			retMsg += "</div>";
+			retMsg += "<div class='cart-text'>";
+			retMsg += "	<h5 class='title'>";
+			retMsg += "		<a href='./productDetails?product_id="+cartData.getProduct_id()+"'>"+cartData.getProduct_name()+"</a>";
+			retMsg += "	</h5>";
+			retMsg += "</div></div>";
+			
+		} 
+			
+		retMsg += "<!-- 총합 -->";
+		retMsg += "<div class='cart-price-total d-flex justify-content-between'>";
+		retMsg += "	<div class='cart-links d-flex justify-content-center'>";
+		retMsg += "	<a class='obrien-button white-btn' href='./cartList'>장바구니</a> <a class='obrien-button white-btn' href='./loginCheck/orderConfirm'>구매하기</a>";
+		retMsg += "	</div>";
+		retMsg += "	</div>";
+			
+		retMsg += "</div>"; 
+		
+		return retMsg;
+		
+		
+		
 		
 	}
 
@@ -117,6 +194,8 @@ public class CartController {
 
 		List<CartDTO> clist = cservice.cartList(dto);
 		System.out.println("/cartList controller  cartList===" + clist);
+		
+		session.setAttribute("cartList", clist);
 
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("cartList", clist);
@@ -129,9 +208,13 @@ public class CartController {
 	
 	
 	@RequestMapping(value = "/loginCheck/cartDelete") // 장바구니에서
-	public @ResponseBody void cartDelte(@RequestParam("cart_id") ArrayList<String> list) {
+	public @ResponseBody void cartDelte(@RequestParam("cart_id") ArrayList<String> list, HttpSession session) {
 		System.out.println("/loginCheck/cartDelete controller list ---" + list);
 		cservice.cartDelete(list); // 삭제
+		
+		MemberDTO dto = (MemberDTO) session.getAttribute("login");
+		List<CartDTO> clist = cservice.cartList(dto);
+		session.setAttribute("cartList", clist);
 
 	}
 

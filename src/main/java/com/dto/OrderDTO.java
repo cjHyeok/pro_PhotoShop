@@ -33,5 +33,9 @@ public class OrderDTO {
 	private String address1;
 	private String address2;
 	private String address_detail;
-
+	
+	private String product_img;
+	private String product_name;
+	private int product_price;
+	
 }

@@ -72,7 +72,8 @@ margin:auto;
 							location.reload();//성공하면 자동 새로고침으로 지워주기
 							//dom삭제 
 							xxx.parents().filter("tr").remove();
-							totalXXX(); //총합 다시 구하기 
+							totalXXX(); //총합 다시 구하기  
+							
 						},
 						error : function(xhr, status, error) {
 							console.log(error);
@@ -158,7 +159,8 @@ margin:auto;
 						$("#cartTotalSummary").text("");
 						$("#cartBody").text("");
 						$("#cartBody").text("장바구니에 담은 상품이 없습니다.");
-					}
+					} 
+					
 				}
 					
 					

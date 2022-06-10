@@ -37,10 +37,10 @@ public class LoginController {
 	
 	@RequestMapping(value = "/login",  method = RequestMethod.POST)
 	public String login(@RequestParam Map<String, String> map, Model model, HttpSession session, RedirectAttributes attr) {
-		System.out.println("map = " + map);
+		System.out.println("/login map = " + map);
 		
-		System.out.println("session=  "+ session);
-		System.out.println("attr=  "+ attr);
+		System.out.println("/login session=  "+ session);
+		System.out.println("/login attr=  "+ attr);
 		
 		String encrypted = "";
 		
@@ -66,11 +66,24 @@ public class LoginController {
 		System.out.println("/로그인 controller  cartList===" + clist);
 		
 		
+		/*
+		 * String uri = (String)session.getAttribute("clickLink");
+		 * System.out.println("/로그인 controller  uri ========>   " + uri);
+		 * 
+		 */		
+		
 		if (mdto != null) {
 			session.setAttribute("login", mdto);
 			
 			session.setAttribute("user_id", mdto.getUser_id());
 			session.setAttribute("cartList", clist);
+			
+			/*
+			 * if(!uri.isEmpty()) { session.setAttribute("clickLink", ""); return
+			 * "redirect:./productDetails";
+			 * 
+			 * }
+			 */
 			return "redirect:./";
 		}else {
 			model.addAttribute("mesg", "아이디 또는 비밀번호를 다시 확인해주세요.");

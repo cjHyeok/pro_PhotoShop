@@ -63,6 +63,14 @@ public class DirectOrderController {
 		xxx.addFlashAttribute("DirectOrder", "true"); /* orderconfirm.jsp 에서 if 쓰려고 */
 		xxx.addFlashAttribute("total", Integer.toString(total));
 		xxx.addFlashAttribute("shipping", Integer.toString(shipping));
+		
+		
+		// 카드 전체를 표시 
+		List<CartDTO> cTotlist = cservice.cartList(mDTO);  
+		session.setAttribute("cartList", cTotlist);
+		session.setAttribute("cartSize", Integer.toString(cTotlist.size()));		
+		
+		
 		return "redirect:../orderConfirm"; 
 
 	}

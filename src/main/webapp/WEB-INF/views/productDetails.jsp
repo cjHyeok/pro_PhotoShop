@@ -98,6 +98,15 @@ pageContext.setAttribute("BR", "<br/>");
 
 		$("#DirectOrder").on("click", function() {
 			console.log("#DirectOrder");
+			
+			//장바구니 버튼 눌렀을 때 로그인 안 되어있을 경우
+			var user_id = $("#user_id").val();
+			console.log("user_id #wish "+user_id);
+			
+			if (user_id == "" || user_id === undefined){
+				alert("로그인 해주세요");
+				return;
+			}
 			$("form").attr("action", "loginCheck/DirectOrder");
 			$("form").submit();
 
@@ -232,6 +241,9 @@ pageContext.setAttribute("BR", "<br/>");
 					//팝업 위치 조절
 					var divTop = 115;
 					var divLeft = 70; 
+					
+					console.log("success " + data); 
+					 $("#miniCart").html(data);
 
 					$('.cartPopupLayer').css({
 						"top" : divTop,
@@ -301,9 +313,8 @@ pageContext.setAttribute("BR", "<br/>");
 		<input type="hidden" name="product_id" value="${productDetails.product_id}">
 		<input type="hidden" name="cart_id" value="${productDetails.cart_id}">
 		<input type="hidden" id="user_id" name="user_id" value="${login.user_id}">
-		
-	
-	
+		<input type="hidden" id="cur_url" name="cur_url" value="<%= request.getRequestURL() %>">
+		 
 	
 		<div class="shop-wrapper">
 			<!-- Header Area Start Here -->

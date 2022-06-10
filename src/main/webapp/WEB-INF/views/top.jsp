@@ -1,7 +1,25 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><!-- c:if 사용하기위해 -->
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<%@ page import="java.util.List" %>
+<%@ page import="com.dto.CartDTO" %>
+
+ 
+
+
+<%
+	List<CartDTO> cList = (List<CartDTO>)session.getAttribute("cartList"); 
+
+	String cListSize = "";
+	if( cList != null) {
+		System.out.println("A12312clist ===" + cList); 
+		cListSize = Integer.toString(cList.size());   
+	}
+ 
+%>
 
 <header class="main-header-area">
 			<!-- Main Header Area Start -->
@@ -92,43 +110,50 @@
 														
 														
 														<!-- 장바구니 미니 시작 -->
-														
-														<li class="minicart-wrap"><a href="./cartList" class="minicart-btn toolbar-btn"> <i class="ion-bag"></i>
-																<span class="cart-item_count">${cartList.size()}</span></a>
+													
+														<li class="minicart-wrap">
 																
+															<div id="miniCart">
+																
+																<a href="./cartList" class="minicart-btn toolbar-btn"> <i class="ion-bag"></i>
+																<span class="cart-item_count" id="cartSize"><%=cListSize %> </span></a>
+																
+															
+														
 															<div class="cart-item-wrapper dropdown-sidemenu dropdown-hover-2">
 																<c:forEach var="cart" items="${cartList}" varStatus="status">
-																<div class="single-cart-item">
-																	<div class="cart-img">
-																		<a href="./productDetails?product_id=${cart.product_id}">
-																		<img src="assets/images/${cart.product_img}" alt=""></a>
-																	</div>
-																	<div class="cart-text">
-																		<h5 class="title">
-																			<a href="./productDetails?product_id=${cart.product_id}">${cart.product_name}</a>
-																			
-																		</h5>
-																		<div class="cart-text-btn">
-																			<div class="cart-qty">
-																				<span>${cart.cart_quantity}×</span> <span>${cart.product_price}</span>
-																			</div>
-																			
+																	<div class="single-cart-item">
+																		<div class="cart-img">
+																			<a href="./productDetails?product_id=${cart.product_id}">
+																			<img src="assets/images/${cart.product_img}" alt=""></a>
+																		</div>
+																		<div class="cart-text">
+																			<h5 class="title">
+																				<a href="./productDetails?product_id=${cart.product_id}">${cart.product_name}</a>
+																				
+																			</h5>
+																		
 																		</div>
 																	</div>
-																</div>
 																</c:forEach>
 																
+																
+																
+																
 																<!-- 총합 -->
-																<div class="cart-price-total d-flex justify-content-between">
-																	<div class="cart-links d-flex justify-content-center">
-																	<a class="obrien-button white-btn" href="./cartList">장바구니</a> <a class="obrien-button white-btn"
-																		href="./loginCheck/orderConfirm">구매하기</a>
-																</div>
-																</div>
+																	<div class="cart-price-total d-flex justify-content-between">
+																		<div class="cart-links d-flex justify-content-center">
+																		<a class="obrien-button white-btn" href="./cartList">장바구니</a> <a class="obrien-button white-btn"
+																			href="./loginCheck/orderConfirm">구매하기</a>
+																		</div>
+																	</div>
 																
 															</div>
 															
-															</li>
+															
+															
+														</div>
+													</li>
 															&nbsp;&nbsp;
 															
 															<!-- 장바구니 미니 끝 -->

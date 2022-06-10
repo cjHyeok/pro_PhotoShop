@@ -240,7 +240,7 @@ $(document).ready(function() {
                                 </div>                              
            					    <div class="single-input-item mb-3" >  
            					    <input type="text" name="post" id="sample4_postcode" style="text-align:center; width:161px;" placeholder="우편번호">&nbsp;<span>           
-                              	    <input type="button" onclick="sample4_execDaumPostcode()" style="width:275px; margin-left:1em" value="우편번호 찾기"></span>
+                              	    <input type="button" onclick="sample4_execDaumPostcode()" style="width:260px; margin-left:1em" value="우편번호 찾기"></span>
 									<input type="text" name="address1" id="sample4_roadAddress" style="width:465px;" placeholder="도로명주소"> 
 									<input type="text" name="address2" id="sample4_jibunAddress" style="width:465px;"placeholder="지번주소"> <span id="guide" style="color: #999"></span> 
 									<input id="address_detail" name="address_detail" type="text"style="width:465px;" placeholder="상세주소를 입력해주세요">
@@ -270,7 +270,7 @@ $(document).ready(function() {
                                 
                                 	<!-- <div class="single-input-item mb-31"> -->
                                 	<div>
-                                	    <button class="btn obrien-button-2 primary-color" style="margin:auto; display:block; width: 150px;">회원가입</button>
+                                	    <button class="btn obrien-button-2 primary-color" style="margin:auto; display:block; width: 450px;">회원가입</button>
                                	 	</div>
                               
                                 

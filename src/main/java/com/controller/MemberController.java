@@ -31,6 +31,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.dto.CartDTO;
 import com.dto.MemberDTO;
 import com.dto.OrderDTO;
+import com.dto.ProductDTO;
 import com.dto.ReviewDTO;
 import com.dto.WishDTO;
 import com.service.MemberService;
@@ -108,7 +109,6 @@ public class MemberController {
 			System.out.println("/myAccount controller  productReview===" + rlist);
 			
 			
-	
 			
 			
 			

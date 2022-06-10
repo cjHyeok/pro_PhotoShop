@@ -209,9 +209,9 @@ $(document).ready(function() {
                                        <!--  <a href="#payment-method" data-bs-toggle="tab"><i class="fa fa-credit-card"></i>
                                             Payment
                                             Method</a> -->
-                                        <a href="#address-edit" data-bs-toggle="tab"><i class="fa fa-map-marker"></i>
-                                            나의 주소 정보</a>
-                                        <a href="#account-info" data-bs-toggle="tab"><i class="fa fa-user"></i>회원정보 변경</a>
+                                       <!--  <a href="#address-edit" data-bs-toggle="tab"><i class="fa fa-map-marker"></i>
+                                            나의 주소 정보</a> -->
+                                        <a href="#account-info" data-bs-toggle="tab"><i class="fa fa-user"></i>회원정보</a>
                                         <a href="#product-review" data-bs-toggle="tab"><i class="fa fa-star" aria-hidden="true"></i>나의 상품후기</a>
                                         <a href="./loginCheck/logout"><i class="fa fa-sign-out"></i>로그아웃</a>
                                     </div>
@@ -232,36 +232,65 @@ $(document).ready(function() {
                                             </div>
                                         </div>
                                         <!-- Single Tab Content End -->
+                                        
+                                        <c:set var="OrderNum" value= "1" />
+                                        <c:set var="Step" value= "1" />
 
                                         <!-- Single Tab Content Start -->
                                         <div class="tab-pane fade" id="orders" role="tabpanel">
                                             <div class="myaccount-content">
                                                 <h3>주문정보</h3>
-                                                <div class="myaccount-table table-responsive text-center">
-                                                    <table class="table table-bordered">
-                                                        <thead class="thead-light">
+                                                <div class="myaccount-table table-responsive text-center"> 
+                                                        
+                                                        <c:forEach var="order" items="${orderList}" varStatus="status"> 
+                                                         
+                                                         
+                                                       <%--  <c:if test="${ (order.order_id ne OrderNum) and (Step ne 1)}"> 
+                                                        	</table>
+                                                        </c:if> --%>
+                                                        
+                                                        
+                                                       <%--  <c:if test="${ (order.order_id ne OrderNum)"> --%>
+	                                                            <table class="table table-bordered">
+	                                                            
+	                                                        <thead class="thead-light">
+	                                                            <tr>
+	                                                            <th>order id</th>
+	                                                           		<th>상품이미지</th>
+	                                                            	<th>주문날짜</th>
+	                                                                <th>상품이름</th>
+	                                                                <th>주문상태</th>
+	                                                                <th>수량</th>
+	                                                            </tr>
+	                                                        </thead>
+                                                       <%--  </c:if> --%>
+                                                        
+                                                        
+                                                        
+                                                        
                                                             <tr>
-                                                                <th>NO.</th>
-                                                                <th>날짜</th>
-                                                                <th>주문상태</th>
-                                                                <th>합계</th>
-                                                                <th>상세정보</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <c:forEach var="order" items="${orderList}" varStatus="status">
-                                                       		
-                                                            <tr>
-                                                                <td>${order.rnum}</td>
+                                                            	<td>${order.order_id}</td>
+                                                                <td><a href="./productDetails?product_id=${order.product_img}"><img
+													class="img-fluid" style="width: 200px; height:200px; object-fit: cover;"
+													src="assets/images/${order.product_img}" alt="Product" /></a></td>
                                                                 <td><fmt:formatDate var="dateTempParse" pattern="yyyy-MM-dd" value="${order.order_date}"/><c:out value="${dateTempParse}"/></td>
+                                                                <td>${order.product_name}</td>
                                                                 <td>${order.order_state}</td>
-                                                                <td>${order.total_price}</td>
-                                                                <td><a href="./cart.html" class="btn obrien-button-2 primary-color rounded-0">View</a></td>
+                                                                <td>${order.order_quantity}</td>
+                                                                <!-- <td><a href="./cart.html" class="btn obrien-button-2 primary-color rounded-0">View</a></td> -->
                                                             </tr>
                                                             
+                                                           
+                                                    <%-- 
+                                                    		<c:set var="Step" value= "${Step + 1}"  />
+                                                        	<c:set var="OrderNum" value= "${order.order_id}"  />  --%>
+                                                            
+                                                            </table>
                                                             </c:forEach>
-                                                        </tbody>
-                                                    </table>
+                                                        
+                                                    
+                                                    
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -319,7 +348,10 @@ $(document).ready(function() {
                                         </div>
                                         <!-- Single Tab Content End -->
 
-                                        <!-- Single Tab Content Start -->
+                                        
+                                        
+                                        
+                                        <!-- Single Tab Content Start 
                                         <div class="tab-pane fade" id="address-edit" role="tabpanel">
                                             <div class="myaccount-content">
                                                 <h3>나의 주소 정보</h3>
@@ -329,17 +361,17 @@ $(document).ready(function() {
                                                     ${login.address_detail}</p>
                                                     <p>전화번호: <%-- ${login.phone} --%>${phone1}-${phone2}-${phone3}</p>
                                                 </address>
-                                                <a href="./#" class="btn obrien-button-2 primary-color rounded-0"><i class="fa fa-edit mr-2"></i>Edit Address</a>
+                                                <!-- <a href="./#" class="btn obrien-button-2 primary-color rounded-0"><i class="fa fa-edit mr-2"></i>Edit Address</a>
                                             </div>
                                         </div>
-                                        <!-- Single Tab Content End -->
+                                      Single Tab Content End -->
 
                                         <!-- Single Tab Content Start -->
                                         <div class="tab-pane fade" id="account-info" role="tabpanel">
                                             <div class="myaccount-content">
-                                                <h3>Account Details</h3>
+                                                <h3>회원정보</h3>
                                                 <div class="account-details-form">
-                                                    <form action="memberUpdate" method="post" id="pwUpdate">
+                                                   <%--  <form action="memberUpdate" method="post" id="pwUpdate">
                                                     <input type="hidden" id="user_id" name="user_id" value="${login.user_id}">
                                                         <div class="row">
                                                             <div class="col-lg-6 col-custom">
@@ -349,39 +381,36 @@ $(document).ready(function() {
                                                                 </div>
                                                             </div>
                                                             
-                                                        </div>
-                                                        <div class="single-input-item mb-3">
+                                                        </div> --%>
+                                                       <%--  <div class="single-input-item mb-3">
                                                             <label for="display-name" class="required mb-1">전화번호</label>
                                                             <input type="text" id="phone" name="phone" placeholder="전화번호를 입력해주세요" value="${login.phone}" />
-                                                        </div>
+                                                        </div> --%>
                                                         <%-- <div class="single-input-item mb-3">
                                                             <label for="email" class="required mb-1">이메일 주소</label>
                                                             <input type="email" id="email" placeholder="이메일 주소를 입력해주세요" value="${login.email}" />
                                                         </div> --%>
-                                                        <fieldset>
-                                                            <legend>Password change</legend>
-                                                            <div class="single-input-item mb-3">
-                                                                <label for="current-pwd" class="required mb-1">현재 비밀번호</label>
-                                                                <input type="password" id="memberPw" name="memberPw" placeholder="Current Password" />
-                                                            </div>  
-                                                            <div class="row">
-                                                                <div class="col-lg-6 col-custom">
-                                                                    <div class="single-input-item mb-3">
-                                                                        <label for="new-pwd" class="required mb-1">변경 비밀번호</label>
-                                                                        <input type="password" id="memberPw1" name="memberPw1" placeholder="New Password" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-6 col-custom">
-                                                                    <div class="single-input-item mb-3">
-                                                                        <label for="confirm-pwd" class="required mb-1">변경 비밀번호 확인</label>
-                                                                        <input type="password" id="memberPw2" name="user_pw" placeholder="Confirm Password" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </fieldset>
-                                                        <div class="single-input-item single-item-button">
+                                                        
+                                                        
+                                                        
+                                          		<!-- <br><br> -->
+                                                
+                                                <address>
+                                                <p>${login.user_name}</p>
+                                                    <p><strong></strong></p>
+                                                    <p>${login.address1}<br>
+                                                    ${login.address_detail}</p>
+                                                    <p>전화번호: <%-- ${login.phone} --%>${phone1}-${phone2}-${phone3}</p>
+                                                </address>
+                                                <!-- <a href="./#" class="btn obrien-button-2 primary-color rounded-0"><i class="fa fa-edit mr-2"></i>Edit Address</a> -->
+                                           
+                                            
+                                            
+                                            
+                                            
+                                                       <!--  <div class="single-input-item single-item-button">
                                                             <button class="btn obrien-button primary-btn" >저장하기</button>
-                                                        </div>
+                                                        </div> -->
                                                     </form>
                                                 </div>
                                             </div>

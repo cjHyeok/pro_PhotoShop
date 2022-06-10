@@ -113,6 +113,9 @@ $(document).ready(function() {
 			success : function(data, status, xhr) {
 				console.log("success " + data);
 				
+				console.log("success " + data); 
+				 $("#miniCart").html(data);
+				
 			},
 			error : function(xhr, status, error) {
 				console.log(error);
@@ -331,40 +334,6 @@ $(document).ready(function() {
 										
 										</div>
 
-
-										<%-- <div class="product-content-listview">
-											<div class="product-rating">
-												<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-													class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-													class="fa fa-star-o"></i>
-											</div>
-											<div class="product-title">
-												<h4 class="title-2">
-													<a href="./product-details.html">${dto.product_name}</a>
-												</h4>
-											</div>
-											<div class="price-box">
-												<span class="regular-price "><fmt:formatNumber
-														value="${dto.product_price}" type="currency"
-														currencySymbol="￦" /></span> <span class="old-price"><del>$50.00</del></span>
-											</div>
-											
-											<div class="add-action-listview d-flex">
-												<a href="" title="Add To cart" id="cart"> 
-												<i class="ion-bag"></i>
-												</a>  
-												
-												<a href="" title="Add To Wishlist" id="wish"> 
-												<i class="ion-ios-heart-outline"></i>
-												</a> 
-												
-												<a href="./productDetails?product_id=${dto.product_id}" data-bs-toggle="modal" title="Quick View"> 
-												<i class="ion-eye"></i>
-												</a>
-											</div>
-											<p class="desc-content">
-												${dto.product_description_summary}</p>
-										</div> --%>
 									</div>
 								</div>
 								<tr>

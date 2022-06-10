@@ -34,11 +34,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	SELECT  LAST.*
 	FROM    (SELECT ROWNUM RNUM,
                 TEMP.*   
-        FROM    (select  m.user_id, m.user_pw, m.user_name, m.post, m.email, m.address1, m.address2,m.address_detail, m.phone, o.total_price, o.order_date, o.order_state
+        FROM    (select  m.user_id, m.user_pw, m.user_name, m.post, m.email, m.address1, m.address2,m.address_detail, m.phone, o.total_price, od.order_quantity, o.order_date, o.order_id, o.order_state,
+        				i.product_img, p.product_name, p.product_price
                     from t_member m join t_order o 
-                    on m.user_id = o.user_id
+                    		on m.user_id = o.user_id
+                   		join t_order_detail od
+                    		on o.order_id = od.order_id
+                    	join t_product p
+                   			on p.product_id = od.product_id
+                     	join t_product_img i
+                   			on i.product_id = p.product_id
+                    
                     where m.user_id = '${user_id}'
-                    ORDER BY order_date desc
+                    ORDER BY order_date DESC
                 ) TEMP
         )LAST
 	WHERE   RNUM BETWEEN 1 AND 3
