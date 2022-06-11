@@ -51,7 +51,7 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-
+	
 	// "", null, undefined, 이상한 숫자, 빈 Object, 빈 Array도 검사
 	function isEmpty(data) {
 	    if(typeof(data) === 'object') {

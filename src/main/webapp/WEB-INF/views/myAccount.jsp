@@ -200,18 +200,13 @@ $(document).ready(function() {
                             <div class="row">
                                 <div class="col-lg-3 col-md-4 col-custom">
                                     <div class="myaccount-tab-menu nav" role="tablist">
-                                        <a href="#dashboad" class="active" data-bs-toggle="tab"><i class="fa fa-dashboard"></i>
-                                            마이페이지</a>
+                                        <a href="#account-info" data-bs-toggle="tab"><i class="fa fa-user"></i>회원정보</a>
                                         <a href="#orders" data-bs-toggle="tab"><i class="fa fa-cart-arrow-down"></i>
                                             주문정보</a>
-                                        <a href="#download" data-bs-toggle="tab"><i class="fa fa-cloud-download"></i>
+                                        <a href="#download" data-bs-toggle="tab"><i class="fa fa-heart" aria-hidden="true"></i>
                                             찜리스트</a>
-                                       <!--  <a href="#payment-method" data-bs-toggle="tab"><i class="fa fa-credit-card"></i>
-                                            Payment
-                                            Method</a> -->
-                                       <!--  <a href="#address-edit" data-bs-toggle="tab"><i class="fa fa-map-marker"></i>
-                                            나의 주소 정보</a> -->
-                                        <a href="#account-info" data-bs-toggle="tab"><i class="fa fa-user"></i>회원정보</a>
+                                     
+                                        
                                         <a href="#product-review" data-bs-toggle="tab"><i class="fa fa-star" aria-hidden="true"></i>나의 상품후기</a>
                                         <a href="./loginCheck/logout"><i class="fa fa-sign-out"></i>로그아웃</a>
                                     </div>
@@ -224,33 +219,57 @@ $(document).ready(function() {
                                         <!-- Single Tab Content Start -->
                                         <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
                                             <div class="myaccount-content">
-                                                <h3>마이페이지</h3>
-                                                <div class="welcome">
-                                                    <p>Hello, <strong>${login.user_id}</strong> (If Not <strong>${login.user_id} !</strong><a href="./login-register.html" class="logout"> Logout</a>)</p>
+                                                <div class="myaccount-content">
+                                                <h3>회원정보</h3>
+                                                <div class="account-details-form">
+                                              
+                                                
+                                                <address>
+                                                <p>이름 : ${login.user_name}</p>
+                                                    <p><strong></strong></p>
+                                                    <p>주소 : ${login.address1}<br>
+                                                    상세 주소 : ${login.address_detail}</p>
+                                                    <p>전화번호: <%-- ${login.phone} --%>${phone1}-${phone2}-${phone3}</p>
+                                                </address>
+                                               
                                                 </div>
-                                                <p class="mb-0">From your account dashboard. you can easily check & view your recent orders, manage your shipping and billing addresses and edit your password and account details.</p>
-                                            </div>
+                                            </div></div>
                                         </div>
                                         <!-- Single Tab Content End -->
                                         
+                                        <!-- Single Tab Content Start -->
+                                        <div class="tab-pane fade" id="account-info" role="tabpanel">
+                                            <div class="myaccount-content">
+                                                <h3>회원정보</h3>
+                                                <div class="account-details-form">
+                                            
+                                                <address>
+                                                <p>이름 : ${login.user_name}</p>
+                                                    <p><strong></strong></p>
+                                                    <p>주소 : ${login.address1}<br>
+                                                    상세 주소 : ${login.address_detail}</p>
+                                                    <p>전화번호: <%-- ${login.phone} --%>${phone1}-${phone2}-${phone3}</p>
+                                                </address>
+                                               
+                                                </div>
+                                            </div>
+                                        </div> <!-- Single Tab Content End -->
+                                        
+                                        
+                                        
+                                        
+                                        <!-- Single Tab Content Start -->
                                         <c:set var="OrderNum" value= "1" />
                                         <c:set var="Step" value= "1" />
 
-                                        <!-- Single Tab Content Start -->
+                                        
                                         <div class="tab-pane fade" id="orders" role="tabpanel">
                                             <div class="myaccount-content">
                                                 <h3>주문정보</h3>
                                                 <div class="myaccount-table table-responsive text-center"> 
                                                         
                                                         <c:forEach var="order" items="${orderList}" varStatus="status"> 
-                                                         
-                                                         
-                                                       <%--  <c:if test="${ (order.order_id ne OrderNum) and (Step ne 1)}"> 
-                                                        	</table>
-                                                        </c:if> --%>
-                                                        
-                                                        
-                                                       <%--  <c:if test="${ (order.order_id ne OrderNum)"> --%>
+                                            
 	                                                            <table class="table table-bordered">
 	                                                            
 	                                                        <thead class="thead-light">
@@ -263,7 +282,7 @@ $(document).ready(function() {
 	                                                                <th>수량</th>
 	                                                            </tr>
 	                                                        </thead>
-                                                       <%--  </c:if> --%>
+                                                      
                                                         
                                                         
                                                         
@@ -277,7 +296,7 @@ $(document).ready(function() {
                                                                 <td>${order.product_name}</td>
                                                                 <td>${order.order_state}</td>
                                                                 <td>${order.order_quantity}</td>
-                                                                <!-- <td><a href="./cart.html" class="btn obrien-button-2 primary-color rounded-0">View</a></td> -->
+                                                                
                                                             </tr>
                                                             
                                                            
@@ -300,20 +319,22 @@ $(document).ready(function() {
                                         <div class="tab-pane fade" id="download" role="tabpanel">
                                             <div class="myaccount-content">
                                                 <h3>찜리스트</h3>
-                                                <div class="wishlist-table table-responsive">
-							<table class="table table-bordered">
-								<thead class="thead-light">
-									<tr>
-										<th class="pro-thumbnail">상품 사진</th>
-										<th class="pro-title">상품 이름</th>
-										<th class="pro-price">가격</th>
-										<th class="pro-cart">카트에 담기</th>
-										<th class="pro-remove">삭제</th>
+                                                <br>
+                                               <div class="wishlist-table table-responsive">
+                                                    <table class="table table-bordered">
+                                                        <thead class="thead-light">
+                                                           <tr>
+										<th style=" background-color: #f0edee; border-color: #e1e1e1;">상품 사진</th>
+										<th style=" background-color: #f0edee; border-color: #e1e1e1;">상품 이름</th>
+										<th style=" background-color: #f0edee; border-color: #e1e1e1;">가격</th>
+										<th style=" background-color: #f0edee; border-color: #e1e1e1;">카트에 담기</th>
+										<th style=" background-color: #f0edee; border-color: #e1e1e1;">삭제</th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="wish" items="${wishList}" varStatus="status">
-										<tr>
+                                                        <c:forEach var="wish" items="${wishList}" varStatus="status">
+                                                       		
+                                                           <tr>
 											<td class="pro-thumbnail"><a href="./productDetails?product_id=${wish.product_id}"><img
 													class="img-fluid"
 													src="assets/images/${wish.product_img}" alt="Product" /></a></td>
@@ -331,94 +352,29 @@ $(document).ready(function() {
 										</tr>
 
 									</c:forEach>
-								</tbody>
-							</table>
-							
-						</div>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                         <!-- Single Tab Content End -->
 
                                         <!-- Single Tab Content Start -->
                                         <div class="tab-pane fade" id="payment-method" role="tabpanel">
-                                            <div class="myaccount-content">
-                                                <h3>Payment Method</h3>
+                                           <div class="myaccount-content">
+                                                <h3>찜리스트</h3>
+                                                <br>
                                                 <p class="saved-message">You Can't Saved Your Payment Method yet.</p>
                                             </div>
                                         </div>
                                         <!-- Single Tab Content End -->
 
-                                        
-                                        
-                                        
-                                        <!-- Single Tab Content Start 
-                                        <div class="tab-pane fade" id="address-edit" role="tabpanel">
-                                            <div class="myaccount-content">
-                                                <h3>나의 주소 정보</h3>
-                                                <address>
-                                                    <p><strong></strong></p>
-                                                    <p>${login.address1}<br>
-                                                    ${login.address_detail}</p>
-                                                    <p>전화번호: <%-- ${login.phone} --%>${phone1}-${phone2}-${phone3}</p>
-                                                </address>
-                                                <!-- <a href="./#" class="btn obrien-button-2 primary-color rounded-0"><i class="fa fa-edit mr-2"></i>Edit Address</a>
-                                            </div>
-                                        </div>
-                                      Single Tab Content End -->
 
-                                        <!-- Single Tab Content Start -->
-                                        <div class="tab-pane fade" id="account-info" role="tabpanel">
-                                            <div class="myaccount-content">
-                                                <h3>회원정보</h3>
-                                                <div class="account-details-form">
-                                                   <%--  <form action="memberUpdate" method="post" id="pwUpdate">
-                                                    <input type="hidden" id="user_id" name="user_id" value="${login.user_id}">
-                                                        <div class="row">
-                                                            <div class="col-lg-6 col-custom">
-                                                                <div class="single-input-item mb-3">
-                                                                    <label for="first-name" class="required mb-1">이름</label>
-                                                                    <input type="text" id="user_name" name="user_name" placeholder="이름를 입력해주세요" value="${login.user_name}" />
-                                                                </div>
-                                                            </div>
-                                                            
-                                                        </div> --%>
-                                                       <%--  <div class="single-input-item mb-3">
-                                                            <label for="display-name" class="required mb-1">전화번호</label>
-                                                            <input type="text" id="phone" name="phone" placeholder="전화번호를 입력해주세요" value="${login.phone}" />
-                                                        </div> --%>
-                                                        <%-- <div class="single-input-item mb-3">
-                                                            <label for="email" class="required mb-1">이메일 주소</label>
-                                                            <input type="email" id="email" placeholder="이메일 주소를 입력해주세요" value="${login.email}" />
-                                                        </div> --%>
-                                                        
-                                                        
-                                                        
-                                          		<!-- <br><br> -->
-                                                
-                                                <address>
-                                                <p>${login.user_name}</p>
-                                                    <p><strong></strong></p>
-                                                    <p>${login.address1}<br>
-                                                    ${login.address_detail}</p>
-                                                    <p>전화번호: <%-- ${login.phone} --%>${phone1}-${phone2}-${phone3}</p>
-                                                </address>
-                                                <!-- <a href="./#" class="btn obrien-button-2 primary-color rounded-0"><i class="fa fa-edit mr-2"></i>Edit Address</a> -->
-                                           
-                                            
-                                            
-                                            
-                                            
-                                                       <!--  <div class="single-input-item single-item-button">
-                                                            <button class="btn obrien-button primary-btn" >저장하기</button>
-                                                        </div> -->
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div> <!-- Single Tab Content End -->
+                                        
                                         <!-- Single Tab Content Start 리뷰-->
                                         
                                         <div class="tab-pane fade" id="product-review" role="tabpanel">
-                                            <div class="product-review-content">
+                                           <div class="myaccount-content">
                                                 <h3>상품 리뷰</h3>
                                                 <br>
                                                 <div class="myaccount-table table-responsive text-center">

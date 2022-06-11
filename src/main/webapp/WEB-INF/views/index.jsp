@@ -65,7 +65,7 @@ if( cList != null) {
 
 
 $(document).ready(function() {
-
+	
 	// "", null, undefined, 이상한 숫자, 빈 Object, 빈 Array도 검사
 	function isEmpty(data) {
 	    if(typeof(data) === 'object') {
@@ -108,7 +108,7 @@ $(document).ready(function() {
 		console.log("user_id length "+user_id.length);
 		
 		if( user_id == 'null' || isEmpty(user_id) ) {
-		//if (user_id == "" || user_id === undefined || user_id == null){
+		
 			alert("로그인 해주세요");
 			return;
 		}
@@ -333,7 +333,14 @@ $(document).ready(function() {
 
 		<div class="row shop_wrapper grid_4" style="padding: 0px 100px 0px 100px;">
 			<c:forEach var="dto" items="${productList}" varStatus="status">
-			
+			<input type="hidden" name="product_img" id="product_img" value="${dto.product_img}"> 
+			<input type="hidden" name="product_name" value="${dto.product_name}"> 
+			<input type="hidden" name="product_price" value="${dto.product_price}"> 
+			<input type="hidden" name="product_id" value="${dto.product_id}">
+			<input type="hidden" name="user_id" value="${login.user_id}">
+				
+				
+				
 				<div class="col-lg-3 col-md-6 col-sm-6 col-custom product-area">
 					<div class="single-product position-relative">
 						<div class="product-image">

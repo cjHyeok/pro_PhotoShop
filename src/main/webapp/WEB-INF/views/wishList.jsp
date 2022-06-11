@@ -128,11 +128,11 @@
 							<table class="table table-bordered">
 								<thead>
 									<tr>
-										<th class="pro-thumbnail">상품 사진</th>
-										<th class="pro-title">상품 이름</th>
-										<th class="pro-price">가격</th>
-										<th class="pro-cart">카트에 담기</th>
-										<th class="pro-remove">삭제</th>
+										<th style=" background-color: #f0edee; border-color: #e1e1e1;">상품 사진</th>
+										<th style=" background-color: #f0edee; border-color: #e1e1e1;">상품 이름</th>
+										<th style=" background-color: #f0edee; border-color: #e1e1e1;">가격</th>
+										<th style=" background-color: #f0edee; border-color: #e1e1e1;">카트에 담기</th>
+										<th style=" background-color: #f0edee; border-color: #e1e1e1;">삭제</th>
 									</tr>
 								</thead>
 								<tbody>

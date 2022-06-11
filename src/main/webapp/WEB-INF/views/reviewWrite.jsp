@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;1,300&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
@@ -36,13 +39,13 @@
 	
 		<div class="single-product-main-area" style="table-layout: fixed">
 			<div>
-				<div class="row" style=" padding-bottom: 140px; ">
+				<div class="row" style=" padding-bottom: 200px; ">
 					<div class="single-image border" style="float: left; padding-left: 70px;">
 						<img src="assets/images/${productDetails.product_img}" style="width: 210px; text-align: center;" alt="Product">
 					</div>	
 					
 					<div> 
-						<div class="product-head mb-3"  style="display: table-cell; padding-left: 140px;vertical-align: center;">
+						<div class="product-head mb-3"  style="display: table-cell; padding-left: 100px;vertical-align: center;">
 							<h2 class="product-title" style="text-align: left;" >${productDetails.product_name}</h2>
 						</div>
 					</div>
@@ -56,7 +59,7 @@
 			<div>
 <hr style= "font-size: 20px; border-top-width: 20px; border-style: hidden;" >       
 			<strong>상품에 대해 평가를 해주세요</strong>
-<hr style="background-color:blue; border-bottom-color: #d8d8d8;">
+<hr style=" border-bottom-color: #eee;">
 			 	<!-- <input name="review_like" type="text"> -->
 					<div class="product-rating">
                     	<span class="iconify" data-icon="ant-design:star-filled" style="color: gray;" data-width="30" data-height="30"></span>
@@ -65,16 +68,17 @@
                     	<span class="iconify" data-icon="ant-design:star-filled" style="color: gray;" data-width="30" data-height="30"></span>
                     	<span class="iconify" data-icon="ant-design:star-filled" style="color: gray;" data-width="30" data-height="30"></span>
                     </div>                       
-<hr>
+<hr style=" border-bottom-color: #eee;">
 <br>
-				<div style="">
+				<div class="main-nav">
 					<strong>구매 후기를 남겨주세요	</strong>
 				</div>
 <br>
 				<textarea name="review_content" rows="10" cols="80"></textarea>
 <br>	
 			<div>
-					<button style="margin:auto; border-color: grey; border-radius: 2px; width: 80px;" onclick="window.close();">취소</button><span><button style=" width: 80px; background-color: #e98c81">등록</button></span>
+			<br>
+					<button style="font-size:20px;  margin:auto; border-radius: 12px; border-color: grey; width: 80px; color:#ffffff; border:none; font-family: 'Poppins', sans-serif; background-color: #e98c81" onclick="window.close();">취소</button>&ensp;&nbsp;<span><button style="font-size:20px; color:#ffffff; border:none; width: 80px; border-radius: 12px; font-family: 'Poppins', sans-serif; background-color: #e98c81">등록</button></span>
 				</div>
 			</div>
 			

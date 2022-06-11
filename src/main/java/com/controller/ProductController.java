@@ -95,9 +95,34 @@ public class ProductController {
 	}
 
 	@RequestMapping("/") // 메인에서 상품 리스트 뜨도록
-	public ModelAndView productMainList() {
-
+	public ModelAndView productMainList(HttpSession session) {
+		MemberDTO mDTO = (MemberDTO) session.getAttribute("login");
+		
+		String user_id = "";
+		
+		if(mDTO==null) {
+			user_id = "guest";
+		} else { 
+			user_id = mDTO.getUser_id();
+		}
+		
 		List<ProductDTO> plist = pservice.productMainList();
+		
+		for(int i=0; i<plist.size(); i++) {
+			Map<String, String> map = new HashMap<>();
+			
+			ProductDTO pDto = plist.get(i);
+			map.put("user_id",  user_id);
+			map.put("product_id", pDto.getProduct_id()); 
+			
+			ProductDTO pdto = pservice.productDetails(map);
+			
+			plist.set(i, pdto);
+			
+			System.out.println("/productList userid step3  pdto " +  pdto);  
+			
+		}
+		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("productList", plist);
 		System.out.println("main plist =" + plist);
