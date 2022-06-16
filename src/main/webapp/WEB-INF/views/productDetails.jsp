@@ -83,18 +83,6 @@ pageContext.setAttribute("BR", "<br/>");
 <script type="text/javascript">
 	$(function() {
 
-		/* $("#cart").on("click", function() {
-			 var count = $("#cart_quantity").val();
-			console.log(count); 
-			$("form").attr("action", "loginCheck/cartAdd")
-
-		}) */
-
-		/*$("#wish").on("click", function() {
-
-			$("form").attr("action", "loginCheck/wishAdd")
-
-		})*/
 
 		$("#DirectOrder").on("click", function() {
 			console.log("#DirectOrder");
@@ -112,51 +100,8 @@ pageContext.setAttribute("BR", "<br/>");
 
 		})
 
-/* 		$("#up").on("click", function() {
-			var count = $("#cart_quantity").val();
-			console.log(count);
 
-			$("#cart_quantity").val(parseInt(count) + 1);
-		});
 
-		$("#down").on("click", function() {
-			var count = $("#cart_quantity").val();
-			if (count != 1) {
-				$("#cart_quantity").val(parseInt(count) - 1);
-			}
-		}); */
-
-/* 		$("#btnComment").click(function() {
-			console.log("btnComment");
-
-				$.ajax({url : 'reviewWriteAdd',
-						type : 'post',
-						data : {
-								//review_id:'${review_id}', 
-								product_id : "${productDetails.product_id}",
-								user_name : '${login.user_name }',
-								review_content : document.getElementById("review_content").value,
-								},
-						dataType : "text",
-						success : function(data, status, xhr) {
-							console.log("data==", data);
-						document.getElementById("reviewList").value = ""; //div 클래스 쪽 (<div class="pro_review mb-5" id="reviewList">여기서 가져옴)리뷰 리스트 내용 지우기.
-						document.getElementById("review_content").value = ""; //리뷰 내용 적는 곳 ajax 성공했을 때 지우기
-
-						$("#reviewList").html(data); //리뷰 retData 하나하나 넣어주는 부분 (controller확인)
-
-						},
-							error : function(xhr, status, error) {}
-				});//end ajax	 
-		}); */
-
-/* 		function closeLayer(obj) {
-			console.log("closeLayer####################");
-			//$(obj).parent().parent().hide();
-			$("form").attr("action", "");
-			$("form").submit();
-
-		} */
 
 		$("#cartLinkBtn").on("click", function() { //장바구니누르고 레이어에서 확인 눌렀을때 장바구니로 이동
 			console.log("cartLinkBtn");
@@ -168,15 +113,6 @@ pageContext.setAttribute("BR", "<br/>");
 
 		});
 		
-/* 		$("#cartCancelBtn").on("click", function() {
-			console.log("cartCancelBtn");
-			
-
-			console.log("cartCancelBtn####################");
-			$("form").attr("action", "");
-			$("form").submit();
-
-		}); */
 
 		/* 클릭 클릭시 클릭을 클릭한 위치 근처에 레이어가 나타난다. */
 		$('.cartSelect').click(function(e) {
@@ -325,10 +261,10 @@ pageContext.setAttribute("BR", "<br/>");
 					<div class="row">
 						<div class="col-12 text-center">
 							<div class="breadcrumb-content position-relative section-content">
-								<h3 class="title-3">Product Details</h3>
+								<h3 class="title-3">상품 상세보기</h3>
 								<ul>
 									<li><a href="./">Home</a></li>
-									<li>Product Details</li>
+									<li>상품 상세보기</li>
 								</ul>
 							</div>
 						</div>

@@ -2,23 +2,26 @@
 <html class="no-js" lang="en">
 
 <head>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- 인코딩 -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="java.util.List" %>
 <%@ page import="com.dto.CartDTO" %>
-
-
 <meta charset="utf-8">
-<meta http-equiv="x-ua-compatible" content="ie=edge"> 
-<title>WOOM 에 오신걸 환영합니다. -> WOOM !</title>
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>WOOM 에 오신걸 환영합니다.   ->  WOOM !</title>
 
-<meta property="og:image"   content="http://um-woom.shop/goods/assets/images/logo/logo.png" />
-<meta property="og:title"   content="Woom!" />
-<meta property="og:description"   content="WOOM에 오신걸 환영합니다." />
+
+
+<!--robots만 페이지의 색인을 생성하지 못하게 설정-->
+<meta name="robots" content="noindex, follow" />
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, shrink-to-fit=no">
+
+
+
 
 <!-- Favicon -->
 <link rel="shortcut icon" type="image/x-icon"
@@ -43,10 +46,17 @@
 <!-- Magnific Popup -->
 <link rel="stylesheet" href="./assets/css/plugins/magnific-popup.css">
 
+<!-- Vendor & Plugins CSS (Please remove the comment from below vendor.min.css & plugins.min.css for better website load performance and remove css files from the above) -->
+
+<!-- <link rel="stylesheet" href="./assets/css/vendor/vendor.min.css">
+    <link rel="stylesheet" href="./assets/css/plugins/plugins.min.css"> -->
+
 <!-- Main Style CSS (Please use minify version for better website load performance) -->
 <link rel="stylesheet" href="./assets/css/style.css">
 <!-- <link rel="stylesheet" href="./assets/css/style.min.css"> -->
 </head>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 
@@ -187,6 +197,7 @@ $(document).ready(function() {
 
 	});
 </script>
+
 <body>
 <%-- 	<c:if test="${!empty success }">
 		<!-- 회원가입성공메세지 -->
@@ -496,7 +507,7 @@ $(document).ready(function() {
 	<!-- jquery magnific popup js -->
 	<script src="assets/js/plugins/jquery.magnific-popup.min.js"></script>
 
-	<!-- Main JS -->
+	<!-- Main JS index.jsp -->
 	<script src="assets/js/main.js"></script>
 
 </body>

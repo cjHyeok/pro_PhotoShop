@@ -201,10 +201,10 @@ margin:auto;
 				<div class="row">
 					<div class="col-12 text-center">
 						<div class="breadcrumb-content position-relative section-content">
-							<h3 class="title-3">Shopping Cart</h3>
+							<h3 class="title-3">장바구니</h3>
 							<ul>
 								<li><a href="./">Home</a></li>
-								<li>Cart</li>
+								<li>장바구니</li>
 							</ul>
 						</div>
 					</div>

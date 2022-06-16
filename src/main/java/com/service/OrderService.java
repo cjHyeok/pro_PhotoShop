@@ -21,9 +21,10 @@ public class OrderService {
 		List<CartDTO> list = odao.cartList(dto);
 		return list;
 	}
-	public void orderDone(List<CartDTO> clist, MemberDTO mDTO) {
-		odao.orderDone(clist, mDTO); 
+	public int orderDone(List<CartDTO> clist, OrderDTO odto, MemberDTO mDTO) {
+		int orderId = odao.orderDone(clist, odto); 
 		odao.delCart(mDTO); 
+		return orderId;
 	}
 	
 	public List<OrderDTO> myAccountOrderList(MemberDTO dto) {
@@ -34,14 +35,29 @@ public class OrderService {
 		List<CartDTO> list = odao.lastOrderCartList(mDTO);
 		return list;
 	}
-	public void DirectOrderDone(List<CartDTO> clist, MemberDTO mDTO) {
-		odao.orderDone(clist, mDTO); 
+	public int DirectOrderDone(List<CartDTO> clist, OrderDTO odto, MemberDTO mDTO) {
+		int orderId = odao.orderDone(clist, odto); 
 		odao.DirectDelCart(clist, mDTO);
+		return orderId;
 	}
 	public List<ReviewDTO> productReview(MemberDTO dto) {
 		List<ReviewDTO> rlist = odao.productReview(dto);
 		return rlist;
 	}
+	public List<OrderDTO> orderIdSearch(String order_id) {
+		List<OrderDTO> olist= odao.orderIdSearch(order_id);
+		return olist;
+	}
+	public void orderPaymentCompletedUpdate(String order_id) {
+		odao.orderPaymentCompletedUpdate(order_id);
+		
+	}
+	
+	public List<OrderDTO> orderDoneList(String order_id) {
+		List<OrderDTO> olist = odao.orderDoneList(order_id);
+		return olist;
+	}
+
 	
 
 }

@@ -21,10 +21,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE user_id = #{user_id}
 	</delete>
 	
-	<insert id="orderInsert" parameterType="MemberDTO">
+	<insert id="orderInsert" parameterType="OrderDTO">
 
-		INSERT INTO t_order (order_id, user_id, order_date, total_price, post, address1, address2, address_detail)
-		VALUES(order_seq.nextval, #{user_id}, sysdate, #{total_price}, #{post}, #{address1}, #{address2}, #{address_detail})
+		INSERT INTO t_order (order_id, user_id, order_date, order_state, total_price, send_post, send_address1, send_address2, send_address_detail, send_user_name, send_phone, shipping)
+		VALUES(order_seq.nextval, #{user_id}, SYSDATE, 'payment_waiting', #{total_price}, #{send_post}, #{send_address1}, #{send_address2}, #{send_address_detail}, #{send_user_name}, #{send_phone}, #{shipping})
 
 		<selectKey keyProperty="order_id" resultType="int" order="AFTER">
 			SELECT order_seq.CURRVAL AS id FROM DUAL
@@ -38,5 +38,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES( order_detail_seq.nextval, #{order_id},#{product_id},#{order_quantity})
 	</insert>
 
+	<select id="orderIdSearch" parameterType="String" resultType="OrderDTO"> <!-- order id 찾기 상품 가격 비교 -->
+		 SELECT order_id, order_state, total_price
+ 		 FROM t_order
+         WHERE order_id = '${order_id}'
+	</select>
 
+	<update id="orderPaymentCompletedUpdate" parameterType="String"> <!-- 주문 상태 변경 -->
+		UPDATE t_order
+		SET	
+			order_state = 'payment_completed'
+		WHERE order_id = #{order_id}
+	
+	</update>
+	
+	<select id="orderDoneList" parameterType="String" resultType="OrderDTO">
+    	select  m.user_id, o.user_name, o.send_post, o.send_address1, o.send_address2,o.send_address_detail, o.send_phone, o.total_price, od.order_quantity, o.order_date, o.order_id, o.order_state,
+        				i.product_img, p.product_name, p.product_price
+                    from t_member m join t_order o 
+                    		on m.user_id = o.user_id
+                   		join t_order_detail od
+                    		on o.order_id = od.order_id
+                    	join t_product p
+                   			on p.product_id = od.product_id
+                     	join t_product_img i
+                   			on i.product_id = p.product_id
+                    
+                    where o.order_id =  #{order_id} 
+                    ORDER BY order_date DESC
+    </select>
 </mapper>

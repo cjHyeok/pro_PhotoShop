@@ -360,13 +360,13 @@ $(document).ready(function() {
                                         <!-- Single Tab Content End -->
 
                                         <!-- Single Tab Content Start -->
-                                        <div class="tab-pane fade" id="payment-method" role="tabpanel">
+                                        <!-- <div class="tab-pane fade" id="payment-method" role="tabpanel">
                                            <div class="myaccount-content">
                                                 <h3>찜리스트</h3>
                                                 <br>
                                                 <p class="saved-message">You Can't Saved Your Payment Method yet.</p>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <!-- Single Tab Content End -->
 
 

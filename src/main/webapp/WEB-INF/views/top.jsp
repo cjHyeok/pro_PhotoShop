@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><!-- c:if 사용하기위해 -->
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="java.util.List" %>
 <%@ page import="com.dto.CartDTO" %>
 
@@ -15,7 +15,7 @@
 
 	String cListSize = "";
 	if( cList != null) {
-		System.out.println("A12312clist ===" + cList); 
+		System.out.println("top jsp  cList  A12312clist ===" + cList); 
 		cListSize = Integer.toString(cList.size());   
 	}
  
@@ -30,8 +30,7 @@
 							<div class="row align-items-center">
 								<div class="col-lg-2 col-xl-2 col-sm-6 col-6 col-custom">
 									<div class="header-logo d-flex align-items-center">
-										<a href="./"> <img class="img-full"
-											src="assets/images/logo/logo.png" alt="Header Logo">
+										<a href="./"> <img src="assets/images/logo/logo.png" alt="Header Logo">
 										</a>
 									</div>
 								</div>
@@ -198,7 +197,7 @@
 					</div>
 					<div class="off-canvas-inner">
 
-						<!-- <div class="search-box-offcanvas">
+						<!-- <div class="search-box-offcanvas"> //검색
 							<form>
 								<input type="text" placeholder="Search product...">
 								<button class="search-btn">
@@ -208,12 +207,6 @@
 						</div> -->
 
 
-
-
-
-
-
-
 						<!-- mobile menu start -->
 						<div class="mobile-navigation">
 
@@ -221,9 +214,6 @@
 							<nav>
 								<ul class="mobile-menu">
 									<li><a href="./aboutUs"> <span class="menu-text">소개</span></a></li>
-
-									<li><a href="./productItem"> <span class="menu-text">상품
-												관리</span></a></li>
 
 									<!-- 참고하기 <li class="menu-item-has-children"><a href="./#">내 정보</a>
 										<ul class="dropdown"> -->
@@ -254,8 +244,14 @@
 											<li><a href="./productList?category_name=봉투">봉투</a></li>
 										</ul></li>
 
-									<li><a href="./productItem"> <span class="menu-text">상품
-												관리</span></a></li>
+									<c:choose>
+										<c:when test="${login.role eq 'R'}">
+											<li><a href="./productItem"><span class="menu-text">상품 관리</span></a></li>
+										</c:when>
+										<c:otherwise>
+								
+										</c:otherwise>
+									</c:choose>
 								</ul>
 							</nav>
 
@@ -289,10 +285,7 @@
 						<div class="offcanvas-widget-area">
 							<div class="top-info-wrap text-left text-black">
 								<ul>
-									<!-- <li><i class="fa fa-phone"></i> <a
-										href="./info@yourdomain.com">(1245) 2456 012</a></li> -->
-									<li><i class="fa fa-envelope"></i> <a
-										href="./info@yourdomain.com">um.woom@gmail.com</a></li>
+									<li><i class="fa fa-envelope">&nbsp;um.woom@gmail.com</i> 
 								</ul>
 							</div>
 							<div class="off-canvas-widget-social">
@@ -307,5 +300,5 @@
 					</div>
 				</div>
 			</aside>
-			<!-- off-canvas menu end -->
-		</header>
+			<!-- off-canvas menu end top.jsp-->
+		</header>     

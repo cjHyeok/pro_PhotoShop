@@ -28,30 +28,30 @@ public class OrderDAO {
 
 	}
 
-	public void orderDone(List<CartDTO> clist, MemberDTO mDTO) {
-		System.out.println("ORDER DAO ==" + mDTO);
-		int total_sum = 0; 
-		for (int i = 0; i < clist.size(); i++) {
-			CartDTO cDto = clist.get(i); 
-			
-			total_sum += cDto.getCart_quantity() * cDto.getProduct_price();
-		}
+	public int orderDone(List<CartDTO> clist,OrderDTO odto) {
+		//System.out.println("ORDER DAO ==" + mDTO);
+		//int total_sum = 0; 
+		/*
+		 * for (int i = 0; i < clist.size(); i++) { CartDTO cDto = clist.get(i);
+		 * 
+		 * //total_sum += cDto.getCart_quantity() * cDto.getProduct_price(); }
+		 */
 		
-		mDTO.setTotal_price(total_sum);
 		
-		template.insert("OrderMapper.orderInsert", mDTO); // mDTO order_id는 getOrder_id로 리턴
+		template.insert("OrderMapper.orderInsert", odto); // mDTO order_id는 getOrder_id로 리턴
 
 		for (int i = 0; i < clist.size(); i++) {
 			CartDTO cDto = clist.get(i);
 
 			OrderDTO oDto = new OrderDTO();
-			oDto.setOrder_id(mDTO.getOrder_id());
+			oDto.setOrder_id(odto.getOrder_id());
 			oDto.setProduct_id(cDto.getProduct_id());
 			oDto.setOrder_quantity(cDto.getCart_quantity());
 			oDto.setOrder_price(cDto.getProduct_price());
 
 			template.insert("OrderMapper.orderDetailInsert", oDto);
 		}
+		return odto.getOrder_id();
 
 	}
 
@@ -79,6 +79,21 @@ public class OrderDAO {
 	public List<ReviewDTO> productReview(MemberDTO dto) {
 		List<ReviewDTO> rlist = template.selectList("MemberMapper.productReview", dto);
 		return rlist;
+	}
+
+	public List<OrderDTO> orderIdSearch(String order_id) {
+		List<OrderDTO> olist = template.selectList("OrderMapper.orderIdSearch", order_id);
+		return olist;
+	}
+
+	public void orderPaymentCompletedUpdate(String order_id) {
+		template.update("OrderMapper.orderPaymentCompletedUpdate", order_id);
+		
+	}
+
+	public List<OrderDTO> orderDoneList(String order_id) {
+		List<OrderDTO> olist = template.selectList("OrderMapper.orderDoneList", order_id);
+		return olist;
 	}
 
 }

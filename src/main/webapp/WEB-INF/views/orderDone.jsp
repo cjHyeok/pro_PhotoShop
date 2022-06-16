@@ -124,10 +124,12 @@ $(document).ready(function() {
 	<tr>
 		<td class="td_default" align="center"><b>${user_name}</b> 님의 주문이
 			안전하게 처리되었습니다.</td>
+			
 	</tr>
-
+	
 	<tr>
 		<td height="40">
+		<hr>
 	</tr>
 
 	<tr>
@@ -169,6 +171,7 @@ $(document).ready(function() {
 		<td>
 			<table width="100%" border="1" style="border-collapse: collapse; background: #efedee;" bordercolor="#CCCCCC">
 				<tr>
+					<td width="100" class="td_default" height="35" align="center"><strong></strong></td>
 					<td width="250" class="td_default" height="35" align="center"><strong>상품명</strong></td>
 					<td width="100" class="td_default" height="35" align="center"><strong>판매가</strong></td>
 					<td class="td_default" width="50" height="35" align="center"><strong>수량</strong></td>
@@ -183,10 +186,11 @@ $(document).ready(function() {
 					<c:set var="totalSum" value="${totalSum + xxxc.product_price * xxxc.cart_quantity }" />
 						
 					<tr>
-						<td height="35" class="td_default" align="center"><span>${xxxc.product_name}</span></td>
-						<td height="35" class="td_default" align="center"><span><fmt:formatNumber value="${xxxc.product_price}"/></span>원</td>
-						<td height="35" class="td_default" align="center"><span>${xxxc.cart_quantity}</span>개</td>
-						<td height="35" class="td_default" align="center"><span><fmt:formatNumber value="${xxxc.product_price * xxxc.cart_quantity}"/></span>원
+						<td height="45" class="td_default" align="center"><span><a><img style="width: 60px;" src="assets/images/${xxxc.product_img}"/></a></span></td>
+						<td height="45" class="td_default" align="center"><span>${xxxc.product_name}</span></td>
+						<td height="45" class="td_default" align="center"><span><fmt:formatNumber value="${xxxc.product_price}"/></span>원</td>
+						<td height="45" class="td_default" align="center"><span>${xxxc.cart_quantity}</span>개</td>
+						<td height="45" class="td_default" align="center"><span><fmt:formatNumber value="${xxxc.product_price * xxxc.cart_quantity}"/></span>원
 						</td>
 					</tr>
 

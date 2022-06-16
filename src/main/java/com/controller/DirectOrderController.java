@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -8,10 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dto.CartDTO;
 import com.dto.MemberDTO;
+import com.dto.OrderDTO;
 import com.service.CartService;
 import com.service.MemberService;
 import com.service.OrderService;
@@ -76,8 +81,8 @@ public class DirectOrderController {
 	}
 	
 	
-	@RequestMapping("/loginCheck/DirectOrderDone") // 전체 주문확인
-	public String DirectOrderDone(HttpSession session, RedirectAttributes xxx) {
+	@RequestMapping(value ="/DirectOrderCreate", method = RequestMethod.POST,produces = "text/plain;charset=UTF-8") // 전체 주문확인
+	public  @ResponseBody String DirectOrderCreate(HttpSession session, RedirectAttributes xxx, @RequestParam Map<String, String> map) {
 		System.out.println("/loginCheck/orderDone == in");
 		MemberDTO mDTO = (MemberDTO) session.getAttribute("login");
 		
@@ -87,8 +92,36 @@ public class DirectOrderController {
 		System.out.println("/loginCheck/DirectOrderDone controller  mDTO=="+ mDTO);
 		List<CartDTO> clist = oservice.lastOrderCartList(mDTO);
 		
+		OrderDTO odto = new OrderDTO();
+		odto.setSend_user_name(map.get("send_user_name"));
+		odto.setSend_post(map.get("send_post"));
+		odto.setSend_address1(map.get("send_address1"));
+		odto.setSend_address2(map.get("send_address2"));
+		odto.setSend_address_detail(map.get("send_address_detail"));
+		odto.setSend_phone(map.get("send_phone"));
+		odto.setUser_id(user_id);
+		odto.setTotal_price(Integer.parseInt(map.get("totalSum")));
+		odto.setShipping(Integer.parseInt(map.get("shipping")));
+		
+		int orderId = oservice.DirectOrderDone(clist, odto, mDTO);
+		System.out.println("orderId ==" + orderId);
+		return Integer.toString(orderId);
+	}
 	
-		oservice.DirectOrderDone(clist, mDTO);
+	
+	@RequestMapping("/loginCheck/DirectOrderDone") // 전체 주문확인
+	public String DirectOrderDone(HttpSession session, RedirectAttributes xxx) {
+		System.out.println("/loginCheck/orderDone == in");
+		MemberDTO mDTO = (MemberDTO) session.getAttribute("login");
+		
+		String user_id = mDTO.getUser_id();
+		mDTO = mservice.Account(user_id); // 사용자 정보 가져오기
+		
+		System.out.println("/loginCheck/DirectOrderDone controller  mDTO=="+ mDTO);
+		List<CartDTO> clist = oservice.lastOrderCartList(mDTO);
+		
+		
+		//oservice.DirectOrderDone(clist, mDTO);
 		xxx.addFlashAttribute("cList", clist);
 		xxx.addFlashAttribute("mDTO", mDTO); 
 		

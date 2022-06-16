@@ -65,10 +65,10 @@
                 <div class="row">
                     <div class="col-12 text-center">
                         <div class="breadcrumb-content position-relative section-content">
-                            <h3 class="title-3">Login-Register</h3>
+                            <h3 class="title-3">로그인</h3>
                             <ul>
                                 <li><a href="./">Home</a></li>
-                                <li>Login-Register</li>
+                                <li>로그인</li>
                             </ul>
                         </div>
                     </div>
@@ -77,27 +77,27 @@
         </div>
         <!-- Breadcrumb Area End Here -->
         <!-- Login Area Start Here -->
-        <div class="login-register-area mt-no-text mb-no-text">
+        <div class="login-register-area mt-no-text mb-no-text" style="max-width:100%;">
             <div class="container container-default-2 custom-area">
-                <div class="row">
+                <div class="row" >
                     <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-custom">
-                        <div class="login-register-wrapper">
+                        <div class="login-register-wrapper" >
                             <div class="section-content text-center mb-5">
                                 <h2 class="title-4 mb-2">로그인</h2>
                                 <!-- <p class="desc-content">Please login using account detail bellow.</p> -->
                             </div>
                             <form action="login" method="post">
                                 <div class="single-input-item mb-3">
-                                    <input name="user_id" type="text" placeholder="아이디를 입력해주세요" style="width: 455px" value="haban">
+                                    <input name="user_id" type="text" placeholder="아이디를 입력해주세요" style="width: 455px; max-width:100%;"  value="haban">
                                 </div>
                                 <div class="single-input-item mb-3">
-                                    <input name="user_pw" type="password" placeholder="비밀번호를 입력해주세요" style="width: 455px" value="12341234">
+                                    <input name="user_pw" type="password" placeholder="비밀번호를 입력해주세요" style="width: 455px; max-width:100%;" value="12341234">
                                 </div><!-- value="hoban@naver.com"value="12341234" -->
                                 <div class="single-input-item mb-3">
                                     <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
                                         <div class="remember-meta mb-3">
                                             <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="rememberMe">
+                                                <input type="checkbox" class="custom-control-input" id="rememberMe" style="max-width:100%;">
                                                 <label class="custom-control-label" for="rememberMe">아이디 기억하기</label>
                                             </div> 
                                         </div>
@@ -108,7 +108,7 @@
                                     <button class="btn obrien-button-2 primary-color">로그인</button>
                                 </div> -->
                                 <div class="single-input-item">
-                                <button class="btn obrien-button-2 primary-color" style="width: 455px;">로그인</button>
+                                <button class="btn obrien-button-2 primary-color" style="width: 455px; max-width:100%;">로그인</button>
                                     <br>
                                     <hr>
                                 <ul style="text-align: center;">

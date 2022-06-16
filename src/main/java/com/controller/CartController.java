@@ -33,20 +33,7 @@ public class CartController {
 	@Autowired
 	ProductService pservice;
 
-	/*@RequestMapping("/loginCheck/cartAdd") // 카트에 추가
-	public String cartAdd(CartDTO cart, HttpSession session) {
-		System.out.println("/loginCheck/cartAdd controller cart ==" + cart);
 
-		MemberDTO mDTO = (MemberDTO) session.getAttribute("login");
-		cart.setUser_id(mDTO.getUser_id());
-
-		session.setAttribute("mesg", cart.getProduct_name());
-
-		cservice.cartAdd(cart);
-
-		return "redirect:../cartList";
-
-	}*/
 	
 	@RequestMapping(value ="/loginCheck/cartAdd", method = RequestMethod.POST) 
 	public  @ResponseBody String cartAdd(@RequestParam Map<String, String> map, HttpSession session) {
@@ -55,10 +42,9 @@ public class CartController {
 		MemberDTO mDTO = (MemberDTO) session.getAttribute("login");
 		
 		CartDTO cart = new CartDTO();
-		cart.setUser_id(mDTO.getUser_id());
+		cart.setUser_id(mDTO.getUser_id()); //mDTO에서
 		
-		
-		cart.setProduct_img( map.get("product_img") );
+		cart.setProduct_img( map.get("product_img")); //맵에서 
 		cart.setProduct_name(map.get("product_name"));
 		cart.setProduct_description_summary(map.get("product_description_summary"));
 		cart.setProduct_id(map.get("product_id")); 
@@ -66,7 +52,7 @@ public class CartController {
 
 		cart.setProduct_id(map.get("product_id"));
 		
-		if (!cservice.cartSelectUpdate(cart)) {
+		if (!cservice.cartSelectUpdate(cart)) {//카트에 확인해서 없으면 카트에 추가 ; 있으면 dao 에서 for문 돌려서 수량 증가
 			
 			cservice.cartAdd(cart); 
 		}
@@ -74,7 +60,7 @@ public class CartController {
 		
 		List<CartDTO> clist = cservice.cartList(mDTO);
 		
-		String retMsg = ""; 
+		String retMsg = "";  //미니카트 카운트
 		
 		retMsg += "<a href='./cartList' class='minicart-btn toolbar-btn'> <i class='ion-bag'></i>";
 		retMsg += "<span class='cart-item_count' id='cartSize'>" +clist.size() + "</span></a>"; 
@@ -120,7 +106,7 @@ public class CartController {
 	}
 	
 	
-	@RequestMapping(value ="/loginCheck/cartAddDirect", method = RequestMethod.POST,produces="text/plain;charset=UTF-8")  
+	@RequestMapping(value ="/loginCheck/cartAddDirect", method = RequestMethod.POST,produces="text/plain;charset=UTF-8")  //상품 목록안 카트 넣기
 	public  @ResponseBody String cartAddDirect(@RequestParam Map<String, String> map, HttpSession session) {
 		System.out.println("/loginCheck/cartAddDirect controller map 1==" + map);
 		

@@ -64,46 +64,80 @@ https://parkjh7764.tistory.com/57 -->
 <link rel="stylesheet" href="./assets/css/style.css">
 <!-- <link rel="stylesheet" href="./assets/css/style.min.css"> -->
 </head>
+
+
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-	function sameAddress(n) {
-		console.log(n, n.checked);
-		if (n.checked) {
-			document.getElementById("user_name").value = document
-					.getElementById("muser_name").value;
+<!-- iamport.payment.js -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
+<!-- jQuery JS -->
+	<script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+	<!-- jQuery Migrate JS -->
+	<script src="assets/js/vendor/jquery-migrate-3.3.2.min.js"></script>
+	<!-- Modernizer JS -->
+	<script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+	<!-- Slick Slider JS -->
+	<script src="assets/js/plugins/slick.min.js"></script>
+	<!-- Countdown JS -->
+	<script src="assets/js/plugins/jquery.countdown.min.js"></script>
+	<!-- Ajax JS -->
+	<script src="assets/js/plugins/jquery.ajaxchimp.min.js"></script>
+	<!-- Jquery Nice Select JS -->
+	<script src="assets/js/plugins/jquery.nice-select.min.js"></script>
+	<!-- Jquery Ui JS -->
+	<script src="assets/js/plugins/jquery-ui.min.js"></script>
+	<!-- jquery magnific popup js -->
+	<script src="assets/js/plugins/jquery.magnific-popup.min.js"></script>
 
-			document.getElementById("email").value = document
-					.getElementById("memail").value;
-			document.getElementById("phone").value = document
-					.getElementById("mphone").value;
-			document.getElementById("post").value = document
-					.getElementById("mpost").value;
-			document.getElementById("address1").value = document
-					.getElementById("maddress1").value;
-			document.getElementById("address2").value = document
-					.getElementById("maddress2").value;
-			document.getElementById("address_detail").value = document
-					.getElementById("maddress_detail").value;
-		} else {
-			document.getElementById("user_name").value = "";
-			document.getElementById("email").value = "";
-			document.getElementById("phone").value = "";
-			document.getElementById("post").value = "";
-			document.getElementById("address1").value = "";
-			document.getElementById("address2").value = "";
-			document.getElementById("address_detail").value = "";
-
-		}
-
-	}
-	
-	
-</script>
-
-<script>  /* 주문하기 체크 안 되어있으면 안 넘어가도록 */
+<script type="text/javascript">  /* 주문하기 체크 안 되어있으면 안 넘어가도록 */
 $(document).ready(function() {
+	 var IMP = window.IMP; // 생략 가능
+	 IMP.init("imp09182599"); // 예: imp00000000
 
 	$("form").on("submit", function(event) {
+		
+		var exc_username = $("#send_user_name").val();
+		var exc_post = $("#send_post").val();
+		var exc_address1 = $("#send_address1").val();
+		//var exc_address2 = $("#send_address2").val();
+		var exc_address_detail = $("#send_address_detail").val();
+		var exc_phone = $("#send_phone").val();
+		
+		if (exc_username.length < 3) {
+			alert("이름를 입력해주세요")
+			$("#send_user_name").focus();
+			event.preventDefault();
+		
+		} else if (exc_post.length < 1) {
+			alert("우편번호을 입력해주세요")
+			$("#send_post").focus();
+			event.preventDefault();
+		
+		} else if (exc_address1.length < 1) {
+			alert("주소를 입력해주세요")
+			$("#send_address1").focus();
+			event.preventDefault();
+		
+		} else if (exc_address_detail.length < 1) {
+			alert("상세 주소를 입력해주세요")
+			$("#send_address_detail").focus();
+			event.preventDefault();
+		
+		} else if (exc_phone.length < 1) {
+			alert("전화번호를 입력해주세요")
+			$("#send_phone").focus();
+			event.preventDefault();
+		
+		} else {
+			return false;
+		}
+		
+		
+		
+		
 		var check = $('input:checkbox[name="rememberMe"]').is(":checked");
 		
 		if (check != true){
@@ -111,10 +145,106 @@ $(document).ready(function() {
 			event.preventDefault();
 			//return false;
 		}
+		console.log("11111" );
+		
+		var orderId = createorderId();
+		
+		event.preventDefault();
+		console.log("222222");
 		
 	});
+	 
+	function createorderId(){
+		 var params = jQuery("#orderConfirmForm").serialize();
+		 var total = document.getElementById('totalSum').value;  
+		 const number = total.split(',').join(""); //,제거하고 조인에서 숫자 붙이고
+		$.ajax({
+			url : "orderCreate",
+			type : "POST",
+			contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+			dataType : "text", 
+			data : jQuery("#orderConfirmForm").serialize(),
+			success : function(data, status, xhr) {  
+			   
+			   console.log("data orderConfirm ajax == " + data); 
+			   document.getElementById('orderId').value = data;
+			   
+			   requestPay(); //결제 함수실행
+			   
+			},
+			error : function(xhr, status, error) {
+				console.log(error); 
+				event.preventDefault();
+			}
+		});		
+		
+	} 
 	
-	
+	function requestPay() {
+	      // IMP.request_pay(param, callback) 결제창 호출
+	     
+	      // 1. 정보 GET 
+	      // 2. order 생성 후 ORDER ID get
+	      // 3. orderid 로 merchant_uid 생성한다.  
+	      
+		  var username = document.getElementById('send_user_name').value;
+	      var tel = document.getElementById('send_phone').value;
+	      var addr = document.getElementById('send_address1').value + " " +  document.getElementById('send_address2').value;
+	      var post = document.getElementById('send_post').value;
+	      console.log(username,tel,addr,post); 
+	      
+	      
+	      var orderId = document.getElementById('orderId').value;
+	      console.log("var orderId" + orderId); 
+	     
+	      //var product_name = ${"#pNum"}.val();
+	      var total = document.getElementById('totalSum').value;  
+		  const number = total.split(',').join(""); //,제거하고 조인에서 숫자 붙이고 
+		  console.log(number);
+		  
+		  //alert("number"+number);
+	      
+  	      IMP.request_pay({ // param
+	          pg: "html5_inicis",
+	          pay_method: "card",
+	          merchant_uid: "ORDWOOM-"+orderId,  ///////
+	          name: "노르웨이 회전 의자",
+	          amount: number,
+	          //buyer_email: "gildong@gmail.com",
+	          buyer_name: username,
+	          buyer_tel: tel,
+	          buyer_addr: addr,
+	          buyer_postcode: post
+	      }, function (rsp) { // callback
+	          if (rsp.success) {
+	              
+	              // 결제 성공 시 로직,  
+	             jQuery.ajax({ 
+					   url: "payments/complete",
+					   method: "GET",
+					   //headers: { "Content-Type": "application/json" },
+					   data: {imp_uid: rsp.imp_uid,
+							  merchant_uid: rsp.merchant_uid} 
+				}).done(function (data) {
+					// 가맹점 서버 결제 API 성공시 로직
+					if(data == "success"){
+						//event.preventDefault();
+						console.log("success");
+						//window.location = "./orderDone";
+						$(this).unbind('submit').submit();
+					}
+				}) 
+	             
+	          } else {
+	              //...,
+	              // 결제 실패 시 로직,
+	              //...
+	              console.log(rsp.error_msg);
+	              
+	              event.preventDefault();
+	          }
+	      });   
+	    }
 	
 	function numberWithCommas(x) {
 	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -126,7 +256,7 @@ $(document).ready(function() {
 	
 	
 	
-
+	
 	
 	
 });
@@ -134,15 +264,15 @@ $(document).ready(function() {
 <body>
 
 <!-- 한가지 주문하기 누를 때 c:when 아닐시 기존 카트리스트 --> 
-	<form name="myForm" id="orderBtn" method="GET" 
+	<form name="orderConfirmForm" id="orderConfirmForm" method="POST" 
 	
 		<c:choose> 
 			<c:when test="${DirectOrder eq 'true'}">
-				action="loginCheck/DirectOrderDone" 
+				action="" 
 			</c:when>
 			
 			<c:otherwise> 
-				 action="loginCheck/orderDone" 
+				 action="" 
 			</c:otherwise>
 		</c:choose> 
 		
@@ -184,8 +314,8 @@ $(document).ready(function() {
 
 								<div class="col-md-6">
 									<div class="checkout-form-list">
-										<label> 이름 <span class="required" style="color: red;">*</span></label> <input
-											placeholder="" type="text" id="muser_name"
+										<label> 이름 <span class="required" style="color: red;">*</span></label> 
+										<input placeholder="" type="text" id="send_user_name" name="send_user_name"
 											value="${mDTO.user_name}">
 									</div>
 								</div>
@@ -195,27 +325,27 @@ $(document).ready(function() {
 
 								<div class="col-md-10">
 									<div class="checkout-form-list">
-										<input type="text" name="post" id="post" placeholder="우편번호" style="width: 140px; height:40px; text-align:center;"  value="${mDTO.post}"> 
+										<input type="text" name="send_post" id="send_post" placeholder="우편번호" style="width: 140px; height:40px; text-align:center;"  value="${mDTO.post}"> 
 										
 										<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 변경"><br>
 											
-										<input type="text" name="address1" id="address1"
+										<input type="text" name="send_address1" id="send_address1"
 											placeholder="도로명주소" value="${mDTO.address1}"> 
-											<input type="hidden" name="address2" id="address2" placeholder="지번주소" value="${mDTO.address2}"> <span id="guide" style="color: #999"></span> <br>
+											<input type="hidden" name="send_address2" id="send_address2" placeholder="지번주소" value="${mDTO.address2}"> <span id="guide" style="color: #999"></span> <br>
 									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="checkout-form-list">
 										<label>상세주소 <span class="required" style="color: red;">*</span></label> <input
-											placeholder="상세주소를 입력해주세요" type="text" id="maddress_detail"
+											placeholder="상세주소를 입력해주세요" type="text" id="send_address_detail" name="send_address_detail"
 											value="${mDTO.address_detail}">
 									</div>
 								</div>
 
 								<div class="col-md-6">
 									<div class="checkout-form-list">
-										<label>번호 <span class="required" style="color: red;">*</span></label> <input
-											type="text" id="mphone" value="${mDTO.phone}">
+										<label>전화번호 <span class="required" style="color: red;">*</span></label> <input
+											type="text" id="send_phone" name="send_phone" value="${mDTO.phone}">
 									</div>
 
 								</div>
@@ -246,8 +376,8 @@ $(document).ready(function() {
 													value="${totalSum + xxx.product_price*xxx.cart_quantity }" />
 
 
-												<td class="cart-product-name">${xxx.product_name}<strong
-													class="product-quantity">× ${xxx.cart_quantity}</strong></td>
+												<td class="cart-product-name" id="pNum">${xxx.product_name}<strong
+													class="product-quantity" id="cQuantity">× ${xxx.cart_quantity}</strong></td>
 												<td class="cart-product-total text-center"><span
 													class="amount" id="sum" class="sum"><fmt:formatNumber value="${xxx.product_price*xxx.cart_quantity }"/></span></td>
 											</tr>
@@ -261,7 +391,10 @@ $(document).ready(function() {
 										</tr>
 										<tr class="total">
 											<th>총 합계</th>
-											<td class="text-center" id="totalSum"><strong><span
+											<input type="hidden" id="shipping" name="shipping" value="${shipping}">
+											<input type="hidden" id="orderId" name="orderId" value="">
+											<input type="hidden" id="totalSum" name="totalSum" value="${total}">
+											<td class="text-center"><strong><span
 													><fmt:formatNumber value="${total}"/></span></strong></td>
 
 											
@@ -354,26 +487,7 @@ $(document).ready(function() {
 	<!-- JS
 ============================================ -->
 
-	<!-- jQuery JS -->
-	<script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
-	<!-- jQuery Migrate JS -->
-	<script src="assets/js/vendor/jquery-migrate-3.3.2.min.js"></script>
-	<!-- Modernizer JS -->
-	<script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
-	<!-- Bootstrap JS -->
-	<script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
-	<!-- Slick Slider JS -->
-	<script src="assets/js/plugins/slick.min.js"></script>
-	<!-- Countdown JS -->
-	<script src="assets/js/plugins/jquery.countdown.min.js"></script>
-	<!-- Ajax JS -->
-	<script src="assets/js/plugins/jquery.ajaxchimp.min.js"></script>
-	<!-- Jquery Nice Select JS -->
-	<script src="assets/js/plugins/jquery.nice-select.min.js"></script>
-	<!-- Jquery Ui JS -->
-	<script src="assets/js/plugins/jquery-ui.min.js"></script>
-	<!-- jquery magnific popup js -->
-	<script src="assets/js/plugins/jquery.magnific-popup.min.js"></script>
+	
 
 	<!-- Main JS -->
 	<script src="assets/js/main.js"></script>
@@ -413,9 +527,9 @@ $(document).ready(function() {
 							}
 
 							// 우편번호와 주소 정보를 해당 필드에 넣는다.
-							document.getElementById('post').value = data.zonecode; //5자리 새우편번호 사용
-							document.getElementById('address1').value = fullRoadAddr;
-							document.getElementById('address2').value = data.jibunAddress;
+							document.getElementById('send_post').value = data.zonecode; //5자리 새우편번호 사용
+							document.getElementById('send_address1').value = fullRoadAddr;
+							document.getElementById('send_address2').value = data.jibunAddress;
 
 							// 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
 							if (data.autoRoadAddress) {

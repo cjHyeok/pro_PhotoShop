@@ -105,9 +105,10 @@ public class ProductController {
 		} else { 
 			user_id = mDTO.getUser_id();
 		}
+		System.out.println("userid 메인 상품==" + user_id);
 		
 		List<ProductDTO> plist = pservice.productMainList();
-		
+		System.out.println("plist 메인 상품==" + plist.size());
 		for(int i=0; i<plist.size(); i++) {
 			Map<String, String> map = new HashMap<>();
 			

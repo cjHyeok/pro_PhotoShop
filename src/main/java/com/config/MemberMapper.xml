@@ -75,4 +75,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                     where m.user_id = #{user_id}
                     and o.order_date >= (SYSDATE-1)
     </select>
+    
+    
+    
 </mapper>

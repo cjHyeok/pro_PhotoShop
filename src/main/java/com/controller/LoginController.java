@@ -35,7 +35,7 @@ public class LoginController {
 	@Autowired
 	CartService cservice;
 	
-	@RequestMapping(value = "/login",  method = RequestMethod.POST)
+	@RequestMapping(value = "/login",  method = RequestMethod.POST) //로그인 , +비밀번호 암호화
 	public String login(@RequestParam Map<String, String> map, Model model, HttpSession session, RedirectAttributes attr) {
 		System.out.println("/login map = " + map);
 		

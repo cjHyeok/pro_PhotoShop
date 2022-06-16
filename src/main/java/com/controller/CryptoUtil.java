@@ -23,7 +23,7 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
-public class CryptoUtil {
+public class CryptoUtil { //비밀번호 암호화
 	/**
 	 * MD5 로 해시 한다.
 	 * 

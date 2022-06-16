@@ -1297,8 +1297,8 @@ button,
 }
 
 /*-- Main Header Area --*/
-.main-header-area .header-logo img {
-  width: 125px;
+.main-header-area .header-logo img { /*  메인 헤더 */
+  width: 130px;
 }
 
 /* ---Sticky Header--- */
@@ -4454,7 +4454,7 @@ button,
   font-weight: 600;
 }
 
-.login-register-wrapper .single-input-item input {
+.login-register-wrapper .single-input-item input {/* 회원가입 */ 
   background: #ffffff none repeat scroll 0 0;
   border: medium none rgba(0, 0, 0, 0);
   border-radius: 0;
@@ -4466,7 +4466,7 @@ button,
   margin-bottom: 20px;
   padding-left: 10px;
   padding-right: 10px;
-  width: 80%;
+  width: 100%;
 }
 .login
 

@@ -173,8 +173,19 @@
 	</dependency>
 	<!-- JSON/Ajax end -->
 		
-		
-		
+		<!-- 아임포트 관련 -->
+		<dependency> <!-- http함수 -->
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+            <version>4.4.6</version>
+        </dependency>
+ 
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.11</version>
+        </dependency>
+		<!-- 아임포트 관련 end -->
 		
 	</dependencies>
     <build>

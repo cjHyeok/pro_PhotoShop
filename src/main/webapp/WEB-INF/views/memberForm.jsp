@@ -197,10 +197,10 @@ $(document).ready(function() {
                 <div class="row">
                     <div class="col-12 text-center">
                         <div class="breadcrumb-content position-relative section-content">
-                            <h3 class="title-3">Login-Register</h3>
+                            <h3 class="title-3">회원가입</h3>
                             <ul>
                                 <li><a href="./">Home</a></li>
-                                <li>Login-Register</li>
+                                <li>회원가입</li>
                             </ul>
                         </div>
                     </div>
@@ -208,72 +208,47 @@ $(document).ready(function() {
             </div>
         </div>
         <!-- Breadcrumb Area End Here -->
-        <!-- Login Area Start Here -->
+<!-- Login Area Start Here -->
         <div class="login-register-area mt-no-text mb-no-text">
             <div class="container container-default-2 custom-area">
                 <div class="row">
-                    <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-custom" style="width: 1000">
+                    <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-custom">
                         <div class="login-register-wrapper">
                             <div class="section-content text-center mb-5">
                                 <h2 class="title-4 mb-2">회원가입</h2>
                                 <p class="desc-content">회원가입을 위해 정보를 넣어주세요</p>
                             </div>
                             <form action="memberAdd" method="post">
-                                <div class="single-input-item mb-3" style="width: 580px; display: block;">
-                                    <input id="user_id" name="user_id" type="text" placeholder="아이디를 입력해주세요"> <p id="result"/>
+                                <div class="single-input-item mb-3">
+                                    <input id="user_id" name="user_id" type="text" placeholder="아이디를 입력해주세요" > <p id="result"/>
                                 </div>
-
-
-                                <div class="single-input-item mb-3" style="width: 580px "><!-- height: 100px;   https://dubaiyu.tistory.com/25 -->
+                                <div class="single-input-item mb-3">
                                     <input id="user_name" name="user_name" type="text" placeholder="이름을 입력해주세요"> 
                                 </div>
-                                <div class="single-input-item mb-3" style="width: 580px">
+                                <div class="single-input-item mb-3">
                                     <input id="user_pw" name="user_pw" type="password" placeholder="비밀번호를 입력해주세요">
                                 </div>
-                                <div class="single-input-item mb-3" style="width: 580px">
+                                <div class="single-input-item mb-3">
                                     <input id="user_pw2" name="user_pw2" type="password" placeholder="다시 한번 비밀번호를 입력해주세요"> <p id="result2"/>
                                 </div>
-                                
-                                <div class="single-input-item mb-3" style="width: 580px">
+                                <div class="single-input-item mb-3">
                                     <input id="email" name="email" type="email" placeholder="이메일을 입력해주세요">
-                                
-                                </div>                              
-           					    <div class="single-input-item mb-3" >  
-           					    <input type="text" name="post" id="sample4_postcode" style="text-align:center; width:161px;" placeholder="우편번호">&nbsp;<span>           
-                              	    <input type="button" onclick="sample4_execDaumPostcode()" style="width:260px; margin-left:1em" value="우편번호 찾기"></span>
-									<input type="text" name="address1" id="sample4_roadAddress" style="width:465px;" placeholder="도로명주소"> 
-									<input type="text" name="address2" id="sample4_jibunAddress" style="width:465px;"placeholder="지번주소"> <span id="guide" style="color: #999"></span> 
-									<input id="address_detail" name="address_detail" type="text"style="width:465px;" placeholder="상세주소를 입력해주세요">
-								</div>
-								<!--  </div>
-	                                
-	                            <div class="single-input-item mb-3">
-                                    <input id="address_detail" name="address_detail" type="text" placeholder="상세주소를 입력해주세요">
-                                </div> -->
-	
-                                <div class="single-input-item mb-3" style="width: 580px">
-                                    <input id="phone" name="phone" type="text" placeholder="전화번호를 입력해주세요">
                                 </div>
-
-                                
-                                <!-- <div class="single-input-item mb-3">
-                                    <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
-                                        <div class="remember-meta mb-3">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="rememberMe">
-                                                <label class="custom-control-label" for="rememberMe">Subscribe Our Newsletter</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
+                                <div class="single-input-item mb-3" >  
+	           						
+	           						<input type="text" name="post" id="sample4_postcode" style="max-width:100%; width:150px; text-align:center; " placeholder="우편번호">&nbsp;          
+	                              	<span><input type="button" onclick="sample4_execDaumPostcode()" style="max-width:100%; width:150px; margin-left:1em" value="우편번호 찾기"></span>
+									
+									<input type="text" name="address1" id="sample4_roadAddress" placeholder="도로명주소"> 
+									<input type="text" name="address2" id="sample4_jibunAddress" placeholder="지번주소"> <span id="guide" style="color: #999"></span> 
+									<input id="address_detail" name="address_detail" type="text" placeholder="상세주소를 입력해주세요">
+								</div>
                                 
                                 
-                                	<!-- <div class="single-input-item mb-31"> -->
-                                	<div>
-                                	    <button class="btn obrien-button-2 primary-color" style="margin:auto; display:block; width: 450px;">회원가입</button>
-                               	 	</div>
-                              
                                 
+                                <div>
+                                	<button class="btn obrien-button-2 primary-color" style="margin:auto; max-width:100%;  display:block; width: 400px;">회원가입</button>
+                               	</div>
                             </form>
                         </div>
                     </div>
