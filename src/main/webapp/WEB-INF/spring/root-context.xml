@@ -43,7 +43,7 @@
 			<value>com.dto.WishDTO</value>
 			<value>com.dto.ProductCategoryDTO</value>
 			<value>com.dto.ReviewDTO</value>
-			<value>com.dto.PageMakerDTO</value>
+			<value>com.dto.OrderStateDTO</value>
 		</list>
 	</property>
 	</bean>

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TimeZone;
 
 import javax.servlet.http.HttpSession;
 
@@ -97,6 +98,10 @@ public class ProductController {
 	@RequestMapping("/") // 메인에서 상품 리스트 뜨도록
 	public ModelAndView productMainList(HttpSession session) {
 		MemberDTO mDTO = (MemberDTO) session.getAttribute("login");
+		TimeZone tzone = TimeZone.getTimeZone("Asia/Seoul");   //java api  타임 아시아/서울로
+
+	    // set time zone to default
+	    tzone.setDefault(tzone);                               //java api  타임 아시아/서울로
 		
 		String user_id = "";
 		

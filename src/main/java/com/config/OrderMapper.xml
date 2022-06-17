@@ -44,10 +44,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          WHERE order_id = '${order_id}'
 	</select>
 
-	<update id="orderPaymentCompletedUpdate" parameterType="String"> <!-- 주문 상태 변경 -->
+	
+	<update id="orderStateUpdate" parameterType="OrderStateDTO"> <!-- 주문 상태 변경 -->
 		UPDATE t_order
 		SET	
-			order_state = 'payment_completed'
+			order_state = '${order_state}'
 		WHERE order_id = #{order_id}
 	
 	</update>

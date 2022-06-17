@@ -205,6 +205,8 @@ $(document).ready(function() {
 	      var tel = document.getElementById('send_phone').value;
 	      var addr = document.getElementById('send_address1').value + " " +  document.getElementById('send_address2').value;
 	      var post = document.getElementById('send_post').value;
+	      var email = document.getElementById('email').value;
+	      
 	      console.log(username,tel,addr,post); 
 	      
 	      
@@ -233,6 +235,7 @@ $(document).ready(function() {
 	          buyer_name: username,
 	          buyer_tel: tel,
 	          buyer_addr: addr,
+	          buyer_email: email,
 	          buyer_postcode: post,
 	          m_redirect_url: "http://um-woom.shop/goods/orderDone?order_id=" + orderId
 	          /* 모바일일 경우 m_redirect_url로 빠짐 */
@@ -409,6 +412,8 @@ $(document).ready(function() {
 											<input type="hidden" id="orderId" name="orderId" value="">
 											<input type="hidden" id="totalSum" name="totalSum" value="${total}">
 											<input type="hidden" id="products_name"   value="${products_name}">
+											<input type="hidden" id="email"   value="${mDTO.email}">
+											
 											
 											<!-- hidden input으로 만들어주고 위에 변수 만든 후 success 안 if문 -->
 											<%-- <c:choose> 

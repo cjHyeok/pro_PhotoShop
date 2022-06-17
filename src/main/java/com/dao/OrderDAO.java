@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.dto.CartDTO;
 import com.dto.MemberDTO;
 import com.dto.OrderDTO;
+import com.dto.OrderStateDTO;
 import com.dto.ReviewDTO;
 
 @Repository
@@ -88,6 +89,16 @@ public class OrderDAO {
 
 	public void orderPaymentCompletedUpdate(String order_id) {
 		template.update("OrderMapper.orderPaymentCompletedUpdate", order_id);
+		
+	}
+	
+	public void orderStateUpdate(String order_id , String state) {
+		
+		OrderStateDTO osDTO = new OrderStateDTO();
+		osDTO.setOrder_id(order_id);
+		osDTO.setOrder_state(state);
+		
+		template.update("OrderMapper.orderStateUpdate", osDTO );
 		
 	}
 

@@ -78,7 +78,15 @@
 														<li><a href="./productList?category_name=골프공캘리">골프공캘리</a></li>
 														<li><a href="./productList?category_name=봉투">봉투</a></li>
 													</ul>
-												</div></li>
+												</div>
+											</li>
+											
+													<li><a href="./myAccount"> <span
+															class="menu-text">마이페이지</span></a></li>
+											
+											
+											
+											
 											<c:choose>
 												<c:when test="${login.role eq 'R'}">
 													<li><a href="./productItem"> <span
@@ -98,7 +106,7 @@
 													<c:when test="${!empty login }"> &nbsp;&nbsp; <!-- 확인용 -->
 														<div style="font-size: 15px; line-height: 1.6; font-weight: 600; color: #303030;">
 
-															<a href="./myAccount"> ${login.user_name } 님 </a>
+															<a href="./myAccount"> ${login.user_name } </a>님 
 
 
 														</div>

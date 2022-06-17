@@ -202,7 +202,7 @@ $(document).ready(function() {
                                     <div class="myaccount-tab-menu nav" role="tablist">
                                         <a href="#account-info" data-bs-toggle="tab"><i class="fa fa-user"></i>회원정보</a>
                                         <a href="#orders" data-bs-toggle="tab"><i class="fa fa-cart-arrow-down"></i>
-                                            주문정보</a>
+                                            주문내역확인/배송조회</a>
                                         <a href="#download" data-bs-toggle="tab"><i class="fa fa-heart" aria-hidden="true"></i>
                                             찜리스트</a>
                                      
@@ -265,7 +265,7 @@ $(document).ready(function() {
                                         
                                         <div class="tab-pane fade" id="orders" role="tabpanel">
                                             <div class="myaccount-content">
-                                                <h3>주문정보</h3>
+                                                <h3>주문내역확인/배송조회</h3>
                                                 <div class="myaccount-table table-responsive text-center"> 
                                                         
                                                         <c:forEach var="order" items="${orderList}" varStatus="status"> 
@@ -291,7 +291,7 @@ $(document).ready(function() {
                                                             	<td>${order.order_id}</td>
                                                                 <td><a href="./productDetails?product_id=${order.product_img}"><img class="img-fluid" style="width: 200px; height:200px; object-fit: cover;"
 																	src="assets/images/${order.product_img}" alt="Product" /></a></td>
-                                                                <td><fmt:formatDate var="dateTempParse" pattern="yyyy-MM-dd" value="${order.order_date}"/><c:out value="${dateTempParse}"/></td>
+                                                                <td><fmt:formatDate var="dateTempParse" pattern="yyyy-MM-dd hh:mm:ss" value="${order.order_date}"/><c:out value="${dateTempParse}"/></td>
                                                                 <td>${order.product_name}</td>
                                                                 
                                                                 

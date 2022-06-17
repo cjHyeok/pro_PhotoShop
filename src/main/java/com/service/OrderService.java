@@ -48,8 +48,10 @@ public class OrderService {
 		List<OrderDTO> olist= odao.orderIdSearch(order_id);
 		return olist;
 	}
-	public void orderPaymentCompletedUpdate(String order_id) {
-		odao.orderPaymentCompletedUpdate(order_id);
+
+	
+	public void orderStateUpdate(String order_id , String state) {
+		odao.orderStateUpdate(order_id, state);
 		
 	}
 	

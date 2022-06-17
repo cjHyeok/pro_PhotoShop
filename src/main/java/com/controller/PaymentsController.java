@@ -51,7 +51,7 @@ public class PaymentsController {
 				if( odto.getTotal_price() == Integer.parseInt(imp_amount)) {
 					System.out.println("결제정보 검증 = imp" + imp_amount);
 					//4. DB에 상태 저장 상태를 payment_completed로 변경
-					oservice.orderPaymentCompletedUpdate(order_id);
+					oservice.orderStateUpdate(order_id, "delivery_preparation" );
 					
 					System.out.println("ajax success return  " );
 					//5. 결제 응답 결과 전송
