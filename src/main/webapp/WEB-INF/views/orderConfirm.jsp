@@ -7,6 +7,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>WOOM 에 오신걸 환영합니다. -> WOOM !</title>
@@ -109,32 +110,34 @@ $(document).ready(function() {
 		if (exc_username.length < 3) {
 			alert("이름를 입력해주세요")
 			$("#send_user_name").focus();
-			event.preventDefault();
+			//event.preventDefault();
+			return false;
 		
 		} else if (exc_post.length < 1) {
 			alert("우편번호을 입력해주세요")
 			$("#send_post").focus();
-			event.preventDefault();
+			//event.preventDefault();
+			return false;
 		
 		} else if (exc_address1.length < 1) {
 			alert("주소를 입력해주세요")
 			$("#send_address1").focus();
-			event.preventDefault();
+			//event.preventDefault();
+			return false;
 		
 		} else if (exc_address_detail.length < 1) {
 			alert("상세 주소를 입력해주세요")
 			$("#send_address_detail").focus();
-			event.preventDefault();
+			//event.preventDefault();
+			return false;
 		
 		} else if (exc_phone.length < 1) {
 			alert("전화번호를 입력해주세요")
 			$("#send_phone").focus();
-			event.preventDefault();
-		
-		} else {
+			//event.preventDefault();
 			return false;
-		}
 		
+		} 
 		
 		
 		
@@ -142,18 +145,28 @@ $(document).ready(function() {
 		
 		if (check != true){
 			alert("구매 동의를 체크해주세요");
-			event.preventDefault();
-			//return false;
+			//event.preventDefault();
+			return false;
 		}
 		console.log("11111" );
 		
-		var orderId = createorderId();
 		
+		var orderId = document.getElementById('orderId').value;
+		
+		if(orderId.length > 0) {
+			requestPay(); //결제 함수실행
+			console.log("orderId length ==" + orderId)
+		}else{
+			createorderId();
+			console.log("createorderId ==")
+		} 
+		 
 		event.preventDefault();
 		console.log("222222");
 		
 	});
 	 
+ 
 	function createorderId(){
 		 var params = jQuery("#orderConfirmForm").serialize();
 		 var total = document.getElementById('totalSum').value;  
@@ -161,6 +174,7 @@ $(document).ready(function() {
 		$.ajax({
 			url : "orderCreate",
 			type : "POST",
+			async: false,
 			contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 			dataType : "text", 
 			data : jQuery("#orderConfirmForm").serialize(),
@@ -194,6 +208,10 @@ $(document).ready(function() {
 	      console.log(username,tel,addr,post); 
 	      
 	      
+	      var products_name = document.getElementById('products_name').value;
+	      console.log("products_name  : " + products_name); 
+	      
+	      
 	      var orderId = document.getElementById('orderId').value;
 	      console.log("var orderId" + orderId); 
 	     
@@ -203,44 +221,54 @@ $(document).ready(function() {
 		  console.log(number);
 		  
 		  //alert("number"+number);
+		   
+		  console.log(products_name);
 	      
   	      IMP.request_pay({ // param
 	          pg: "html5_inicis",
 	          pay_method: "card",
 	          merchant_uid: "ORDWOOM-"+orderId,  ///////
-	          name: "노르웨이 회전 의자",
+	          name: products_name,
 	          amount: number,
-	          //buyer_email: "gildong@gmail.com",
 	          buyer_name: username,
 	          buyer_tel: tel,
 	          buyer_addr: addr,
-	          buyer_postcode: post
-	      }, function (rsp) { // callback
-	          if (rsp.success) {
-	              
-	              // 결제 성공 시 로직,  
-	             jQuery.ajax({ 
-					   url: "payments/complete",
-					   method: "GET",
-					   //headers: { "Content-Type": "application/json" },
-					   data: {imp_uid: rsp.imp_uid,
-							  merchant_uid: rsp.merchant_uid} 
-				}).done(function (data) {
-					// 가맹점 서버 결제 API 성공시 로직
-					if(data == "success"){
-						//event.preventDefault();
-						console.log("success");
-						//window.location = "./orderDone";
-						$(this).unbind('submit').submit();
-					}
-				}) 
+	          buyer_postcode: post,
+	          m_redirect_url: "http://um-woom.shop/goods/orderDone?order_id=" + orderId
+	          /* 모바일일 경우 m_redirect_url로 빠짐 */
+	      }, function (rsp) { // callback  
+	    	 
+	          if (rsp.success) { 
+	        	  
+	        	  $.ajax({
+	        		  url: "payments/complete",
+					  method: "GET",
+					  async: false,
+					  dataType : "text", 
+					  //headers: { "Content-Type": "application/json" },
+					  data: {
+						  imp_uid: rsp.imp_uid,
+						  merchant_uid: rsp.merchant_uid
+					  }, 
+	      			  success : function(data, status, xhr) {  
+	      			   
+		      			  console.log("Done data " + data);
+						  // 가맹점 서버 결제 API 성공시 로직
+						  if(data == "success"){ 
+						  	console.log("success");  
+							window.location = "./orderDone?order_id=" + orderId; 
+						 }
+	      			},
+	      			error : function(xhr, status, error) {
+	      				console.log(error); 
+	      				event.preventDefault();
+	      			}
+	      		});		
+ 
 	             
-	          } else {
-	              //...,
-	              // 결제 실패 시 로직,
-	              //...
-	              console.log(rsp.error_msg);
-	              
+	          } else { 
+	              // 결제 실패 시 로직, 
+	              console.log(rsp.error_msg); 
 	              event.preventDefault();
 	          }
 	      });   
@@ -252,31 +280,17 @@ $(document).ready(function() {
 	    var total = parseInt(xxx.product_price) * parseInt(xxx.cart_quantity);
 	    
 	    $("#totalSum").text(numberWithCommas(total));
-	}
-	
-	
-	
-	
+	} 
 	
 	
 });
 </script>
 <body>
 
+<c:set var="products_name" value="${cList.get(0).product_name}" />
+
 <!-- 한가지 주문하기 누를 때 c:when 아닐시 기존 카트리스트 --> 
-	<form name="orderConfirmForm" id="orderConfirmForm" method="POST" 
-	
-		<c:choose> 
-			<c:when test="${DirectOrder eq 'true'}">
-				action="" 
-			</c:when>
-			
-			<c:otherwise> 
-				 action="" 
-			</c:otherwise>
-		</c:choose> 
-		
-	>
+	<form name="orderConfirmForm" id="orderConfirmForm" method="POST" action="">
 
 		<jsp:include page="top.jsp" flush="true"></jsp:include>
 
@@ -394,6 +408,19 @@ $(document).ready(function() {
 											<input type="hidden" id="shipping" name="shipping" value="${shipping}">
 											<input type="hidden" id="orderId" name="orderId" value="">
 											<input type="hidden" id="totalSum" name="totalSum" value="${total}">
+											<input type="hidden" id="products_name"   value="${products_name}">
+											
+											<!-- hidden input으로 만들어주고 위에 변수 만든 후 success 안 if문 -->
+											<%-- <c:choose> 
+												<c:when test="${DirectOrder eq 'true'}">
+													<input type="hidden" id="DirectOrder" name="DirectOrder" value="true">
+												</c:when>
+												
+												<c:otherwise> 
+													 <input type="hidden" id="DirectOrder" name="DirectOrder" value="false">
+												</c:otherwise>
+											</c:choose>  --%>
+											
 											<td class="text-center"><strong><span
 													><fmt:formatNumber value="${total}"/></span></strong></td>
 

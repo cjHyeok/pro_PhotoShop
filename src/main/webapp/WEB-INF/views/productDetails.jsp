@@ -95,7 +95,7 @@ pageContext.setAttribute("BR", "<br/>");
 				alert("로그인 해주세요");
 				return;
 			}
-			$("form").attr("action", "loginCheck/DirectOrder");
+			$("form").attr("action", "DirectOrder");
 			$("form").submit();
 
 		})

@@ -36,6 +36,7 @@
 <mvc:view-controller path="/reviewDone" view-name="reviewDone"/>
 
 <mvc:view-controller path="/payments/complete" view-name="payment/complete"/>
+<mvc:view-controller path="/payments/webhook" view-name="payments/webhook"/>
 
 <!-- <mvc:view-controller path="/productForm" view-name="productForm"/> -->
 <mvc:view-controller path="/productModify" view-name="productModify"/>

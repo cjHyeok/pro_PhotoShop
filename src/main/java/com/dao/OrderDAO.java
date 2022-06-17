@@ -37,7 +37,7 @@ public class OrderDAO {
 		 * //total_sum += cDto.getCart_quantity() * cDto.getProduct_price(); }
 		 */
 		
-		
+		 
 		template.insert("OrderMapper.orderInsert", odto); // mDTO order_id는 getOrder_id로 리턴
 
 		for (int i = 0; i < clist.size(); i++) {
@@ -92,7 +92,12 @@ public class OrderDAO {
 	}
 
 	public List<OrderDTO> orderDoneList(String order_id) {
+		
+		
 		List<OrderDTO> olist = template.selectList("OrderMapper.orderDoneList", order_id);
+		
+		System.out.println("orderdao orderDoneList olist = " + olist);
+		
 		return olist;
 	}
 

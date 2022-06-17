@@ -115,9 +115,9 @@ public class PaymentCheck {
 			//상태가 paid 일 경우에만 amount 값을 정상적으로 리턴
 			status = resNode.get("status").asText();
 			System.out.println("status in == " + status);
-			/*
-			 * if(status != "paid") { amount = "0"; }
-			 */
+			
+			if(!status.equals("paid")) { amount = "0"; }
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

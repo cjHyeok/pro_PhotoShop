@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dto.CartDTO;
@@ -33,7 +34,7 @@ public class DirectOrderController {
 	@Autowired
 	CartService cservice;
 
-	@RequestMapping("/loginCheck/DirectOrder") //  바로 주문하기
+	@RequestMapping("/DirectOrder") //  바로 주문하기
 	public String DirectOrder(HttpSession session, CartDTO cart, RedirectAttributes xxx) {
 		System.out.println("/loginCheck/DirectOrder  controller  DirectOrder ==" + cart);
 
@@ -44,7 +45,8 @@ public class DirectOrderController {
 
 		cservice.cartAdd(cart);
 
-		List<CartDTO> clist = oservice.lastOrderCartList(mDTO);
+		/* List<CartDTO> clist = oservice.lastOrderCartList(mDTO); */
+		List<CartDTO> clist = oservice.cartList(mDTO);
 		System.out.println("/loginCheck/DirectOrder  controller DirectOrder 카트리스트 내용 주문페이지로 넘기기"+clist);
 		
 		int total= 0;
@@ -76,11 +78,11 @@ public class DirectOrderController {
 		session.setAttribute("cartSize", Integer.toString(cTotlist.size()));		
 		
 		
-		return "redirect:../orderConfirm"; 
+		return "redirect:/orderConfirm"; 
 
 	}
 	
-	
+	/*
 	@RequestMapping(value ="/DirectOrderCreate", method = RequestMethod.POST,produces = "text/plain;charset=UTF-8") // 전체 주문확인
 	public  @ResponseBody String DirectOrderCreate(HttpSession session, RedirectAttributes xxx, @RequestParam Map<String, String> map) {
 		System.out.println("/loginCheck/orderDone == in");
@@ -109,8 +111,8 @@ public class DirectOrderController {
 	}
 	
 	
-	@RequestMapping("/loginCheck/DirectOrderDone") // 전체 주문확인
-	public String DirectOrderDone(HttpSession session, RedirectAttributes xxx) {
+	@RequestMapping("/DirectOrderDone") //바로 주문확인
+	public ModelAndView DirectOrderDone(HttpSession session,@RequestParam Map<String, String> map) {
 		System.out.println("/loginCheck/orderDone == in");
 		MemberDTO mDTO = (MemberDTO) session.getAttribute("login");
 		
@@ -119,13 +121,16 @@ public class DirectOrderController {
 		
 		System.out.println("/loginCheck/DirectOrderDone controller  mDTO=="+ mDTO);
 		List<CartDTO> clist = oservice.lastOrderCartList(mDTO);
+
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("oList", olist);
+		mav.addObject("mDTO", mDTO);
 		
-		
-		//oservice.DirectOrderDone(clist, mDTO);
+		oservice.DirectOrderDone(clist, mDTO);
 		xxx.addFlashAttribute("cList", clist);
 		xxx.addFlashAttribute("mDTO", mDTO); 
 		
 		return "redirect:../orderDone";
 	}
-
+*/
 }

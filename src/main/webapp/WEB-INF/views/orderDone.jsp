@@ -65,18 +65,18 @@ $(document).ready(function() {
 
 <body>
 <c:set var="xxx" value="${mDTO}" />
-
 <c:set var="user_id" value="${xxx.user_id}" />
-<c:set var="user_name" value="${xxx.user_name}" />
-<c:set var="post" value="${xxx.post}" />
-<c:set var="address1" value="${xxx.address1}" />
-<c:set var="address2" value="${xxx.address2}" />
-<c:set var="address_detail" value="${xxx.address_detail}" />
-<c:set var="phone1" value="${fn:substring(xxx.phone,0,3)}" /> <!-- (시작배열,길이) -->
-<c:set var="phone2" value="${fn:substring(xxx.phone,3,7)}" />
-<c:set var="phone3" value="${fn:substring(xxx.phone,7,11)}" />
+<c:set var="m_user_name" value="${xxx.user_name}" />
 
-
+<c:set var="user_name" value="${oList.get(0).send_user_name}" />
+<c:set var="post" value="${oList.get(0).send_post}" />
+<c:set var="address1" value="${oList.get(0).send_address1}" />
+<c:set var="address2" value="${oList.get(0).send_address2}" />
+<c:set var="address_detail" value="${oList.get(0).send_address_detail}" />
+<c:set var="phone1" value="${fn:substring(oList.get(0).send_phone,0,3)}" /> <!-- (시작배열,길이) -->
+<c:set var="phone2" value="${fn:substring(oList.get(0).send_phone,3,7)}" />
+<c:set var="phone3" value="${fn:substring(oList.get(0).send_phone,7,11)}" />
+<c:set var="totalSum" value="${oList.get(0).total_price}" />
 
 	<div class="contact-wrapper">
 		<!-- Header Area Start Here -->
@@ -122,7 +122,7 @@ $(document).ready(function() {
 	</tr>
 
 	<tr>
-		<td class="td_default" align="center"><b>${user_name}</b> 님의 주문이
+		<td class="td_default" align="center"><b>${m_user_name}</b> 님의 주문이
 			안전하게 처리되었습니다.</td>
 			
 	</tr>
@@ -180,17 +180,17 @@ $(document).ready(function() {
 
 
 				<!--  변수 선언 -->
-				<c:set var="totalSum" value="0" />
-				<c:forEach var="xxxc" items="${cList}" varStatus="status">
+				
+				<c:forEach var="xxxc" items="${oList}" varStatus="status">
 					<!-- 누적 -->
-					<c:set var="totalSum" value="${totalSum + xxxc.product_price * xxxc.cart_quantity }" />
+					
 						
 					<tr>
 						<td height="45" class="td_default" align="center"><span><a><img style="width: 60px;" src="assets/images/${xxxc.product_img}"/></a></span></td>
 						<td height="45" class="td_default" align="center"><span>${xxxc.product_name}</span></td>
 						<td height="45" class="td_default" align="center"><span><fmt:formatNumber value="${xxxc.product_price}"/></span>원</td>
-						<td height="45" class="td_default" align="center"><span>${xxxc.cart_quantity}</span>개</td>
-						<td height="45" class="td_default" align="center"><span><fmt:formatNumber value="${xxxc.product_price * xxxc.cart_quantity}"/></span>원
+						<td height="45" class="td_default" align="center"><span>${xxxc.order_quantity}</span>개</td>
+						<td height="45" class="td_default" align="center"><span><fmt:formatNumber value="${xxxc.product_price * xxxc.order_quantity}"/></span>원
 						</td>
 					</tr>
 
@@ -222,7 +222,7 @@ $(document).ready(function() {
 				</tr>
 				<tr>
 					<td class="td_default" width="150" height="35">결제수단</td>
-					<td class="td_default" height="35" align='right'>
+					<td class="td_default" height="35" align='right'>카드
 						<%-- <span>${xxx.payMethod}</span> --%>
 					</td>
 				</tr>

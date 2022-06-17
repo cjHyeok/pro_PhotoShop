@@ -5,26 +5,23 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.controller.PaymentCheck;
-import com.dto.CartDTO;
+
 import com.dto.OrderDTO;
 import com.service.OrderService;
 
-
 @Controller
-public class PaymentsController {
+public class PaymentWebhook {
 
 	@Autowired
 	OrderService oservice;
 	
-	@RequestMapping(value = "/payments/complete", method = RequestMethod.GET, headers="Accept=application/json")
+	@RequestMapping(value = "/payments/webhook", method = RequestMethod.GET, headers="Accept=application/json")
 	public @ResponseBody String paymentComplete(@RequestParam Map<String, String> map) {
-		
+		System.out.println("/payments/webhook  In ====================================");
 		System.out.println("map ==" + map);
 		
 		PaymentCheck paymentCheck = new PaymentCheck();
@@ -62,6 +59,7 @@ public class PaymentsController {
 		return "fail";
 		
 	}
+	
 	
 	
 	

@@ -289,12 +289,43 @@ $(document).ready(function() {
                                                         
                                                             <tr>
                                                             	<td>${order.order_id}</td>
-                                                                <td><a href="./productDetails?product_id=${order.product_img}"><img
-													class="img-fluid" style="width: 200px; height:200px; object-fit: cover;"
-													src="assets/images/${order.product_img}" alt="Product" /></a></td>
+                                                                <td><a href="./productDetails?product_id=${order.product_img}"><img class="img-fluid" style="width: 200px; height:200px; object-fit: cover;"
+																	src="assets/images/${order.product_img}" alt="Product" /></a></td>
                                                                 <td><fmt:formatDate var="dateTempParse" pattern="yyyy-MM-dd" value="${order.order_date}"/><c:out value="${dateTempParse}"/></td>
                                                                 <td>${order.product_name}</td>
-                                                                <td>${order.order_state}</td>
+                                                                
+                                                                
+          														<c:choose> 
+																	<c:when test="${order.order_state eq 'payment_waiting'}">
+																		<td>결제대기</td>
+																	</c:when>
+																	
+
+																	<c:when test="${order.order_state eq 'payment_completed'}">
+																		<td>결제완료</td>
+																	</c:when>
+
+
+																	<c:when test="${order.order_state eq 'delivery_preparation'}">
+																		<td>배송준비중</td>
+																	</c:when>
+
+
+																	<c:when test="${order.order_state eq 'delivery_inprogress'}">
+																		<td>배송중</td>
+																	</c:when>
+																	
+																	<c:when test="${order.order_state eq 'delivery_completed'}">
+																		<td>배송완료</td>
+																	</c:when>
+
+																	<c:otherwise> 
+																		<td>.</td>
+																	</c:otherwise>
+																</c:choose> 
+                                                                
+                                                                
+                                                                
                                                                 <td>${order.order_quantity}</td>
                                                                 
                                                             </tr>

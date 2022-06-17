@@ -244,7 +244,9 @@ $(document).ready(function() {
 									<input id="address_detail" name="address_detail" type="text" placeholder="상세주소를 입력해주세요">
 								</div>
                                 
-                                
+                                <div class="single-input-item mb-3">
+                                    <input id="phone" name="phone" type="text" placeholder="전화번호를 입력해주세요">
+                                </div>
                                 
                                 <div>
                                 	<button class="btn obrien-button-2 primary-color" style="margin:auto; max-width:100%;  display:block; width: 400px;">회원가입</button>
