@@ -387,7 +387,7 @@ pageContext.setAttribute("BR", "<br/>");
                                 </div>
                                 
                                 <div class="add-to_cart">
-                                    <button id="cart" type="button"><span class="iconify" data-icon="ion:cart" style="color: #e98c81;"  data-width="50" data-height="50"></span></button>
+                                    <button id="cart" type="button"><i class="ion-bag" style="color: #e98c81;" width="50px" height="50px"></i></button>
                                     <div class="cartPopupLayer">
 											<div>
 												<span onclick="$(this).parent().parent().hide();"
@@ -610,7 +610,7 @@ pageContext.setAttribute("BR", "<br/>");
 
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
-<!--   <iframe  name="myHiddenFrame"  
+<!--   <iframe  name="myHiddenFrame"  
 style="display:none;"></iframe> -->
 
 </body>

@@ -81,14 +81,15 @@
 												</div>
 											</li>
 											
-													<li><a href="./myAccount"> <span
-															class="menu-text">마이페이지</span></a></li>
+													
 											
 											
 											
 											
 											<c:choose>
 												<c:when test="${login.role eq 'R'}">
+												<li><a href="./myAccount"> <span
+															class="menu-text">마이페이지</span></a></li>
 													<li><a href="./productItem"> <span
 															class="menu-text">상품 관리</span></a></li>
 												</c:when>

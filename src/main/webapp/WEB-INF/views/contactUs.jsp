@@ -173,7 +173,7 @@
         Google Maps End -->
         
         <!-- naver Maps -->
-        <div id="map" style="width:100%;height:400px;"></div>
+        <div id="map" style="width:1110px; height:400px; margin: 0 auto;"></div>
 
 <script>
 var HOME_PATH = window.HOME_PATH || '.';

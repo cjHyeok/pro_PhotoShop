@@ -203,11 +203,28 @@ $(document).ready(function() {
 </script>
 <body>
 
+<c:set var="c_name" value="${category_name}"></c:set>
 	<div class="shop-wrapper">
 		<!-- Header Area Start Here -->
 		<jsp:include page="top.jsp" flush="true"></jsp:include>
 		<!-- Breadcrumb Area Start Here -->
-		<div class="breadcrumbs-area position-relative">
+		
+			<c:choose>
+			
+				<c:when test="${c_name eq '캘리액자'}">
+					<div class="breadcrumbs-area2 position-relative">
+				</c:when>
+				<c:when test="${c_name eq '캘리캔버스'}">
+					<div class="breadcrumbs-area3 position-relative">
+				</c:when>
+				<c:when test="${c_name eq '캘리엽서'}">
+					<div class="breadcrumbs-area4 position-relative">
+				</c:when>
+				
+				<c:otherwise>
+					<div class="breadcrumbs-area position-relative">
+				</c:otherwise>
+			</c:choose>
 			<div class="container">
 				<div class="row">
 					<div class="col-12 text-center">
