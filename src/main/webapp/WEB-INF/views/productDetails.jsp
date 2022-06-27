@@ -476,7 +476,7 @@ pageContext.setAttribute("BR", "<br/>");
 
 													<h5>${rlist.user_name}
 														&ensp;<span> <fmt:formatDate var="dateTempParse"
-																pattern="yyyy-MM-dd" value="${rlist.review_date}" /> <c:out
+																pattern="yyyy-MM-dd hh:mm:ss" value="${rlist.review_date}" /> <c:out
 																value="${dateTempParse}" /></span>
 													</h5>
 												</div>

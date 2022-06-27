@@ -149,6 +149,14 @@ $(document).ready(function() {
 		return num.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]{4})/,"$1-$2-$3");
 	}
 	
+	
+	
+	$("#myPageModify").on("click", function() {
+
+		location.href = "myPage";
+	})
+	
+	
 	});
 	</script>
 
@@ -224,14 +232,19 @@ $(document).ready(function() {
                                                 <div class="account-details-form">
                                               
                                                 
-                                                <address>
+                                                
                                                 <p>이름 : ${login.user_name}</p>
-                                                    <p><strong></strong></p>
+
+                                                   
+                                                  <p>이름 : ${login.post}</p>
                                                     <p>주소 : ${login.address1}<br>
+                                                    <p>지번 : ${login.address2}<br>
                                                     상세 주소 : ${login.address_detail}</p>
+                                                    
+                                                    <p>이메일 : ${login.email}</p>
                                                     <p>전화번호: <%-- ${login.phone} --%>${phone1}-${phone2}-${phone3}</p>
-                                                </address>
-                                               
+                                               <br>
+                                               <button id="myPageModify" style ="text-decoration: underline;">회원정보 수정하기</button>
                                                 </div>
                                             </div></div>
                                         </div>
@@ -244,10 +257,13 @@ $(document).ready(function() {
                                                 <div class="account-details-form">
                                             
                                                 <address>
-                                                <p>이름 : ${login.user_name}</p>
+                                                
+                                                    <p>이름 : ${login.user_name}</p>
                                                     <p><strong></strong></p>
                                                     <p>주소 : ${login.address1}<br>
+                                                    <p>지번 : ${login.address2}<br>
                                                     상세 주소 : ${login.address_detail}</p>
+                                                    <p>이메일 : ${login.email}</p>
                                                     <p>전화번호: <%-- ${login.phone} --%>${phone1}-${phone2}-${phone3}</p>
                                                 </address>
                                                
@@ -291,7 +307,7 @@ $(document).ready(function() {
                                                             	<td>${order.order_id}</td>
                                                                 <td><a href="./productDetails?product_id=${order.product_img}"><img class="img-fluid" style="width: 200px; height:200px; object-fit: cover;"
 																	src="assets/images/${order.product_img}" alt="Product" /></a></td>
-                                                                <td><fmt:formatDate var="dateTempParse" pattern="yyyy-MM-dd hh:mm:ss" value="${order.order_date}"/><c:out value="${dateTempParse}"/></td>
+                                                                <td><fmt:formatDate var="dateTempParse" pattern="yyyy-MM-dd  hh:mm:ss" value="${order.order_date}"/><c:out value="${dateTempParse}"/></td>
                                                                 <td>${order.product_name}</td>
                                                                 
                                                                 
@@ -406,7 +422,7 @@ $(document).ready(function() {
                                         
                                         <div class="tab-pane fade" id="product-review" role="tabpanel">
                                            <div class="myaccount-content">
-                                                <h3>상품 리뷰</h3>
+                                                <h3>나의 상품후기</h3>
                                                 <br>
                                                 <div class="myaccount-table table-responsive text-center">
                                                     <table class="table table-bordered">

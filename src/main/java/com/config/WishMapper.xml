@@ -5,16 +5,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="WishMapper">
 
 	<insert id="wishAdd" parameterType="WishDTO">
-		insert into t_wish (wish_id, user_id, product_id, wish_date)
-		VALUES (wish_seq.nextval, #{user_id}, #{product_id}, sysdate)
+		insert into T_WISH (user_id, product_id, wish_date)
+		VALUES (#{user_id}, #{product_id}, NOW())
 	</insert>
 	
 	
 	<select id="wishList" parameterType="MemberDTO" resultType="WishDTO">
 		SELECT p.product_name, p.product_price, p.product_quantity, p.product_id, i.product_img, w.user_id, w.wish_id
-		FROM t_product p join t_wish w
+		FROM T_PRODUCT p join T_WISH w
 			on p.product_id = w.product_id
-				join t_product_img i
+				join T_PRODUCT_IMG i
 					on p.product_id = i.product_id
 		WHERE w.user_id = '${user_id}'
 		ORDER BY w.wish_id ASC
@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<delete id="wishDelete" parameterType="arraylist">
 		DELETE
-		FROM t_wish
+		FROM T_WISH
 		WHERE wish_id IN
 
 		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
@@ -33,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="wishCheck" parameterType="WishDTO" resultType="WishDTO">
 		select product_id
-		from t_wish
+		from T_WISH
 		where product_id ='${product_id}' AND 
       	user_id ='${user_id}' 
 	</select>
@@ -41,7 +41,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<delete id="wishUserDelete" parameterType="WishDTO">
 		DELETE
-		FROM t_wish
+		FROM T_WISH
 		WHERE user_id= '${user_id}' and product_id = '${product_id}'
 	</delete>
 </mapper>

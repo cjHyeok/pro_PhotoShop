@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="ReviewList" parameterType="String" resultType="ReviewDTO">
 	SELECT r.review_id, r.review_date, r.review_content, r.user_name, r.product_id, r.review_like, p.product_name
-    FROM t_review r JOIN t_product p 
+    FROM T_REVIEW r JOIN T_PRODUCT p 
                     on r.product_id = p.product_id
     WHERE r.product_id = #{product_id}
     ORDER BY review_date desc
@@ -15,8 +15,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="reviewWriteAdd" parameterType="ReviewDTO">
 		INSERT INTO
-		t_review (review_id, user_name, product_id, review_content, review_date, review_like)
-		VALUES(review_seq.nextval, #{user_name}, #{product_id}, #{review_content}, sysdate, #{review_like})
+		T_REVIEW (user_name, product_id, review_content, review_date, review_like)
+		VALUES(#{user_name}, #{product_id}, #{review_content}, NOW(), #{review_like})
 	</insert>
 	
 	

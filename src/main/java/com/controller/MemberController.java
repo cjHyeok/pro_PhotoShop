@@ -134,7 +134,7 @@ public class MemberController {
 		
 		
 		
-		@RequestMapping(value = "/memberUpdate" , method=RequestMethod.POST) // 회원정보수정
+		@RequestMapping(value = "loginCheck/memberUpdate" , method=RequestMethod.POST) // 회원정보수정
 		public String memberUpdate(MemberDTO mdto, HttpSession session) {
 			
 			System.out.println("멤버업데이트 =="+ mdto);
@@ -145,7 +145,10 @@ public class MemberController {
 			session.setAttribute("login", mdto);
 			session.setAttribute("mesg", "비밀번호가 변경되었습니다.");
 			
-			return "myAccount";
+			return "myPage";
 		}
 
+		
+		
+		
 }

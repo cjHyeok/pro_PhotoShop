@@ -371,6 +371,7 @@ button,
 .section-content .title-3 {
   font-size: 32px;
   font-weight: 600;
+  
 }
 
 @media (max-width: 575px) {
@@ -5741,7 +5742,7 @@ button,
 /*----------------------------------------*/
 .breadcrumbs-area {
   padding: 100px 0;
-  background: #f6f6f6 url(../images/bg/1-1.jpg) no-repeat scroll center center/cover;
+  background: #f6f6f6 url(../images/bg/1-6.jpg) no-repeat scroll center center/cover;
 }
 .breadcrumbs-area2 {
   padding: 100px 0;
@@ -5754,6 +5755,18 @@ button,
 .breadcrumbs-area4 {
   padding: 100px 0;
   background: #f6f6f6 url(../images/bg/1-4.jpg) no-repeat scroll center center/cover;
+}
+.breadcrumbs-area5 {
+  padding: 100px 0;
+  background: #f6f6f6 url(../images/bg/1-5.jpg) no-repeat scroll center center/cover;
+}
+.breadcrumbs-area6 {
+  padding: 100px 0;
+  background: #f6f6f6 url(../images/bg/1-6.jpg) no-repeat scroll center center/cover;
+}
+.breadcrumbs-area7 {
+  padding: 100px 0;
+  background: #f6f6f6 url(../images/bg/1-7.jpg) no-repeat scroll center center/cover;
 }
 
 

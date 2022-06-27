@@ -11,7 +11,7 @@
 <%@ page import="com.dto.CartDTO" %>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>WOOM 에 오신걸 환영합니다.   ->  WOOM !</title>
+<title>WOOM !</title>
 
 
 

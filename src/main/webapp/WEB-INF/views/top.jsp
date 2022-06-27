@@ -44,8 +44,8 @@
 													class="fa fa-angle-down"></i></a>
 												<div class="menu-colum">
 													<ul class="dropdown-submenu dropdown-hover">
-														<li><a href="./productList?category_name=캘리액자">액자</a></li>
-														<li><a href="./productList?category_name=캘리캔버스">캔버스</a></li>
+														<li><a href="./productList?category_name=캘리액자">액자/캔버스</a></li>
+														<!-- <li><a href="./productList?category_name=캘리캔버스">캔버스</a></li> -->
 														<li><a href="./productList?category_name=캘리엽서">엽서</a></li>
 														<li><a href="./productList?category_name=캘리키트">캘리키트</a></li>
 													</ul>
@@ -56,8 +56,8 @@
 													class="fa fa-angle-down"></i></a>
 												<div class="menu-colum">
 													<ul class="dropdown-submenu dropdown-hover">
-														<li><a href="./productList?category_name=그림액자">액자</a></li>
-														<li><a href="./productList?category_name=그림캔버스">캔버스</a></li>
+														<li><a href="./productList?category_name=그림액자">액자/캔버스</a></li>
+														<!-- <li><a href="./productList?category_name=그림캔버스">캔버스</a></li> -->
 														<li><a href="./productList?category_name=그림엽서">엽서</a></li>
 													</ul>
 												</div></li>
@@ -79,6 +79,10 @@
 														<li><a href="./productList?category_name=봉투">봉투</a></li>
 													</ul>
 												</div>
+											</li>
+											
+											<li><a href="./productList?category_name=원데이클래스"><span class="menu-text">원데이클래스</span></a>
+												
 											</li>
 											
 													
@@ -228,16 +232,16 @@
 										<ul class="dropdown"> -->
 									<li class="menu-item-has-children"><a href="./#">캘리그라피</a>
 										<ul class="dropdown">
-											<li><a href="./productList?category_name=액자">액자</a></li>
-											<li><a href="./productList?category_name=캔버스">캔버스</a></li>
-											<li><a href="./productList?category_name=엽서">엽서</a></li>
+											<li><a href="./productList?category_name=캘리액자">액자/캔버스</a></li>
+											<!-- <li><a href="./productList?category_name=캘리캔버스">캔버스</a></li> -->
+											<li><a href="./productList?category_name=캘리엽서">엽서</a></li>
 											<li><a href="./productList?category_name=캘리키트">캘리키트</a></li>
 										</ul></li>
 
 									<li class="menu-item-has-children"><a href="./#">그림</a>
 										<ul class="dropdown">
-											<li><a href="./productList?category_name=그림액자">액자</a></li>
-											<li><a href="./productList?category_name=그림캔버스">캔버스</a></li>
+											<li><a href="./productList?category_name=그림액자">액자/캔버스</a></li>
+											<!-- <li><a href="./productList?category_name=그림캔버스">캔버스</a></li> -->
 											<li><a href="./productList?category_name=그림엽서">엽서</a></li>
 										</ul></li>
 
@@ -253,6 +257,9 @@
 											<li><a href="./productList?category_name=봉투">봉투</a></li>
 										</ul></li>
 
+									<li><a href="./productList?category_name=원데이클래스"><span class="menu-text">원데이클래스</span></a></li>
+									
+									
 									<c:choose>
 										<c:when test="${login.role eq 'R'}">
 											<li><a href="./productItem"><span class="menu-text">상품 관리</span></a></li>

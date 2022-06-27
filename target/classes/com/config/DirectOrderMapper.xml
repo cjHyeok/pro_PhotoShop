@@ -5,20 +5,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="DirectOrderMapper"> <!-- 바로 주문하기 -->
 
 
-	<select id="lastOrderCartList" parameterType="MemberDTO" resultType="CartDTO"> <!-- 가장 최근에 추가한 상품 1개만 선택하기 -->
+	<select id="lastOrderCartList" parameterType="MemberDTO" resultType="CartDTO"> <!-- 가장 최근에 추가한 상품 1개만 선택하기 --><!-- 현재 안씀 -->
 	
-	SELECT LAST.*
-    FROM (SELECT ROWNUM RNUM,
-                TEMP.*   
-        FROM (  SELECT  p.product_name, p.product_price, p.product_quantity, p.product_id, i.product_img, c.user_id, c.cart_id, c.cart_quantity
-                FROM t_product p 
-                JOIN t_cart c ON p.product_id = c.product_id
-				JOIN t_product_img i ON p.product_id = i.product_id
-                WHERE c.user_id = '${user_id}'
-                ORDER BY c.cart_id DESC
-                ) TEMP
-        )LAST
-    WHERE RNUM = 1
+		SELECT  p.product_name, p.product_price, p.product_quantity, p.product_id, i.product_img, c.user_id, c.cart_id, c.cart_quantity
+	                FROM T_PRODUCT p 
+	                JOIN T_CART c ON p.product_id = c.product_id
+					JOIN T_PRODUCT_IMG i ON p.product_id = i.product_id
+	                WHERE c.user_id = '${user_id}'
+	                ORDER BY c.cart_id DESC
+	    limit 1
 		
 		
 	</select>
@@ -27,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<delete id="DirectDelCart" parameterType="int" >  <!-- cart id 만 받아서 한가지만 삭제 -->
 		DELETE
-		FROM t_cart
+		FROM T_CART
 		WHERE cart_id = #{cart_id}
 	</delete>
 

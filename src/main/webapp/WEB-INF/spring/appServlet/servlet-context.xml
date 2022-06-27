@@ -18,6 +18,7 @@
 <mvc:view-controller path="/welcomeForm" view-name="welcomeForm"/>
 
 <mvc:view-controller path="/myAccount" view-name="myAccount"/>
+<mvc:view-controller path="/myPage" view-name="myPage"/>
 
 <mvc:view-controller path="/productList" view-name="productList"/>
 <mvc:view-controller path="/productDetails" view-name="productDetails"/>

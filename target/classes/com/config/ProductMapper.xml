@@ -7,9 +7,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="productList" parameterType="String" resultType="ProductDTO">
 	    SELECT p.product_id, p.product_name, p.product_price, p.product_description_summary, p.product_description, c.product_category_id , c.category_name, i.product_img
-		FROM t_product p JOIN t_product_cate c
+		FROM T_PRODUCT p JOIN T_PRODUCT_CATE c
 								on p.product_category_id = c.product_category_id
-                                join t_product_img i
+                                join T_PRODUCT_IMG i
 								on p.product_id = i.product_id
         WHERE c.category_name = #{category_name}
         ORDER BY p.product_price ASC
@@ -17,9 +17,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="productListPriceDesc" parameterType="String" resultType="ProductDTO">
 	    SELECT p.product_id, p.product_name, p.product_price, p.product_description_summary, p.product_description, c.product_category_id , c.category_name, i.product_img
-		FROM t_product p JOIN t_product_cate c
+		FROM T_PRODUCT p JOIN T_PRODUCT_CATE c
 								on p.product_category_id = c.product_category_id
-                                join t_product_img i
+                                join T_PRODUCT_IMG i
 								on p.product_id = i.product_id
         WHERE c.category_name = #{category_name}
         ORDER BY p.product_price desc
@@ -28,9 +28,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="productListAll" parameterType="int" resultType="ProductDTO">
 	    SELECT p.product_id, p.product_name, p.product_price, p.product_description_summary, p.product_description, c.product_category_id , c.category_name, i.product_img, p.product_quantity, p.product_register_date
-		FROM t_product p JOIN t_product_cate c
+		FROM T_PRODUCT p JOIN T_PRODUCT_CATE c
 								on p.product_category_id = c.product_category_id
-                                join t_product_img i
+                                join T_PRODUCT_IMG i
 								on p.product_id = i.product_id
 		ORDER BY p.product_id DESC
 	</select>
@@ -38,9 +38,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="productMainList" parameterType="int" resultType="ProductDTO">
 	    SELECT p.product_id, p.product_name, p.product_price, p.product_description_summary, c.product_category_id , c.category_name, i.product_img
-		FROM t_product p JOIN t_product_cate c
+		FROM T_PRODUCT p JOIN T_PRODUCT_CATE c
 								on p.product_category_id = c.product_category_id
-                                join t_product_img i
+                                join T_PRODUCT_IMG i
 								on p.product_id = i.product_id
 								
 		<!-- where p.product_best = 'best' -->						
@@ -52,29 +52,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="productDetails" parameterType="hashmap" resultType="ProductDTO">
 		select p.product_id, p.product_name, p.product_price, p.product_category_id, p.product_description_summary, p.product_quantity,p.product_description,p.product_sales_quantity,p.product_sales_state, i.product_img, i.product_img_type, 
 				i.product_sub_img_1, i.product_sub_img_2, i.product_sub_img_3, i.product_sub_img_4,
-				(select count(product_id) from t_wish where product_id = #{product_id}) as wish_count,
-                (select count(product_id) from t_wish where product_id = #{product_id} and user_id=#{user_id}) as wish_my
+				(select count(product_id) from T_WISH where product_id = #{product_id}) as wish_count,
+                (select count(product_id) from T_WISH where product_id = #{product_id} and user_id=#{user_id}) as wish_my
                 
-		from t_product p JOIN t_product_img i
+		from T_PRODUCT p JOIN T_PRODUCT_IMG i
                                	on p.product_id = i.product_id
 		where p.product_id = #{product_id}
 	</select>
 	
-
+<!-- 
 	<select id="produtDetailList" parameterType="MemberDTO" resultType="ProductDTO">
 	
 		
-	</select>
+	</select> -->
 
 	<insert id="productAdd" parameterType="ProductDTO">
                 
  		INSERT ALL
-			INTO t_product (product_id, product_category_id, product_name, product_price, product_quantity, product_description_summary, 
+			INTO T_PRODUCT (product_id, product_category_id, product_name, product_price, product_quantity, product_description_summary, 
 			product_description, product_sales_state, product_register_date)
       	  VALUES(#{product_id},#{product_category_id}, #{product_name}, #{product_price}, #{product_quantity}, #{product_description_summary},
-      	   #{product_description}, #{product_sales_state}, sysdate)
+      	   #{product_description}, #{product_sales_state},NOW())
 		
-      	  INTO t_product_img (product_id, product_photo_id, product_img, product_sub_img_1, product_sub_img_2, product_sub_img_3, product_sub_img_4)
+      	  INTO T_PRODUCT_IMG (product_id, product_photo_id, product_img, product_sub_img_1, product_sub_img_2, product_sub_img_3, product_sub_img_4)
       	  VALUES(#{product_id}, PRODUCT_PHOTO_ID_SEQ.nextval, #{product_img}, #{product_sub_img_1}, #{product_sub_img_2},#{product_sub_img_3},#{product_sub_img_4})
      	   SELECT *
       	FROM DUAL
@@ -83,14 +83,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="category_List" parameterType="int" resultType="ProductCategoryDTO">
 		SELECT product_category_id, category_name
-		FROM t_product_cate
+		FROM T_PRODUCT_CATE
 		WHERE category_level = #{category_level}
 		
 	</select>
 	
 	<delete id="ItemDelete" parameterType="arraylist">
 		DELETE
-		FROM t_product
+		FROM T_PRODUCT
 		WHERE product_id IN
 
 		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
@@ -102,7 +102,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<delete id="ItemImgDelete" parameterType="arraylist">
 		DELETE
-		FROM t_product_img
+		FROM T_PRODUCT_IMG
 		WHERE product_id IN
 
 		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
@@ -112,7 +112,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<update id="ModifyUpdate" parameterType="hashmap">
-		UPDATE t_product
+		UPDATE T_PRODUCT
 		SET 
 			
 			product_category_id = #{product_category_id},
@@ -127,7 +127,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 
 	<update id="ModifyImgUpdate" parameterType="hashmap">
-		UPDATE t_product_img
+		UPDATE T_PRODUCT_IMG
 		SET 
 			product_img = #{product_img},
 			product_sub_img_1 = #{product_sub_img_1},

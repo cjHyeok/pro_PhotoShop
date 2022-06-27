@@ -84,6 +84,7 @@ $(document).ready(function() {
 	}	
 	
 	
+	 
 	$(".cart").on("click", function() {
 		console.log("카트 담기 버튼 클릭 ");
 		
@@ -212,13 +213,13 @@ $(document).ready(function() {
 			<c:choose>
 			
 				<c:when test="${c_name eq '캘리액자'}">
-					<div class="breadcrumbs-area2 position-relative">
+					<div class="breadcrumbs-area position-relative">
 				</c:when>
 				<c:when test="${c_name eq '캘리캔버스'}">
-					<div class="breadcrumbs-area3 position-relative">
+					<div class="breadcrumbs-area position-relative">
 				</c:when>
 				<c:when test="${c_name eq '캘리엽서'}">
-					<div class="breadcrumbs-area4 position-relative">
+					<div class="breadcrumbs-area position-relative">
 				</c:when>
 				
 				<c:otherwise>
@@ -229,7 +230,7 @@ $(document).ready(function() {
 				<div class="row">
 					<div class="col-12 text-center">
 						<div class="breadcrumb-content position-relative section-content">
-							<h3 class="title-3">${category_name} Shop</h3>
+							<h3 class="title-3" style="color: #ffffff;">${category_name} Shop</h3>
 							<ul>
 								<li><a href= "/">Home</a></li>
 								<li>Shop</li>
@@ -294,9 +295,9 @@ $(document).ready(function() {
 								
 									<div class="single-product position-relative">
 										<div class="product-image">
-											<a class="d-block"
-												href="./productDetails?product_id=${dto.product_id}&user_id=${login.user_id}"> <img
-												src="assets/images/${dto.product_img}" alt=""
+											<a class="d-block" href="./productDetails?product_id=${dto.product_id}&user_id=${login.user_id}"> 
+<%-- 											<a class="d-block" href="./productDetails?product_id=${dto.product_id}&user_id=${login.user_id}">  --%>
+											<img src="assets/images/${dto.product_img}" alt=""
 												class="product-image-1 w-100"> <%-- <img src="assets/images/${dto.product_img}_on.jpg" alt="" class="product-image-2 position-absolute w-100"> --%>
 											</a>
 										</div>
@@ -343,12 +344,7 @@ $(document).ready(function() {
 											<a href="./productDetails?product_id=${dto.product_id}" data-bs-toggle="modal" title="상품 상세보기"><i class="ion-eye"></i></a>
 											<%-- <a id="wish" class="wish" data-num="${dto.product_id}" title="찜 하기"> <i class="ion-ios-heart-outline"></i></a> --%>
 											<%-- <a id="wishCount" style="font-size: 15px;">좋아요 ${dto.wish_count}개</a> <br> --%>
-														
-										
-										
-										
-										
-										
+											
 										</div>
 
 									</div>

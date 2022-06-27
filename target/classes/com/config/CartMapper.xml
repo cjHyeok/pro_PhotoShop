@@ -5,24 +5,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="CartMapper">
 
 	<insert id="cartAdd" parameterType="CartDTO">
-		INSERT INTO t_cart (cart_id, user_id, product_id, cart_quantity, cart_date)
-		VALUES (cart_seq.nextval, #{user_id}, #{product_id}, #{cart_quantity}, sysdate)
+		INSERT INTO T_CART (user_id, product_id, cart_quantity, cart_date)
+		VALUES (#{user_id}, #{product_id}, #{cart_quantity}, NOW())
 	</insert>
 	
 	
 	<select id="cartList" parameterType="MemberDTO" resultType="CartDTO">
 		SELECT p.product_name, p.product_price, p.product_quantity, p.product_id, i.product_img, c.user_id, c.cart_id, c.cart_quantity
-		FROM t_product p JOIN t_cart c
+		FROM T_PRODUCT p JOIN T_CART c
 			ON p.product_id = c.product_id
-				JOIN t_product_img i
+				JOIN T_PRODUCT_IMG i
 					ON p.product_id = i.product_id
 		WHERE c.user_id = '${user_id}'
-		ORDER BY c.cart_id asc
+		ORDER BY c.cart_id ASC
 	</select>
 	
 	<delete id="cartDelete" parameterType="arraylist">
 		DELETE
-		FROM t_cart
+		FROM T_CART
 		WHERE cart_id IN
 
 		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
@@ -31,25 +31,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<update id="cartUpdate" parameterType="hashmap">
-		UPDATE t_cart
+		UPDATE T_CART
 		SET cart_quantity = #{cart_quantity}
 		WHERE cart_id = #{cart_id}
 	</update>
 	
 	<insert id="wishCartadd" parameterType="WishDTO">
-		INSERT INTO t_cart (cart_id, user_id, product_id, cart_quantity, cart_date)
-		VALUES (cart_seq.nextval, #{user_id}, #{product_id}, 1, sysdate)
+		INSERT INTO T_CART ( user_id, product_id, cart_quantity, cart_date)
+		VALUES (#{user_id}, #{product_id}, 1, NOW())
 	</insert>
 	
 	
 	<select id="cartSelect" parameterType="CartDTO" resultType="CartDTO">
 		SELECT cart_id, product_id, user_id , cart_quantity
-		from t_cart
+		from T_CART
 		where product_id = '${product_id}' and user_id = '${user_id}'
 	</select>
 	
 		<update id="cartSelectUpdate" parameterType="CartDTO">
-		UPDATE t_cart
+		UPDATE T_CART
 		SET cart_quantity = #{cart_quantity}
 		WHERE cart_id = #{cart_id}
 	</update>

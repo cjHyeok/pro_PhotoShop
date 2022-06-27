@@ -6,55 +6,50 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="MemberMapper">
 
 	<insert id="memberAdd" parameterType="MemberDTO"> <!-- 회원가입 -->
-		INSERT INTO t_member (user_id, user_pw, user_pw2, user_name, email, phone, join_date, post, address1, address2 , address_detail)
-		VALUES( #{user_id}, #{user_pw},#{user_pw2}, #{user_name}, #{email}, #{phone}, sysdate, #{post}, #{address1}, #{address2}, #{address_detail})
+		INSERT INTO T_MEMBER (user_id, user_pw, user_pw2, user_name, email, phone, join_date, post, address1, address2 , address_detail)
+		VALUES( #{user_id}, #{user_pw},#{user_pw2}, #{user_name}, #{email}, #{phone}, NOW(), #{post}, #{address1}, #{address2}, #{address_detail})
 	</insert>
 
 
 	<select id="login" parameterType="MemberDTO" resultType="MemberDTO">
-		SELECT user_id, user_pw, user_name, email, phone, post, address1, address2, address_detail, role
-		FROM t_member
+		SELECT user_id, user_pw, user_name, email, phone, post, address1, address2, address_detail, admin_role
+		FROM T_MEMBER
 		WHERE user_id = #{user_id} and user_pw = #{user_pw}
 	</select>
 	
 	<select id="idDuplicatedCheck" parameterType="string" resultType="MemberDTO">
 		SELECT user_id, user_pw, user_name, email, phone
-		FROM t_member
+		FROM T_MEMBER
 		WHERE user_id = #{user_id}
 	</select>
 	
 	<select id="Account" parameterType="string" resultType="MemberDTO">
 		SELECT user_id, user_pw, user_name, post, email,  phone, address1, address2, address_detail
-		FROM t_member
+		FROM T_MEMBER
 		WHERE user_id = #{user_id}
 		
 	</select>
 	
 	<select id="myAccountOrderList" parameterType="MemberDTO" resultType="OrderDTO"> <!-- 최근 주문 나오도록 -->
-	SELECT  LAST.*
-	FROM    (SELECT ROWNUM RNUM,
-                TEMP.*   
-        FROM    (select  m.user_id, m.user_pw, m.user_name, m.post, m.email, m.address1, m.address2,m.address_detail, m.phone, o.total_price, od.order_quantity, o.order_date, o.order_id, o.order_state,
+	select  m.user_id, m.user_pw, m.user_name, m.post, m.email, m.address1, m.address2,m.address_detail, m.phone, o.total_price, od.order_quantity, o.order_date, o.order_id, o.order_state,
         				i.product_img, p.product_name, p.product_price
-                    from t_member m join t_order o 
+                    from T_MEMBER m join T_ORDER o 
                     		on m.user_id = o.user_id
-                   		join t_order_detail od
+                   		join T_ORDER_DETAIL od
                     		on o.order_id = od.order_id
-                    	join t_product p
+                    	join T_PRODUCT p
                    			on p.product_id = od.product_id
-                     	join t_product_img i
+                     	join T_PRODUCT_IMG i
                    			on i.product_id = p.product_id
                     
                     where m.user_id = '${user_id}'
                     ORDER BY order_date DESC
-                ) TEMP
-        )LAST
-	WHERE   RNUM BETWEEN 1 AND 3
+      limit 3
 	
 	</select> 
 	
 	<update id="memberUpdate" parameterType="MemberDTO">
-		UPDATE t_member
+		UPDATE T_MEMBER
 		SET 
 			user_name= #{user_name},
 			<!-- email=#{email}, -->
@@ -66,14 +61,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<select id="productReview" parameterType="MemberDTO" resultType="ReviewDTO">
-	select  m.user_id, m.user_name,o.order_date, o.order_date + 7 AS writeday, o.order_id, o.order_state, od.product_id, p.product_name, i.product_img 
-                    from t_member m join t_order o on m.user_id = o.user_id
-                                    join t_order_detail od on od.order_id = o.order_id
-                                     join t_product p  on p.product_id = od.product_id
-                                     join t_product_img i on p.product_id = i.product_id
+	                select  m.user_id, m.user_name,o.order_date, DATE_ADD(o.ORDER_DATE, INTERVAL 10 DAY) AS writeday, o.order_id, o.order_state, od.product_id, p.product_name, i.product_img 
+                    from T_MEMBER m join T_ORDER o on m.user_id = o.user_id
+                                    join T_ORDER_DETAIL od on od.order_id = o.order_id
+                                     join T_PRODUCT p  on p.product_id = od.product_id
+                                     join T_PRODUCT_IMG i on p.product_id = i.product_id
                                      
                     where m.user_id = #{user_id}
-                    and o.order_date >= (SYSDATE-1)
+                    and o.order_date >= (DATE_ADD(now(), INTERVAL -10 DAY))  
     </select>
     
     
